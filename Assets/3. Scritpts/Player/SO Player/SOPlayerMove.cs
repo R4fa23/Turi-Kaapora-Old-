@@ -7,14 +7,21 @@ using UnityEngine.Events;
 public class SOPlayerMove : ScriptableObject
 {
     [System.NonSerialized]
-    public UnityEvent<Vector2> MoveEvent;
+    public UnityEvent MoveStartEvent;
+    public UnityEvent MoveEndEvent;
 
     private void OnEnable() {
-        if(MoveEvent == null)
-            MoveEvent = new UnityEvent<Vector2>();
+        if(MoveStartEvent == null)
+            MoveStartEvent = new UnityEvent();
+        
+        if(MoveEndEvent == null)
+            MoveEndEvent = new UnityEvent();
     }
 
-    public void Move(Vector2 dir){
-        MoveEvent.Invoke(dir);
+    public void MoveStart(){
+        MoveStartEvent.Invoke();
+    }
+    public void MoveEnd(){
+        MoveEndEvent.Invoke();
     }
 }

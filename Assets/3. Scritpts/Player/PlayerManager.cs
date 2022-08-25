@@ -7,18 +7,15 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour
 {
     public SOPlayer soPlayer;
-    PlayerInput pInput;
     PlayerMap playerMap;
-    InputAction movement;
     void Start()
     {
         playerMap = new PlayerMap();
-        pInput = GetComponent<PlayerInput>();
-        movement = pInput.actions["Movement"];
 
 
         playerMap.Default.Enable();
         playerMap.Default.Movement.performed += MovementPerformed;
+        playerMap.Default.Movement.canceled += MovementCanceled;
     }
 
     // Update is called once per frame
@@ -29,6 +26,9 @@ public class PlayerManager : MonoBehaviour
 
     public void MovementPerformed(InputAction.CallbackContext context)
     {
-        soPlayer.soPlayerMove.Move(movement.ReadValue<Vector2>());
+        soPlayer.soPlayerMove.MoveStart();
+    }
+    public void MovementCanceled(InputAction.CallbackContext context) {
+        soPlayer.soPlayerMove.MoveEnd();
     }
 }

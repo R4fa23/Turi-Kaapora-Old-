@@ -35,6 +35,15 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Teste"",
+                    ""type"": ""Button"",
+                    ""id"": ""cf35c0d4-a139-4b39-96fa-aedb402bd6e0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -92,6 +101,17 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb9bfd7b-cbae-4086-8318-31462e049331"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Teste"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -101,6 +121,7 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
         // Default
         m_Default = asset.FindActionMap("Default", throwIfNotFound: true);
         m_Default_Movement = m_Default.FindAction("Movement", throwIfNotFound: true);
+        m_Default_Teste = m_Default.FindAction("Teste", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -161,11 +182,13 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Default;
     private IDefaultActions m_DefaultActionsCallbackInterface;
     private readonly InputAction m_Default_Movement;
+    private readonly InputAction m_Default_Teste;
     public struct DefaultActions
     {
         private @PlayerMap m_Wrapper;
         public DefaultActions(@PlayerMap wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Default_Movement;
+        public InputAction @Teste => m_Wrapper.m_Default_Teste;
         public InputActionMap Get() { return m_Wrapper.m_Default; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -178,6 +201,9 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
                 @Movement.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnMovement;
+                @Teste.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnTeste;
+                @Teste.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnTeste;
+                @Teste.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnTeste;
             }
             m_Wrapper.m_DefaultActionsCallbackInterface = instance;
             if (instance != null)
@@ -185,6 +211,9 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
+                @Teste.started += instance.OnTeste;
+                @Teste.performed += instance.OnTeste;
+                @Teste.canceled += instance.OnTeste;
             }
         }
     }
@@ -192,5 +221,6 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
     public interface IDefaultActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnTeste(InputAction.CallbackContext context);
     }
 }
