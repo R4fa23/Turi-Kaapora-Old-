@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
 
     PlayerInput pInput;
     InputAction movement;
-    PlayerMap playerMap;
 
     public SOPlayer soPlayer;
 
@@ -25,18 +24,15 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         characterCtrl = GetComponent<CharacterController>(); 
-        playerMap = new PlayerMap();
         pInput = GetComponent<PlayerInput>();
         movement = pInput.actions["Movement"];
-        //playerMap.Default.Enable();
-        //playerMap.Default.Movement.performed += Movement;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if(walk)
-        //{
+        if(walk)
+        {
             dir = movement.ReadValue<Vector2>();
             Vector3 playerX;
             inputValue = dir;
@@ -59,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
                     Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                     characterCtrl.Move(moveDir.normalized * sensibility *Time.deltaTime);
                 }
-        //}
+        }
     }
 
     public void MoveStart()
