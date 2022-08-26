@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float sensibility;
+    float sensibility;
     public float gravity = 2f;
     float verticalSpeed;
     CharacterController characterCtrl;
@@ -20,20 +20,22 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 dir;
     bool walk;
+    bool dash;
     // Start is called before the first frame update
     void Start()
     {
         characterCtrl = GetComponent<CharacterController>(); 
         pInput = GetComponent<PlayerInput>();
         movement = pInput.actions["Movement"];
+        sensibility = soPlayer.soPlayerMove.vel;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(walk)
+        if(walk || dash)
         {
-            dir = movement.ReadValue<Vector2>();
+            if(!dash) dir = movement.ReadValue<Vector2>();
             Vector3 playerX;
             inputValue = dir;
 
@@ -68,15 +70,32 @@ public class PlayerMovement : MonoBehaviour
         walk = false;
     }
 
+    public void DashStart()
+    {
+        dash = true;
+        sensibility = soPlayer.soPlayerMove.dashVel;
+        StartCoroutine(DashDuration(soPlayer.soPlayerMove.dashDuration));
+    }
+
     public void OnEnable(){
         soPlayer.soPlayerMove.MoveStartEvent.AddListener(MoveStart);
         soPlayer.soPlayerMove.MoveEndEvent.AddListener(MoveEnd);
+        soPlayer.soPlayerMove.DashStartEvent.AddListener(DashStart);
     }
     public void OnDisable(){
         soPlayer.soPlayerMove.MoveStartEvent.RemoveListener(MoveStart);
         soPlayer.soPlayerMove.MoveEndEvent.RemoveListener(MoveEnd);
+        soPlayer.soPlayerMove.DashStartEvent.RemoveListener(DashStart);
     }
     
+    IEnumerator DashDuration(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        sensibility = soPlayer.soPlayerMove.vel;
+        dash = false;
+        if(walk)soPlayer.state = SOPlayer.State.WALKING;
+        if(!walk)soPlayer.state = SOPlayer.State.STOPPED;
+    }
     
 
 }
