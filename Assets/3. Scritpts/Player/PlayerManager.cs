@@ -65,6 +65,7 @@ public class PlayerManager : MonoBehaviour
     }
     public void MovementCanceled(InputAction.CallbackContext context) {
         movement = false;
+
         if(soPlayer.state == SOPlayer.State.WALKING)
         {
             soPlayer.state = SOPlayer.State.STOPPED;
