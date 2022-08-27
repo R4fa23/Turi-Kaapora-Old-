@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
     PlayerMap playerMap;
     bool movement;
     bool canDash = true;
+    bool canAttack = true;
     
     //Esse script deve ser o único que usa o enum como condição, ele gerencia o input map
     //e é nele que serão chamados as funções de context
@@ -24,6 +25,7 @@ public class PlayerManager : MonoBehaviour
         playerMap.Default.Movement.started += MovementStarted;
         playerMap.Default.Movement.canceled += MovementCanceled;
         playerMap.Default.Dash.started += DashStarted;
+        playerMap.Default.Attack.started += AttackStarted;
     }
     
     //O jogador só pode se mover se estiver parado ou se já estiver se movendo
@@ -33,9 +35,11 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         //Debug.Log(soPlayer.state);
-        if(movement) MovementPerformed(); //Gambiarra pra que rode todo frame enquanto o botão estiver apertado
+        if(movement) MovementPerformed(); //Forma pra que rode todo frame enquanto o botão estiver apertado
 
     }
+
+    //-------------------------------MOVIMENTAÇÃO--------------------------------- 
     public void MovementStarted(InputAction.CallbackContext context)
     {
         movement = true;
@@ -78,22 +82,37 @@ public class PlayerManager : MonoBehaviour
         */
         
     }
+    //-------------------------------DASH--------------------------------- 
     public void DashStarted(InputAction.CallbackContext context)
     {
         if(canDash)
         {
             canDash = false;
-            StartCoroutine(dashCooldown());
+            StartCoroutine(DashCooldown());
             soPlayer.state = SOPlayer.State.DASHING;
             soPlayer.soPlayerMove.DashStart();
         }
     }
 
-    IEnumerator dashCooldown()
+    IEnumerator DashCooldown()
     {
         yield return new WaitForSeconds(soPlayer.soPlayerMove.dashCooldown + soPlayer.soPlayerMove.dashDuration);
         canDash = true;
     }
-
-    
+    //-------------------------------ATAQUE--------------------------------- 
+    public void AttackStarted(InputAction.CallbackContext context)
+    {
+        if(soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING && canAttack)
+        {
+            canAttack = false;
+            StartCoroutine(AttackCooldown());
+            soPlayer.state = SOPlayer.State.ATTACKING;
+            soPlayer.soPlayerAttack.AttackStart();
+        }
+    }
+    IEnumerator AttackCooldown()
+    {
+        yield return new WaitForSeconds(soPlayer.soPlayerAttack.currentCooldown + soPlayer.soPlayerAttack.currentDuration);
+        canAttack = true;
+    }
 }

@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     bool walk;
     bool move;
     bool dash;
+    bool initialDash;
+
     
     void Start()
     {
@@ -48,7 +50,15 @@ public class PlayerMovement : MonoBehaviour
 
         if(walk || dash)
         {
-            if(!dash) dir = movement.ReadValue<Vector2>();
+            if(!dash)
+            {
+                dir = movement.ReadValue<Vector2>();
+            } 
+            if(initialDash)
+            {
+                initialDash = false;
+                if(movement.ReadValue<Vector2>().magnitude > 0.1f) dir = movement.ReadValue<Vector2>();
+            }
             Vector3 playerX;
             inputValue = dir;
 
@@ -81,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
     public void DashStart()
     {
         dash = true;
+        initialDash = true;
         sensibility = soPlayer.soPlayerMove.dashDist/soPlayer.soPlayerMove.dashDuration;
         StartCoroutine(DashDuration(soPlayer.soPlayerMove.dashDuration));
     }
