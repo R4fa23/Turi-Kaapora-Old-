@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour
     //Esse script deve ser o único que usa o enum como condição, ele gerencia o input map
     //e é nele que serão chamados as funções de context
 
-    void Start()
+    void Awake()
     {
         playerMap = new PlayerMap();
 
@@ -36,7 +36,6 @@ public class PlayerManager : MonoBehaviour
         if(movement) MovementPerformed(); //Gambiarra pra que rode todo frame enquanto o botão estiver apertado
 
     }
-
     public void MovementStarted(InputAction.CallbackContext context)
     {
         movement = true;
@@ -81,7 +80,7 @@ public class PlayerManager : MonoBehaviour
     }
     public void DashStarted(InputAction.CallbackContext context)
     {
-        if(soPlayer.state == SOPlayer.State.WALKING && canDash)
+        if(canDash)
         {
             canDash = false;
             StartCoroutine(dashCooldown());
