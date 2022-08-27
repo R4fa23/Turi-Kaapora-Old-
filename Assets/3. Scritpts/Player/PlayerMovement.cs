@@ -5,13 +5,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    float sensibility;
+    public string description;
     public float gravity = 2f;
+    public float turnSmoothTime;
+    float sensibility;
     float verticalSpeed;
     CharacterController characterCtrl;
     Vector2 inputValue;
     float turnSmoothVelocity;
-    public float turnSmoothTime;
+    
 
     PlayerInput pInput;
     InputAction movement;
@@ -20,8 +22,9 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 dir;
     bool walk;
+    bool move;
     bool dash;
-    // Start is called before the first frame update
+    
     void Start()
     {
         characterCtrl = GetComponent<CharacterController>(); 
@@ -30,9 +33,11 @@ public class PlayerMovement : MonoBehaviour
         sensibility = soPlayer.soPlayerMove.vel;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
+        walk = false;
+        if(move) walk = true;
         if(walk || dash)
         {
             if(!dash) dir = movement.ReadValue<Vector2>();
@@ -58,16 +63,17 @@ public class PlayerMovement : MonoBehaviour
                     characterCtrl.Move(moveDir.normalized * sensibility *Time.deltaTime);
                 }
         }
+        move = false;
     }
 
     public void MoveStart()
     {
-        walk = true;
+        move = true;
     }
 
     public void MoveEnd()
     {
-        walk = false;
+        //move = false;
     }
 
     public void DashStart()
@@ -77,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(DashDuration(soPlayer.soPlayerMove.dashDuration));
     }
 
+    //Listeners para os eventos e funções
     public void OnEnable(){
         soPlayer.soPlayerMove.MoveStartEvent.AddListener(MoveStart);
         soPlayer.soPlayerMove.MoveEndEvent.AddListener(MoveEnd);
@@ -93,8 +100,9 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(duration);
         sensibility = soPlayer.soPlayerMove.vel;
         dash = false;
-        if(walk)soPlayer.state = SOPlayer.State.WALKING;
-        if(!walk)soPlayer.state = SOPlayer.State.STOPPED;
+        soPlayer.state = SOPlayer.State.STOPPED;
+        //if(walk)soPlayer.state = SOPlayer.State.WALKING;
+        //if(!walk)soPlayer.state = SOPlayer.State.STOPPED;
     }
     
 

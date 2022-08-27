@@ -6,9 +6,10 @@ using UnityEngine.Events;
 [CreateAssetMenu]
 public class SOPlayerMove : ScriptableObject
 {
-    public float vel = 1;
-    public float dashVel = 5;
-    public float dashDuration = 1;
+    public float vel;
+    public float dashVel;
+    public float dashDuration;
+    public float dashCooldown;
 
     [System.NonSerialized]
     public UnityEvent MoveStartEvent;
@@ -16,6 +17,7 @@ public class SOPlayerMove : ScriptableObject
     public UnityEvent MoveEndEvent;
     [System.NonSerialized]
     public UnityEvent DashStartEvent;
+
 
     private void OnEnable() {
         if(MoveStartEvent == null)

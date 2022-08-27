@@ -6,28 +6,41 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
+    public string description;
     public SOPlayer soPlayer;
     PlayerMap playerMap;
+    bool movement;
+    bool canDash = true;
+    
+    //Esse script deve ser o único que usa o enum como condição, ele gerencia o input map
+    //e é nele que serão chamados as funções de context
 
     void Start()
     {
         playerMap = new PlayerMap();
 
-
+        //Forma de chamar as funções sem precisar associar manualmente no inspector
         playerMap.Default.Enable();
-        playerMap.Default.Movement.performed += MovementStarted;
+        playerMap.Default.Movement.started += MovementStarted;
         playerMap.Default.Movement.canceled += MovementCanceled;
         playerMap.Default.Dash.started += DashStarted;
     }
-
-    // Update is called once per frame
+    
+    //O jogador só pode se mover se estiver parado ou se já estiver se movendo
+    //O dash tem a prioridade de ações, mas pra usar o jogador precisa estar andando
+    //O dash pode interromper o ataque
+    //O estado base é parado
     void Update()
     {
-        Debug.Log(soPlayer.state);
+        //Debug.Log(soPlayer.state);
+        if(movement) MovementPerformed(); //Gambiarra pra que rode todo frame enquanto o botão estiver apertado
+
     }
 
     public void MovementStarted(InputAction.CallbackContext context)
     {
+        movement = true;
+        /*
         if(soPlayer.state == SOPlayer.State.STOPPED)
         {
             soPlayer.state = SOPlayer.State.WALKING;
@@ -38,26 +51,49 @@ public class PlayerManager : MonoBehaviour
         {
             soPlayer.soPlayerMove.MoveStart();
         }
+        */
+    }
+
+    public void MovementPerformed()
+    {
+        if(soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING)
+        {
+            soPlayer.state = SOPlayer.State.WALKING;
+            soPlayer.soPlayerMove.MoveStart();
+            
+        }
     }
     public void MovementCanceled(InputAction.CallbackContext context) {
+        movement = false;
         if(soPlayer.state == SOPlayer.State.WALKING)
         {
             soPlayer.state = SOPlayer.State.STOPPED;
             soPlayer.soPlayerMove.MoveEnd();
         }
+        /*
         else if(soPlayer.state == SOPlayer.State.DASHING)
         {
             soPlayer.soPlayerMove.MoveEnd();
         }
+        */
         
     }
     public void DashStarted(InputAction.CallbackContext context)
     {
-        if(soPlayer.state == SOPlayer.State.WALKING)
+        if(soPlayer.state == SOPlayer.State.WALKING && canDash)
         {
+            canDash = false;
+            StartCoroutine(dashCooldown());
             soPlayer.state = SOPlayer.State.DASHING;
             soPlayer.soPlayerMove.DashStart();
         }
     }
+
+    IEnumerator dashCooldown()
+    {
+        yield return new WaitForSeconds(soPlayer.soPlayerMove.dashCooldown + soPlayer.soPlayerMove.dashDuration);
+        canDash = true;
+    }
+
     
 }
