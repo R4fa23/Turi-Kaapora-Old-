@@ -10,9 +10,9 @@ public class SOPlayerAttack : ScriptableObject
     public float attackCooldown;
     public float attackComboFinalDuration;
     public float attackComboFinalCooldown;
-    public float attackDamage;
+    public int attackDamage;
     public float comboTime;
-    public float comboDamage;
+    public int comboDamage;
     public float currentCooldown;
     public float currentDuration;
     public int comboIndex = 0;

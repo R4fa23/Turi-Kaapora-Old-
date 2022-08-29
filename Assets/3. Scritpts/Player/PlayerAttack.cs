@@ -6,11 +6,13 @@ public class PlayerAttack : MonoBehaviour
 {
     public SOPlayer soPlayer;
     BoxCollider boxCollider;
+    MeshRenderer meshRenderer;
     
     void Start()
     {
         soPlayer.soPlayerAttack.comboIndex = 0;
         boxCollider = GetComponent<BoxCollider>();
+        meshRenderer = GetComponent<MeshRenderer>();
     }
     public void AttackStart()
     {
@@ -18,18 +20,21 @@ public class PlayerAttack : MonoBehaviour
         StartCoroutine(ComboTime());
         StartCoroutine(AttackTime());
         boxCollider.enabled = true;
+        meshRenderer.enabled = true;
         soPlayer.soPlayerAttack.comboIndex++;
     }
 
     public void AttackEnd()
     {
         boxCollider.enabled = false;
+        meshRenderer.enabled = false;
         soPlayer.state = SOPlayer.State.STOPPED;
         if(soPlayer.soPlayerAttack.comboIndex >= 3) ComboEnd();
     }
 
     public void ComboEnd()
     {
+        StopAllCoroutines();
         soPlayer.soPlayerAttack.comboIndex = 0;
     }
 
