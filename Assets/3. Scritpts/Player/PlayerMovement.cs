@@ -24,9 +24,12 @@ public class PlayerMovement : MonoBehaviour
     bool walk;
     bool move;
     bool dash;
+    bool initialDash;
+
     
     void Start()
     {
+        dir = new Vector2(0, 1);
         characterCtrl = GetComponent<CharacterController>(); 
         pInput = GetComponent<PlayerInput>();
         movement = pInput.actions["Movement"];
@@ -38,19 +41,28 @@ public class PlayerMovement : MonoBehaviour
     {
         walk = false;
         if(move) walk = true;
+
+        Vector3 moveY = Vector3.zero;
+        if (characterCtrl.isGrounded) verticalSpeed = 0;
+        else verticalSpeed -= gravity;
+        moveY.y = verticalSpeed;
+        characterCtrl.Move(moveY * Time.deltaTime);
+
         if(walk || dash)
         {
-            if(!dash) dir = movement.ReadValue<Vector2>();
+            if(!dash)
+            {
+                dir = movement.ReadValue<Vector2>();
+            } 
+            if(initialDash)
+            {
+                initialDash = false;
+                if(movement.ReadValue<Vector2>().magnitude > 0.1f) dir = movement.ReadValue<Vector2>();
+            }
             Vector3 playerX;
             inputValue = dir;
 
                 playerX = new Vector3(inputValue.x, 0, inputValue.y);
-
-                Vector3 moveY = Vector3.zero;
-                if (characterCtrl.isGrounded) verticalSpeed = 0;
-                else verticalSpeed -= gravity;
-                moveY.y = verticalSpeed;
-                characterCtrl.Move(moveY * Time.deltaTime);
 
                 if (playerX.magnitude > 0.1f)
                 {
@@ -79,7 +91,8 @@ public class PlayerMovement : MonoBehaviour
     public void DashStart()
     {
         dash = true;
-        sensibility = soPlayer.soPlayerMove.dashVel;
+        initialDash = true;
+        sensibility = soPlayer.soPlayerMove.dashDist/soPlayer.soPlayerMove.dashDuration;
         StartCoroutine(DashDuration(soPlayer.soPlayerMove.dashDuration));
     }
 

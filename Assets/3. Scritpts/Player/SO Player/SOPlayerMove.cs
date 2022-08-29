@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class SOPlayerMove : ScriptableObject
 {
     public float vel;
-    public float dashVel;
+    public float dashDist;
     public float dashDuration;
     public float dashCooldown;
 
