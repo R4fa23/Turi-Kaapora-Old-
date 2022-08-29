@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public string description;
-    public float gravity = 2f;
-    public float turnSmoothTime;
+    float gravity = 2f;
+    float turnSmoothTime;
     float sensibility;
     float verticalSpeed;
     CharacterController characterCtrl;
@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     
     void Start()
     {
+        turnSmoothTime = soPlayer.soPlayerMove.rotationVel;
         dir = new Vector2(0, 1);
         characterCtrl = GetComponent<CharacterController>(); 
         pInput = GetComponent<PlayerInput>();

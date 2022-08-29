@@ -9,6 +9,7 @@ public class EnemyAttack : MonoBehaviour
     bool attacking;
     BoxCollider boxCollider;
     MeshRenderer meshRenderer;
+    bool rotate;
     
     void Start()
     {
@@ -24,9 +25,15 @@ public class EnemyAttack : MonoBehaviour
     {
         if(Vector3.Distance(transform.parent.transform.position, player.position) < soEnemy.soEnemyAttack.attackRange && !attacking)
         {  
+            //transform.parent.transform.forward = Vector3.RotateTowards(transform.parent.transform.forward, player.position - transform.parent.transform.position, Mathf.PI / 200, 0);
             soEnemy.state = SOEnemy.State.ATTACKING;
             attacking = true;
+            rotate = true;
             StartCharge();
+        }
+        if(rotate)
+        {
+            transform.parent.transform.forward = Vector3.RotateTowards(transform.parent.transform.forward, player.position - transform.parent.transform.position, Mathf.PI / 100, 0);
         }
     }
 
@@ -38,6 +45,7 @@ public class EnemyAttack : MonoBehaviour
     }
     public void StartAttack()
     {
+        rotate = false;
         soEnemy.soEnemyAttack.AttackStart();
         meshRenderer.enabled = true;
         boxCollider.enabled = true;
@@ -49,6 +57,7 @@ public class EnemyAttack : MonoBehaviour
         StopAllCoroutines();
         meshRenderer.enabled = false;
         boxCollider.enabled = false;
+        rotate = false;
         StartCoroutine(AttackCooldown());
 
     }

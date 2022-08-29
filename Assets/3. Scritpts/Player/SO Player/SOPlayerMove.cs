@@ -10,6 +10,7 @@ public class SOPlayerMove : ScriptableObject
     public float dashDist;
     public float dashDuration;
     public float dashCooldown;
+    public float rotationVel;
 
     [System.NonSerialized]
     public UnityEvent MoveStartEvent;
