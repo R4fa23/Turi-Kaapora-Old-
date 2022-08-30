@@ -5,12 +5,13 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     public SOPlayer soPlayer;
-    SOEnemy soEnemy;
+    public SOEnemy soEnemy;
     Transform player;
     bool attacking;
     BoxCollider boxCollider;
     MeshRenderer meshRenderer;
     bool rotate;
+    bool firstEnable;
     
     void Start()
     {
@@ -20,6 +21,7 @@ public class EnemyAttack : MonoBehaviour
         boxCollider.enabled = false;
         meshRenderer.enabled = false;
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        OnEnable();
     }
 
     
@@ -35,7 +37,8 @@ public class EnemyAttack : MonoBehaviour
         }
         if(rotate)
         {
-            transform.parent.transform.forward = Vector3.RotateTowards(transform.parent.transform.forward, player.position - transform.parent.transform.position, Mathf.PI / 100, 0);
+            Vector3 dirP= new Vector3(player.position.x, transform.position.y, player.position.z);
+            transform.parent.transform.forward = Vector3.RotateTowards(transform.parent.transform.forward, dirP - transform.parent.transform.position, Mathf.PI / 100, 0);
         }
     }
 
@@ -56,6 +59,7 @@ public class EnemyAttack : MonoBehaviour
 
     public void EndAttack()
     {
+        soEnemy.state = SOEnemy.State.STOPPED;
         StopAllCoroutines();
         meshRenderer.enabled = false;
         boxCollider.enabled = false;
@@ -77,7 +81,8 @@ public class EnemyAttack : MonoBehaviour
 
     IEnumerator AttackCooldown()
     {
-        yield return new WaitForSeconds(soEnemy.attackCooldown);
+        yield return new WaitForSeconds(soEnemy.currentCooldown);
+        soEnemy.currentCooldown = soEnemy.attackCooldown;
         soEnemy.state = SOEnemy.State.WALKING;
         attacking = false;
     }
@@ -88,6 +93,25 @@ public class EnemyAttack : MonoBehaviour
         {
             soPlayer.soPlayerHealth.HealthChange(-soEnemy.attackDamage);
         }
+    }
+
+    void ChangeCooldown()
+    {
+        soEnemy.currentCooldown = soEnemy.cooldownDamaged;
+    }
+    public void OnEnable()
+    {
+        if(firstEnable)
+        {
+            soEnemy.ChangeLifeEvent.AddListener(ChangeCooldown);
+            soEnemy.ChangeLifeEvent.AddListener(EndAttack);
+        }
+        firstEnable = true;
+    }
+    public void OnDisable()
+    {
+        soEnemy.ChangeLifeEvent.RemoveListener(ChangeCooldown);
+        soEnemy.ChangeLifeEvent.RemoveListener(EndAttack);
     }
 
 }

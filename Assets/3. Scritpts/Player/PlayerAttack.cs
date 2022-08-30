@@ -43,12 +43,16 @@ public class PlayerAttack : MonoBehaviour
         soPlayer.soPlayerAttack.AttackStartEvent.AddListener(AttackStart);
         soPlayer.soPlayerMove.DashStartEvent.AddListener(AttackEnd);
         soPlayer.soPlayerMove.DashStartEvent.AddListener(ComboEnd);
+        soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(AttackEnd);
+        soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(ComboEnd);
     }
     public void OnDisable()
     {
         soPlayer.soPlayerAttack.AttackStartEvent.RemoveListener(AttackStart);
         soPlayer.soPlayerMove.DashStartEvent.RemoveListener(AttackEnd);
         soPlayer.soPlayerMove.DashStartEvent.RemoveListener(ComboEnd);
+        soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(AttackEnd);
+        soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(ComboEnd);
     }
 
     IEnumerator AttackTime()
@@ -61,5 +65,13 @@ public class PlayerAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(soPlayer.soPlayerAttack.comboTime);
         ComboEnd();
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Enemy"))
+        { 
+            other.GetComponent<EnemyManager>().soEnemy.ChangeLife(-soPlayer.soPlayerAttack.currentDamage);
+        }
     }
 }

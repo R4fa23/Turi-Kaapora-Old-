@@ -15,10 +15,10 @@ public class EnemyMove : MonoBehaviour
     void Start()
     {
         lastState = SOEnemy.State.STOPPED;
-        soEnemy = GetComponent<EnemyManager>().soEnemy;
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent.SetDestination(transform.position);
+        soEnemy = GetComponent<EnemyManager>().soEnemy;
         navMeshAgent.speed = soEnemy.vel;
     }
 
@@ -32,25 +32,21 @@ public class EnemyMove : MonoBehaviour
             soEnemy.MoveStart();
         }        
 
-        if(lastState != soEnemy.state)
-        {
-            lastState = soEnemy.state;
-            ChangeState();
-        }
-        
-    }
-
-    void ChangeState()
-    {
         if(soEnemy.state == SOEnemy.State.WALKING)
         {
             navMeshAgent.SetDestination(player.position);
-            soEnemy.MoveStart();
+            if(lastState != soEnemy.state)
+            {
+                lastState = soEnemy.state;
+                soEnemy.MoveStart();
+            }
+            
         }
         else
         {
             navMeshAgent.SetDestination(transform.position);
         }
+        
     }
 
 }

@@ -12,9 +12,13 @@ public class SOEnemy : ScriptableObject
     public float attackChargeDuration;
     public float attackDuration;
     public float attackCooldown;
+    public float cooldownDamaged;
     public float attackRange;
     public float vel;
     public float distanceDetectation;
+    public float maxHealth;
+    public float health;
+    public float currentCooldown;
 
     [System.NonSerialized]
     public UnityEvent ChargeStartEvent;
@@ -22,6 +26,10 @@ public class SOEnemy : ScriptableObject
     public UnityEvent AttackStartEvent;
     [System.NonSerialized]
     public UnityEvent MoveStartEvent;
+    [System.NonSerialized]
+    public UnityEvent ChangeLifeEvent;
+    [System.NonSerialized]
+    public UnityEvent DieEvent;
 
     private void OnEnable() {
         if(MoveStartEvent == null)
@@ -32,6 +40,12 @@ public class SOEnemy : ScriptableObject
 
         if(ChargeStartEvent == null)
             ChargeStartEvent = new UnityEvent();
+        
+        if(ChangeLifeEvent == null)
+            ChangeLifeEvent = new UnityEvent();
+        
+        if(DieEvent == null)
+            DieEvent = new UnityEvent();
     }
     public void MoveStart(){
         MoveStartEvent.Invoke();
@@ -43,6 +57,16 @@ public class SOEnemy : ScriptableObject
     public void ChargeStart()
     {
         ChargeStartEvent.Invoke();
+    }
+    public void ChangeLife(int amount) 
+    {
+        health += amount;
+        ChangeLifeEvent.Invoke();
+        if(health <= 0) Die();
+    }
+    public void Die()
+    {
+        DieEvent.Invoke();
     }
     /*
     public SOEnemyHealth soEnemyHealth;

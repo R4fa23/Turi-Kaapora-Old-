@@ -18,6 +18,12 @@ public class PlayerManager : MonoBehaviour
 
     void Awake()
     {
+        soPlayer.soPlayerHealth.life = soPlayer.soPlayerHealth.maxLife;
+        soPlayer.soPlayerAttack.currentCooldown = soPlayer.soPlayerAttack.attackCooldown;
+        soPlayer.soPlayerAttack.currentDamage = soPlayer.soPlayerAttack.attackDamage;
+        soPlayer.soPlayerAttack.currentDuration = soPlayer.soPlayerAttack.attackDuration;
+        soPlayer.state = SOPlayer.State.STOPPED;
+
         playerMap = new PlayerMap();
 
         //Forma de chamar as funções sem precisar associar manualmente no inspector
@@ -26,6 +32,7 @@ public class PlayerManager : MonoBehaviour
         playerMap.Default.Movement.canceled += MovementCanceled;
         playerMap.Default.Dash.started += DashStarted;
         playerMap.Default.Attack.started += AttackStarted;
+
     }
     
     //O jogador só pode se mover se estiver parado ou se já estiver se movendo
@@ -113,6 +120,23 @@ public class PlayerManager : MonoBehaviour
     IEnumerator AttackCooldown()
     {
         yield return new WaitForSeconds(soPlayer.soPlayerAttack.currentCooldown + soPlayer.soPlayerAttack.currentDuration);
+        if(soPlayer.soPlayerAttack.currentCooldown == soPlayer.soPlayerAttack.damagedCooldown) soPlayer.soPlayerAttack.currentCooldown = soPlayer.soPlayerAttack.attackCooldown;
         canAttack = true;
+    }
+
+    void ChangeCooldown()
+    {
+        StopAllCoroutines();
+        canAttack = false;
+        soPlayer.soPlayerAttack.currentCooldown = soPlayer.soPlayerAttack.damagedCooldown;
+        StartCoroutine(AttackCooldown());
+    }
+    public void OnEnable()
+    {
+        soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(ChangeCooldown);
+    }
+    public void OnDisable()
+    {
+        soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(ChangeCooldown);
     }
 }

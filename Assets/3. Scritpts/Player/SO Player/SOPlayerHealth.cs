@@ -6,7 +6,7 @@ using UnityEngine.Events;
 [CreateAssetMenu]
 public class SOPlayerHealth : ScriptableObject
 {
-    public int maxLife;
+    public int maxLife = 10;
     public int life;
     [System.NonSerialized]
     public UnityEvent HealthChangeEvent;

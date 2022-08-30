@@ -13,8 +13,10 @@ public class SOPlayerAttack : ScriptableObject
     public int attackDamage;
     public float comboTime;
     public int comboDamage;
+    public float damagedCooldown;
     public float currentCooldown;
     public float currentDuration;
+    public int currentDamage;
     public int comboIndex = 0;
 
 
@@ -31,10 +33,12 @@ public class SOPlayerAttack : ScriptableObject
     {
         if(comboIndex == 2)
         {
+            currentDamage = comboDamage;
             currentCooldown = attackComboFinalCooldown;
             currentDuration = attackComboFinalDuration;
         }
         else{
+            currentDamage = attackDamage;
             currentCooldown = attackCooldown;
             currentDuration = attackDuration;
         }
