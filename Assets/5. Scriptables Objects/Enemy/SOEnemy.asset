@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ddd8fbf9d280148a776fa1c7091508, type: 3}
   m_Name: SOEnemy
   m_EditorClassIdentifier: 
-  soEnemyHealth: {fileID: 11400000, guid: 29f0b93baf81d2b42acb348bbb6294e1, type: 2}
-  soEnemyAttack: {fileID: 11400000, guid: 89cb4f5d47ccb76478003b77745b67c9, type: 2}
-  soEnemyMove: {fileID: 11400000, guid: e58a4ffd5ddaaac4baf03362075375f0, type: 2}
   state: 0
+  attackDamage: 1
+  attackChargeDuration: 1
+  attackDuration: 1
+  attackCooldown: 1
+  attackRange: 3
+  vel: 2
+  distanceDetectation: 37.32

@@ -5,32 +5,47 @@ using UnityEngine.AI;
 
 public class EnemyMove : MonoBehaviour
 {
-    public SOEnemy soEnemy;
+    SOEnemy soEnemy;
     NavMeshAgent navMeshAgent;
     Transform player;
     bool detected;
+    bool initialMove;
+    SOEnemy.State lastState;
 
     void Start()
     {
+        lastState = SOEnemy.State.STOPPED;
+        soEnemy = GetComponent<EnemyManager>().soEnemy;
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent.SetDestination(transform.position);
-        navMeshAgent.speed = soEnemy.soEnemyMove.vel;
+        navMeshAgent.speed = soEnemy.vel;
     }
 
     void Update()
     {
-        if(Vector3.Distance(transform.position, player.position) < soEnemy.soEnemyMove.distanceDetectation && !detected)
+        if(Vector3.Distance(transform.position, player.position) < soEnemy.distanceDetectation && !detected)
         {
             soEnemy.state = SOEnemy.State.WALKING;
             detected = true;
             navMeshAgent.SetDestination(player.position);
-            soEnemy.soEnemyMove.MoveStart();
+            soEnemy.MoveStart();
         }        
 
+        if(lastState != soEnemy.state)
+        {
+            lastState = soEnemy.state;
+            ChangeState();
+        }
+        
+    }
+
+    void ChangeState()
+    {
         if(soEnemy.state == SOEnemy.State.WALKING)
         {
             navMeshAgent.SetDestination(player.position);
+            soEnemy.MoveStart();
         }
         else
         {

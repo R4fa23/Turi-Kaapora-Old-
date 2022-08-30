@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    public SOEnemy soEnemy;
+    public SOPlayer soPlayer;
+    SOEnemy soEnemy;
     Transform player;
     bool attacking;
     BoxCollider boxCollider;
@@ -13,6 +14,7 @@ public class EnemyAttack : MonoBehaviour
     
     void Start()
     {
+        soEnemy = transform.parent.transform.GetComponent<EnemyManager>().soEnemy;
         boxCollider = GetComponent<BoxCollider>();
         meshRenderer = GetComponent<MeshRenderer>();
         boxCollider.enabled = false;
@@ -23,7 +25,7 @@ public class EnemyAttack : MonoBehaviour
     
     void Update()
     {
-        if(Vector3.Distance(transform.parent.transform.position, player.position) < soEnemy.soEnemyAttack.attackRange && !attacking)
+        if(Vector3.Distance(transform.parent.transform.position, player.position) < soEnemy.attackRange && !attacking)
         {  
             //transform.parent.transform.forward = Vector3.RotateTowards(transform.parent.transform.forward, player.position - transform.parent.transform.position, Mathf.PI / 200, 0);
             soEnemy.state = SOEnemy.State.ATTACKING;
@@ -39,14 +41,14 @@ public class EnemyAttack : MonoBehaviour
 
     public void StartCharge()
     {
-        soEnemy.soEnemyAttack.ChargeStart();
+        soEnemy.ChargeStart();
         StartCoroutine(ChargingTime());
 
     }
     public void StartAttack()
     {
         rotate = false;
-        soEnemy.soEnemyAttack.AttackStart();
+        soEnemy.AttackStart();
         meshRenderer.enabled = true;
         boxCollider.enabled = true;
         StartCoroutine(AttackTime());
@@ -64,20 +66,28 @@ public class EnemyAttack : MonoBehaviour
 
     IEnumerator ChargingTime()
     {
-        yield return new WaitForSeconds(soEnemy.soEnemyAttack.attackChargeDuration);
+        yield return new WaitForSeconds(soEnemy.attackChargeDuration);
         StartAttack();
     }
     IEnumerator AttackTime()
     {
-        yield return new WaitForSeconds(soEnemy.soEnemyAttack.attackDuration);
+        yield return new WaitForSeconds(soEnemy.attackDuration);
         EndAttack();
     }
 
     IEnumerator AttackCooldown()
     {
-        yield return new WaitForSeconds(soEnemy.soEnemyAttack.attackCooldown);
+        yield return new WaitForSeconds(soEnemy.attackCooldown);
         soEnemy.state = SOEnemy.State.WALKING;
         attacking = false;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            soPlayer.soPlayerHealth.HealthChange(-soEnemy.attackDamage);
+        }
     }
 
 }

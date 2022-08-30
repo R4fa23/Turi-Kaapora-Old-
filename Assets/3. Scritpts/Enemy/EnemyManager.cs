@@ -6,8 +6,8 @@ public class EnemyManager : MonoBehaviour
 {
     public SOEnemy soEnemy;
 
-    private void Update()
+    void Start()
     {
-        
+        soEnemy = (SOEnemy)ScriptableObject.CreateInstance(typeof(SOEnemy));
     }
 }

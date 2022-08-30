@@ -203,6 +203,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2555297363509316794}
+  - component: {fileID: 8293210610416732219}
   - component: {fileID: 59595520401277057}
   - component: {fileID: 8494190002984255608}
   - component: {fileID: 2594916391940727891}
@@ -236,6 +237,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8293210610416732219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1947304767575686484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa4fc862f815bb4ca0efcef3fd723de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soEnemy: {fileID: 0}
 --- !u!114 &59595520401277057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,7 +262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9590658dd673e4eb35ec7bd67ee7f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soEnemy: {fileID: 11400000, guid: 966d1b0e3e74b5d48ad01dbc5ddc16b4, type: 2}
 --- !u!33 &8494190002984255608
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -639,7 +652,7 @@ GameObject:
   - component: {fileID: 4362954421464958705}
   - component: {fileID: 3135700870540716297}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: BoxAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -672,7 +685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3462ede74e5e1c64695d8a62ed8dd035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soEnemy: {fileID: 11400000, guid: 966d1b0e3e74b5d48ad01dbc5ddc16b4, type: 2}
+  soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
 --- !u!33 &3158675805861938270
 MeshFilter:
   m_ObjectHideFlags: 0
