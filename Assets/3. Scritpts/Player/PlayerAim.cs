@@ -12,17 +12,24 @@ public class PlayerAim : MonoBehaviour
     GameObject enemyFocused;
     bool entered;
 
+    float cooldownUpdate = 0.05f;
     void Start()
     {
         nearbyDistance = Mathf.Infinity;
-        //DetectEnemies();
-        //CheckDistance();
+        DetectEnemies();
+        CheckDistance();
     }
 
     void Update()
     {
-        //DetectEnemies();
-        //CheckDistance();
+        if(cooldownUpdate <= 0)
+        {
+            DetectEnemies();
+            CheckDistance();
+            cooldownUpdate = 0.05f;
+        }
+        else cooldownUpdate -= Time.deltaTime;
+        
         if(nearbyDistance < soPlayer.soPlayerMove.focusRange)
         {
                 if(lastNearbyEnemy != nearbyEnemy)

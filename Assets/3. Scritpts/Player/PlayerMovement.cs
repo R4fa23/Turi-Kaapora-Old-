@@ -69,15 +69,8 @@ public class PlayerMovement : MonoBehaviour
                 if (playerX.magnitude > 0.1f)
                 {
                     float targetAngle = Mathf.Atan2(playerX.x, playerX.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
-
                     
-
-                    if(focusing)
-                    {
-                        Vector3 dirP= new Vector3(targetFocus.transform.position.x, transform.position.y, targetFocus.transform.position.z);
-                        transform.forward = Vector3.RotateTowards(transform.forward, dirP - transform.position, Mathf.PI / 100, 0);
-                    } 
-                    else
+                    if(!focusing)
                     {
                         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
                         transform.rotation = Quaternion.Euler(0f, angle, 0f);
@@ -85,8 +78,15 @@ public class PlayerMovement : MonoBehaviour
 
                     Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                     characterCtrl.Move(moveDir.normalized * sensibility *Time.deltaTime);
+
                 }
+                
         }
+        if(focusing)
+        {
+            Vector3 dirP= new Vector3(targetFocus.transform.position.x, transform.position.y, targetFocus.transform.position.z);
+            transform.forward = Vector3.RotateTowards(transform.forward, dirP - transform.position, Mathf.PI / 50, 0);
+        } 
         move = false;
     }
 
