@@ -15,14 +15,14 @@ public class PlayerAim : MonoBehaviour
     void Start()
     {
         nearbyDistance = Mathf.Infinity;
-        DetectEnemies();
-        CheckDistance();
+        //DetectEnemies();
+        //CheckDistance();
     }
 
     void Update()
     {
-        DetectEnemies();
-        CheckDistance();
+        //DetectEnemies();
+        //CheckDistance();
         if(nearbyDistance < soPlayer.soPlayerMove.focusRange)
         {
                 if(lastNearbyEnemy != nearbyEnemy)

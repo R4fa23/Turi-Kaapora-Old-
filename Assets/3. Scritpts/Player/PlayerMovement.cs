@@ -74,7 +74,8 @@ public class PlayerMovement : MonoBehaviour
 
                     if(focusing)
                     {
-                        transform.forward = Vector3.RotateTowards(transform.forward, targetFocus.transform.position - transform.position, Mathf.PI / 100, 0);
+                        Vector3 dirP= new Vector3(targetFocus.transform.position.x, transform.position.y, targetFocus.transform.position.z);
+                        transform.forward = Vector3.RotateTowards(transform.forward, dirP - transform.position, Mathf.PI / 100, 0);
                     } 
                     else
                     {
