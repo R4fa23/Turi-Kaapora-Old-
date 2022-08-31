@@ -55,11 +55,13 @@ public class PlayerMovement : MonoBehaviour
             if(!dash)
             {
                 dir = movement.ReadValue<Vector2>();
-            } 
+            }
+    
             if(initialDash)
             {
                 initialDash = false;
                 if(movement.ReadValue<Vector2>().magnitude > 0.1f) dir = movement.ReadValue<Vector2>();
+                else dir = new Vector2(transform.forward.x, transform.forward.z);
             }
             Vector3 playerX;
             inputValue = dir;
@@ -70,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     float targetAngle = Mathf.Atan2(playerX.x, playerX.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
                     
-                    if(!focusing)
+                    if(!focusing || dash)
                     {
                         float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
                         transform.rotation = Quaternion.Euler(0f, angle, 0f);
@@ -82,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
                 }
                 
         }
-        if(focusing)
+        if(focusing && !dash)
         {
             Vector3 dirP= new Vector3(targetFocus.transform.position.x, transform.position.y, targetFocus.transform.position.z);
             transform.forward = Vector3.RotateTowards(transform.forward, dirP - transform.position, Mathf.PI / 50, 0);

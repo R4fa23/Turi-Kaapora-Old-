@@ -129,6 +129,7 @@ public class PlayerManager : MonoBehaviour
     {
         StopAllCoroutines();
         canAttack = false;
+        canDash = true;
         soPlayer.soPlayerAttack.currentCooldown = soPlayer.soPlayerAttack.damagedCooldown;
         StartCoroutine(AttackCooldown());
     }
