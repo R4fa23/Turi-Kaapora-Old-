@@ -44,6 +44,16 @@ public class PlayerMovement : MonoBehaviour
         walk = false;
         if(move) walk = true;
 
+        if(targetFocus != null)
+        {
+            if(targetFocus.active == false) 
+            {
+                focusing = false;
+                targetFocus = null;
+            }
+        }
+        
+
         Vector3 moveY = Vector3.zero;
         if (characterCtrl.isGrounded) verticalSpeed = 0;
         else verticalSpeed -= gravity;
