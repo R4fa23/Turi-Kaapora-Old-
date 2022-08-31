@@ -23,10 +23,15 @@ public class SOPlayerAttack : ScriptableObject
 
     [System.NonSerialized]
     public UnityEvent AttackStartEvent;
+    [System.NonSerialized]
+    public UnityEvent EnemyDieEvent;
 
     private void OnEnable() {
         if(AttackStartEvent == null)
             AttackStartEvent = new UnityEvent();
+
+        if(EnemyDieEvent == null)
+            EnemyDieEvent = new UnityEvent();
     }
 
     public void AttackStart()
@@ -43,5 +48,10 @@ public class SOPlayerAttack : ScriptableObject
             currentDuration = attackDuration;
         }
         AttackStartEvent.Invoke();
+    }
+
+    public void EnemyDie()
+    {
+        EnemyDieEvent.Invoke();
     }
 }

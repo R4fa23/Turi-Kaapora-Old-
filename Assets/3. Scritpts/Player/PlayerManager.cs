@@ -32,6 +32,7 @@ public class PlayerManager : MonoBehaviour
         playerMap.Default.Movement.canceled += MovementCanceled;
         playerMap.Default.Dash.started += DashStarted;
         playerMap.Default.Attack.started += AttackStarted;
+        playerMap.Default.Aim.started += AimStarted;
 
     }
     
@@ -131,6 +132,14 @@ public class PlayerManager : MonoBehaviour
         soPlayer.soPlayerAttack.currentCooldown = soPlayer.soPlayerAttack.damagedCooldown;
         StartCoroutine(AttackCooldown());
     }
+
+    //-------------------------------------------MIRAR-----------------------------------------------
+    public void AimStarted(InputAction.CallbackContext context)
+    {
+        soPlayer.soPlayerMove.AimStart();
+    }
+
+    //-------------------------------------------LISTENER---------------------------------------------
     public void OnEnable()
     {
         soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(ChangeCooldown);

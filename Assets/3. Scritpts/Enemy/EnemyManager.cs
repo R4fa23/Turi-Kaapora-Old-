@@ -5,25 +5,14 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public SOEnemy reference;
-    //[HideInInspector]
+    [HideInInspector]
     public SOEnemy soEnemy;
+    public SOPlayer soPlayer;
 
     void Awake()
     {
         soEnemy = (SOEnemy)ScriptableObject.CreateInstance(typeof(SOEnemy));
-        soEnemy.attackDamage = reference.attackDamage;
-        soEnemy.attackChargeDuration = reference.attackChargeDuration;
-        soEnemy.attackDuration = reference.attackDuration;
-        soEnemy.attackCooldown = reference.attackCooldown;
-        soEnemy.attackRange = reference.attackRange;
-        soEnemy.vel = reference.vel;
-        soEnemy.distanceDetectation = reference.distanceDetectation;
-        soEnemy.maxHealth = reference.maxHealth;
-        soEnemy.health = reference.health;
-        soEnemy.health = soEnemy.maxHealth;
-        soEnemy.cooldownDamaged = reference.cooldownDamaged;
-        soEnemy.currentCooldown = reference.currentCooldown;
-        soEnemy.currentCooldown = soEnemy.attackCooldown;
+        SetConfiguration();
 
     }
 
@@ -38,6 +27,26 @@ public class EnemyManager : MonoBehaviour
 
     private void OnDie() 
     {
+        soPlayer.soPlayerAttack.EnemyDie();
         gameObject.SetActive(false);
+    }
+
+    void SetConfiguration()
+    {
+        soEnemy.attackDamage = reference.attackDamage;
+        soEnemy.attackChargeDuration = reference.attackChargeDuration;
+        soEnemy.attackDuration = reference.attackDuration;
+        soEnemy.attackCooldown = reference.attackCooldown;
+        soEnemy.attackRange = reference.attackRange;
+        soEnemy.vel = reference.vel;
+        soEnemy.distanceDetectation = reference.distanceDetectation;
+        soEnemy.maxHealth = reference.maxHealth;
+        soEnemy.health = reference.health;
+        soEnemy.cooldownDamaged = reference.cooldownDamaged;
+        soEnemy.currentCooldown = reference.currentCooldown;
+
+
+        soEnemy.currentCooldown = soEnemy.attackCooldown;
+        soEnemy.health = soEnemy.maxHealth;
     }
 }

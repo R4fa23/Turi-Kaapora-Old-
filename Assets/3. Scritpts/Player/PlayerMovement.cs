@@ -25,7 +25,8 @@ public class PlayerMovement : MonoBehaviour
     bool move;
     bool dash;
     bool initialDash;
-
+    bool focusing;
+    GameObject targetFocus;
     
     void Start()
     {
@@ -69,8 +70,17 @@ public class PlayerMovement : MonoBehaviour
                 {
                     float targetAngle = Mathf.Atan2(playerX.x, playerX.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
 
-                    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-                    transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                    
+
+                    if(focusing)
+                    {
+                        transform.forward = Vector3.RotateTowards(transform.forward, targetFocus.transform.position - transform.position, Mathf.PI / 100, 0);
+                    } 
+                    else
+                    {
+                        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                        transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                    }
 
                     Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                     characterCtrl.Move(moveDir.normalized * sensibility *Time.deltaTime);
@@ -97,16 +107,32 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(DashDuration(soPlayer.soPlayerMove.dashDuration));
     }
 
+    public void FocusStart(GameObject target)
+    {
+        focusing = true;
+        targetFocus = target;
+    }
+
+    public void FocusEnd()
+    {
+        focusing = false;
+        targetFocus = null;
+    }
+
     //Listeners para os eventos e funções
     public void OnEnable(){
         soPlayer.soPlayerMove.MoveStartEvent.AddListener(MoveStart);
         soPlayer.soPlayerMove.MoveEndEvent.AddListener(MoveEnd);
         soPlayer.soPlayerMove.DashStartEvent.AddListener(DashStart);
+        soPlayer.soPlayerMove.TargetAimEvent.AddListener(FocusStart);
+        soPlayer.soPlayerMove.TargetAimStopEvent.AddListener(FocusEnd);
     }
     public void OnDisable(){
         soPlayer.soPlayerMove.MoveStartEvent.RemoveListener(MoveStart);
         soPlayer.soPlayerMove.MoveEndEvent.RemoveListener(MoveEnd);
         soPlayer.soPlayerMove.DashStartEvent.RemoveListener(DashStart);
+        soPlayer.soPlayerMove.TargetAimEvent.RemoveListener(FocusStart);
+        soPlayer.soPlayerMove.TargetAimStopEvent.RemoveListener(FocusEnd);
     }
     
     IEnumerator DashDuration(float duration)

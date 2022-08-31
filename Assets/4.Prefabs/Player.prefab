@@ -1544,6 +1544,7 @@ GameObject:
   - component: {fileID: 9003156691123881370}
   - component: {fileID: 9003156691123881368}
   - component: {fileID: 9003156691123881369}
+  - component: {fileID: 1295528545523672043}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1688,6 +1689,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: c6e6a560-05d3-4879-b800-2b7f0dc54728
     m_ActionName: Default/Attack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8c32baea-dcf5-4aa8-a377-82d3b53b466f
+    m_ActionName: Default/Aim[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Default
@@ -1706,8 +1711,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: 
-  gravity: 2
-  turnSmoothTime: 0.1
   soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
 --- !u!114 &9003156691123881369
 MonoBehaviour:
@@ -1722,4 +1725,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: 
+  soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
+--- !u!114 &1295528545523672043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9003156691123881361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf88a0a3f5df62488badcc1f2f7721c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}

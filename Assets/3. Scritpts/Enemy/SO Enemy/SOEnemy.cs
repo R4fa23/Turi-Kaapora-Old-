@@ -30,6 +30,14 @@ public class SOEnemy : ScriptableObject
     public UnityEvent ChangeLifeEvent;
     [System.NonSerialized]
     public UnityEvent DieEvent;
+    [System.NonSerialized]
+    public UnityEvent StartAimRangeEvent;
+    [System.NonSerialized]
+    public UnityEvent EndAimRangeEvent;
+    [System.NonSerialized]
+    public UnityEvent StartAimEvent;
+    [System.NonSerialized]
+    public UnityEvent EndAimEvent;
 
     private void OnEnable() {
         if(MoveStartEvent == null)
@@ -46,6 +54,18 @@ public class SOEnemy : ScriptableObject
         
         if(DieEvent == null)
             DieEvent = new UnityEvent();
+
+        if(StartAimRangeEvent == null)
+            StartAimRangeEvent = new UnityEvent();
+        
+        if(EndAimRangeEvent == null)
+            EndAimRangeEvent = new UnityEvent();
+        
+        if(StartAimEvent == null)
+            StartAimEvent = new UnityEvent();
+        
+        if(EndAimEvent == null)
+            EndAimEvent = new UnityEvent();
     }
     public void MoveStart(){
         MoveStartEvent.Invoke();
@@ -67,6 +87,23 @@ public class SOEnemy : ScriptableObject
     public void Die()
     {
         DieEvent.Invoke();
+    }
+
+    public void StartAimRange()
+    {
+        StartAimRangeEvent.Invoke();
+    }
+    public void EndAimRange()
+    {
+        EndAimRangeEvent.Invoke();
+    }
+    public void StartAim()
+    {
+        StartAimEvent.Invoke();
+    }
+    public void EndAim()
+    {
+        EndAimEvent.Invoke();
     }
     /*
     public SOEnemyHealth soEnemyHealth;
