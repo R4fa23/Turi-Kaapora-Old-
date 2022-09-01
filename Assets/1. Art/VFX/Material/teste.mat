@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Swamp Fire V1 2
+  m_Name: teste
   m_Shader: {fileID: -6465566751694194690, guid: dda2381a9559e524e85d5da295b5c04d,
     type: 3}
   m_ValidKeywords: []
@@ -34,6 +34,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Eye:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTexture:
         m_Texture: {fileID: 2800000, guid: 5ed674337456d5149adf308f227a839c, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -60,19 +64,19 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Inner_Cell_Density: 2
-    - _Inner_Dissolve_Intensity: 2
-    - _Inner_Distortion_Amount: 0.15
-    - _Inner_Distortion_Speed: -0.5
+    - _Inner_Cell_Density: 2.12
+    - _Inner_Dissolve_Intensity: 1.7
+    - _Inner_Distortion_Amount: 0.1
+    - _Inner_Distortion_Speed: 1.25
     - _Outside_Cell_Density: 1
-    - _Outside_Dissolve_Intesity: 0
+    - _Outside_Dissolve_Intesity: 2
     - _Outside_Distortion_Amount: 0.15
-    - _Outside_Distortion_Speed: -1
+    - _Outside_Distortion_Speed: -0.5
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Inner_Dissolve_Speed: {r: -1, g: -0.2, b: 0, a: 0}
-    - _Inside_Color: {r: 16, g: 8.909804, b: 0, a: 0}
-    - _Outside_Color: {r: 21.361254, g: 1.1512352, b: 0, a: 0}
+    - _Inner_Dissolve_Speed: {r: -0.1, g: -0.5, b: 0, a: 0}
+    - _Inside_Color: {r: 19.157576, g: 59.017693, b: 0, a: 0}
+    - _Outside_Color: {r: 15.999998, g: 0, b: 14.073297, a: 0}
     - _Outside_Dissolve_Speed: {r: -0.1, g: -1, b: 0, a: 0}
   m_BuildTextureStacks: []
