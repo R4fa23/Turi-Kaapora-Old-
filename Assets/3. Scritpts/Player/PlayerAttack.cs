@@ -6,11 +6,13 @@ public class PlayerAttack : MonoBehaviour
 {
     public SOPlayer soPlayer;
     BoxCollider boxCollider;
+    MeshRenderer meshRenderer;
     
     void Start()
     {
         soPlayer.soPlayerAttack.comboIndex = 0;
         boxCollider = GetComponent<BoxCollider>();
+        meshRenderer = GetComponent<MeshRenderer>();
     }
     public void AttackStart()
     {
@@ -18,18 +20,21 @@ public class PlayerAttack : MonoBehaviour
         StartCoroutine(ComboTime());
         StartCoroutine(AttackTime());
         boxCollider.enabled = true;
+        meshRenderer.enabled = true;
         soPlayer.soPlayerAttack.comboIndex++;
     }
 
     public void AttackEnd()
     {
         boxCollider.enabled = false;
+        meshRenderer.enabled = false;
         soPlayer.state = SOPlayer.State.STOPPED;
         if(soPlayer.soPlayerAttack.comboIndex >= 3) ComboEnd();
     }
 
     public void ComboEnd()
     {
+        StopAllCoroutines();
         soPlayer.soPlayerAttack.comboIndex = 0;
     }
 
@@ -38,12 +43,16 @@ public class PlayerAttack : MonoBehaviour
         soPlayer.soPlayerAttack.AttackStartEvent.AddListener(AttackStart);
         soPlayer.soPlayerMove.DashStartEvent.AddListener(AttackEnd);
         soPlayer.soPlayerMove.DashStartEvent.AddListener(ComboEnd);
+        soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(AttackEnd);
+        soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(ComboEnd);
     }
     public void OnDisable()
     {
         soPlayer.soPlayerAttack.AttackStartEvent.RemoveListener(AttackStart);
         soPlayer.soPlayerMove.DashStartEvent.RemoveListener(AttackEnd);
         soPlayer.soPlayerMove.DashStartEvent.RemoveListener(ComboEnd);
+        soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(AttackEnd);
+        soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(ComboEnd);
     }
 
     IEnumerator AttackTime()
@@ -56,5 +65,13 @@ public class PlayerAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(soPlayer.soPlayerAttack.comboTime);
         ComboEnd();
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Enemy"))
+        { 
+            other.GetComponent<EnemyManager>().soEnemy.ChangeLife(-soPlayer.soPlayerAttack.currentDamage);
+        }
     }
 }

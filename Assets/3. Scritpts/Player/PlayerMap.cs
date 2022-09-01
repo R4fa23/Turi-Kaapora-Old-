@@ -62,6 +62,15 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Button"",
+                    ""id"": ""8c32baea-dcf5-4aa8-a377-82d3b53b466f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,6 +161,17 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a57fd46f-e9e0-49da-8de1-e0027fae633b"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +184,7 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
         m_Default_Teste = m_Default.FindAction("Teste", throwIfNotFound: true);
         m_Default_Dash = m_Default.FindAction("Dash", throwIfNotFound: true);
         m_Default_Attack = m_Default.FindAction("Attack", throwIfNotFound: true);
+        m_Default_Aim = m_Default.FindAction("Aim", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -227,6 +248,7 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
     private readonly InputAction m_Default_Teste;
     private readonly InputAction m_Default_Dash;
     private readonly InputAction m_Default_Attack;
+    private readonly InputAction m_Default_Aim;
     public struct DefaultActions
     {
         private @PlayerMap m_Wrapper;
@@ -235,6 +257,7 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
         public InputAction @Teste => m_Wrapper.m_Default_Teste;
         public InputAction @Dash => m_Wrapper.m_Default_Dash;
         public InputAction @Attack => m_Wrapper.m_Default_Attack;
+        public InputAction @Aim => m_Wrapper.m_Default_Aim;
         public InputActionMap Get() { return m_Wrapper.m_Default; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -256,6 +279,9 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
                 @Attack.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnAttack;
+                @Aim.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnAim;
+                @Aim.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnAim;
+                @Aim.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnAim;
             }
             m_Wrapper.m_DefaultActionsCallbackInterface = instance;
             if (instance != null)
@@ -272,6 +298,9 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @Aim.started += instance.OnAim;
+                @Aim.performed += instance.OnAim;
+                @Aim.canceled += instance.OnAim;
             }
         }
     }
@@ -282,5 +311,6 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
         void OnTeste(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
     }
 }

@@ -10,6 +10,8 @@ public class SOPlayerMove : ScriptableObject
     public float dashDist;
     public float dashDuration;
     public float dashCooldown;
+    public float rotationVel;
+    public float focusRange;
 
     [System.NonSerialized]
     public UnityEvent MoveStartEvent;
@@ -17,6 +19,14 @@ public class SOPlayerMove : ScriptableObject
     public UnityEvent MoveEndEvent;
     [System.NonSerialized]
     public UnityEvent DashStartEvent;
+    [System.NonSerialized]
+    public UnityEvent AimStartEvent;
+    [System.NonSerialized]
+    public UnityEvent AimEndEvent;
+    [System.NonSerialized]
+    public UnityEvent<GameObject> TargetAimEvent;
+    [System.NonSerialized]
+    public UnityEvent TargetAimStopEvent;
 
 
     private void OnEnable() {
@@ -28,6 +38,18 @@ public class SOPlayerMove : ScriptableObject
 
         if(DashStartEvent == null)
             DashStartEvent = new UnityEvent();
+
+        if(AimStartEvent == null)
+            AimStartEvent = new UnityEvent();
+
+        if(AimEndEvent == null)
+            AimEndEvent = new UnityEvent();
+        
+        if(TargetAimEvent == null)
+            TargetAimEvent = new UnityEvent<GameObject>();
+        
+        if(TargetAimStopEvent == null)
+            TargetAimStopEvent = new UnityEvent();
     }
 
     public void MoveStart(){
@@ -38,5 +60,18 @@ public class SOPlayerMove : ScriptableObject
     }
     public void DashStart(){
         DashStartEvent.Invoke();
+    }
+    public void AimStart(){
+        AimStartEvent.Invoke();
+    }
+    public void AimEnd(){
+        AimEndEvent.Invoke();
+    }
+    public void TargetAim(GameObject target){
+        TargetAimEvent.Invoke(target);
+    }
+    public void TargetAimStop()
+    {
+        TargetAimStopEvent.Invoke();
     }
 }

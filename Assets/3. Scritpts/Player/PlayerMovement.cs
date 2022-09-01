@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public string description;
-    public float gravity = 2f;
-    public float turnSmoothTime;
+    float gravity = 2f;
+    float turnSmoothTime;
     float sensibility;
     float verticalSpeed;
     CharacterController characterCtrl;
@@ -25,10 +25,12 @@ public class PlayerMovement : MonoBehaviour
     bool move;
     bool dash;
     bool initialDash;
-
+    bool focusing;
+    GameObject targetFocus;
     
     void Start()
     {
+        turnSmoothTime = soPlayer.soPlayerMove.rotationVel;
         dir = new Vector2(0, 1);
         characterCtrl = GetComponent<CharacterController>(); 
         pInput = GetComponent<PlayerInput>();
@@ -42,6 +44,16 @@ public class PlayerMovement : MonoBehaviour
         walk = false;
         if(move) walk = true;
 
+        if(targetFocus != null)
+        {
+            if(targetFocus.active == false) 
+            {
+                focusing = false;
+                targetFocus = null;
+            }
+        }
+        
+
         Vector3 moveY = Vector3.zero;
         if (characterCtrl.isGrounded) verticalSpeed = 0;
         else verticalSpeed -= gravity;
@@ -53,11 +65,13 @@ public class PlayerMovement : MonoBehaviour
             if(!dash)
             {
                 dir = movement.ReadValue<Vector2>();
-            } 
+            }
+    
             if(initialDash)
             {
                 initialDash = false;
                 if(movement.ReadValue<Vector2>().magnitude > 0.1f) dir = movement.ReadValue<Vector2>();
+                else dir = new Vector2(transform.forward.x, transform.forward.z);
             }
             Vector3 playerX;
             inputValue = dir;
@@ -67,14 +81,24 @@ public class PlayerMovement : MonoBehaviour
                 if (playerX.magnitude > 0.1f)
                 {
                     float targetAngle = Mathf.Atan2(playerX.x, playerX.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
-
-                    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-                    transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                    
+                    if(!focusing || dash)
+                    {
+                        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                        transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                    }
 
                     Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                     characterCtrl.Move(moveDir.normalized * sensibility *Time.deltaTime);
+
                 }
+                
         }
+        if(focusing && !dash)
+        {
+            Vector3 dirP= new Vector3(targetFocus.transform.position.x, transform.position.y, targetFocus.transform.position.z);
+            transform.forward = Vector3.RotateTowards(transform.forward, dirP - transform.position, Mathf.PI / 50, 0);
+        } 
         move = false;
     }
 
@@ -96,16 +120,32 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(DashDuration(soPlayer.soPlayerMove.dashDuration));
     }
 
+    public void FocusStart(GameObject target)
+    {
+        focusing = true;
+        targetFocus = target;
+    }
+
+    public void FocusEnd()
+    {
+        focusing = false;
+        targetFocus = null;
+    }
+
     //Listeners para os eventos e funções
     public void OnEnable(){
         soPlayer.soPlayerMove.MoveStartEvent.AddListener(MoveStart);
         soPlayer.soPlayerMove.MoveEndEvent.AddListener(MoveEnd);
         soPlayer.soPlayerMove.DashStartEvent.AddListener(DashStart);
+        soPlayer.soPlayerMove.TargetAimEvent.AddListener(FocusStart);
+        soPlayer.soPlayerMove.TargetAimStopEvent.AddListener(FocusEnd);
     }
     public void OnDisable(){
         soPlayer.soPlayerMove.MoveStartEvent.RemoveListener(MoveStart);
         soPlayer.soPlayerMove.MoveEndEvent.RemoveListener(MoveEnd);
         soPlayer.soPlayerMove.DashStartEvent.RemoveListener(DashStart);
+        soPlayer.soPlayerMove.TargetAimEvent.RemoveListener(FocusStart);
+        soPlayer.soPlayerMove.TargetAimStopEvent.RemoveListener(FocusEnd);
     }
     
     IEnumerator DashDuration(float duration)
