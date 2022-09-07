@@ -44,7 +44,6 @@ public class PlayerManager : MonoBehaviour
     {
         //Debug.Log(soPlayer.state);
         if(movement) MovementPerformed(); //Forma pra que rode todo frame enquanto o botão estiver apertado
-
     }
 
     //-------------------------------MOVIMENTAÇÃO--------------------------------- 
@@ -95,9 +94,9 @@ public class PlayerManager : MonoBehaviour
     {
         if(canDash)
         {
+            soPlayer.state = SOPlayer.State.DASHING;
             canDash = false;
             StartCoroutine(DashCooldown());
-            soPlayer.state = SOPlayer.State.DASHING;
             soPlayer.soPlayerMove.DashStart();
         }
     }
@@ -110,12 +109,12 @@ public class PlayerManager : MonoBehaviour
     //-------------------------------ATAQUE--------------------------------- 
     public void AttackStarted(InputAction.CallbackContext context)
     {
-        if(soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING && canAttack)
+        if((soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canAttack)
         {
             canAttack = false;
-            StartCoroutine(AttackCooldown());
             soPlayer.state = SOPlayer.State.ATTACKING;
             soPlayer.soPlayerAttack.AttackStart();
+            StartCoroutine(AttackCooldown());
         }
     }
     IEnumerator AttackCooldown()
@@ -125,7 +124,7 @@ public class PlayerManager : MonoBehaviour
         canAttack = true;
     }
 
-    void ChangeCooldown()
+    void DamagedCooldown()
     {
         StopAllCoroutines();
         canAttack = false;
@@ -143,10 +142,10 @@ public class PlayerManager : MonoBehaviour
     //-------------------------------------------LISTENER---------------------------------------------
     public void OnEnable()
     {
-        soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(ChangeCooldown);
+        soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(DamagedCooldown);
     }
     public void OnDisable()
     {
-        soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(ChangeCooldown);
+        soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(DamagedCooldown);
     }
 }

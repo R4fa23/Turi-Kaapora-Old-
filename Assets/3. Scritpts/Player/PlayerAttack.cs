@@ -7,6 +7,7 @@ public class PlayerAttack : MonoBehaviour
     public SOPlayer soPlayer;
     BoxCollider boxCollider;
     MeshRenderer meshRenderer;
+    public Material attack;
     
     void Start()
     {
@@ -22,6 +23,9 @@ public class PlayerAttack : MonoBehaviour
         boxCollider.enabled = true;
         meshRenderer.enabled = true;
         soPlayer.soPlayerAttack.comboIndex++;
+        if(soPlayer.soPlayerAttack.comboIndex == 1) attack.color = Color.white;
+        else if(soPlayer.soPlayerAttack.comboIndex == 2) attack.color = Color.yellow;
+        else attack.color = Color.red;
     }
 
     public void AttackEnd()
@@ -36,6 +40,9 @@ public class PlayerAttack : MonoBehaviour
     {
         StopAllCoroutines();
         soPlayer.soPlayerAttack.comboIndex = 0;
+        soPlayer.soPlayerAttack.currentCooldown = soPlayer.soPlayerAttack.attackCooldown;
+        soPlayer.soPlayerAttack.currentDuration = soPlayer.soPlayerAttack.attackDuration;
+        soPlayer.soPlayerAttack.comboDamage = soPlayer.soPlayerAttack.attackDamage;
     }
 
     public void OnEnable()

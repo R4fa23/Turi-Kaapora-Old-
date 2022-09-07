@@ -34,8 +34,8 @@ public class PlayerAim : MonoBehaviour
         {
                 if(lastNearbyEnemy != nearbyEnemy)
                 {
-                    if(lastNearbyEnemy != null) lastNearbyEnemy.GetComponent<EnemyManager>().soEnemy.EndAimRange();
-                    if(nearbyEnemy != enemyFocused)nearbyEnemy.GetComponent<EnemyManager>().soEnemy.StartAimRange();
+                    if(lastNearbyEnemy != null) soPlayer.soPlayerMove.NearbyAimStop();//lastNearbyEnemy.GetComponent<EnemyManager>().soEnemy.EndAimRange();
+                    if(nearbyEnemy != enemyFocused) soPlayer.soPlayerMove.NearbyAim(nearbyEnemy);//nearbyEnemy.GetComponent<EnemyManager>().soEnemy.StartAimRange();
                     lastNearbyEnemy = nearbyEnemy;
                     entered = true;
                 }
@@ -45,18 +45,18 @@ public class PlayerAim : MonoBehaviour
             if(entered)
             {
                 lastNearbyEnemy = null;
-                nearbyEnemy.GetComponent<EnemyManager>().soEnemy.EndAimRange();
+                soPlayer.soPlayerMove.NearbyAimStop();//nearbyEnemy.GetComponent<EnemyManager>().soEnemy.EndAimRange();
                 entered = false;
             }
             
         }
+
         if(enemyFocused != null)
         {
             if(Vector3.Distance(transform.position, enemyFocused.transform.position) >= soPlayer.soPlayerMove.focusRange)
             {
-                enemyFocused.GetComponent<EnemyManager>().soEnemy.EndAim();
                 enemyFocused = null;
-                soPlayer.soPlayerMove.TargetAimStop();
+                soPlayer.soPlayerMove.TargetAimStop();//enemyFocused.GetComponent<EnemyManager>().soEnemy.EndAim();
             }
         }
     }
@@ -67,18 +67,17 @@ public class PlayerAim : MonoBehaviour
         {
             if(enemyFocused != nearbyEnemy)
             {
-                if(enemyFocused != null) enemyFocused.GetComponent<EnemyManager>().soEnemy.EndAim();
+                if(enemyFocused != null) soPlayer.soPlayerMove.TargetAimStop();//enemyFocused.GetComponent<EnemyManager>().soEnemy.EndAim();
                 enemyFocused = nearbyEnemy;
-                enemyFocused.GetComponent<EnemyManager>().soEnemy.EndAimRange();
-                enemyFocused.GetComponent<EnemyManager>().soEnemy.StartAim();
-                soPlayer.soPlayerMove.TargetAim(enemyFocused);
+                soPlayer.soPlayerMove.NearbyAimStop();//enemyFocused.GetComponent<EnemyManager>().soEnemy.EndAimRange();
+                soPlayer.soPlayerMove.TargetAim(enemyFocused);//enemyFocused.GetComponent<EnemyManager>().soEnemy.StartAim();
             }
             else
             {
-                enemyFocused.GetComponent<EnemyManager>().soEnemy.EndAim();
-                enemyFocused.GetComponent<EnemyManager>().soEnemy.StartAimRange();
+                soPlayer.soPlayerMove.TargetAimStop();//enemyFocused.GetComponent<EnemyManager>().soEnemy.EndAim();
+                soPlayer.soPlayerMove.NearbyAim(enemyFocused);//enemyFocused.GetComponent<EnemyManager>().soEnemy.StartAimRange();
                 enemyFocused = null;
-                soPlayer.soPlayerMove.TargetAimStop();
+                
             }
         }
     }
@@ -104,13 +103,15 @@ public class PlayerAim : MonoBehaviour
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
     }
 
-    void RestartDetect()
+    void RestartDetect(GameObject enemyDied)
     {
         nearbyEnemy = null;
         lastNearbyEnemy = null;
         nearbyDistance = Mathf.Infinity;
         //enemyFocused = null;
         entered = false;
+        if(enemyDied == enemyFocused) soPlayer.soPlayerMove.TargetAimStop();
+        soPlayer.soPlayerMove.NearbyAimStop();
     }
     public void OnEnable()
     {

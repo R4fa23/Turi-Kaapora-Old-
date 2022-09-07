@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(targetFocus != null)
         {
-            if(targetFocus.active == false) 
+            if(!targetFocus.activeSelf) 
             {
                 focusing = false;
                 targetFocus = null;
@@ -114,6 +114,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void DashStart()
     {
+        soPlayer.state = SOPlayer.State.DASHING;
         dash = true;
         initialDash = true;
         sensibility = soPlayer.soPlayerMove.dashDist/soPlayer.soPlayerMove.dashDuration;

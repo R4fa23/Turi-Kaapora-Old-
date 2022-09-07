@@ -5,21 +5,20 @@ using UnityEngine.UI;
 
 public class EnemyNearby : MonoBehaviour
 {
-    SOEnemy soEnemy;
-
-    bool firstEnable;
+    public SOPlayer soPlayer;
+    GameObject target;
     void Start()
     {
-        soEnemy = transform.parent.transform.parent.transform.GetComponent<EnemyManager>().soEnemy;
-        OnEnable();
+        
     }
 
     void Update()
     {
-        transform.position = Camera.main.WorldToScreenPoint(transform.parent.transform.parent.transform.position);
+        if(target != null)transform.position = Camera.main.WorldToScreenPoint(target.transform.position);
     }
-    void EnableImage()
+    void EnableImage(GameObject aim)
     {
+        target = aim;
         GetComponent<Image>().enabled = true;
     }
 
@@ -29,16 +28,12 @@ public class EnemyNearby : MonoBehaviour
     }
     public void OnEnable()
     {
-        if(firstEnable)
-        {
-            soEnemy.StartAimRangeEvent.AddListener(EnableImage);
-            soEnemy.EndAimRangeEvent.AddListener(DisableImage);
-        }
-        firstEnable = true;
+        soPlayer.soPlayerMove.NearbyAimEvent.AddListener(EnableImage);
+        soPlayer.soPlayerMove.NearbyAimStopEvent.AddListener(DisableImage);
     }
     public void OnDisable()
     {
-        soEnemy.StartAimRangeEvent.RemoveListener(EnableImage);
-        soEnemy.EndAimRangeEvent.RemoveListener(DisableImage);
+        soPlayer.soPlayerMove.NearbyAimEvent.RemoveListener(EnableImage);
+        soPlayer.soPlayerMove.NearbyAimStopEvent.RemoveListener(DisableImage);
     }
 }

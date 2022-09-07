@@ -24,14 +24,14 @@ public class SOPlayerAttack : ScriptableObject
     [System.NonSerialized]
     public UnityEvent AttackStartEvent;
     [System.NonSerialized]
-    public UnityEvent EnemyDieEvent;
+    public UnityEvent<GameObject> EnemyDieEvent;
 
     private void OnEnable() {
         if(AttackStartEvent == null)
             AttackStartEvent = new UnityEvent();
 
         if(EnemyDieEvent == null)
-            EnemyDieEvent = new UnityEvent();
+            EnemyDieEvent = new UnityEvent<GameObject>();
     }
 
     public void AttackStart()
@@ -50,8 +50,8 @@ public class SOPlayerAttack : ScriptableObject
         AttackStartEvent.Invoke();
     }
 
-    public void EnemyDie()
+    public void EnemyDie(GameObject enemy)
     {
-        EnemyDieEvent.Invoke();
+        EnemyDieEvent.Invoke(enemy);
     }
 }

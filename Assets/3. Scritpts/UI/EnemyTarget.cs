@@ -6,24 +6,20 @@ using UnityEngine.UI;
 
 public class EnemyTarget : MonoBehaviour
 {
-    SOEnemy soEnemy;
-    
-    bool firstEnable;
-    // Start is called before the first frame update
+    public SOPlayer soPlayer;
+    GameObject target;
     void Start()
     {
-        soEnemy = transform.parent.transform.parent.transform.GetComponent<EnemyManager>().soEnemy;
-        OnEnable();
+        
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.position = Camera.main.WorldToScreenPoint(transform.parent.transform.parent.transform.position);
+        if(target != null)transform.position = Camera.main.WorldToScreenPoint(target.transform.position);
     }
-
-    void EnableImage()
+    void EnableImage(GameObject aim)
     {
+        target = aim;
         GetComponent<Image>().enabled = true;
     }
 
@@ -33,16 +29,12 @@ public class EnemyTarget : MonoBehaviour
     }
     public void OnEnable()
     {
-        if(firstEnable)
-        {
-            soEnemy.StartAimEvent.AddListener(EnableImage);
-            soEnemy.EndAimEvent.AddListener(DisableImage);
-        }
-        firstEnable = true;
+        soPlayer.soPlayerMove.TargetAimEvent.AddListener(EnableImage);
+        soPlayer.soPlayerMove.TargetAimStopEvent.AddListener(DisableImage);
     }
     public void OnDisable()
     {
-        soEnemy.StartAimEvent.RemoveListener(EnableImage);
-        soEnemy.EndAimEvent.RemoveListener(DisableImage);
+        soPlayer.soPlayerMove.TargetAimEvent.RemoveListener(EnableImage);
+        soPlayer.soPlayerMove.TargetAimStopEvent.RemoveListener(DisableImage);
     }
 }

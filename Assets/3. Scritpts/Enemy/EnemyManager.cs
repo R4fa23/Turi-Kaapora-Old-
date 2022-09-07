@@ -27,7 +27,7 @@ public class EnemyManager : MonoBehaviour
 
     private void OnDie() 
     {
-        soPlayer.soPlayerAttack.EnemyDie();
+        soPlayer.soPlayerAttack.EnemyDie(this.gameObject);
         gameObject.SetActive(false);
     }
 
