@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour
     bool movement;
     bool canDash = true;
     bool canAttack = true;
+    bool dashing;
     
     //Esse script deve ser o único que usa o enum como condição, ele gerencia o input map
     //e é nele que serão chamados as funções de context
@@ -94,6 +95,7 @@ public class PlayerManager : MonoBehaviour
     {
         if(canDash)
         {
+            dashing = true;
             soPlayer.state = SOPlayer.State.DASHING;
             canDash = false;
             StartCoroutine(DashCooldown());
@@ -103,13 +105,15 @@ public class PlayerManager : MonoBehaviour
 
     IEnumerator DashCooldown()
     {
-        yield return new WaitForSeconds(soPlayer.soPlayerMove.dashCooldown + soPlayer.soPlayerMove.dashDuration);
+        yield return new WaitForSeconds(soPlayer.soPlayerMove.dashDuration);
+        dashing = false;
+        yield return new WaitForSeconds(soPlayer.soPlayerMove.dashCooldown);
         canDash = true;
     }
     //-------------------------------ATAQUE--------------------------------- 
     public void AttackStarted(InputAction.CallbackContext context)
     {
-        if((soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canAttack)
+        if(!dashing && (soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canAttack)
         {
             canAttack = false;
             soPlayer.state = SOPlayer.State.ATTACKING;
@@ -129,6 +133,7 @@ public class PlayerManager : MonoBehaviour
         StopAllCoroutines();
         canAttack = false;
         canDash = true;
+        dashing = false;
         soPlayer.soPlayerAttack.currentCooldown = soPlayer.soPlayerAttack.damagedCooldown;
         StartCoroutine(AttackCooldown());
     }
