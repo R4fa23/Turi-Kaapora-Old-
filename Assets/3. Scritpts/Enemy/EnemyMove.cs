@@ -11,6 +11,7 @@ public class EnemyMove : MonoBehaviour
     bool detected;
     bool initialMove;
     SOEnemy.State lastState;
+    bool firstEnable;
 
     void Start()
     {
@@ -20,16 +21,14 @@ public class EnemyMove : MonoBehaviour
         navMeshAgent.SetDestination(transform.position);
         soEnemy = GetComponent<EnemyManager>().soEnemy;
         navMeshAgent.speed = soEnemy.vel;
+        OnEnable();
     }
 
     void Update()
     {
         if(Vector3.Distance(transform.position, player.position) < soEnemy.distanceDetectation && !detected)
         {
-            soEnemy.state = SOEnemy.State.WALKING;
-            detected = true;
-            navMeshAgent.SetDestination(player.position);
-            soEnemy.MoveStart();
+            Detect();
         }        
 
         if(soEnemy.state == SOEnemy.State.WALKING)
@@ -47,6 +46,27 @@ public class EnemyMove : MonoBehaviour
             navMeshAgent.SetDestination(transform.position);
         }
         
+    }
+
+    void Detect()
+    {
+        soEnemy.state = SOEnemy.State.WALKING;
+        detected = true;
+        navMeshAgent.SetDestination(player.position);
+        soEnemy.MoveStart();
+    }
+
+    void OnEnable()
+    {
+        if(firstEnable)
+        {
+            soEnemy.SummonEvent.AddListener(Detect);
+        }
+        firstEnable = true;
+    }
+    void OnDisable()
+    {
+        soEnemy.SummonEvent.RemoveListener(Detect);
     }
 
 }

@@ -30,6 +30,8 @@ public class SOEnemy : ScriptableObject
     public UnityEvent ChangeLifeEvent;
     [System.NonSerialized]
     public UnityEvent DieEvent;
+    [System.NonSerialized]
+    public UnityEvent SummonEvent;
     /*
     [System.NonSerialized]
     public UnityEvent StartAimRangeEvent;
@@ -56,6 +58,9 @@ public class SOEnemy : ScriptableObject
         
         if(DieEvent == null)
             DieEvent = new UnityEvent();
+
+        if(SummonEvent == null)
+            SummonEvent = new UnityEvent();
         /*
         if(StartAimRangeEvent == null)
             StartAimRangeEvent = new UnityEvent();
@@ -90,6 +95,10 @@ public class SOEnemy : ScriptableObject
     public void Die()
     {
         DieEvent.Invoke();
+    }
+    public void Summon()
+    {
+        SummonEvent.Invoke();
     }
     /*
     public void StartAimRange()
