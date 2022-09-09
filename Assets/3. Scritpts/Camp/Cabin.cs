@@ -14,11 +14,14 @@ public class Cabin : MonoBehaviour
     void Start()
     {
         OnEnable();
-        SummonEnemy();
-        //soCamp = camp.soCamp;
+        foreach(GameObject e in enemies)
+            {
+                e.SetActive(false);
+            }
+        soCamp = camp.soCamp;
     }
 
-    void SummonEnemy()
+    public void SummonEnemy()
     {
         enemies[index].transform.position = summonPlace.position;
         enemies[index].SetActive(true);
@@ -27,14 +30,18 @@ public class Cabin : MonoBehaviour
         if(index >= enemies.Length) index = 0;
     }
 
+    void EnemyDied()
+    {
+        soCamp.DieEnemy();
+    }
+
     void OnEnable()
     {
         if(firstEnable)
         {
             foreach(GameObject e in enemies)
             {
-                e.GetComponent<EnemyManager>().soEnemy.DieEvent.AddListener(SummonEnemy);
-                e.SetActive(false);
+                e.GetComponent<EnemyManager>().soEnemy.DieEvent.AddListener(EnemyDied);
             }
         }
         firstEnable = true;
@@ -43,7 +50,7 @@ public class Cabin : MonoBehaviour
     {
         foreach(GameObject e in enemies)
         {
-            e.GetComponent<EnemyManager>().soEnemy.DieEvent.RemoveListener(SummonEnemy);
+            e.GetComponent<EnemyManager>().soEnemy.DieEvent.RemoveListener(EnemyDied);
             e.SetActive(false);
         }
     }

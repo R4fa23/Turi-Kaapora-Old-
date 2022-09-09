@@ -16,6 +16,7 @@ public class TriggerCamp : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             soCamp.EnterCamp();
+            this.gameObject.SetActive(false);
         }
     }
 }
