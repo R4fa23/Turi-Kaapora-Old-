@@ -80,5 +80,10 @@ public class PlayerAttack : MonoBehaviour
         { 
             other.GetComponent<EnemyManager>().soEnemy.ChangeLife(-soPlayer.soPlayerAttack.currentDamage);
         }
+
+        if(other.CompareTag("Cage"))
+        {
+            other.GetComponent<Cage>().LoseLife();
+        }
     }
 }
