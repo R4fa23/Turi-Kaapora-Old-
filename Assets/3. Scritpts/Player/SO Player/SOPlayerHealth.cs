@@ -29,6 +29,7 @@ public class SOPlayerHealth : ScriptableObject
 
     public void Die()
     {
+        life = maxLife;
         DieEvent.Invoke();
     }
 

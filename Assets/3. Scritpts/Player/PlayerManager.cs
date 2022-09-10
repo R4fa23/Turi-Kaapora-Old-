@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
 {
     public string description;
     public SOPlayer soPlayer;
+    public SOSave soSave;
     PlayerMap playerMap;
     bool movement;
     bool canDash = true;
@@ -19,6 +20,7 @@ public class PlayerManager : MonoBehaviour
 
     void Awake()
     {
+        soSave.savePoint = transform;
         soPlayer.soPlayerHealth.life = soPlayer.soPlayerHealth.maxLife;
         soPlayer.soPlayerAttack.currentCooldown = soPlayer.soPlayerAttack.attackCooldown;
         soPlayer.soPlayerAttack.currentDamage = soPlayer.soPlayerAttack.attackDamage;
@@ -144,13 +146,25 @@ public class PlayerManager : MonoBehaviour
         soPlayer.soPlayerMove.AimStart();
     }
 
+    //----------------------------------------------RESTART------------------------------------------
+
+    void Restart()
+    {
+        GetComponent<CharacterController>().enabled = false;
+        transform.position = soSave.savePoint.position;
+        GetComponent<CharacterController>().enabled = true;
+    }
+
+
     //-------------------------------------------LISTENER---------------------------------------------
     public void OnEnable()
     {
         soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(DamagedCooldown);
+        soSave.RestartEvent.AddListener(Restart);
     }
     public void OnDisable()
     {
         soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(DamagedCooldown);
+        soSave.RestartEvent.RemoveListener(Restart);
     }
 }

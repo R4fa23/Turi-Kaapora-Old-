@@ -12,6 +12,7 @@ public class EnemyMove : MonoBehaviour
     bool initialMove;
     SOEnemy.State lastState;
     bool firstEnable;
+    Vector3 firstLocal;
 
     void Start()
     {
@@ -22,6 +23,7 @@ public class EnemyMove : MonoBehaviour
         soEnemy = GetComponent<EnemyManager>().soEnemy;
         navMeshAgent.speed = soEnemy.vel;
         OnEnable();
+        firstLocal = transform.position;
     }
 
     void Update()
@@ -54,6 +56,15 @@ public class EnemyMove : MonoBehaviour
         detected = true;
         navMeshAgent.SetDestination(player.position);
         soEnemy.MoveStart();
+    }
+
+    public void Restart()
+    {
+        detected = false;
+        lastState = SOEnemy.State.STOPPED;
+        transform.position = firstLocal;
+        navMeshAgent.SetDestination(transform.position);
+        
     }
 
     void OnEnable()

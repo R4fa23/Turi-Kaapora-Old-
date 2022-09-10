@@ -12,6 +12,7 @@ public class Trail : MonoBehaviour
 
     [HideInInspector]
     public SOTrail soTrail;
+    public SOSave soSave;
 
     void Awake()
     {
@@ -42,14 +43,21 @@ public class Trail : MonoBehaviour
         }
     }
 
+    void Restart()
+    {
+
+    }
+
     void OnEnable()
     {
         soTrail.FinishTrailEvent.AddListener(FinishTrail);
         soTrail.EnterTrailEvent.AddListener(StartTrail);
+        soSave.RestartEvent.AddListener(Restart);
     }
     void OnDisable()
     {
         soTrail.FinishTrailEvent.RemoveListener(FinishTrail);
         soTrail.EnterTrailEvent.RemoveListener(StartTrail);
+        soSave.RestartEvent.RemoveListener(Restart);
     }
 }

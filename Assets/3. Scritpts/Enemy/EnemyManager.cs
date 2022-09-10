@@ -7,6 +7,7 @@ public class EnemyManager : MonoBehaviour
     public SOEnemy reference;
     [HideInInspector]
     public SOEnemy soEnemy;
+    public SOSave soSave;
     public SOPlayer soPlayer;
 
     void Awake()
@@ -28,7 +29,6 @@ public class EnemyManager : MonoBehaviour
     private void OnDie() 
     {
         soPlayer.soPlayerAttack.EnemyDie(this.gameObject);
-        gameObject.SetActive(false);
     }
 
     void SetConfiguration()
