@@ -13,7 +13,7 @@ public class Trail : MonoBehaviour
     [HideInInspector]
     public SOTrail soTrail;
     public SOSave soSave;
-
+    public GameObject trigger;
     void Awake()
     {
         cagesQuantity = cages.Length;
@@ -45,7 +45,15 @@ public class Trail : MonoBehaviour
 
     void Restart()
     {
+        if(!completed)
+        {
+            trigger.SetActive(true);
 
+            foreach(GameObject d in doors)
+            {
+                d.SetActive(false);
+            }
+        }
     }
 
     void OnEnable()
