@@ -6,6 +6,7 @@ public class EnemyAttack : MonoBehaviour
 {
     public SOPlayer soPlayer;
     public SOEnemy soEnemy;
+    public GameObject manager;
     Transform player;
     bool attacking;
     BoxCollider boxCollider;
@@ -15,7 +16,7 @@ public class EnemyAttack : MonoBehaviour
     
     void Start()
     {
-        soEnemy = transform.parent.transform.GetComponent<EnemyManager>().soEnemy;
+        soEnemy = manager.GetComponent<EnemyManager>().soEnemy;
         boxCollider = GetComponent<BoxCollider>();
         meshRenderer = GetComponent<MeshRenderer>();
         boxCollider.enabled = false;
