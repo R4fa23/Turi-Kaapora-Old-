@@ -6,6 +6,7 @@ public class EnemyAttack : MonoBehaviour
 {
     public SOPlayer soPlayer;
     public SOEnemy soEnemy;
+    SOSave soSave;
     public GameObject manager;
     Transform player;
     bool attacking;
@@ -17,6 +18,7 @@ public class EnemyAttack : MonoBehaviour
     void Start()
     {
         soEnemy = manager.GetComponent<EnemyManager>().soEnemy;
+        soSave = manager.GetComponent<EnemyManager>().soSave;
         boxCollider = GetComponent<BoxCollider>();
         meshRenderer = GetComponent<MeshRenderer>();
         boxCollider.enabled = false;
@@ -28,7 +30,7 @@ public class EnemyAttack : MonoBehaviour
     
     void Update()
     {
-        if(Vector3.Distance(transform.parent.transform.position, player.position) < soEnemy.attackRange && !attacking)
+        if(Vector3.Distance(manager.transform.position, player.position) < soEnemy.attackRange && !attacking)
         {  
             //transform.parent.transform.forward = Vector3.RotateTowards(transform.parent.transform.forward, player.position - transform.parent.transform.position, Mathf.PI / 200, 0);
             soEnemy.state = SOEnemy.State.ATTACKING;
@@ -69,6 +71,23 @@ public class EnemyAttack : MonoBehaviour
 
     }
 
+    void Die() {
+        StopAllCoroutines();
+        boxCollider.enabled = false;
+        meshRenderer.enabled = false;
+        rotate = false;
+        attacking = false;
+        manager.SetActive(false);
+    }
+
+    void Restart()
+    {
+        StopAllCoroutines();
+        boxCollider.enabled = false;
+        meshRenderer.enabled = false;
+        rotate = false;
+        attacking = false;
+    }
     IEnumerator ChargingTime()
     {
         yield return new WaitForSeconds(soEnemy.attackChargeDuration);
@@ -106,13 +125,19 @@ public class EnemyAttack : MonoBehaviour
         {
             soEnemy.ChangeLifeEvent.AddListener(ChangeCooldown);
             soEnemy.ChangeLifeEvent.AddListener(EndAttack);
+            soEnemy.DieEvent.AddListener(Die);
+            soSave.RestartEvent.AddListener(Restart);
         }
         firstEnable = true;
+        
     }
     public void OnDisable()
     {
         soEnemy.ChangeLifeEvent.RemoveListener(ChangeCooldown);
         soEnemy.ChangeLifeEvent.RemoveListener(EndAttack);
+        soEnemy.DieEvent.RemoveListener(Die);
+        soSave.RestartEvent.RemoveListener(Restart);
+        
     }
 
 }

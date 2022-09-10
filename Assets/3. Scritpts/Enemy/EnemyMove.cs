@@ -6,12 +6,14 @@ using UnityEngine.AI;
 public class EnemyMove : MonoBehaviour
 {
     SOEnemy soEnemy;
+    SOSave soSave;
     NavMeshAgent navMeshAgent;
     Transform player;
     bool detected;
     bool initialMove;
     SOEnemy.State lastState;
     bool firstEnable;
+    Vector3 firstLocal;
 
     void Start()
     {
@@ -20,8 +22,10 @@ public class EnemyMove : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent.SetDestination(transform.position);
         soEnemy = GetComponent<EnemyManager>().soEnemy;
+        soSave = GetComponent<EnemyManager>().soSave;
         navMeshAgent.speed = soEnemy.vel;
         OnEnable();
+        firstLocal = transform.position;
     }
 
     void Update()
@@ -56,17 +60,30 @@ public class EnemyMove : MonoBehaviour
         soEnemy.MoveStart();
     }
 
+    public void Restart()
+    {
+        detected = false;
+        lastState = SOEnemy.State.STOPPED;
+        transform.position = firstLocal;
+        if(gameObject.activeInHierarchy)navMeshAgent.SetDestination(transform.position);
+        
+    }
+
+
+
     void OnEnable()
     {
         if(firstEnable)
         {
             soEnemy.SummonEvent.AddListener(Detect);
+            soSave.RestartEvent.AddListener(Restart);
         }
         firstEnable = true;
     }
     void OnDisable()
     {
         soEnemy.SummonEvent.RemoveListener(Detect);
+        soSave.RestartEvent.RemoveListener(Restart);
     }
 
 }

@@ -21,6 +21,13 @@ public class Cabin : MonoBehaviour
         soCamp = camp.soCamp;
     }
 
+    public void Restart()
+    {
+        foreach(GameObject e in enemies)
+            {
+                e.SetActive(false);
+            }
+    }
     public void SummonEnemy()
     {
         enemies[index].transform.position = summonPlace.position;

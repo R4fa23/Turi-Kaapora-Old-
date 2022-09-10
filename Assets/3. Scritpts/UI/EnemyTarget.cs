@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class EnemyTarget : MonoBehaviour
 {
     public SOPlayer soPlayer;
+    public SOSave soSave;
     GameObject target;
     void Start()
     {
@@ -31,10 +32,12 @@ public class EnemyTarget : MonoBehaviour
     {
         soPlayer.soPlayerMove.TargetAimEvent.AddListener(EnableImage);
         soPlayer.soPlayerMove.TargetAimStopEvent.AddListener(DisableImage);
+        soSave.RestartEvent.AddListener(DisableImage);
     }
     public void OnDisable()
     {
         soPlayer.soPlayerMove.TargetAimEvent.RemoveListener(EnableImage);
         soPlayer.soPlayerMove.TargetAimStopEvent.RemoveListener(DisableImage);
+        soSave.RestartEvent.RemoveListener(DisableImage);
     }
 }

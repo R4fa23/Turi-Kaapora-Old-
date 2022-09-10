@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class EnemyNearby : MonoBehaviour
 {
     public SOPlayer soPlayer;
+    public SOSave soSave;
     GameObject target;
     void Start()
     {
@@ -30,10 +31,12 @@ public class EnemyNearby : MonoBehaviour
     {
         soPlayer.soPlayerMove.NearbyAimEvent.AddListener(EnableImage);
         soPlayer.soPlayerMove.NearbyAimStopEvent.AddListener(DisableImage);
+        soSave.RestartEvent.AddListener(DisableImage);
     }
     public void OnDisable()
     {
         soPlayer.soPlayerMove.NearbyAimEvent.RemoveListener(EnableImage);
         soPlayer.soPlayerMove.NearbyAimStopEvent.RemoveListener(DisableImage);
+        soSave.RestartEvent.RemoveListener(DisableImage);
     }
 }
