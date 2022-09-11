@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1103246990855660402}
   - component: {fileID: 543129230896720035}
   - component: {fileID: 1849947465662449375}
+  - component: {fileID: 7761091370004548138}
   m_Layer: 0
   m_Name: TF_Tree 01
   m_TagString: Untagged
@@ -83,3 +84,30 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!205 &7761091370004548138
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315210844940073929}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.000049591064, y: 10.134757, z: 0.37828135}
+  m_Size: 20.433916
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.5997807
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1849947465662449375}
+  - screenRelativeHeight: 0.3
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1849947465662449375}
+  - screenRelativeHeight: 0.1
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 1849947465662449375}
+  m_Enabled: 1
