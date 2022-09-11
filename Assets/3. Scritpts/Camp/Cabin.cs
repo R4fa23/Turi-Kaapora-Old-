@@ -14,7 +14,6 @@ public class Cabin : MonoBehaviour
     void Start()
     {
         soCamp = camp.soCamp;
-        OnEnable();
         foreach(GameObject e in enemies)
         {
             e.SetActive(false);
@@ -43,22 +42,17 @@ public class Cabin : MonoBehaviour
     }
 
     void OnEnable()
-    {
-        if(firstEnable)
+    {        
+        foreach(GameObject e in enemies)
         {
-            foreach(GameObject e in enemies)
-            {
-                e.GetComponent<EnemyManager>().soEnemy.DieEvent.AddListener(EnemyDied);
-            }
-        }
-        firstEnable = true;
+            e.GetComponent<EnemyManager>().soEnemy.DieEvent.AddListener(EnemyDied);
+        }        
     }
     void OnDisable()
     {
         foreach(GameObject e in enemies)
         {
             e.GetComponent<EnemyManager>().soEnemy.DieEvent.RemoveListener(EnemyDied);
-            e.SetActive(false);
         }
     }
 }
