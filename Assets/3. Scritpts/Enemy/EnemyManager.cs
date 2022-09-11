@@ -14,7 +14,6 @@ public class EnemyManager : MonoBehaviour
     {
         soEnemy = (SOEnemy)ScriptableObject.CreateInstance(typeof(SOEnemy));
         SetConfiguration();
-
     }
 
     public void OnEnable()

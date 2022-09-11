@@ -13,12 +13,12 @@ public class Cabin : MonoBehaviour
 
     void Start()
     {
+        soCamp = camp.soCamp;
         OnEnable();
         foreach(GameObject e in enemies)
-            {
-                e.SetActive(false);
-            }
-        soCamp = camp.soCamp;
+        {
+            e.SetActive(false);
+        }        
     }
 
     public void Restart()
