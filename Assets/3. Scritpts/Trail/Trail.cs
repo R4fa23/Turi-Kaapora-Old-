@@ -5,8 +5,10 @@ using UnityEngine;
 public class Trail : MonoBehaviour
 {
     int cagesQuantity;
-    public GameObject[] cages;
-    public GameObject[] doors;
+    public GameObject cages;
+    List<GameObject> cage;
+    public GameObject doors;
+    List<GameObject> door;
 
     bool completed;
 
@@ -16,20 +18,32 @@ public class Trail : MonoBehaviour
     public GameObject trigger;
     void Awake()
     {
-        cagesQuantity = cages.Length;
+        SetLists();
+        cagesQuantity = cage.Count;
         soTrail = (SOTrail)ScriptableObject.CreateInstance(typeof(SOTrail));
         soTrail.cages = cagesQuantity;
 
-        foreach(GameObject c in cages)
+        foreach(GameObject c in cage)
         {
             c.GetComponent<Cage>().soTrail = soTrail;
         }
 
     }
 
+    void SetLists()
+    {
+        for(int i = 0; i < doors.transform.childCount; i++) {
+            door.Add(doors.transform.GetChild(i).gameObject);
+        }
+
+        for(int i = 0; i < cages.transform.childCount; i++) {
+            cage.Add(cages.transform.GetChild(i).gameObject);
+        }
+    }
+
     void FinishTrail()
     {
-        foreach(GameObject d in doors)
+        foreach(GameObject d in door)
         {
             d.SetActive(false);
         }
@@ -37,7 +51,7 @@ public class Trail : MonoBehaviour
     }
     void StartTrail()
     {
-        foreach(GameObject d in doors)
+        foreach(GameObject d in door)
         {
             d.SetActive(true);
         }
@@ -49,7 +63,7 @@ public class Trail : MonoBehaviour
         {
             trigger.SetActive(true);
 
-            foreach(GameObject d in doors)
+            foreach(GameObject d in door)
             {
                 d.SetActive(false);
             }

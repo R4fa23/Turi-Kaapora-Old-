@@ -343,14 +343,9 @@ MonoBehaviour:
   enemyPerWave: 010000000300000006000000
   soCamp: {fileID: 0}
   soSave: {fileID: 11400000, guid: e57cf268432d04248a6d40fc954c2cca, type: 2}
-  doors:
-  - {fileID: 3424883222609403036}
-  cabin:
-  - {fileID: 7802970918376620273}
-  - {fileID: 0}
-  firstEnemies:
-  - {fileID: 3783470618286072305}
-  - {fileID: 0}
+  doors: {fileID: 3424883223155739977}
+  cabins: {fileID: 3424883222598279767}
+  firstEnemies: {fileID: 3424883222334183741}
   trigger: {fileID: 3424883222269930084}
 --- !u!1 &3424883223155739977
 GameObject:
@@ -463,12 +458,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8438027619d2a2a41a23a56572b3cb78, type: 3}
---- !u!1 &7802970918376620273 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4885870753320046492, guid: 8438027619d2a2a41a23a56572b3cb78,
-    type: 3}
-  m_PrefabInstance: {fileID: 3424883222336917357}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7802970918376620277 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4885870753320046488, guid: 8438027619d2a2a41a23a56572b3cb78,
@@ -550,12 +539,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3424883222491978917}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3783470618286072305 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1947304767575686484, guid: abb15ed8057e92a4cbec528906c32770,
-    type: 3}
-  m_PrefabInstance: {fileID: 3424883222491978917}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5702720359729930002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -563,6 +546,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3424883223065175473}
     m_Modifications:
+    - target: {fileID: 854473770144997261, guid: dec652171b6f38f45b4699041a5b2150,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1148737553901550622, guid: dec652171b6f38f45b4699041a5b2150,
         type: 3}
       propertyPath: m_RootOrder
@@ -617,6 +605,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6142119599015656149, guid: dec652171b6f38f45b4699041a5b2150,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8535570285192899687, guid: dec652171b6f38f45b4699041a5b2150,
         type: 3}

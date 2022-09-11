@@ -43,6 +43,8 @@ public class Camp : MonoBehaviour
         for(int i = 0; i < firstEnemies.transform.childCount; i++) {
             firstEnemy.Add(firstEnemies.transform.GetChild(i).gameObject);
         }
+
+        
     }
 
     private void Start() 
