@@ -11,6 +11,9 @@ public class Trail : MonoBehaviour
     public GameObject doors;
     [HideInInspector]
     public List<GameObject> door;
+    public GameObject triggers;
+    [HideInInspector]
+    public List<GameObject> trigger;
 
     bool completed;
 
@@ -18,7 +21,6 @@ public class Trail : MonoBehaviour
     public SOTrail soTrail;
     public SOSave soSave;
     public SOFort soFort;
-    public GameObject trigger;
     void Awake()
     {
         SetLists();
@@ -35,6 +37,10 @@ public class Trail : MonoBehaviour
 
     void SetLists()
     {
+        door.Clear();
+        cage.Clear();
+        trigger.Clear();
+
         for(int i = 0; i < doors.transform.childCount; i++) {
             door.Add(doors.transform.GetChild(i).gameObject);
             door[i].SetActive(false);
@@ -42,6 +48,12 @@ public class Trail : MonoBehaviour
 
         for(int i = 0; i < cages.transform.childCount; i++) {
             cage.Add(cages.transform.GetChild(i).gameObject);
+            cage[i].SetActive(true);
+        }
+
+        for(int i = 0; i < triggers.transform.childCount; i++) {
+            trigger.Add(triggers.transform.GetChild(i).gameObject);
+            trigger[i].SetActive(true);
         }
     }
 
@@ -66,7 +78,10 @@ public class Trail : MonoBehaviour
     {
         if(!completed)
         {
-            trigger.SetActive(true);
+            foreach(GameObject t in trigger)
+            {
+                t.SetActive(true);
+            }
 
             foreach(GameObject d in door)
             {

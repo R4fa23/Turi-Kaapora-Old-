@@ -31,11 +31,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 930464841856674889}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.4, y: 3.85143, z: 1.8}
+  m_LocalPosition: {x: 15.399994, y: 3.85143, z: 1.800003}
   m_LocalScale: {x: 16.03, y: 1, z: 18.602}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1008795616580855660}
+  m_Father: {fileID: 6576283054930624492}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7431799829912780
@@ -584,10 +584,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8778422883968842652}
   - {fileID: 1008795617535139416}
   - {fileID: 1008795616667202283}
   - {fileID: 4256131393412572169}
+  - {fileID: 6576283054930624492}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -607,10 +607,12 @@ MonoBehaviour:
   cage: []
   doors: {fileID: 1008795616667202284}
   door: []
+  triggers: {fileID: 3868396187853410156}
+  trigger:
+  - {fileID: 0}
   soTrail: {fileID: 0}
   soSave: {fileID: 11400000, guid: e57cf268432d04248a6d40fc954c2cca, type: 2}
   soFort: {fileID: 11400000, guid: 38d901f2062ae984abc66d5ef9c5eb74, type: 2}
-  trigger: {fileID: 930464841856674889}
 --- !u!1 &1008795616667202284
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,7 +644,7 @@ Transform:
   - {fileID: 1008795616259101205}
   - {fileID: 1008795615914036978}
   m_Father: {fileID: 1008795616580855660}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1008795617535139417
 GameObject:
@@ -675,7 +677,39 @@ Transform:
   - {fileID: 5946661549638513234}
   - {fileID: 2465477046101242410}
   m_Father: {fileID: 1008795616580855660}
-  m_RootOrder: 1
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3868396187853410156
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6576283054930624492}
+  m_Layer: 0
+  m_Name: Triggers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6576283054930624492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3868396187853410156}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8778422883968842652}
+  m_Father: {fileID: 1008795616580855660}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3763394714016450928
 PrefabInstance:
@@ -767,7 +801,7 @@ PrefabInstance:
     - target: {fileID: 1148737553901550622, guid: dec652171b6f38f45b4699041a5b2150,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1148737553901550622, guid: dec652171b6f38f45b4699041a5b2150,
         type: 3}
