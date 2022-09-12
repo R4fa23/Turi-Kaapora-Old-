@@ -158,6 +158,7 @@ public class PlayerManager : MonoBehaviour
 
     void Restart()
     {
+        soPlayer.state = SOPlayer.State.STOPPED;
         GetComponent<CharacterController>().enabled = false;
         transform.position = soSave.savePoint.position;
         GetComponent<CharacterController>().enabled = true;
