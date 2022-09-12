@@ -32,7 +32,7 @@ public class PlayerAttack : MonoBehaviour
     {
         boxCollider.enabled = false;
         meshRenderer.enabled = false;
-        soPlayer.state = SOPlayer.State.STOPPED;
+        if(soPlayer.state != SOPlayer.State.TRAPPED)soPlayer.state = SOPlayer.State.STOPPED;
         if(soPlayer.soPlayerAttack.comboIndex >= 3) ComboEnd();
     }
 
