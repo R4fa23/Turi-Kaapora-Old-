@@ -18,6 +18,7 @@ public class EnemyManager : MonoBehaviour
 
     public void OnEnable()
     {
+        soEnemy.health = soEnemy.maxHealth;
         soEnemy.DieEvent.AddListener(OnDie);
     }
     public void OnDisable()
