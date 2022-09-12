@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
-    public string description;
     public SOPlayer soPlayer;
     public SOSave soSave;
     PlayerMap playerMap;
@@ -96,13 +95,17 @@ public class PlayerManager : MonoBehaviour
     //-------------------------------DASH--------------------------------- 
     public void DashStarted(InputAction.CallbackContext context)
     {
-        if(canDash)
+        if(canDash && soPlayer.state != SOPlayer.State.TRAPPED)
         {
             dashing = true;
             soPlayer.state = SOPlayer.State.DASHING;
             canDash = false;
             StartCoroutine(DashCooldown());
             soPlayer.soPlayerMove.DashStart();
+        }
+        else if(soPlayer.state == SOPlayer.State.TRAPPED)
+        {
+            soPlayer.soPlayerMove.TrappedClick();
         }
     }
 
@@ -144,7 +147,11 @@ public class PlayerManager : MonoBehaviour
     //-------------------------------------------MIRAR-----------------------------------------------
     public void AimStarted(InputAction.CallbackContext context)
     {
-        soPlayer.soPlayerMove.AimStart();
+        if(soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING)
+        {
+            soPlayer.soPlayerMove.AimStart();
+        }
+            
     }
 
     //----------------------------------------------RESTART------------------------------------------

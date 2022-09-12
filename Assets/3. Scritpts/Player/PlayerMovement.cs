@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public string description;
     float gravity = 2f;
     float turnSmoothTime;
     float sensibility;
@@ -27,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     bool initialDash;
     bool focusing;
     GameObject targetFocus;
+    bool trapped;
     
     void Start()
     {
@@ -66,12 +66,18 @@ public class PlayerMovement : MonoBehaviour
             {
                 dir = movement.ReadValue<Vector2>();
             }
+
     
             if(initialDash)
             {
                 initialDash = false;
                 if(movement.ReadValue<Vector2>().magnitude > 0.1f) dir = movement.ReadValue<Vector2>();
                 else dir = new Vector2(transform.forward.x, transform.forward.z);
+            }
+
+            if(trapped)
+            {
+                dir = Vector2.zero;
             }
             Vector3 playerX;
             inputValue = dir;
@@ -133,6 +139,16 @@ public class PlayerMovement : MonoBehaviour
         targetFocus = null;
     }
 
+    void Trapped()
+    {
+        trapped = true;
+    }
+
+    void Untrapped()
+    {
+        trapped = false;
+    }
+
     //Listeners para os eventos e funções
     public void OnEnable(){
         soPlayer.soPlayerMove.MoveStartEvent.AddListener(MoveStart);
@@ -140,6 +156,8 @@ public class PlayerMovement : MonoBehaviour
         soPlayer.soPlayerMove.DashStartEvent.AddListener(DashStart);
         soPlayer.soPlayerMove.TargetAimEvent.AddListener(FocusStart);
         soPlayer.soPlayerMove.TargetAimStopEvent.AddListener(FocusEnd);
+        soPlayer.soPlayerMove.TrappedEvent.AddListener(Trapped);
+        soPlayer.soPlayerMove.UntrappedEvent.AddListener(Untrapped);
     }
     public void OnDisable(){
         soPlayer.soPlayerMove.MoveStartEvent.RemoveListener(MoveStart);
@@ -147,6 +165,8 @@ public class PlayerMovement : MonoBehaviour
         soPlayer.soPlayerMove.DashStartEvent.RemoveListener(DashStart);
         soPlayer.soPlayerMove.TargetAimEvent.RemoveListener(FocusStart);
         soPlayer.soPlayerMove.TargetAimStopEvent.RemoveListener(FocusEnd);
+        soPlayer.soPlayerMove.TrappedEvent.RemoveListener(Trapped);
+        soPlayer.soPlayerMove.UntrappedEvent.RemoveListener(Untrapped);
     }
     
     IEnumerator DashDuration(float duration)
@@ -154,7 +174,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(duration);
         sensibility = soPlayer.soPlayerMove.vel;
         dash = false;
-        soPlayer.state = SOPlayer.State.STOPPED;
+        if(!trapped)soPlayer.state = SOPlayer.State.STOPPED;
         //if(walk)soPlayer.state = SOPlayer.State.WALKING;
         //if(!walk)soPlayer.state = SOPlayer.State.STOPPED;
     }

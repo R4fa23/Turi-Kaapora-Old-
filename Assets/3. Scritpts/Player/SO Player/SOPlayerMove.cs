@@ -31,6 +31,12 @@ public class SOPlayerMove : ScriptableObject
     public UnityEvent<GameObject> NearbyAimEvent;
     [System.NonSerialized]
     public UnityEvent NearbyAimStopEvent;
+    [System.NonSerialized]
+    public UnityEvent TrappedEvent;
+    [System.NonSerialized]
+    public UnityEvent UntrappedEvent;
+    [System.NonSerialized]
+    public UnityEvent TrappedClickEvent;
 
 
     private void OnEnable() {
@@ -60,6 +66,15 @@ public class SOPlayerMove : ScriptableObject
         
         if(NearbyAimStopEvent == null)
             NearbyAimStopEvent = new UnityEvent();
+
+        if(TrappedEvent == null)
+            TrappedEvent = new UnityEvent();
+
+        if(UntrappedEvent == null)
+            UntrappedEvent = new UnityEvent();
+
+        if(TrappedClickEvent == null)
+            TrappedClickEvent = new UnityEvent();
     }
 
     public void MoveStart(){
@@ -90,5 +105,17 @@ public class SOPlayerMove : ScriptableObject
     public void NearbyAimStop()
     {
         NearbyAimStopEvent.Invoke();
+    }
+    public void Trapped()
+    {
+        TrappedEvent.Invoke();
+    }
+    public void Untrapped()
+    {
+        UntrappedEvent.Invoke();
+    }
+    public void TrappedClick()
+    {
+        TrappedClickEvent.Invoke();
     }
 }
