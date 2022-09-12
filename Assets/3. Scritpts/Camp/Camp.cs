@@ -21,7 +21,12 @@ public class Camp : MonoBehaviour
     public GameObject firstEnemies;
     [HideInInspector]
     public List<GameObject> firstEnemy;
-    public GameObject trigger;
+    public GameObject triggers;
+    [HideInInspector]
+    public List<GameObject> trigger;
+    public GameObject showThings;
+    [HideInInspector]
+    public List<GameObject> showThing;
     int enemyCount;
     int indexCabin;
     bool firstEnable;
@@ -36,6 +41,12 @@ public class Camp : MonoBehaviour
 
     void SetLists()
     {
+        door.Clear();
+        cabin.Clear();
+        firstEnemy.Clear();
+        trigger.Clear();
+        showThing.Clear();
+
         for(int i = 0; i < doors.transform.childCount; i++) {
             door.Add(doors.transform.GetChild(i).gameObject);
             door[i].SetActive(false);
@@ -43,12 +54,25 @@ public class Camp : MonoBehaviour
 
         for(int i = 0; i < cabins.transform.childCount; i++) {
             cabin.Add(cabins.transform.GetChild(i).gameObject);
+            cabin[i].SetActive(true);
         }
 
         for(int i = 0; i < firstEnemies.transform.childCount; i++) {
             firstEnemy.Add(firstEnemies.transform.GetChild(i).gameObject);
+            firstEnemy[i].SetActive(true);
         }
 
+        for(int i = 0; i < triggers.transform.childCount; i++) {
+            trigger.Add(triggers.transform.GetChild(i).gameObject);
+            trigger[i].SetActive(true);
+        }
+
+        
+        for(int i = 0; i < showThings.transform.childCount; i++) {
+            showThing.Add(showThings.transform.GetChild(i).gameObject);
+            showThing[i].SetActive(false);
+            
+        }
         
     }
 
@@ -112,6 +136,12 @@ public class Camp : MonoBehaviour
         {
             d.SetActive(false);
         }
+
+        foreach(GameObject s in showThing)
+        {
+            s.SetActive(true);
+        }
+
         completed = true;
         soFort.CompleteSpace();
     }
@@ -135,7 +165,13 @@ public class Camp : MonoBehaviour
             soCamp.killCount = 0;
             enemyCount = 0;
             indexCabin = 0;
-            trigger.SetActive(true);
+
+            
+            foreach(GameObject t in trigger)
+            {
+                t.SetActive(true);
+            }
+            
 
             foreach(GameObject d in door)
             {

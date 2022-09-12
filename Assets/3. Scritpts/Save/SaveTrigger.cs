@@ -6,6 +6,11 @@ public class SaveTrigger : MonoBehaviour
 {
     public SOSave soSave;
     public Transform savePoint;
+
+    void Start()
+    {
+        
+    }
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
