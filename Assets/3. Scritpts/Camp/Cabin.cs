@@ -14,10 +14,7 @@ public class Cabin : MonoBehaviour
     void Start()
     {
         soCamp = camp.soCamp;
-        foreach(GameObject e in enemies)
-        {
-            e.SetActive(false);
-        }        
+        StartCoroutine(DisableEnemies());
     }
 
     public void Restart()
@@ -41,12 +38,28 @@ public class Cabin : MonoBehaviour
         soCamp.DieEnemy();
     }
 
-    void OnEnable()
-    {        
+    IEnumerator DisableEnemies()
+    {
+        yield return new WaitForSeconds(0.01f);
         foreach(GameObject e in enemies)
         {
             e.GetComponent<EnemyManager>().soEnemy.DieEvent.AddListener(EnemyDied);
         }        
+        yield return new WaitForSeconds(0.01f);
+        foreach(GameObject e in enemies)
+        {
+            e.SetActive(false);
+        }        
+    }
+
+    void OnEnable()
+    {   
+        /*     
+        foreach(GameObject e in enemies)
+        {
+            e.GetComponent<EnemyManager>().soEnemy.DieEvent.AddListener(EnemyDied);
+        }       
+        */ 
     }
     void OnDisable()
     {

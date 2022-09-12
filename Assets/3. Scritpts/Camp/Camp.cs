@@ -10,13 +10,17 @@ public class Camp : MonoBehaviour
     [HideInInspector]
     public SOCamp soCamp;
     public SOSave soSave;
+    public SOFort soFort;
     bool completed;
     public GameObject doors;
-    List<GameObject> door;
+    [HideInInspector]
+    public List<GameObject> door;
     public GameObject cabins;
-    List<GameObject> cabin;
+    [HideInInspector]
+    public List<GameObject> cabin;
     public GameObject firstEnemies;
-    List<GameObject> firstEnemy;
+    [HideInInspector]
+    public List<GameObject> firstEnemy;
     public GameObject trigger;
     int enemyCount;
     int indexCabin;
@@ -34,6 +38,7 @@ public class Camp : MonoBehaviour
     {
         for(int i = 0; i < doors.transform.childCount; i++) {
             door.Add(doors.transform.GetChild(i).gameObject);
+            door[i].SetActive(false);
         }
 
         for(int i = 0; i < cabins.transform.childCount; i++) {
@@ -50,7 +55,6 @@ public class Camp : MonoBehaviour
     private void Start() 
     {
         OnEnable();
-        
     }
     
 
@@ -58,6 +62,8 @@ public class Camp : MonoBehaviour
     {
         soCamp.waves = waves;
         soCamp.enemyPerWaves = enemyPerWave;
+        soCamp.actualWave = 0;
+        soCamp.killCount = 0;
 
     }
 
@@ -107,6 +113,7 @@ public class Camp : MonoBehaviour
             d.SetActive(false);
         }
         completed = true;
+        soFort.CompleteSpace();
     }
 
     IEnumerator SummonDelay()

@@ -25,6 +25,7 @@ public class PlayerManager : MonoBehaviour
         soPlayer.soPlayerAttack.currentCooldown = soPlayer.soPlayerAttack.attackCooldown;
         soPlayer.soPlayerAttack.currentDamage = soPlayer.soPlayerAttack.attackDamage;
         soPlayer.soPlayerAttack.currentDuration = soPlayer.soPlayerAttack.attackDuration;
+        soPlayer.soPlayerAttack.comboIndex = 0;
         soPlayer.state = SOPlayer.State.STOPPED;
 
         playerMap = new PlayerMap();

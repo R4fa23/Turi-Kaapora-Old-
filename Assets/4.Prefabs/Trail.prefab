@@ -67,7 +67,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 930464841856674889}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -567,7 +567,7 @@ GameObject:
   - component: {fileID: 5445969734364261923}
   m_Layer: 0
   m_Name: Trail
-  m_TagString: Untagged
+  m_TagString: Challenges
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -604,9 +604,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cages: {fileID: 1008795617535139417}
+  cage: []
   doors: {fileID: 1008795616667202284}
+  door: []
   soTrail: {fileID: 0}
   soSave: {fileID: 11400000, guid: e57cf268432d04248a6d40fc954c2cca, type: 2}
+  soFort: {fileID: 11400000, guid: 38d901f2062ae984abc66d5ef9c5eb74, type: 2}
   trigger: {fileID: 930464841856674889}
 --- !u!1 &1008795616667202284
 GameObject:

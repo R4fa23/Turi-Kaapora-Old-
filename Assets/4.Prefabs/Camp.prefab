@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 3424883223065175474}
   m_Layer: 0
   m_Name: Camp
-  m_TagString: Untagged
+  m_TagString: Challenges
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -343,9 +343,13 @@ MonoBehaviour:
   enemyPerWave: 010000000300000006000000
   soCamp: {fileID: 0}
   soSave: {fileID: 11400000, guid: e57cf268432d04248a6d40fc954c2cca, type: 2}
+  soFort: {fileID: 11400000, guid: 38d901f2062ae984abc66d5ef9c5eb74, type: 2}
   doors: {fileID: 3424883223155739977}
+  door: []
   cabins: {fileID: 3424883222598279767}
+  cabin: []
   firstEnemies: {fileID: 3424883222334183741}
+  firstEnemy: []
   trigger: {fileID: 3424883222269930084}
 --- !u!1 &3424883223155739977
 GameObject:
@@ -446,6 +450,31 @@ PrefabInstance:
       propertyPath: camp
       value: 
       objectReference: {fileID: 3424883223065175474}
+    - target: {fileID: 4885870753320046491, guid: 8438027619d2a2a41a23a56572b3cb78,
+        type: 3}
+      propertyPath: enemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 5262440952250473891}
+    - target: {fileID: 4885870753320046491, guid: 8438027619d2a2a41a23a56572b3cb78,
+        type: 3}
+      propertyPath: enemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 7679572198405518008}
+    - target: {fileID: 4885870753320046491, guid: 8438027619d2a2a41a23a56572b3cb78,
+        type: 3}
+      propertyPath: enemies.Array.data[2]
+      value: 
+      objectReference: {fileID: 8325922234608305043}
+    - target: {fileID: 4885870753320046491, guid: 8438027619d2a2a41a23a56572b3cb78,
+        type: 3}
+      propertyPath: enemies.Array.data[3]
+      value: 
+      objectReference: {fileID: 2647415236000364423}
+    - target: {fileID: 4885870753320046491, guid: 8438027619d2a2a41a23a56572b3cb78,
+        type: 3}
+      propertyPath: enemies.Array.data[4]
+      value: 
+      objectReference: {fileID: 19424475184903517}
     - target: {fileID: 4885870753320046492, guid: 8438027619d2a2a41a23a56572b3cb78,
         type: 3}
       propertyPath: m_Name
@@ -458,9 +487,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8438027619d2a2a41a23a56572b3cb78, type: 3}
+--- !u!1 &19424475184903517 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3441492629656599088, guid: 8438027619d2a2a41a23a56572b3cb78,
+    type: 3}
+  m_PrefabInstance: {fileID: 3424883222336917357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2647415236000364423 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 808997585071405290, guid: 8438027619d2a2a41a23a56572b3cb78,
+    type: 3}
+  m_PrefabInstance: {fileID: 3424883222336917357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5262440952250473891 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7385994712824271566, guid: 8438027619d2a2a41a23a56572b3cb78,
+    type: 3}
+  m_PrefabInstance: {fileID: 3424883222336917357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7679572198405518008 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4977870793636281813, guid: 8438027619d2a2a41a23a56572b3cb78,
+    type: 3}
+  m_PrefabInstance: {fileID: 3424883222336917357}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7802970918376620277 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4885870753320046488, guid: 8438027619d2a2a41a23a56572b3cb78,
+    type: 3}
+  m_PrefabInstance: {fileID: 3424883222336917357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8325922234608305043 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6632745680535063806, guid: 8438027619d2a2a41a23a56572b3cb78,
     type: 3}
   m_PrefabInstance: {fileID: 3424883222336917357}
   m_PrefabAsset: {fileID: 0}
