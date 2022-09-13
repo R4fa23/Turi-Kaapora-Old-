@@ -49,10 +49,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
+  soSave: {fileID: 11400000, guid: e57cf268432d04248a6d40fc954c2cca, type: 2}
   spikes: {fileID: 7814278371017801381}
   damage: 2
-  cooldownSpike: 1.5
-  timeToSpike: 0.2
+  cooldownDownSpike: 0.5
+  timeToUp: 0.5
 --- !u!33 &7814278370048014350
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -125,6 +126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7814278371017801377}
+  - component: {fileID: 8824133369666250809}
   - component: {fileID: 7814278371017801376}
   - component: {fileID: 7814278371017801383}
   - component: {fileID: 7814278371017801382}
@@ -150,6 +152,20 @@ Transform:
   m_Father: {fileID: 7814278370048014344}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8824133369666250809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7814278371017801381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06c807cc64bbe314c94db5b433792f8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
+  damage: 1
 --- !u!33 &7814278371017801376
 MeshFilter:
   m_ObjectHideFlags: 0
