@@ -1,5 +1,59 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7745376779175007120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Caipora/Ataque_Leve_2
+  m_EditorClassIdentifier: 
+  Path: event:/Caipora/Ataque_Leve_2
+  Guid:
+    Data1: 585930793
+    Data2: 1204919092
+    Data3: -689873999
+    Data4: 660930269
+  Banks:
+  - {fileID: 7541113077195506323}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 626
+--- !u!114 &-6724792661293942968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Caipora/Ataque_Leve_3
+  m_EditorClassIdentifier: 
+  Path: event:/Caipora/Ataque_Leve_3
+  Guid:
+    Data1: -1347093474
+    Data2: 1239712300
+    Data3: -584443458
+    Data4: 1468819841
+  Banks:
+  - {fileID: 7541113077195506323}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 940
 --- !u!114 &-4555340086677564859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27,6 +81,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 548
+--- !u!114 &-4088626324697010807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: ../../FMOD Studio/Turi/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637986961617350633
+  FileSizes:
+  - Name: Desktop
+    Value: 904
+  Exists: 1
 --- !u!114 &-1796485893703664309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,19 +134,19 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: 2659953515751581801}
-  - {fileID: -1796485893703664309}
+  - {fileID: -4088626324697010807}
+  - {fileID: 7541113077195506323}
   EditorEvents:
-  - {fileID: -4555340086677564859}
-  - {fileID: 1992229467436332199}
-  - {fileID: 7201171913893779183}
-  - {fileID: 621566993391211386}
+  - {fileID: 9179048935746486774}
+  - {fileID: -6724792661293942968}
+  - {fileID: 2662173961063635059}
+  - {fileID: -7745376779175007120}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -1796485893703664309}
+  - {fileID: 7541113077195506323}
   StringsBanks:
-  - {fileID: 2659953515751581801}
-  cacheTime: 637986031385988810
+  - {fileID: -4088626324697010807}
+  cacheTime: 637986961617350633
   cacheVersion: 131591
 --- !u!114 &621566993391211386
 MonoBehaviour:
@@ -148,6 +222,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 896
   Exists: 1
+--- !u!114 &2662173961063635059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Caipora/Ataque_Leve
+  m_EditorClassIdentifier: 
+  Path: event:/Caipora/Ataque_Leve
+  Guid:
+    Data1: -1615334618
+    Data2: 1126503751
+    Data3: -595257189
+    Data4: -899328061
+  Banks:
+  - {fileID: 7541113077195506323}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 548
 --- !u!114 &7201171913893779183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,3 +276,50 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 940
+--- !u!114 &7541113077195506323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../../FMOD Studio/Turi/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637986961616807841
+  FileSizes:
+  - Name: Desktop
+    Value: 42144
+  Exists: 1
+--- !u!114 &9179048935746486774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Caipora/Dash
+  m_EditorClassIdentifier: 
+  Path: event:/Caipora/Dash
+  Guid:
+    Data1: 1706934926
+    Data2: 1164956806
+    Data3: 509086355
+    Data4: -994007543
+  Banks:
+  - {fileID: 7541113077195506323}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1175

@@ -70,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
     
             if(initialDash)
             {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Dash", transform.position);
                 initialDash = false;
                 if(movement.ReadValue<Vector2>().magnitude > 0.1f) dir = movement.ReadValue<Vector2>();
                 else dir = new Vector2(transform.forward.x, transform.forward.z);

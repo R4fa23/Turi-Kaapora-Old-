@@ -23,9 +23,21 @@ public class PlayerAttack : MonoBehaviour
         boxCollider.enabled = true;
         meshRenderer.enabled = true;
         soPlayer.soPlayerAttack.comboIndex++;
-        if(soPlayer.soPlayerAttack.comboIndex == 1) attack.color = Color.white;
-        else if(soPlayer.soPlayerAttack.comboIndex == 2) attack.color = Color.yellow;
-        else attack.color = Color.red;
+        if (soPlayer.soPlayerAttack.comboIndex == 1)
+        {
+            attack.color = Color.white;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Ataque_Leve", transform.position);
+        }
+        else if (soPlayer.soPlayerAttack.comboIndex == 2)
+        {
+            attack.color = Color.yellow;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Ataque_Leve_2", transform.position);
+        }
+        else
+        {
+            attack.color = Color.red;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Ataque_Leve_3", transform.position);
+        }
     }
 
     public void AttackEnd()
