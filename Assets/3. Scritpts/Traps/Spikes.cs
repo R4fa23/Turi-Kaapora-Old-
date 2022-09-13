@@ -7,10 +7,9 @@ public class Spikes : MonoBehaviour
     public SOPlayer soPlayer;
     public SOSave soSave;
     public GameObject spikes;
-    public int damage;
-    public  float cooldownSpike;
+    public  float cooldownDownSpike;
     bool inSpace;
-    public float timeToSpike;
+    public float timeToUp;
     float currentTime;
     bool spiking;
     void Start()
@@ -32,7 +31,7 @@ public class Spikes : MonoBehaviour
             currentTime += Time.deltaTime;
         }
 
-        if(currentTime >= timeToSpike && !spiking) ActiveSpike();
+        if(currentTime >= timeToUp && !spiking) ActiveSpike();
 
         
     }
@@ -41,13 +40,12 @@ public class Spikes : MonoBehaviour
     {
         spiking = true;
         spikes.SetActive(true);
-        soPlayer.soPlayerHealth.HealthChange(-damage);
         StartCoroutine(DisableSpikes());
     }
 
     IEnumerator DisableSpikes()
     {
-        yield return new WaitForSeconds(cooldownSpike);
+        yield return new WaitForSeconds(cooldownDownSpike);
         spiking = false;
         spikes.SetActive(false);
         currentTime = 0;
@@ -56,6 +54,7 @@ public class Spikes : MonoBehaviour
 
     void Restart()
     {
+        StopAllCoroutines();
         spiking = false;
         spikes.SetActive(false);
         currentTime = 0;
