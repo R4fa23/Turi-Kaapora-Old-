@@ -5,6 +5,7 @@ using UnityEngine;
 public class BearTrap : MonoBehaviour
 {
     public SOPlayer soPlayer;
+    public SOSave soSave;
     public int damage;
     public int clicksToScape;
     public float clickCount;
@@ -38,6 +39,13 @@ public class BearTrap : MonoBehaviour
         soPlayer.soPlayerMove.Untrapped();
     }
 
+    void Restart()
+    {
+        soPlayer.state = SOPlayer.State.STOPPED;
+        soPlayer.soPlayerMove.Untrapped();
+        trapped = false;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
@@ -49,13 +57,15 @@ public class BearTrap : MonoBehaviour
         }
     }
 
-
     void OnEnable()
     {
         soPlayer.soPlayerMove.TrappedClickEvent.AddListener(TrappedClick);
+        soSave.RestartEvent.AddListener(Restart);
+
     }
     void OnDisable()
     {
         soPlayer.soPlayerMove.TrappedClickEvent.RemoveListener(TrappedClick);
+        soSave.RestartEvent.RemoveListener(Restart);
     }
 }

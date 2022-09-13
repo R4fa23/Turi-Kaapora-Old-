@@ -42,7 +42,7 @@ public class PlayerAttack : MonoBehaviour
         soPlayer.soPlayerAttack.comboIndex = 0;
         soPlayer.soPlayerAttack.currentCooldown = soPlayer.soPlayerAttack.attackCooldown;
         soPlayer.soPlayerAttack.currentDuration = soPlayer.soPlayerAttack.attackDuration;
-        soPlayer.soPlayerAttack.comboDamage = soPlayer.soPlayerAttack.attackDamage;
+        soPlayer.soPlayerAttack.currentDamage = soPlayer.soPlayerAttack.attackDamage;
     }
 
     public void OnEnable()

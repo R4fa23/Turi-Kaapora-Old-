@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spikes : MonoBehaviour
 {
     public SOPlayer soPlayer;
+    public SOSave soSave;
     public GameObject spikes;
     public int damage;
     public  float cooldownSpike;
@@ -53,6 +54,13 @@ public class Spikes : MonoBehaviour
 
     }
 
+    void Restart()
+    {
+        spiking = false;
+        spikes.SetActive(false);
+        currentTime = 0;
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
@@ -66,5 +74,14 @@ public class Spikes : MonoBehaviour
         {
             inSpace = false;
         }
+    }
+
+    void OnEnable()
+    {
+        soSave.RestartEvent.AddListener(Restart);
+    }
+    void OnDisable()
+    {
+        soSave.RestartEvent.RemoveListener(Restart);
     }
 }
