@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAttack : MonoBehaviour
 {
@@ -123,8 +124,9 @@ public class EnemyAttack : MonoBehaviour
     {
         if(firstEnable)
         {
-            soEnemy.ChangeLifeEvent.AddListener(ChangeCooldown);
-            soEnemy.ChangeLifeEvent.AddListener(EndAttack);
+            //soEnemy.ChangeLifeEvent.AddListener(ChangeCooldown);
+            //soEnemy.ChangeLifeEvent.AddListener(EndAttack);
+            soEnemy.RepulsionEvent.AddListener(EndAttack);
             soEnemy.DieEvent.AddListener(Die);
             soSave.RestartEvent.AddListener(Restart);
         }
@@ -133,8 +135,9 @@ public class EnemyAttack : MonoBehaviour
     }
     public void OnDisable()
     {
-        soEnemy.ChangeLifeEvent.RemoveListener(ChangeCooldown);
-        soEnemy.ChangeLifeEvent.RemoveListener(EndAttack);
+        //soEnemy.ChangeLifeEvent.RemoveListener(ChangeCooldown);
+        //soEnemy.ChangeLifeEvent.RemoveListener(EndAttack);
+        soEnemy.RepulsionEvent.RemoveListener(EndAttack);
         soEnemy.DieEvent.RemoveListener(Die);
         soSave.RestartEvent.RemoveListener(Restart);
         
