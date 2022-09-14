@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class SOFort : ScriptableObject
 {
     public int challenges;
+    [HideInInspector]
     public int challengesComplete = 0;
 
     [System.NonSerialized]

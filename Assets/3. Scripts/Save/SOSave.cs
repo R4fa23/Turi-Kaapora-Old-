@@ -6,6 +6,7 @@ using UnityEngine.Events;
 [CreateAssetMenu]
 public class SOSave : ScriptableObject
 {
+    [HideInInspector]
     public Transform savePoint;
 
     [System.NonSerialized]

@@ -18,6 +18,7 @@ public class SOEnemy : ScriptableObject
     public float distanceDetectation;
     public float maxHealth;
     public float health;
+    [HideInInspector]
     public float currentCooldown;
 
     [System.NonSerialized]

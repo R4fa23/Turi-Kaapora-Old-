@@ -11,6 +11,7 @@ public class Camp : MonoBehaviour
     public SOCamp soCamp;
     public SOSave soSave;
     public SOFort soFort;
+    public SOPlayer soPlayer;
     bool completed;
     public GameObject doors;
     [HideInInspector]
@@ -144,6 +145,7 @@ public class Camp : MonoBehaviour
 
         completed = true;
         soFort.CompleteSpace();
+        soPlayer.soPlayerHealth.RecoverHealth();
     }
 
     IEnumerator SummonDelay()

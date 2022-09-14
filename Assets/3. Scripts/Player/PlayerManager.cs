@@ -13,19 +13,12 @@ public class PlayerManager : MonoBehaviour
     bool canDash = true;
     bool canAttack = true;
     bool dashing;
+    bool canSpecial = true;
     
-    //Esse script deve ser o único que usa o enum como condição, ele gerencia o input map
-    //e é nele que serão chamados as funções de context
 
     void Awake()
     {
-        soSave.savePoint = transform;
-        soPlayer.soPlayerHealth.life = soPlayer.soPlayerHealth.maxLife;
-        soPlayer.soPlayerAttack.currentCooldown = soPlayer.soPlayerAttack.attackCooldown;
-        soPlayer.soPlayerAttack.currentDamage = soPlayer.soPlayerAttack.attackDamage;
-        soPlayer.soPlayerAttack.currentDuration = soPlayer.soPlayerAttack.attackDuration;
-        soPlayer.soPlayerAttack.comboIndex = 0;
-        soPlayer.state = SOPlayer.State.STOPPED;
+        SetConfiguration();
 
         playerMap = new PlayerMap();
 
@@ -36,17 +29,31 @@ public class PlayerManager : MonoBehaviour
         playerMap.Default.Dash.started += DashStarted;
         playerMap.Default.Attack.started += AttackStarted;
         playerMap.Default.Aim.started += AimStarted;
+        playerMap.Default.Special.started += SpecialStarted;
 
     }
     
-    //O jogador só pode se mover se estiver parado ou se já estiver se movendo
-    //O dash tem a prioridade de ações, mas pra usar o jogador precisa estar andando
-    //O dash pode interromper o ataque
-    //O estado base é parado
+    void SetConfiguration()
+    {
+        soSave.savePoint = transform;
+        soPlayer.soPlayerHealth.life = soPlayer.soPlayerHealth.maxLife;
+        soPlayer.soPlayerMove.staminas = soPlayer.soPlayerMove.maxStaminas;
+        soPlayer.soPlayerAttack.currentCooldown = soPlayer.soPlayerAttack.attackCooldown;
+        soPlayer.soPlayerAttack.currentDamage = soPlayer.soPlayerAttack.attackDamage;
+        soPlayer.soPlayerAttack.currentDuration = soPlayer.soPlayerAttack.attackDuration;
+        soPlayer.soPlayerAttack.comboIndex = 0;
+        soPlayer.soPlayerAttack.specialTime = 0;
+        soPlayer.soPlayerMove.rechargeTime = 0;
+        soPlayer.state = SOPlayer.State.STOPPED;
+    }
+    
     void Update()
     {
         //Debug.Log(soPlayer.state);
         if(movement) MovementPerformed(); //Forma pra que rode todo frame enquanto o botão estiver apertado
+
+        if(soPlayer.soPlayerMove.staminas < soPlayer.soPlayerMove.maxStaminas) RechargeDash();
+        if(!canSpecial) SpecialCooldown();
     }
 
     //-------------------------------MOVIMENTAÇÃO--------------------------------- 
@@ -95,18 +102,31 @@ public class PlayerManager : MonoBehaviour
     //-------------------------------DASH--------------------------------- 
     public void DashStarted(InputAction.CallbackContext context)
     {
-        if(canDash && soPlayer.state != SOPlayer.State.TRAPPED)
+        if(canDash && soPlayer.state != SOPlayer.State.TRAPPED && soPlayer.state != SOPlayer.State.SPECIAL && soPlayer.soPlayerMove.staminas > 0)
         {
+            soPlayer.soPlayerMove.ChangeStaminaCount(-1);
+            soPlayer.soPlayerMove.rechargeTime = 0;
             dashing = true;
             soPlayer.state = SOPlayer.State.DASHING;
             canDash = false;
             StartCoroutine(DashCooldown());
             soPlayer.soPlayerMove.DashStart();
+
         }
         else if(soPlayer.state == SOPlayer.State.TRAPPED)
         {
             soPlayer.soPlayerMove.TrappedClick();
         }
+    }
+
+    void RechargeDash()
+    {
+        soPlayer.soPlayerMove.rechargeTime += Time.deltaTime;
+            if(soPlayer.soPlayerMove.rechargeTime >= soPlayer.soPlayerMove.rechargeStaminasTime)
+            { 
+                soPlayer.soPlayerMove.RechargeStamina();
+                soPlayer.soPlayerMove.rechargeTime = 0;
+            }
     }
 
     IEnumerator DashCooldown()
@@ -154,10 +174,37 @@ public class PlayerManager : MonoBehaviour
             
     }
 
+    //---------------------------------------------ESPECIAL------------------------------------------
+
+    public void SpecialStarted(InputAction.CallbackContext context)
+    {
+        if(!dashing && (soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canSpecial)
+        {
+            soPlayer.soPlayerAttack.SpecialStart();
+            soPlayer.state = SOPlayer.State.SPECIAL;
+            canSpecial = false;
+        }
+        
+    }
+    void SpecialCooldown()
+        {
+            soPlayer.soPlayerAttack.specialTime += Time.deltaTime;
+            if(soPlayer.soPlayerAttack.specialTime >= soPlayer.soPlayerAttack.specialCooldown)
+            {
+                soPlayer.soPlayerAttack.specialTime = 0;
+                canSpecial = true;
+            }
+        }
+
     //----------------------------------------------RESTART------------------------------------------
 
     void Restart()
     {
+        canDash = true;
+        canAttack = true;
+        dashing = false;
+        canSpecial = true;
+        soPlayer.soPlayerMove.staminas = soPlayer.soPlayerMove.maxStaminas;
         soPlayer.state = SOPlayer.State.STOPPED;
         GetComponent<CharacterController>().enabled = false;
         transform.position = soSave.savePoint.position;
