@@ -8,7 +8,8 @@ public class PlayerAttack : MonoBehaviour
     BoxCollider boxCollider;
     MeshRenderer meshRenderer;
     public Material attack;
-    
+    bool trapped;
+    bool special;
     void Start()
     {
         soPlayer.soPlayerAttack.comboIndex = 0;
@@ -44,7 +45,7 @@ public class PlayerAttack : MonoBehaviour
     {
         boxCollider.enabled = false;
         meshRenderer.enabled = false;
-        if(soPlayer.state != SOPlayer.State.TRAPPED)soPlayer.state = SOPlayer.State.STOPPED;
+        if(!trapped && !special)soPlayer.state = SOPlayer.State.STOPPED;
         if(soPlayer.soPlayerAttack.comboIndex >= 3) ComboEnd();
     }
 
@@ -57,6 +58,25 @@ public class PlayerAttack : MonoBehaviour
         soPlayer.soPlayerAttack.currentDamage = soPlayer.soPlayerAttack.attackDamage;
     }
 
+    void Trapped()
+    {
+        trapped = true;
+    }
+    void Untrapped()
+    {
+        trapped = false;
+    }
+
+    void SpecialStart()
+    {
+        special = true;
+    }
+
+    void SpecialFinish()
+    {
+        special = false;
+    }
+
     public void OnEnable()
     {
         soPlayer.soPlayerAttack.AttackStartEvent.AddListener(AttackStart);
@@ -64,6 +84,8 @@ public class PlayerAttack : MonoBehaviour
         soPlayer.soPlayerMove.DashStartEvent.AddListener(ComboEnd);
         soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(AttackEnd);
         soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(ComboEnd);
+        soPlayer.soPlayerAttack.SpecialStartEvent.AddListener(SpecialStart);
+        soPlayer.soPlayerAttack.SpecialFinishEvent.AddListener(SpecialFinish);
     }
     public void OnDisable()
     {
@@ -72,6 +94,8 @@ public class PlayerAttack : MonoBehaviour
         soPlayer.soPlayerMove.DashStartEvent.RemoveListener(ComboEnd);
         soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(AttackEnd);
         soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(ComboEnd);
+        soPlayer.soPlayerAttack.SpecialStartEvent.RemoveListener(SpecialStart);
+        soPlayer.soPlayerAttack.SpecialFinishEvent.RemoveListener(SpecialFinish);
     }
 
     IEnumerator AttackTime()
