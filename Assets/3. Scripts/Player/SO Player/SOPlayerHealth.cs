@@ -20,6 +20,11 @@ public class SOPlayerHealth : ScriptableObject
             DieEvent = new UnityEvent();
     }
 
+    public void RecoverHealth()
+    {
+        HealthChange(maxLife - life);
+    }
+
     public void HealthChange(int amount)
     {
         life += amount;
@@ -29,7 +34,7 @@ public class SOPlayerHealth : ScriptableObject
 
     public void Die()
     {
-        life = maxLife;
+        RecoverHealth();
         DieEvent.Invoke();
     }
 

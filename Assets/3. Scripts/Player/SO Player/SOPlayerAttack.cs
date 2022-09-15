@@ -14,17 +14,28 @@ public class SOPlayerAttack : ScriptableObject
     public float comboTime;
     public int comboDamage;
     public float damagedCooldown;
+    [HideInInspector]
     public float currentCooldown;
+    [HideInInspector]
     public float currentDuration;
+    [HideInInspector]
     public int currentDamage;
+    [HideInInspector]
     public int comboIndex = 0;
-
+    public int specialDamage;
+    public float specialDuration;
+    public float specialCooldown;
+    [HideInInspector]
+    public float specialTime;
+    public float cooldownReduction;
 
 
     [System.NonSerialized]
     public UnityEvent AttackStartEvent;
     [System.NonSerialized]
     public UnityEvent<GameObject> EnemyDieEvent;
+    [System.NonSerialized]
+    public UnityEvent SpecialStartEvent;
 
     private void OnEnable() {
         if(AttackStartEvent == null)
@@ -32,6 +43,9 @@ public class SOPlayerAttack : ScriptableObject
 
         if(EnemyDieEvent == null)
             EnemyDieEvent = new UnityEvent<GameObject>();
+
+        if(SpecialStartEvent == null)
+            SpecialStartEvent = new UnityEvent();
     }
 
     public void AttackStart()
@@ -53,5 +67,15 @@ public class SOPlayerAttack : ScriptableObject
     public void EnemyDie(GameObject enemy)
     {
         EnemyDieEvent.Invoke(enemy);
+    }
+
+    public void SpecialStart()
+    {
+        SpecialStartEvent.Invoke();
+    }
+
+    public void ReduceCooldown()
+    {
+        specialTime += cooldownReduction;
     }
 }

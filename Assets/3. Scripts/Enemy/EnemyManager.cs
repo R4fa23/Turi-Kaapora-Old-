@@ -9,21 +9,54 @@ public class EnemyManager : MonoBehaviour
     public SOEnemy soEnemy;
     public SOSave soSave;
     public SOPlayer soPlayer;
+    GameObject player;
 
     void Awake()
     {
         soEnemy = (SOEnemy)ScriptableObject.CreateInstance(typeof(SOEnemy));
         SetConfiguration();
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    void Repulse()
+    {
+        transform.forward = player.transform.position - transform.position;
+        StartCoroutine(Repulsion());
+    }
+
+    IEnumerator Repulsion()
+    {
+        Rigidbody rb;
+        rb = GetComponent<Rigidbody>();
+        rb.isKinematic = false;
+        rb.AddForce(-transform.forward * 50, ForceMode.Impulse);
+        yield return new WaitForSeconds(0.1f);
+        rb.isKinematic = true;
+    }
+
+    void RecoverDamage()
+    {
+        StartCoroutine(TimeRecoverDamage());
+    }
+
+    IEnumerator TimeRecoverDamage()
+    {
+        yield return new WaitForSeconds(0.1f);
+        soEnemy.canDamaged = true;
     }
 
     public void OnEnable()
     {
         soEnemy.health = soEnemy.maxHealth;
+        soEnemy.RepulsionEvent.AddListener(RecoverDamage);
         soEnemy.DieEvent.AddListener(OnDie);
+        soEnemy.RepulsionEvent.AddListener(Repulse);
     }
     public void OnDisable()
     {
+        soEnemy.RepulsionEvent.RemoveListener(RecoverDamage);
         soEnemy.DieEvent.RemoveListener(OnDie);
+        soEnemy.RepulsionEvent.RemoveListener(Repulse);
     }
 
     private void OnDie() 
@@ -44,6 +77,7 @@ public class EnemyManager : MonoBehaviour
         soEnemy.health = reference.health;
         soEnemy.cooldownDamaged = reference.cooldownDamaged;
         soEnemy.currentCooldown = reference.currentCooldown;
+        soEnemy.canDamaged = true;
 
 
         soEnemy.currentCooldown = soEnemy.attackCooldown;

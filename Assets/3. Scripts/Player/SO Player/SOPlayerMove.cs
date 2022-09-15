@@ -12,6 +12,11 @@ public class SOPlayerMove : ScriptableObject
     public float dashCooldown;
     public float rotationVel;
     public float focusRange;
+    public float staminas;
+    public float maxStaminas;
+    public float rechargeStaminasTime;
+    [HideInInspector]
+    public float rechargeTime;
 
     [System.NonSerialized]
     public UnityEvent MoveStartEvent;
@@ -37,6 +42,8 @@ public class SOPlayerMove : ScriptableObject
     public UnityEvent UntrappedEvent;
     [System.NonSerialized]
     public UnityEvent TrappedClickEvent;
+    [System.NonSerialized]
+    public UnityEvent ChangeStaminaEvent;
 
 
     private void OnEnable() {
@@ -75,6 +82,9 @@ public class SOPlayerMove : ScriptableObject
 
         if(TrappedClickEvent == null)
             TrappedClickEvent = new UnityEvent();
+        
+        if(ChangeStaminaEvent == null)
+            ChangeStaminaEvent = new UnityEvent();
     }
 
     public void MoveStart(){
@@ -117,5 +127,16 @@ public class SOPlayerMove : ScriptableObject
     public void TrappedClick()
     {
         TrappedClickEvent.Invoke();
+    }
+    public void RechargeStamina()
+    {
+        ChangeStaminaCount(1);
+    }
+    public void ChangeStaminaCount(int amount)
+    {
+        staminas += amount;
+        if(staminas > maxStaminas) staminas = maxStaminas;
+
+        ChangeStaminaEvent.Invoke();
     }
 }

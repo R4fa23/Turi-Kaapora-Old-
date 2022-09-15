@@ -15,15 +15,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Teste",
-                    "type": "Button",
-                    "id": "cf35c0d4-a139-4b39-96fa-aedb402bd6e0",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Dash",
                     "type": "Button",
                     "id": "b179760c-9174-426a-81d7-313024cdc29a",
@@ -45,6 +36,15 @@
                     "name": "Aim",
                     "type": "Button",
                     "id": "8c32baea-dcf5-4aa8-a377-82d3b53b466f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Special",
+                    "type": "Button",
+                    "id": "f2790db4-d339-468a-8443-56243a802c69",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -109,17 +109,6 @@
                 },
                 {
                     "name": "",
-                    "id": "bb9bfd7b-cbae-4086-8318-31462e049331",
-                    "path": "<Keyboard>/t",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Teste",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "d16ea201-e261-42e1-baf8-54705b02ff1d",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -148,6 +137,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "898014aa-0117-4c44-ba5d-a94264414e34",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Special",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -18,7 +18,10 @@ public class SOEnemy : ScriptableObject
     public float distanceDetectation;
     public float maxHealth;
     public float health;
+    [HideInInspector]
     public float currentCooldown;
+    [HideInInspector]
+    public bool canDamaged;
 
     [System.NonSerialized]
     public UnityEvent ChargeStartEvent;
@@ -32,6 +35,8 @@ public class SOEnemy : ScriptableObject
     public UnityEvent DieEvent;
     [System.NonSerialized]
     public UnityEvent SummonEvent;
+    [System.NonSerialized]
+    public UnityEvent RepulsionEvent;
     /*
     [System.NonSerialized]
     public UnityEvent StartAimRangeEvent;
@@ -61,6 +66,9 @@ public class SOEnemy : ScriptableObject
 
         if(SummonEvent == null)
             SummonEvent = new UnityEvent();
+        
+        if(RepulsionEvent == null)
+            RepulsionEvent = new UnityEvent();
         /*
         if(StartAimRangeEvent == null)
             StartAimRangeEvent = new UnityEvent();
@@ -88,9 +96,13 @@ public class SOEnemy : ScriptableObject
     }
     public void ChangeLife(int amount) 
     {
-        health += amount;
-        ChangeLifeEvent.Invoke();
-        if(health <= 0) Die();
+        if(canDamaged)
+        {
+            health += amount;
+            ChangeLifeEvent.Invoke();
+            if(health <= 0) Die();
+        }
+        
     }
     public void Die()
     {
@@ -99,6 +111,11 @@ public class SOEnemy : ScriptableObject
     public void Summon()
     {
         SummonEvent.Invoke();
+    }
+    public void Repulsion () 
+    {
+        canDamaged = false;
+        RepulsionEvent.Invoke();
     }
     /*
     public void StartAimRange()

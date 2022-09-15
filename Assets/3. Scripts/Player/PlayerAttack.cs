@@ -90,7 +90,13 @@ public class PlayerAttack : MonoBehaviour
     {
         if(other.CompareTag("Enemy"))
         { 
+            if (soPlayer.soPlayerAttack.comboIndex == 3)
+            {
+                soPlayer.soPlayerAttack.ReduceCooldown();
+            }
             other.GetComponent<EnemyManager>().soEnemy.ChangeLife(-soPlayer.soPlayerAttack.currentDamage);
+            
+            
         }
 
         if(other.CompareTag("Cage"))
