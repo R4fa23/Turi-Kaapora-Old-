@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     bool focusing;
     GameObject targetFocus;
     bool trapped;
+    bool special;
     
     void Start()
     {
@@ -121,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void DashStart()
     {
-        soPlayer.state = SOPlayer.State.DASHING;
+        if(soPlayer.state != SOPlayer.State.SPECIAL) soPlayer.state = SOPlayer.State.DASHING;
         dash = true;
         initialDash = true;
         sensibility = soPlayer.soPlayerMove.dashDist/soPlayer.soPlayerMove.dashDuration;
@@ -149,6 +150,15 @@ public class PlayerMovement : MonoBehaviour
     {
         trapped = false;
     }
+    void SpecialStart()
+    {
+        special = true;
+    }
+
+    void SpecialFinish()
+    {
+        special = false;
+    }
 
     //Listeners para os eventos e funções
     public void OnEnable(){
@@ -159,6 +169,8 @@ public class PlayerMovement : MonoBehaviour
         soPlayer.soPlayerMove.TargetAimStopEvent.AddListener(FocusEnd);
         soPlayer.soPlayerMove.TrappedEvent.AddListener(Trapped);
         soPlayer.soPlayerMove.UntrappedEvent.AddListener(Untrapped);
+        soPlayer.soPlayerAttack.SpecialStartEvent.AddListener(SpecialStart);
+        soPlayer.soPlayerAttack.SpecialFinishEvent.AddListener(SpecialFinish);
     }
     public void OnDisable(){
         soPlayer.soPlayerMove.MoveStartEvent.RemoveListener(MoveStart);
@@ -168,6 +180,8 @@ public class PlayerMovement : MonoBehaviour
         soPlayer.soPlayerMove.TargetAimStopEvent.RemoveListener(FocusEnd);
         soPlayer.soPlayerMove.TrappedEvent.RemoveListener(Trapped);
         soPlayer.soPlayerMove.UntrappedEvent.RemoveListener(Untrapped);
+        soPlayer.soPlayerAttack.SpecialStartEvent.RemoveListener(SpecialStart);
+        soPlayer.soPlayerAttack.SpecialFinishEvent.RemoveListener(SpecialFinish);
     }
     
     IEnumerator DashDuration(float duration)
@@ -175,7 +189,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(duration);
         sensibility = soPlayer.soPlayerMove.vel;
         dash = false;
-        if(!trapped)soPlayer.state = SOPlayer.State.STOPPED;
+        if(!trapped && !special)soPlayer.state = SOPlayer.State.STOPPED;
         //if(walk)soPlayer.state = SOPlayer.State.WALKING;
         //if(!walk)soPlayer.state = SOPlayer.State.STOPPED;
     }

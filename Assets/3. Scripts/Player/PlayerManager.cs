@@ -182,6 +182,7 @@ public class PlayerManager : MonoBehaviour
         {
             soPlayer.soPlayerAttack.SpecialStart();
             soPlayer.state = SOPlayer.State.SPECIAL;
+            soPlayer.soPlayerMove.DashStart();
             canSpecial = false;
         }
         

@@ -32,6 +32,7 @@ public class PlayerSpecial : MonoBehaviour
         sphereCollider.enabled = false;
         meshRenderer.enabled = false;
         soPlayer.state = SOPlayer.State.STOPPED;
+        soPlayer.soPlayerAttack.SpecialFinish();
     }
 
     IEnumerator StopSpecial()

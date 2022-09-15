@@ -36,6 +36,8 @@ public class SOPlayerAttack : ScriptableObject
     public UnityEvent<GameObject> EnemyDieEvent;
     [System.NonSerialized]
     public UnityEvent SpecialStartEvent;
+    [System.NonSerialized]
+    public UnityEvent SpecialFinishEvent;
 
     private void OnEnable() {
         if(AttackStartEvent == null)
@@ -46,6 +48,9 @@ public class SOPlayerAttack : ScriptableObject
 
         if(SpecialStartEvent == null)
             SpecialStartEvent = new UnityEvent();
+        
+        if(SpecialFinishEvent == null)
+            SpecialFinishEvent = new UnityEvent();
     }
 
     public void AttackStart()
@@ -72,6 +77,11 @@ public class SOPlayerAttack : ScriptableObject
     public void SpecialStart()
     {
         SpecialStartEvent.Invoke();
+    }
+
+    public void SpecialFinish()
+    {
+        SpecialFinishEvent.Invoke();
     }
 
     public void ReduceCooldown()
