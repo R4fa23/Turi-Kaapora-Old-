@@ -8,16 +8,26 @@ public class SOPlayerHealth : ScriptableObject
 {
     public int maxLife = 10;
     public int life;
+    public bool burned;
+    public float fireCharges;
+    public int fireDamage;
+
     [System.NonSerialized]
     public UnityEvent HealthChangeEvent;
     [System.NonSerialized]
     public UnityEvent DieEvent;
+    [System.NonSerialized]
+    public UnityEvent BurnedEvent;
+
     private void OnEnable() {
         if(HealthChangeEvent == null)
             HealthChangeEvent = new UnityEvent();
 
         if(DieEvent == null)
             DieEvent = new UnityEvent();
+        
+        if(BurnedEvent == null)
+            BurnedEvent = new UnityEvent();
     }
 
     public void RecoverHealth()
@@ -38,4 +48,10 @@ public class SOPlayerHealth : ScriptableObject
         DieEvent.Invoke();
     }
 
+    public void Burned(int charges)
+    {
+        fireCharges = charges;
+        burned = true;
+        BurnedEvent.Invoke();
+    }
 }

@@ -68,6 +68,7 @@ public class EnemyAttack : MonoBehaviour
         meshRenderer.enabled = false;
         boxCollider.enabled = false;
         rotate = false;
+        soEnemy.AttackEnd();
         StartCoroutine(AttackCooldown());
 
     }
@@ -112,6 +113,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            soEnemy.PlayerHited();
             soPlayer.soPlayerHealth.HealthChange(-soEnemy.attackDamage);
         }
     }

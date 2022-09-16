@@ -14,7 +14,7 @@ public class PlayerManager : MonoBehaviour
     bool canAttack = true;
     bool dashing;
     bool canSpecial = true;
-    
+    bool canFire = true;
 
     void Awake()
     {
@@ -44,6 +44,7 @@ public class PlayerManager : MonoBehaviour
         soPlayer.soPlayerAttack.comboIndex = 0;
         soPlayer.soPlayerAttack.specialTime = 0;
         soPlayer.soPlayerMove.rechargeTime = 0;
+        soPlayer.soPlayerHealth.fireCharges = 0;
         soPlayer.state = SOPlayer.State.STOPPED;
     }
     
@@ -54,6 +55,7 @@ public class PlayerManager : MonoBehaviour
 
         if(soPlayer.soPlayerMove.staminas < soPlayer.soPlayerMove.maxStaminas) RechargeDash();
         if(!canSpecial) SpecialCooldown();
+        if(soPlayer.soPlayerHealth.burned) Burn();
     }
 
     //-------------------------------MOVIMENTAÇÃO--------------------------------- 
@@ -205,6 +207,7 @@ public class PlayerManager : MonoBehaviour
         canAttack = true;
         dashing = false;
         canSpecial = true;
+        canFire = true;
         soPlayer.soPlayerMove.staminas = soPlayer.soPlayerMove.maxStaminas;
         soPlayer.state = SOPlayer.State.STOPPED;
         GetComponent<CharacterController>().enabled = false;
@@ -212,16 +215,44 @@ public class PlayerManager : MonoBehaviour
         GetComponent<CharacterController>().enabled = true;
     }
 
+    //--------------------------------------------QUEIMANDO------------------------------------------
 
+    void Burn()
+    {
+            if(soPlayer.soPlayerHealth.fireCharges > 0)
+            {
+                if(canFire)
+                {
+                    canFire = false;
+                    StartCoroutine(CooldownFireDamage());
+                    soPlayer.soPlayerHealth.HealthChange(-soPlayer.soPlayerHealth.fireDamage);
+                }
+                else
+                {
+                    soPlayer.soPlayerHealth.fireCharges -= Time.deltaTime;
+                }
+                
+            }
+            else
+            {
+                soPlayer.soPlayerHealth.burned = false;
+            }
+    }
+
+    IEnumerator CooldownFireDamage()
+    {
+        yield return new WaitForSeconds(1);
+        canFire = true;
+    }
     //-------------------------------------------LISTENER---------------------------------------------
     public void OnEnable()
     {
-        soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(DamagedCooldown);
+        //soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(DamagedCooldown);
         soSave.RestartEvent.AddListener(Restart);
     }
     public void OnDisable()
     {
-        soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(DamagedCooldown);
+        //soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(DamagedCooldown);
         soSave.RestartEvent.RemoveListener(Restart);
     }
 }

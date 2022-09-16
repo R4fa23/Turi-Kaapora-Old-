@@ -20,13 +20,15 @@ public class SOEnemy : ScriptableObject
     public float health;
     [HideInInspector]
     public float currentCooldown;
-    [HideInInspector]
+    //[HideInInspector]
     public bool canDamaged;
 
     [System.NonSerialized]
     public UnityEvent ChargeStartEvent;
     [System.NonSerialized]
     public UnityEvent AttackStartEvent;
+    [System.NonSerialized]
+    public UnityEvent AttackEndEvent;
     [System.NonSerialized]
     public UnityEvent MoveStartEvent;
     [System.NonSerialized]
@@ -37,6 +39,8 @@ public class SOEnemy : ScriptableObject
     public UnityEvent SummonEvent;
     [System.NonSerialized]
     public UnityEvent RepulsionEvent;
+    [System.NonSerialized]
+    public UnityEvent PlayerHitedEvent;
     /*
     [System.NonSerialized]
     public UnityEvent StartAimRangeEvent;
@@ -54,6 +58,9 @@ public class SOEnemy : ScriptableObject
 
         if(AttackStartEvent == null)
             AttackStartEvent = new UnityEvent();
+        
+        if(AttackEndEvent == null)
+            AttackEndEvent = new UnityEvent();
 
         if(ChargeStartEvent == null)
             ChargeStartEvent = new UnityEvent();
@@ -69,6 +76,9 @@ public class SOEnemy : ScriptableObject
         
         if(RepulsionEvent == null)
             RepulsionEvent = new UnityEvent();
+        
+        if(PlayerHitedEvent == null)
+            PlayerHitedEvent = new UnityEvent();
         /*
         if(StartAimRangeEvent == null)
             StartAimRangeEvent = new UnityEvent();
@@ -89,6 +99,10 @@ public class SOEnemy : ScriptableObject
     public void AttackStart()
     {
         AttackStartEvent.Invoke();
+    }
+    public void AttackEnd()
+    {
+        AttackEndEvent.Invoke();
     }
     public void ChargeStart()
     {
@@ -116,6 +130,10 @@ public class SOEnemy : ScriptableObject
     {
         canDamaged = false;
         RepulsionEvent.Invoke();
+    }
+    public void PlayerHited()
+    {
+        PlayerHitedEvent.Invoke();
     }
     /*
     public void StartAimRange()
