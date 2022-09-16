@@ -30,8 +30,9 @@ public class Web : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            gameObject.SetActive(false);
+            soPlayer.soPlayerHealth.HealthChange(-damage);
             soPlayer.soPlayerMove.Slowed(slowDuration);
+            gameObject.SetActive(false);
         }
     }
 

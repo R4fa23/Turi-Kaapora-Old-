@@ -1,3 +1,4 @@
+using System.Dynamic;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -241,8 +242,9 @@ public class PlayerManager : MonoBehaviour
             }
             else
             {
-                soPlayer.soPlayerHealth.HealthChange(-soPlayer.soPlayerHealth.fireDamage);
+                canFire = true;
                 soPlayer.soPlayerHealth.burned = false;
+                soPlayer.soPlayerHealth.HealthChange(-soPlayer.soPlayerHealth.fireDamage);
             }
     }
 
