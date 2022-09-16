@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "SOPlayer", menuName = "ScriptableObjects/Characters/Player/Manager")]
 public class SOPlayer : ScriptableObject
 {
     public SOPlayerHealth soPlayerHealth;

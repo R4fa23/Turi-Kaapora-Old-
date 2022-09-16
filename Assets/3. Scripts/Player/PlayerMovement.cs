@@ -66,7 +66,9 @@ public class PlayerMovement : MonoBehaviour
             if(!dash)
             {
                 dir = movement.ReadValue<Vector2>();
+                sensibility = soPlayer.soPlayerMove.vel;
             }
+
 
     
             if(initialDash)

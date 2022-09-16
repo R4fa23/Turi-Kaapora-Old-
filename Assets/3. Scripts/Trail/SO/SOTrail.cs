@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "SOTrail", menuName = "ScriptableObjects/Level/Trail")]
 public class SOTrail : ScriptableObject
 {
     public int cages;

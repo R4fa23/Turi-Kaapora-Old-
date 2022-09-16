@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "SOPlayerAttack", menuName = "ScriptableObjects/Characters/Player/Attack")]
 public class SOPlayerAttack : ScriptableObject
 {
     public float attackDuration;

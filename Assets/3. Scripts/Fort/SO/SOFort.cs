@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "SOFort", menuName = "ScriptableObjects/Level/Fort")]
 public class SOFort : ScriptableObject
 {
     public int challenges;

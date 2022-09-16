@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "SOPlayerHealth", menuName = "ScriptableObjects/Characters/Player/Health")]
 public class SOPlayerHealth : ScriptableObject
 {
     public int maxLife = 10;
     public int life;
+    [HideInInspector]
     public bool burned;
+    [HideInInspector]
     public float fireCharges;
     public int fireDamage;
+    public float flameDelay;
 
     [System.NonSerialized]
     public UnityEvent HealthChangeEvent;

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "SOPlayerMove", menuName = "ScriptableObjects/Characters/Player/Move")]
 public class SOPlayerMove : ScriptableObject
 {
     public float vel;
+    public float velBase;
     public float dashDist;
     public float dashDuration;
     public float dashCooldown;
@@ -17,6 +18,11 @@ public class SOPlayerMove : ScriptableObject
     public float rechargeStaminasTime;
     [HideInInspector]
     public float rechargeTime;
+    [HideInInspector]
+    public bool slow;
+    public float velSlow;
+    [HideInInspector]
+    public float slowDuration;
 
     [System.NonSerialized]
     public UnityEvent MoveStartEvent;
@@ -44,6 +50,8 @@ public class SOPlayerMove : ScriptableObject
     public UnityEvent TrappedClickEvent;
     [System.NonSerialized]
     public UnityEvent ChangeStaminaEvent;
+    [System.NonSerialized]
+    public UnityEvent SlowedEvent;
 
 
     private void OnEnable() {
@@ -85,6 +93,9 @@ public class SOPlayerMove : ScriptableObject
         
         if(ChangeStaminaEvent == null)
             ChangeStaminaEvent = new UnityEvent();
+        
+        if(SlowedEvent == null)
+            SlowedEvent = new UnityEvent();
     }
 
     public void MoveStart(){
@@ -138,5 +149,12 @@ public class SOPlayerMove : ScriptableObject
         if(staminas > maxStaminas) staminas = maxStaminas;
 
         ChangeStaminaEvent.Invoke();
+    }
+    public void Slowed(float time)
+    {
+        slowDuration = time;
+        vel = velSlow;
+        slow = true;
+        SlowedEvent.Invoke();
     }
 }

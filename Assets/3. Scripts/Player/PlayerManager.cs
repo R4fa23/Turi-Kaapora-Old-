@@ -35,6 +35,12 @@ public class PlayerManager : MonoBehaviour
     
     void SetConfiguration()
     {
+        canDash = true;
+        canAttack = true;
+        dashing = false;
+        canSpecial = true;
+        canFire = true;
+
         soSave.savePoint = transform;
         soPlayer.soPlayerHealth.life = soPlayer.soPlayerHealth.maxLife;
         soPlayer.soPlayerMove.staminas = soPlayer.soPlayerMove.maxStaminas;
@@ -45,6 +51,10 @@ public class PlayerManager : MonoBehaviour
         soPlayer.soPlayerAttack.specialTime = 0;
         soPlayer.soPlayerMove.rechargeTime = 0;
         soPlayer.soPlayerHealth.fireCharges = 0;
+        soPlayer.soPlayerMove.slowDuration = 0;
+        soPlayer.soPlayerMove.vel = soPlayer.soPlayerMove.velBase;
+        soPlayer.soPlayerHealth.burned = false;
+        soPlayer.soPlayerMove.slow = false;
         soPlayer.state = SOPlayer.State.STOPPED;
     }
     
@@ -56,6 +66,7 @@ public class PlayerManager : MonoBehaviour
         if(soPlayer.soPlayerMove.staminas < soPlayer.soPlayerMove.maxStaminas) RechargeDash();
         if(!canSpecial) SpecialCooldown();
         if(soPlayer.soPlayerHealth.burned) Burn();
+        if(soPlayer.soPlayerMove.slow) Slow();
     }
 
     //-------------------------------MOVIMENTAÇÃO--------------------------------- 
@@ -104,7 +115,7 @@ public class PlayerManager : MonoBehaviour
     //-------------------------------DASH--------------------------------- 
     public void DashStarted(InputAction.CallbackContext context)
     {
-        if(canDash && soPlayer.state != SOPlayer.State.TRAPPED && soPlayer.state != SOPlayer.State.SPECIAL && soPlayer.soPlayerMove.staminas > 0)
+        if(canDash && soPlayer.state != SOPlayer.State.TRAPPED && soPlayer.state != SOPlayer.State.SPECIAL && soPlayer.soPlayerMove.staminas > 0 && !soPlayer.soPlayerMove.slow)
         {
             soPlayer.soPlayerMove.ChangeStaminaCount(-1);
             soPlayer.soPlayerMove.rechargeTime = 0;
@@ -203,16 +214,11 @@ public class PlayerManager : MonoBehaviour
 
     void Restart()
     {
-        canDash = true;
-        canAttack = true;
-        dashing = false;
-        canSpecial = true;
-        canFire = true;
-        soPlayer.soPlayerMove.staminas = soPlayer.soPlayerMove.maxStaminas;
-        soPlayer.state = SOPlayer.State.STOPPED;
+        
         GetComponent<CharacterController>().enabled = false;
         transform.position = soSave.savePoint.position;
         GetComponent<CharacterController>().enabled = true;
+        SetConfiguration();
     }
 
     //--------------------------------------------QUEIMANDO------------------------------------------
@@ -235,15 +241,29 @@ public class PlayerManager : MonoBehaviour
             }
             else
             {
+                soPlayer.soPlayerHealth.HealthChange(-soPlayer.soPlayerHealth.fireDamage);
                 soPlayer.soPlayerHealth.burned = false;
             }
     }
 
     IEnumerator CooldownFireDamage()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(soPlayer.soPlayerHealth.flameDelay);
         canFire = true;
     }
+
+    //---------------------------------------------LENTIDÃO------------------------------------------
+
+    void Slow()
+    {
+        soPlayer.soPlayerMove.slowDuration -= Time.deltaTime;
+        if(soPlayer.soPlayerMove.slowDuration <= 0)
+        {
+            soPlayer.soPlayerMove.vel = soPlayer.soPlayerMove.velBase;
+            soPlayer.soPlayerMove.slow = false;
+        }
+    }
+
     //-------------------------------------------LISTENER---------------------------------------------
     public void OnEnable()
     {

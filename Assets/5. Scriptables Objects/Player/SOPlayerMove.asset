@@ -12,13 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45380939d897ee4a8cea1546157e37d, type: 3}
   m_Name: SOPlayerMove
   m_EditorClassIdentifier: 
-  vel: 12
+  vel: 2
+  velBase: 12
   dashDist: 12
   dashDuration: 0.25
   dashCooldown: 0.2
   rotationVel: 0.02
   focusRange: 30
-  staminas: 2
+  staminas: 5
   maxStaminas: 5
   rechargeStaminasTime: 3
-  rechargeTime: 0.2510278
+  rechargeTime: 0
+  slow: 1
+  velSlow: 2
+  slowDuration: 3.919213

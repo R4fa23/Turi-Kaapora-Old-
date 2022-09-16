@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "SOSave", menuName = "ScriptableObjects/Save")]
 public class SOSave : ScriptableObject
 {
     [HideInInspector]

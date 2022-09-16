@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "SOCamp", menuName = "ScriptableObjects/Level/Camp")]
 public class SOCamp : ScriptableObject
 {
     public int waves;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "SOEnemy", menuName = "ScriptableObjects/Characters/Enemy")]
 public class SOEnemy : ScriptableObject
 {
     public enum State { STOPPED, WALKING, ATTACKING }
@@ -20,7 +20,7 @@ public class SOEnemy : ScriptableObject
     public float health;
     [HideInInspector]
     public float currentCooldown;
-    //[HideInInspector]
+    [HideInInspector]
     public bool canDamaged;
 
     [System.NonSerialized]
