@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     CharacterController characterCtrl;
     Vector2 inputValue;
     float turnSmoothVelocity;
+    public GameObject animated;
+    Animator animator;
     
 
     PlayerInput pInput;
@@ -31,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     
     void Start()
     {
+        animator = animated.GetComponent<Animator>();
         turnSmoothTime = soPlayer.soPlayerMove.rotationVel;
         dir = new Vector2(0, 1);
         characterCtrl = GetComponent<CharacterController>(); 
@@ -99,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
                     }
 
                     Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-                    Debug.Log(transform.forward);
+                    RecognizeDirectionAnimation(moveDir);
                     characterCtrl.Move(moveDir.normalized * sensibility *Time.deltaTime);
 
                 }
@@ -123,6 +126,93 @@ public class PlayerMovement : MonoBehaviour
         //move = false;
     }
 
+    public void RecognizeDirectionAnimation(Vector3 moveDir)
+    {
+        if(transform.forward.x <= 0)
+        {
+            if(transform.forward.z <= 0)
+            {
+                if(moveDir == Vector3.right)
+                {
+                    animator.SetTrigger("FocEsq");
+                }
+                else if(moveDir == Vector3.left)
+                {
+                    animator.SetTrigger("FocDir");
+                }
+                else if(moveDir == Vector3.up)
+                {
+                    animator.SetTrigger("FocDir");
+                }
+                else if(moveDir == Vector3.down)
+                {
+                    animator.SetTrigger("FocEsq");
+                }
+            
+            }
+            else
+            {
+                if(moveDir == Vector3.right)
+                {
+                    animator.SetTrigger("FocDir");
+                }
+                else if(moveDir == Vector3.left)
+                {
+                    animator.SetTrigger("FocEsq");
+                }
+                else if(moveDir == Vector3.up)
+                {
+                    animator.SetTrigger("FocDir");
+                }
+                else if(moveDir == Vector3.down)
+                {
+                    animator.SetTrigger("FocEsq");
+                }
+            }
+        }
+        else
+        {
+            if(transform.forward.z <= 0)
+            {
+                if(moveDir == Vector3.right)
+                {
+                    animator.SetTrigger("FocEsq");
+                }
+                else if(moveDir == Vector3.left)
+                {
+                    animator.SetTrigger("FocDir");
+                }
+                else if(moveDir == Vector3.up)
+                {
+                    animator.SetTrigger("FocEsq");
+                }
+                else if(moveDir == Vector3.down)
+                {
+                    animator.SetTrigger("FocDir");
+                }
+            }
+            else
+            {
+                if(moveDir == Vector3.right)
+                {
+                    animator.SetTrigger("FocDir");
+                }
+                else if(moveDir == Vector3.left)
+                {
+                    animator.SetTrigger("FocEsq");
+                }
+                else if(moveDir == Vector3.up)
+                {
+                    animator.SetTrigger("FocEsq");
+                }
+                else if(moveDir == Vector3.down)
+                {
+                    animator.SetTrigger("FocDir");
+                }
+            }
+        }
+    }
+
     public void DashStart()
     {
         if(soPlayer.state != SOPlayer.State.SPECIAL) soPlayer.state = SOPlayer.State.DASHING;
@@ -135,12 +225,14 @@ public class PlayerMovement : MonoBehaviour
     public void FocusStart(GameObject target)
     {
         focusing = true;
+        animator.SetBool("Focus", focusing);
         targetFocus = target;
     }
 
     public void FocusEnd()
     {
         focusing = false;
+        animator.SetBool("Focus", focusing);
         targetFocus = null;
     }
 

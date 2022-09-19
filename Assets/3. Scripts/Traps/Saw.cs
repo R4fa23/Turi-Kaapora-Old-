@@ -46,8 +46,9 @@ public class Saw : MonoBehaviour
     {
         if(!started)
         {
+            Vector3 point = new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z);
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, transform.position + (transform.forward * distance));
+            Gizmos.DrawLine(point, point + (transform.forward * distance));
         }
     }
 }
