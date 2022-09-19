@@ -95,6 +95,7 @@ public class PlayerManager : MonoBehaviour
     {
         if(soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING)
         {
+            animator.SetBool("Move", true);
             soPlayer.state = SOPlayer.State.WALKING;
             soPlayer.soPlayerMove.MoveStart();
             
@@ -102,6 +103,7 @@ public class PlayerManager : MonoBehaviour
     }
     public void MovementCanceled(InputAction.CallbackContext context) {
         movement = false;
+        animator.SetBool("Move", false);
 
         if(soPlayer.state == SOPlayer.State.WALKING)
         {
