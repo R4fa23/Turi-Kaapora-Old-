@@ -16,9 +16,12 @@ public class PlayerManager : MonoBehaviour
     bool dashing;
     bool canSpecial = true;
     bool canFire = true;
+    public GameObject animated;
+    Animator animator;
 
     void Awake()
     {
+        animator = animated.GetComponent<Animator>();
         SetConfiguration();
 
         playerMap = new PlayerMap();
@@ -92,6 +95,7 @@ public class PlayerManager : MonoBehaviour
     {
         if(soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING)
         {
+            animator.SetBool("Move", true);
             soPlayer.state = SOPlayer.State.WALKING;
             soPlayer.soPlayerMove.MoveStart();
             
@@ -99,6 +103,7 @@ public class PlayerManager : MonoBehaviour
     }
     public void MovementCanceled(InputAction.CallbackContext context) {
         movement = false;
+        animator.SetBool("Move", false);
 
         if(soPlayer.state == SOPlayer.State.WALKING)
         {
@@ -118,6 +123,7 @@ public class PlayerManager : MonoBehaviour
     {
         if(canDash && soPlayer.state != SOPlayer.State.TRAPPED && soPlayer.state != SOPlayer.State.SPECIAL && soPlayer.soPlayerMove.staminas > 0 && !soPlayer.soPlayerMove.slow)
         {
+            animator.SetTrigger("Dash");
             soPlayer.soPlayerMove.ChangeStaminaCount(-1);
             soPlayer.soPlayerMove.rechargeTime = 0;
             dashing = true;
@@ -155,6 +161,7 @@ public class PlayerManager : MonoBehaviour
     {
         if(!dashing && (soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canAttack)
         {
+            animator.SetTrigger("Ataque");
             canAttack = false;
             soPlayer.state = SOPlayer.State.ATTACKING;
             soPlayer.soPlayerAttack.AttackStart();
@@ -265,16 +272,23 @@ public class PlayerManager : MonoBehaviour
             soPlayer.soPlayerMove.slow = false;
         }
     }
+    //------------------------------------------DANIFICADO-----------------------------------------
 
+    void Damaged()
+    {
+        animator.SetTrigger("Dano");
+    }
     //-------------------------------------------LISTENER---------------------------------------------
     public void OnEnable()
     {
         //soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(DamagedCooldown);
+        soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(Damaged);
         soSave.RestartEvent.AddListener(Restart);
     }
     public void OnDisable()
     {
         //soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(DamagedCooldown);
+        soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(Damaged);
         soSave.RestartEvent.RemoveListener(Restart);
     }
 }
