@@ -14,7 +14,27 @@ public class SOPlayer : ScriptableObject
     public SOPlayerAttack soPlayerAttack;
     public enum State { STOPPED, WALKING, DASHING, ATTACKING, TRAPPED, SPECIAL}
     public State state = State.STOPPED;
-    
-    //Os estados do enum devem apenas ser usados para condição de controles e de ação no script Player Manager, 
-    //e não como condição de ações nos outros scripts 
+
+    //------------------------------------------------------------------------------------------------------------
+    [System.NonSerialized]
+    public UnityEvent LevelUpEvent;
+
+    private void OnEnable() {
+        if(LevelUpEvent == null)
+            LevelUpEvent = new UnityEvent();
+    }
+
+    public void LevelUp()
+    {
+        level++;
+        if(level > 2) LevelReset();
+        else LevelUpEvent.Invoke();
+    }
+
+    public void LevelReset()
+    {
+        level = 0;
+        LevelUpEvent.Invoke();
+    }
+
 }
