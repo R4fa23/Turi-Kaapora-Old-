@@ -99,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
                     }
 
                     Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                    Debug.Log(transform.forward);
                     characterCtrl.Move(moveDir.normalized * sensibility *Time.deltaTime);
 
                 }
