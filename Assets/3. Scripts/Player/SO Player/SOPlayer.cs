@@ -6,6 +6,9 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "SOPlayer", menuName = "ScriptableObjects/Characters/Player/Manager")]
 public class SOPlayer : ScriptableObject
 {
+    [HideInInspector]
+    public int level = 0;
+
     public SOPlayerHealth soPlayerHealth;
     public SOPlayerMove soPlayerMove;
     public SOPlayerAttack soPlayerAttack;

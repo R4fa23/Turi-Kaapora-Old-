@@ -365,6 +365,7 @@ GameObject:
   - component: {fileID: 9003156691123881368}
   - component: {fileID: 9003156691123881369}
   - component: {fileID: 1295528545523672043}
+  - component: {fileID: 7307876731239188394}
   - component: {fileID: 9003156691123881371}
   - component: {fileID: 9003156691123881370}
   m_Layer: 0
@@ -436,6 +437,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
+--- !u!114 &7307876731239188394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9003156691123881361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3818a1504bdddb4baca76feac5dd251, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
+  maxLifes: 000000000000000000000000
+  velBases:
+  - 0
+  - 0
+  - 0
+  maxStaminas:
+  - 0
+  - 0
+  - 0
+  staminasRecharge:
+  - 0
+  - 0
+  - 0
+  attackDamages: 000000000000000000000000
+  comboDamages: 000000000000000000000000
+  specialDamages: 000000000000000000000000
+  specialCooldowns:
+  - 0
+  - 0
+  - 0
+  specialCooldownReductions:
+  - 0
+  - 0
+  - 0
 --- !u!143 &9003156691123881371
 CharacterController:
   m_ObjectHideFlags: 0

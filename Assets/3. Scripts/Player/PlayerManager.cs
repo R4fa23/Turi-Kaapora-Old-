@@ -22,7 +22,6 @@ public class PlayerManager : MonoBehaviour
     void Awake()
     {
         animator = animated.GetComponent<Animator>();
-        SetConfiguration();
 
         playerMap = new PlayerMap();
 
@@ -62,6 +61,10 @@ public class PlayerManager : MonoBehaviour
         soPlayer.state = SOPlayer.State.STOPPED;
     }
     
+    private void Start() {
+        SetConfiguration();
+    }
+
     void Update()
     {
         //Debug.Log(soPlayer.state);
