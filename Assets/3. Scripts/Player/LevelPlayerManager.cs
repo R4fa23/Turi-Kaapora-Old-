@@ -35,4 +35,13 @@ public class LevelPlayerManager : MonoBehaviour
         soPlayer.soPlayerAttack.specialCooldown = specialCooldowns[index];
         soPlayer.soPlayerAttack.cooldownReduction = specialCooldownReductions[index];
     }
+
+    void OnEnable()
+    {
+        soPlayer.LevelUpEvent.AddListener(SetLevel);
+    }
+    void OnDisable()
+    {
+        soPlayer.LevelUpEvent.RemoveListener(SetLevel);
+    }
 }

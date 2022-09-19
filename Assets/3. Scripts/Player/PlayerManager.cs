@@ -287,11 +287,13 @@ public class PlayerManager : MonoBehaviour
         //soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(DamagedCooldown);
         soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(Damaged);
         soSave.RestartEvent.AddListener(Restart);
+        soPlayer.LevelUpEvent.AddListener(SetConfiguration);
     }
     public void OnDisable()
     {
         //soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(DamagedCooldown);
         soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(Damaged);
         soSave.RestartEvent.RemoveListener(Restart);
+        soPlayer.LevelUpEvent.RemoveListener(SetConfiguration);
     }
 }
