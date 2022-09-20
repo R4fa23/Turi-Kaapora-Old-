@@ -40,12 +40,9 @@ public class SpikesTime : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            if(soPlayer.state != SOPlayer.State.DASHING)
+            if(!charging)
             {
-                if(!charging)
-                {
-                    StartCharge();
-                }
+                StartCharge();
             }
         }
     }
