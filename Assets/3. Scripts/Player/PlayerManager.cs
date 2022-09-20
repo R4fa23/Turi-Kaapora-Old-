@@ -32,6 +32,7 @@ public class PlayerManager : MonoBehaviour
     
     void PlayerSetCommands()
     {
+        /*
         playerMap.Default.Enable();
         playerMap.Default.Movement.started += MovementStarted;
         playerMap.Default.Movement.canceled += MovementCanceled;
@@ -40,10 +41,12 @@ public class PlayerManager : MonoBehaviour
         playerMap.Default.Aim.started += AimStarted;
         playerMap.Default.Special.started += SpecialStarted;
         playerMap.Default.Suicide.started += SuicideStarted;
+        */
     }
 
     void PlayerRemoveCommands()
     {
+        /*
         playerMap.Default.Movement.started -= MovementStarted;
         playerMap.Default.Movement.canceled -= MovementCanceled;
         playerMap.Default.Dash.started -= DashStarted;
@@ -52,6 +55,7 @@ public class PlayerManager : MonoBehaviour
         playerMap.Default.Special.started -= SpecialStarted;
         playerMap.Default.Suicide.started -= SuicideStarted;
         playerMap.Default.Disable();
+        */
     }
 
     
@@ -98,7 +102,15 @@ public class PlayerManager : MonoBehaviour
     //-------------------------------MOVIMENTAÇÃO--------------------------------- 
     public void MovementStarted(InputAction.CallbackContext context)
     {
-        movement = true;
+        if(context.started)
+        {
+            movement = true;
+        }
+        else if(context.canceled)
+        {
+            MovementCanceled(context);
+        }
+            
         /*
         if(soPlayer.state == SOPlayer.State.STOPPED)
         {
