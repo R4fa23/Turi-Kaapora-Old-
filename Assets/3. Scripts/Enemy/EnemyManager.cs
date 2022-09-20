@@ -47,6 +47,7 @@ public class EnemyManager : MonoBehaviour
 
     public void OnEnable()
     {
+        soEnemy.canDamaged = true;
         soEnemy.health = soEnemy.maxHealth;
         soEnemy.RepulsionEvent.AddListener(RecoverDamage);
         soEnemy.DieEvent.AddListener(OnDie);

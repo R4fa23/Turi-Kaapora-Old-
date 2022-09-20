@@ -15,10 +15,13 @@ public class EnemyMove : MonoBehaviour
     bool firstEnable;
     Vector3 firstLocal;
 
+    void Awake()
+    {
+        navMeshAgent = GetComponent<NavMeshAgent>();
+    }
     void Start()
     {
         lastState = SOEnemy.State.STOPPED;
-        navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent.SetDestination(transform.position);
         soEnemy = GetComponent<EnemyManager>().soEnemy;
@@ -65,7 +68,7 @@ public class EnemyMove : MonoBehaviour
         detected = false;
         lastState = SOEnemy.State.STOPPED;
         transform.position = firstLocal;
-        if(gameObject.activeInHierarchy)navMeshAgent.SetDestination(transform.position);
+        if(gameObject.activeInHierarchy) navMeshAgent.SetDestination(transform.position);
         
     }
 
@@ -73,6 +76,7 @@ public class EnemyMove : MonoBehaviour
 
     void OnEnable()
     {
+        //navMeshAgent.SetDestination(transform.position);
         if(firstEnable)
         {
             soEnemy.SummonEvent.AddListener(Detect);
