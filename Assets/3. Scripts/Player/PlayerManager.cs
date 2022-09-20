@@ -26,6 +26,12 @@ public class PlayerManager : MonoBehaviour
         playerMap = new PlayerMap();
 
         //Forma de chamar as funções sem precisar associar manualmente no inspector
+        
+
+    }
+    
+    void PlayerSetCommands()
+    {
         playerMap.Default.Enable();
         playerMap.Default.Movement.started += MovementStarted;
         playerMap.Default.Movement.canceled += MovementCanceled;
@@ -33,8 +39,21 @@ public class PlayerManager : MonoBehaviour
         playerMap.Default.Attack.started += AttackStarted;
         playerMap.Default.Aim.started += AimStarted;
         playerMap.Default.Special.started += SpecialStarted;
-
+        playerMap.Default.Suicide.started += SuicideStarted;
     }
+
+    void PlayerRemoveCommands()
+    {
+        playerMap.Default.Movement.started -= MovementStarted;
+        playerMap.Default.Movement.canceled -= MovementCanceled;
+        playerMap.Default.Dash.started -= DashStarted;
+        playerMap.Default.Attack.started -= AttackStarted;
+        playerMap.Default.Aim.started -= AimStarted;
+        playerMap.Default.Special.started -= SpecialStarted;
+        playerMap.Default.Suicide.started -= SuicideStarted;
+        playerMap.Default.Disable();
+    }
+
     
     void SetConfiguration()
     {
@@ -281,9 +300,17 @@ public class PlayerManager : MonoBehaviour
     {
         //animator.SetTrigger("Dano");
     }
+
+    //--------------------------------------------SE MATAR----------------------------------------
+
+    public void SuicideStarted(InputAction.CallbackContext context)
+    {
+        soPlayer.soPlayerHealth.HealthChange(-100);
+    }
     //-------------------------------------------LISTENER---------------------------------------------
     public void OnEnable()
     {
+        PlayerSetCommands();
         //soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(DamagedCooldown);
         soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(Damaged);
         soSave.RestartEvent.AddListener(Restart);
