@@ -71,6 +71,15 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Suicide"",
+                    ""type"": ""Button"",
+                    ""id"": ""32a65302-dbbc-4137-9f22-009f029bda16"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -227,6 +236,17 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
                     ""action"": ""Special"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d3c27753-a6bd-4e8b-85e3-7f7d38077c82"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Suicide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -240,6 +260,7 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
         m_Default_Attack = m_Default.FindAction("Attack", throwIfNotFound: true);
         m_Default_Aim = m_Default.FindAction("Aim", throwIfNotFound: true);
         m_Default_Special = m_Default.FindAction("Special", throwIfNotFound: true);
+        m_Default_Suicide = m_Default.FindAction("Suicide", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -304,6 +325,7 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
     private readonly InputAction m_Default_Attack;
     private readonly InputAction m_Default_Aim;
     private readonly InputAction m_Default_Special;
+    private readonly InputAction m_Default_Suicide;
     public struct DefaultActions
     {
         private @PlayerMap m_Wrapper;
@@ -313,6 +335,7 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_Default_Attack;
         public InputAction @Aim => m_Wrapper.m_Default_Aim;
         public InputAction @Special => m_Wrapper.m_Default_Special;
+        public InputAction @Suicide => m_Wrapper.m_Default_Suicide;
         public InputActionMap Get() { return m_Wrapper.m_Default; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -337,6 +360,9 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
                 @Special.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnSpecial;
                 @Special.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnSpecial;
                 @Special.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnSpecial;
+                @Suicide.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnSuicide;
+                @Suicide.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnSuicide;
+                @Suicide.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnSuicide;
             }
             m_Wrapper.m_DefaultActionsCallbackInterface = instance;
             if (instance != null)
@@ -356,6 +382,9 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
                 @Special.started += instance.OnSpecial;
                 @Special.performed += instance.OnSpecial;
                 @Special.canceled += instance.OnSpecial;
+                @Suicide.started += instance.OnSuicide;
+                @Suicide.performed += instance.OnSuicide;
+                @Suicide.canceled += instance.OnSuicide;
             }
         }
     }
@@ -367,5 +396,6 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnSpecial(InputAction.CallbackContext context);
+        void OnSuicide(InputAction.CallbackContext context);
     }
 }
