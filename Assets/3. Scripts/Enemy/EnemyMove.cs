@@ -5,15 +5,19 @@ using UnityEngine.AI;
 
 public class EnemyMove : MonoBehaviour
 {
-    SOEnemy soEnemy;
+    [HideInInspector]
+    public SOEnemy soEnemy;
+    
     SOSave soSave;
     NavMeshAgent navMeshAgent;
     Transform player;
-    bool detected;
+    [HideInInspector]
+    public bool detected;
     bool initialMove;
     SOEnemy.State lastState;
     bool firstEnable;
-    Vector3 firstLocal;
+    [HideInInspector]
+    public Vector3 firstLocal;
 
     void Awake()
     {
@@ -21,6 +25,7 @@ public class EnemyMove : MonoBehaviour
     }
     void Start()
     {
+        firstLocal = transform.position;
         lastState = SOEnemy.State.STOPPED;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent.SetDestination(transform.position);
@@ -28,17 +33,18 @@ public class EnemyMove : MonoBehaviour
         soSave = GetComponent<EnemyManager>().soSave;
         navMeshAgent.speed = soEnemy.vel;
         OnEnable();
-        firstLocal = transform.position;
+        
     }
 
     void Update()
     {
+
         if(Vector3.Distance(transform.position, player.position) < soEnemy.distanceDetectation && !detected)
         {
             Detect();
         }        
 
-        if(soEnemy.state == SOEnemy.State.WALKING)
+        if(soEnemy.state == SOEnemy.State.WALKING && detected)
         {
             navMeshAgent.SetDestination(player.position);
             if(lastState != soEnemy.state)
@@ -65,10 +71,12 @@ public class EnemyMove : MonoBehaviour
 
     public void Restart()
     {
+        
         detected = false;
         lastState = SOEnemy.State.STOPPED;
         transform.position = firstLocal;
         if(gameObject.activeInHierarchy) navMeshAgent.SetDestination(transform.position);
+        
         
     }
 

@@ -168,6 +168,7 @@ public class Camp : MonoBehaviour
     {
         if(!completed)
         {
+            StopAllCoroutines();
             soCamp.actualWave = 0;
             soCamp.killCount = 0;
             enemyCount = 0;
@@ -190,7 +191,10 @@ public class Camp : MonoBehaviour
             foreach(GameObject f in firstEnemy)
             {
                 f.SetActive(true);
-                f.GetComponent<EnemyMove>().Restart();
+                f.GetComponent<EnemyMove>().transform.position = f.GetComponent<EnemyMove>().firstLocal;
+                f.GetComponent<EnemyMove>().detected = false;
+                f.GetComponent<EnemyMove>().soEnemy.state = SOEnemy.State.STOPPED;
+                //f.GetComponent<EnemyMove>().Restart();
             }
         }
 
