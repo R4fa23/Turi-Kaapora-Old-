@@ -6,6 +6,7 @@ public class Cage : MonoBehaviour
 {
     [HideInInspector]
     public SOTrail soTrail;
+    public SOPlayer soPlayer;
     int cageLife = 3;
     
     public void LoseLife()
@@ -16,6 +17,7 @@ public class Cage : MonoBehaviour
 
     void Break()
     {
+        soPlayer.soPlayerAttack.EnemyDie(this.gameObject);
         soTrail.BreakCage();
         this.gameObject.SetActive(false);
     }

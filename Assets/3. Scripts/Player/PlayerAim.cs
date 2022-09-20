@@ -6,6 +6,8 @@ public class PlayerAim : MonoBehaviour
 {
     public SOPlayer soPlayer;
     GameObject[] enemies;
+    GameObject[] cages;
+    List<GameObject> targets;
     GameObject nearbyEnemy;
     float nearbyDistance;
     GameObject lastNearbyEnemy;
@@ -15,6 +17,7 @@ public class PlayerAim : MonoBehaviour
     float cooldownUpdate = 0.05f;
     void Start()
     {
+        targets = new List<GameObject>();
         nearbyDistance = Mathf.Infinity;
         DetectEnemies();
         CheckDistance();
@@ -85,7 +88,7 @@ public class PlayerAim : MonoBehaviour
     void CheckDistance()
     { 
 
-        foreach(GameObject e in enemies)
+        foreach(GameObject e in targets)
         {
             if(Vector3.Distance(transform.position, e.transform.position) < nearbyDistance)
             {
@@ -101,6 +104,18 @@ public class PlayerAim : MonoBehaviour
     void DetectEnemies()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        cages = GameObject.FindGameObjectsWithTag("Cage");
+        targets.Clear();
+
+        foreach(GameObject e in enemies)
+        {
+            targets.Add(e);
+        }
+        foreach(GameObject c in cages)
+        {
+            targets.Add(c);
+        }
+
     }
 
     void RestartDetect(GameObject enemyDied)
@@ -113,6 +128,7 @@ public class PlayerAim : MonoBehaviour
         if(enemyDied == enemyFocused) soPlayer.soPlayerMove.TargetAimStop();
         soPlayer.soPlayerMove.NearbyAimStop();
     }
+    
     public void OnEnable()
     {
         soPlayer.soPlayerMove.AimStartEvent.AddListener(ActiveAim);
