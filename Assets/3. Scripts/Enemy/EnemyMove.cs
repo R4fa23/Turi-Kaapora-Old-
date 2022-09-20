@@ -76,7 +76,7 @@ public class EnemyMove : MonoBehaviour
 
     void OnEnable()
     {
-        //navMeshAgent.SetDestination(transform.position);
+        navMeshAgent.SetDestination(transform.position);
         if(firstEnable)
         {
             soEnemy.SummonEvent.AddListener(Detect);
@@ -86,6 +86,7 @@ public class EnemyMove : MonoBehaviour
     }
     void OnDisable()
     {
+        navMeshAgent.SetDestination(transform.position);
         soEnemy.SummonEvent.RemoveListener(Detect);
         soSave.RestartEvent.RemoveListener(Restart);
     }
