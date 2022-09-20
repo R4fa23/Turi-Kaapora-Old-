@@ -63,6 +63,12 @@ public class Trail : MonoBehaviour
         {
             d.SetActive(false);
         }
+
+        foreach(GameObject t in trigger)
+        {
+            t.SetActive(false);
+        }
+
         completed = true;
         soFort.CompleteSpace();
     }
