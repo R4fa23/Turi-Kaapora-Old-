@@ -143,6 +143,11 @@ public class Camp : MonoBehaviour
             s.SetActive(true);
         }
 
+        foreach(GameObject t in trigger)
+        {
+            t.SetActive(false);
+        }
+
         completed = true;
         soFort.CompleteSpace();
         soPlayer.soPlayerHealth.RecoverHealth();
@@ -173,7 +178,6 @@ public class Camp : MonoBehaviour
             {
                 t.SetActive(true);
             }
-            
 
             foreach(GameObject d in door)
             {
