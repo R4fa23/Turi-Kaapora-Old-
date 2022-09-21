@@ -58,6 +58,7 @@ public class EnemyAttack : MonoBehaviour
         soEnemy.AttackStart();
         meshRenderer.enabled = true;
         boxCollider.enabled = true;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Inimigos/Ataque_Machete", transform.position);
         StartCoroutine(AttackTime());
     }
 
