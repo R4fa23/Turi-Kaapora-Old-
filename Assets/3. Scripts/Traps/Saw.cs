@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
+
 
 public class Saw : MonoBehaviour
 {
@@ -12,6 +14,9 @@ public class Saw : MonoBehaviour
     Vector3 finalLocal;
     Vector3 target;
     bool started;
+
+    [SerializeField] VisualEffect visualEffect;
+    
     // Start is called before the first frame update
     void Start()
     {
