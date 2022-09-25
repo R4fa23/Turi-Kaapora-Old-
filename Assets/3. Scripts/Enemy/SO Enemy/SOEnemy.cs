@@ -6,8 +6,10 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "SOEnemy", menuName = "ScriptableObjects/Characters/Enemy")]
 public class SOEnemy : ScriptableObject
 {
-    public enum State { STOPPED, WALKING, ATTACKING }
+    public enum State { STOPPED, ALERT, WALKING, ATTACKING }
+    public enum EnemyType { MELEE, RANGE, LUMBERJACK, INCENDIARY, HUNTER }
     public State state = State.STOPPED;
+    public EnemyType enemyType;
     public int attackDamage;
     public float attackChargeDuration;
     public float attackDuration;
