@@ -12,9 +12,11 @@ public class Saw : MonoBehaviour
     Vector3 finalLocal;
     Vector3 target;
     bool started;
-    // Start is called before the first frame update
+    bool going;
+
     void Start()
     {
+        going = true;
         started = true;
         firstLocal = transform.position;
         finalLocal = transform.position + (transform.forward * distance);
@@ -29,8 +31,16 @@ public class Saw : MonoBehaviour
 
         if(transform.position == target)
         {
-            if(target == firstLocal) target = finalLocal;
-            else if(target == finalLocal) target = firstLocal;
+            if(target == firstLocal)
+            {
+                going = true;
+                target = finalLocal;
+            } 
+            else if(target == finalLocal)
+            {
+                going = false;
+                target = firstLocal;
+            } 
         }
     }
 
