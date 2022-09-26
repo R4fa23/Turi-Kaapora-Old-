@@ -10,6 +10,7 @@ public class EnemyManager : MonoBehaviour
     public SOSave soSave;
     public SOPlayer soPlayer;
     GameObject player;
+    bool repulsionCooldown;
 
     void Awake()
     {
@@ -20,18 +21,33 @@ public class EnemyManager : MonoBehaviour
 
     void Repulse()
     {
-        transform.forward = player.transform.position - transform.position;
-        StartCoroutine(Repulsion());
+        if(!repulsionCooldown)
+        {
+            Vector3 dirView = player.transform.position - transform.position;
+            dirView.y = 0;
+            transform.forward = dirView;
+
+            if(soEnemy.canDamaged) StartCoroutine(Repulsion(soEnemy.forceRecover));
+            else StartCoroutine(Repulsion(soPlayer.soPlayerAttack.repulsionSpecialForce));
+        }
     }
 
-    IEnumerator Repulsion()
+    IEnumerator Repulsion(float force)
     {
+        repulsionCooldown = true;
         Rigidbody rb;
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = false;
-        rb.AddForce(-transform.forward * 50, ForceMode.Impulse);
+        rb.AddForce(-transform.forward * force, ForceMode.Impulse);
         yield return new WaitForSeconds(0.1f);
         rb.isKinematic = true;
+        StartCoroutine(RepulsionCooldown());
+    }
+
+    IEnumerator RepulsionCooldown()
+    {
+        yield return new WaitForSeconds(0.1f);
+        repulsionCooldown = false;
     }
 
     void RecoverDamage()
@@ -50,12 +66,14 @@ public class EnemyManager : MonoBehaviour
         soEnemy.canDamaged = true;
         soEnemy.health = soEnemy.maxHealth;
         soEnemy.RepulsionEvent.AddListener(RecoverDamage);
+        if(soEnemy.enemyType != SOEnemy.EnemyType.LUMBERJACK) soEnemy.AttackEndEvent.AddListener(Repulse);
         soEnemy.DieEvent.AddListener(OnDie);
         soEnemy.RepulsionEvent.AddListener(Repulse);
     }
     public void OnDisable()
     {
         soEnemy.RepulsionEvent.RemoveListener(RecoverDamage);
+        if(soEnemy.enemyType != SOEnemy.EnemyType.LUMBERJACK) soEnemy.AttackEndEvent.RemoveListener(Repulse);
         soEnemy.DieEvent.RemoveListener(OnDie);
         soEnemy.RepulsionEvent.RemoveListener(Repulse);
     }
@@ -67,6 +85,7 @@ public class EnemyManager : MonoBehaviour
 
     void SetConfiguration()
     {
+        soEnemy.enemyType = reference.enemyType;
         soEnemy.attackDamage = reference.attackDamage;
         soEnemy.attackChargeDuration = reference.attackChargeDuration;
         soEnemy.attackDuration = reference.attackDuration;
@@ -79,6 +98,12 @@ public class EnemyManager : MonoBehaviour
         soEnemy.cooldownDamaged = reference.cooldownDamaged;
         soEnemy.currentCooldown = reference.currentCooldown;
         soEnemy.canDamaged = true;
+        soEnemy.divisorAttackChance = reference.divisorAttackChance;
+        soEnemy.maxSecondsToAttack = reference.maxSecondsToAttack;
+        soEnemy.forceRecover = reference.forceRecover;
+        soEnemy.specialTime = reference.specialTime;
+        soEnemy.timeToSpecial = reference.timeToSpecial;
+
 
 
         soEnemy.currentCooldown = soEnemy.attackCooldown;

@@ -15,7 +15,8 @@ public class EnemyLumberjack : MonoBehaviour
 
     void CanNotDamage()
     {
-        soEnemy.canDamaged = false;
+        if(soEnemy.specialTime >= soEnemy.timeToSpecial) 
+            soEnemy.canDamaged = false;
     }
 
     void CanDamage()
