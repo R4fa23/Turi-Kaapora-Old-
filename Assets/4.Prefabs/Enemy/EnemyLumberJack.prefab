@@ -242,7 +242,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
-  soEnemy: {fileID: 0}
   manager: {fileID: 3779829038494091636}
   special: {fileID: 4386499033756129113}
 --- !u!33 &3108126785825278432
@@ -606,6 +605,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3434706647564316721}
+  - component: {fileID: 2932589050027092977}
   - component: {fileID: 4679102671269502541}
   - component: {fileID: 6337521105464240361}
   - component: {fileID: 2015193965111600894}
@@ -631,6 +631,20 @@ Transform:
   m_Father: {fileID: 553504588986365811}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2932589050027092977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4386499033756129113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ce69a0faf0467147a0306ae3e4a2b94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
+  manager: {fileID: 3779829038494091636}
 --- !u!33 &4679102671269502541
 MeshFilter:
   m_ObjectHideFlags: 0

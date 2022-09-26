@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public SOEnemy reference;
-    [HideInInspector]
+    //[HideInInspector]
     public SOEnemy soEnemy;
     public SOSave soSave;
     public SOPlayer soPlayer;

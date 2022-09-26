@@ -27,7 +27,7 @@ public class SOEnemy : ScriptableObject
     public int divisorAttackChance;
     public int maxSecondsToAttack;
     public float forceRecover;
-    //[HideInInspector]
+    [HideInInspector]
     public float specialTime;
     public float timeToSpecial;
 

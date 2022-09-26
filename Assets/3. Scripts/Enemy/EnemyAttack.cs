@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyAttack : MonoBehaviour
 {
     public SOPlayer soPlayer;
-    public SOEnemy soEnemy;
+    SOEnemy soEnemy;
     SOSave soSave;
     public GameObject manager;
     Transform player;
