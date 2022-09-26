@@ -22,8 +22,11 @@ public class EnemyAttack : MonoBehaviour
     
     void Start()
     {
+        if(special != null) 
+        {
         colliderSpecial = special.GetComponent<SphereCollider>();
         rendererSpecial = special.GetComponent<MeshRenderer>();
+        }
         soEnemy = manager.GetComponent<EnemyManager>().soEnemy;
         soSave = manager.GetComponent<EnemyManager>().soSave;
         boxCollider = GetComponent<BoxCollider>();
@@ -70,7 +73,7 @@ public class EnemyAttack : MonoBehaviour
         soEnemy.AttackStart();
         FMODUnity.RuntimeManager.PlayOneShot("event:/Inimigos/Ataque_Machete", transform.position);
 
-        if(soEnemy.specialTime >= soEnemy.timeToSpecial)
+        if(soEnemy.specialTime >= soEnemy.timeToSpecial && special != null)
         {
             colliderSpecial.enabled = true;
             rendererSpecial.enabled = true;
@@ -92,10 +95,13 @@ public class EnemyAttack : MonoBehaviour
         if(soEnemy.specialTime >= soEnemy.timeToSpecial) soEnemy.specialTime = 0;
         soEnemy.state = SOEnemy.State.STOPPED;
         StopAllCoroutines();
+        if(special != null)
+        {
+            colliderSpecial.enabled = false;
+            rendererSpecial.enabled = false;
+        }
         meshRenderer.enabled = false;
         boxCollider.enabled = false;
-        colliderSpecial.enabled = false;
-        rendererSpecial.enabled = false;
         rotate = false;
         soEnemy.AttackEnd();
         StartCoroutine(AttackCooldown());
@@ -106,8 +112,11 @@ public class EnemyAttack : MonoBehaviour
         StopAllCoroutines();
         boxCollider.enabled = false;
         meshRenderer.enabled = false;
-        colliderSpecial.enabled = false;
-        rendererSpecial.enabled = false;
+        if(special != null)
+        {
+            colliderSpecial.enabled = false;
+            rendererSpecial.enabled = false;
+        }
         rotate = false;
         attacking = false;
         manager.SetActive(false);
@@ -118,8 +127,11 @@ public class EnemyAttack : MonoBehaviour
         StopAllCoroutines();
         boxCollider.enabled = false;
         meshRenderer.enabled = false;
-        colliderSpecial.enabled = false;
-        rendererSpecial.enabled = false;
+        if(special != null)
+        {
+            colliderSpecial.enabled = false;
+            rendererSpecial.enabled = false;
+        }
         rotate = false;
         attacking = false;
         startMoved = false;
