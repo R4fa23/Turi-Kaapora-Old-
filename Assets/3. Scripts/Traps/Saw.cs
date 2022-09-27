@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Saw : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class Saw : MonoBehaviour
     Vector3 target;
     bool started;
     bool going;
+    
+    [SerializeField] VisualEffect vfx;
+    float direction;
 
     void Start()
     {
@@ -42,6 +46,14 @@ public class Saw : MonoBehaviour
                 target = firstLocal;
             } 
         }
+
+        
+        direction = vfx.GetFloat("Direction");
+
+        if (going) direction = 1;
+        else direction = -1;
+
+        vfx.SetFloat("Direction", direction);
     }
 
     void OnTriggerEnter(Collider other)
@@ -60,5 +72,13 @@ public class Saw : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawLine(point, point + (transform.forward * distance));
         }
+    }
+
+    IEnumerator aaa()
+    {
+
+
+        yield return new WaitUntil(() => GetComponent<Animator>().GetCurrentAnimatorClipInfo(0).Length > 1);
+        
     }
 }
