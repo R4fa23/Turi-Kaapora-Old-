@@ -319,6 +319,13 @@ public class PlayerManager : MonoBehaviour
     {
         soPlayer.soPlayerHealth.HealthChange(-100);
     }
+
+    //-------------------------------------------MORRER-----------------------------------------------
+
+    public void OnDie() {
+        
+    }
+    
     //-------------------------------------------LISTENER---------------------------------------------
     public void OnEnable()
     {
@@ -327,6 +334,7 @@ public class PlayerManager : MonoBehaviour
         soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(Damaged);
         soSave.RestartEvent.AddListener(Restart);
         soPlayer.LevelUpEvent.AddListener(SetConfiguration);
+        soPlayer.soPlayerHealth.DieEvent.AddListener(OnDie);
     }
     public void OnDisable()
     {
@@ -334,5 +342,6 @@ public class PlayerManager : MonoBehaviour
         soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(Damaged);
         soSave.RestartEvent.RemoveListener(Restart);
         soPlayer.LevelUpEvent.RemoveListener(SetConfiguration);
+        soPlayer.soPlayerHealth.DieEvent.RemoveListener(OnDie);
     }
 }

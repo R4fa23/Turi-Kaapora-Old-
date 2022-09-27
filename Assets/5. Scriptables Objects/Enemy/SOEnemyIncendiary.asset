@@ -13,15 +13,21 @@ MonoBehaviour:
   m_Name: SOEnemyIncendiary
   m_EditorClassIdentifier: 
   state: 0
-  attackDamage: 0
-  attackChargeDuration: 0
-  attackDuration: 0
-  attackCooldown: 0
-  cooldownDamaged: 0
-  attackRange: 0
-  vel: 0
-  distanceDetectation: 0
-  maxHealth: 0
+  enemyType: 3
+  attackDamage: 1
+  attackChargeDuration: 0.5
+  attackDuration: 0.2
+  attackCooldown: 1
+  cooldownDamaged: 1
+  attackRange: 3
+  vel: 8
+  distanceDetectation: 10
+  maxHealth: 10
   health: 0
   currentCooldown: 0
   canDamaged: 0
+  divisorAttackChance: 10
+  maxSecondsToAttack: 30
+  forceRecover: 90
+  specialTime: 0
+  timeToSpecial: 20

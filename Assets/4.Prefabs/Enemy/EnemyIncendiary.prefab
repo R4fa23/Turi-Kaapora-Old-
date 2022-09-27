@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa4fc862f815bb4ca0efcef3fd723de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reference: {fileID: 11400000, guid: 966d1b0e3e74b5d48ad01dbc5ddc16b4, type: 2}
+  reference: {fileID: 11400000, guid: 6abad025e0966e643a342715ec9a9e53, type: 2}
   soEnemy: {fileID: 0}
   soSave: {fileID: 11400000, guid: e57cf268432d04248a6d40fc954c2cca, type: 2}
   soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
@@ -364,6 +364,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9590658dd673e4eb35ec7bd67ee7f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soEnemy: {fileID: 0}
+  soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
+  detected: 0
+  firstLocal: {x: 0, y: 0, z: 0}
 --- !u!114 &5224503193684964767
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,7 +7,9 @@ using UnityEngine.Events;
 public class SOEnemy : ScriptableObject
 {
     public enum State { STOPPED, WALKING, ATTACKING }
+    public enum EnemyType { MELEE, RANGE, LUMBERJACK, INCENDIARY, HUNTER }
     public State state = State.STOPPED;
+    public EnemyType enemyType;
     public int attackDamage;
     public float attackChargeDuration;
     public float attackDuration;
@@ -22,6 +24,12 @@ public class SOEnemy : ScriptableObject
     public float currentCooldown;
     [HideInInspector]
     public bool canDamaged;
+    public int divisorAttackChance;
+    public int maxSecondsToAttack;
+    public float forceRecover;
+    [HideInInspector]
+    public float specialTime;
+    public float timeToSpecial;
 
     [System.NonSerialized]
     public UnityEvent ChargeStartEvent;

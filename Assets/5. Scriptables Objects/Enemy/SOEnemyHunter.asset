@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SOEnemyHunter
   m_EditorClassIdentifier: 
   state: 0
+  enemyType: 4
   attackDamage: 0
   attackChargeDuration: 0.5
   attackDuration: 0.1
@@ -25,3 +26,8 @@ MonoBehaviour:
   health: 0
   currentCooldown: 0
   canDamaged: 0
+  divisorAttackChance: 10
+  maxSecondsToAttack: 30
+  forceRecover: 25
+  specialTime: 0
+  timeToSpecial: 20
