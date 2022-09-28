@@ -356,7 +356,7 @@ public class PlayerManager : MonoBehaviour
 
     IEnumerator TimeRestart()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(10);
         soSave.Restart();
     }
     

@@ -21,10 +21,12 @@ public class GameOverCamera : MonoBehaviour
 
     public void CallFadeIn()
     {
+        Debug.Log("Fade In");
         animator.SetTrigger("In");
     }
     public void CallFadeOut()
     {
+        Debug.Log("Fade Out");
         animator.SetTrigger("Out");
     }
 }
