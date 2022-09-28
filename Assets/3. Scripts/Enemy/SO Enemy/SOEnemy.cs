@@ -11,7 +11,9 @@ public class SOEnemy : ScriptableObject
     public State state = State.STOPPED;
     public EnemyType enemyType;
     public int attackDamage;
+    [HideInInspector]
     public float attackChargeDuration;
+    [HideInInspector]
     public float attackDuration;
     public float attackCooldown;
     public float cooldownDamaged;
