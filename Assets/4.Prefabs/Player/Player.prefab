@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
-  repulsionForce: 50
 --- !u!33 &5461495138337663956
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -325,6 +324,7 @@ MonoBehaviour:
   soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
   soSave: {fileID: 11400000, guid: e57cf268432d04248a6d40fc954c2cca, type: 2}
   animated: {fileID: 6950409390961486072}
+  animator: {fileID: 5827187371794152544}
 --- !u!114 &1295528545523672043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -594,6 +594,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47e277ecd6b5aba4986d572d2c15d641, type: 3}
+--- !u!95 &5827187371794152544 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1549479636056638678, guid: 47e277ecd6b5aba4986d572d2c15d641,
+    type: 3}
+  m_PrefabInstance: {fileID: 4998590478803089590}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6950409390961486072 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2678057427889901646, guid: 47e277ecd6b5aba4986d572d2c15d641,

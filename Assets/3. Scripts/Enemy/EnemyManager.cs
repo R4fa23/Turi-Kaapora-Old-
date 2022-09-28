@@ -11,7 +11,7 @@ public class EnemyManager : MonoBehaviour
     public SOPlayer soPlayer;
     GameObject player;
     bool repulsionCooldown;
-    [SerializeField] Animator animator;
+    public Animator animator;
 
     void Awake()
     {

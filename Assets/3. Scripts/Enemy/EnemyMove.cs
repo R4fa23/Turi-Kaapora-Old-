@@ -20,6 +20,7 @@ public class EnemyMove : MonoBehaviour
     public Vector3 firstLocal;
     bool alert;
     float attackConfirmed;
+    EnemyManager manager;
     
     
 
@@ -29,11 +30,12 @@ public class EnemyMove : MonoBehaviour
     }
     void Start()
     {
+        manager = GetComponent<EnemyManager>();
         lastState = SOEnemy.State.STOPPED;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent.SetDestination(transform.position);
-        soEnemy = GetComponent<EnemyManager>().soEnemy;
-        soSave = GetComponent<EnemyManager>().soSave;
+        soEnemy = manager.soEnemy;
+        soSave = manager.soSave;
         navMeshAgent.speed = soEnemy.vel;
         OnEnable();
         
@@ -69,7 +71,7 @@ public class EnemyMove : MonoBehaviour
             navMeshAgent.SetDestination(transform.position);
         }
 
-        GetComponent<Animator>().SetFloat("Velocity", navMeshAgent.remainingDistance);
+        manager.animator.SetFloat("Velocity", navMeshAgent.remainingDistance);
         
     }
 

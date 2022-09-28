@@ -31,6 +31,7 @@ public class SOSave : ScriptableObject
 
     public void Restart()
     {
+        Debug.Log("Restart");
         RestartEvent.Invoke();
     }
 }
