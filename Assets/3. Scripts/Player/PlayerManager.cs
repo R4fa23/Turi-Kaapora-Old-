@@ -323,7 +323,13 @@ public class PlayerManager : MonoBehaviour
     //-------------------------------------------MORRER-----------------------------------------------
 
     public void OnDie() {
-        
+        StartCoroutine(TimeRestart());
+    }
+
+    IEnumerator TimeRestart()
+    {
+        yield return new WaitForSeconds(20);
+        soSave.Restart();
     }
     
     //-------------------------------------------LISTENER---------------------------------------------
