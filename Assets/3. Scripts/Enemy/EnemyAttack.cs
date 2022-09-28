@@ -40,14 +40,23 @@ public class EnemyAttack : MonoBehaviour
     
     void Update()
     {
+        if(!soEnemy.canAttack)
+        {
+            soEnemy.attackTime += Time.deltaTime;
+
+            if(soEnemy.attackTime >= soEnemy.timeToAttack) soEnemy.canAttack = true;
+        }
+
         if(startMoved && soEnemy.enemyType == SOEnemy.EnemyType.LUMBERJACK && soEnemy.specialTime < soEnemy.timeToSpecial)
         {
             soEnemy.specialTime += Time.deltaTime;
         }
 
-        if(Vector3.Distance(manager.transform.position, player.position) < soEnemy.attackRange && !attacking)
+        if(Vector3.Distance(manager.transform.position, player.position) < soEnemy.attackRange && !attacking && soEnemy.canAttack)
         {  
             //transform.parent.transform.forward = Vector3.RotateTowards(transform.parent.transform.forward, player.position - transform.parent.transform.position, Mathf.PI / 200, 0);
+            soEnemy.canAttack = false;
+            soEnemy.attackTime = 0;
             soEnemy.state = SOEnemy.State.ATTACKING;
             attacking = true;
             rotate = true;
@@ -136,6 +145,8 @@ public class EnemyAttack : MonoBehaviour
         attacking = false;
         startMoved = false;
         soEnemy.specialTime = 0;
+        soEnemy.attackTime = 0;
+        soEnemy.canAttack = true;
     }
     IEnumerator ChargingTime(float duration)
     {

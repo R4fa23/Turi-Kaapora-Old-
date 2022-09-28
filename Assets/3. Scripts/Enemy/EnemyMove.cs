@@ -97,6 +97,7 @@ public class EnemyMove : MonoBehaviour
     void Alerting()
     {
         soEnemy.state = SOEnemy.State.WALKING;
+        soEnemy.canAttack = true;
         detected = true;
         navMeshAgent.SetDestination(player.position);
         soEnemy.MoveStart();
