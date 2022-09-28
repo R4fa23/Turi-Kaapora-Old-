@@ -12,13 +12,17 @@ public class EnemyManager : MonoBehaviour
     GameObject player;
     bool repulsionCooldown;
     public Animator animator;
+    float animChargeTime;
+    float animAttackTime;
 
     void Awake()
     {
         soEnemy = (SOEnemy)ScriptableObject.CreateInstance(typeof(SOEnemy));
+        AnimationsTime();
         SetConfiguration();
         player = GameObject.FindGameObjectWithTag("Player");
     }
+
 
     void Repulse()
     {
@@ -68,7 +72,7 @@ public class EnemyManager : MonoBehaviour
 
     void Damaged()
     {
-        animator.SetTrigger("Damaged");
+        animator.SetTrigger("Take Damage");
     }
 
     IEnumerator TimeRecoverDamage()
@@ -106,12 +110,30 @@ public class EnemyManager : MonoBehaviour
         soPlayer.soPlayerAttack.EnemyDie(this.gameObject);
     }
 
-    void SetConfiguration()
+    void AnimationsTime()
     {
+        AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
+        foreach(AnimationClip clip in clips)
+        {
+            switch(clip.name)
+            {
+                case "Charge Attack":
+                    animChargeTime = clip.length;
+                    break;
+                case "Attack":
+                    animAttackTime = clip.length;
+                    break;
+            }
+        }
+    }
+
+    void SetConfiguration()
+    {   
+
         soEnemy.enemyType = reference.enemyType;
         soEnemy.attackDamage = reference.attackDamage;
-        soEnemy.attackChargeDuration = reference.attackChargeDuration;
-        soEnemy.attackDuration = reference.attackDuration;
+        soEnemy.attackChargeDuration = animChargeTime;
+        soEnemy.attackDuration = animAttackTime;
         soEnemy.attackCooldown = reference.attackCooldown;
         soEnemy.attackRange = reference.attackRange;
         soEnemy.vel = reference.vel;

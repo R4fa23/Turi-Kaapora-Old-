@@ -22,7 +22,6 @@ public class EnemyMove : MonoBehaviour
     float attackConfirmed;
     EnemyManager manager;
     
-    
 
     void Awake()
     {
