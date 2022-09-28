@@ -65,7 +65,7 @@ public class EnemyAttack : MonoBehaviour
         if(rotate)
         {
             Vector3 dirP= new Vector3(player.position.x, transform.position.y, player.position.z);
-            transform.parent.transform.forward = Vector3.RotateTowards(transform.parent.transform.forward, dirP - transform.parent.transform.position, Mathf.PI / 100, 0);
+            transform.parent.transform.forward = Vector3.RotateTowards(transform.parent.transform.forward, dirP - transform.parent.transform.position, Mathf.PI / soEnemy.rotationVel, 0);
         }
     }
 
