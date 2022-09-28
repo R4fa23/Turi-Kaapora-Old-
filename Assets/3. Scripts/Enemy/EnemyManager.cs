@@ -11,12 +11,14 @@ public class EnemyManager : MonoBehaviour
     public SOPlayer soPlayer;
     GameObject player;
     bool repulsionCooldown;
+    Animator animator;
 
     void Awake()
     {
         soEnemy = (SOEnemy)ScriptableObject.CreateInstance(typeof(SOEnemy));
         SetConfiguration();
         player = GameObject.FindGameObjectWithTag("Player");
+        animator = GetComponent<Animator>();
     }
 
     void Repulse()
@@ -55,6 +57,21 @@ public class EnemyManager : MonoBehaviour
         StartCoroutine(TimeRecoverDamage());
     }
 
+    void Restart()
+    {
+        animator.SetTrigger("Restart");
+    }
+
+    void StartCharge()
+    {
+        animator.SetTrigger("Start Charge");
+    }
+
+    void Damaged()
+    {
+        animator.SetTrigger("Damaged");
+    }
+
     IEnumerator TimeRecoverDamage()
     {
         yield return new WaitForSeconds(0.1f);
@@ -65,10 +82,14 @@ public class EnemyManager : MonoBehaviour
     {
         soEnemy.canDamaged = true;
         soEnemy.health = soEnemy.maxHealth;
+
         soEnemy.RepulsionEvent.AddListener(RecoverDamage);
         if(soEnemy.enemyType != SOEnemy.EnemyType.LUMBERJACK) soEnemy.AttackEndEvent.AddListener(Repulse);
         soEnemy.DieEvent.AddListener(OnDie);
         soEnemy.RepulsionEvent.AddListener(Repulse);
+        soSave.RestartEvent.AddListener(Restart);
+        soEnemy.ChargeStartEvent.AddListener(StartCharge);
+        soEnemy.ChangeLifeEvent.AddListener(Damaged);
     }
     public void OnDisable()
     {
@@ -76,6 +97,9 @@ public class EnemyManager : MonoBehaviour
         if(soEnemy.enemyType != SOEnemy.EnemyType.LUMBERJACK) soEnemy.AttackEndEvent.RemoveListener(Repulse);
         soEnemy.DieEvent.RemoveListener(OnDie);
         soEnemy.RepulsionEvent.RemoveListener(Repulse);
+        soSave.RestartEvent.RemoveListener(Restart);
+        soEnemy.ChargeStartEvent.RemoveListener(StartCharge);
+        soEnemy.ChangeLifeEvent.RemoveListener(Damaged);
     }
 
     private void OnDie() 
