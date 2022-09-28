@@ -30,6 +30,11 @@ public class SOEnemy : ScriptableObject
     [HideInInspector]
     public float specialTime;
     public float timeToSpecial;
+    [HideInInspector]
+    public bool canAttack;
+    [HideInInspector]
+    public float attackTime;
+    public float timeToAttack;
 
     [System.NonSerialized]
     public UnityEvent ChargeStartEvent;

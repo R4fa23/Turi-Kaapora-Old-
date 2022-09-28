@@ -101,8 +101,12 @@ public class EnemyManager : MonoBehaviour
         soEnemy.divisorAttackChance = reference.divisorAttackChance;
         soEnemy.maxSecondsToAttack = reference.maxSecondsToAttack;
         soEnemy.forceRecover = reference.forceRecover;
-        soEnemy.specialTime = reference.specialTime;
+        soEnemy.specialTime = 0;
         soEnemy.timeToSpecial = reference.timeToSpecial;
+        soEnemy.canAttack = true;
+        soEnemy.attackTime = 0;
+        soEnemy.timeToAttack = reference.timeToAttack;
+
 
 
 
