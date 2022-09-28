@@ -68,6 +68,8 @@ public class EnemyMove : MonoBehaviour
         {
             navMeshAgent.SetDestination(transform.position);
         }
+
+        GetComponent<Animator>().SetFloat("Velocity", navMeshAgent.remainingDistance);
         
     }
 
@@ -82,7 +84,7 @@ public class EnemyMove : MonoBehaviour
     }
 
     IEnumerator StopDetect()
-    {
+    { 
         yield return new WaitForSeconds(5);
         Recover();
     }
