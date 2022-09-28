@@ -17,7 +17,7 @@ public class PlayerManager : MonoBehaviour
     bool canSpecial = true;
     bool canFire = true;
     public GameObject animated;
-    Animator animator;
+    public Animator animator;
 
     void Awake()
     {
@@ -81,6 +81,7 @@ public class PlayerManager : MonoBehaviour
         soPlayer.soPlayerMove.vel = soPlayer.soPlayerMove.velBase;
         soPlayer.soPlayerHealth.burned = false;
         soPlayer.soPlayerMove.slow = false;
+        soPlayer.soPlayerHealth.dead = false;
         soPlayer.state = SOPlayer.State.STOPPED;
     }
     
@@ -99,16 +100,24 @@ public class PlayerManager : MonoBehaviour
         if(soPlayer.soPlayerMove.slow) Slow();
     }
 
+    bool IsDead()
+    {
+        return soPlayer.soPlayerHealth.dead;
+    }
+
     //-------------------------------MOVIMENTAÇÃO--------------------------------- 
     public void MovementStarted(InputAction.CallbackContext context)
     {
-        if(context.started)
+        if(!IsDead())
         {
-            movement = true;
-        }
-        else if(context.canceled)
-        {
-            MovementCanceled(context);
+            if(context.started)
+            {
+                movement = true;
+            }
+            else if(context.canceled)
+            {
+                MovementCanceled(context);
+            }
         }
             
         /*
@@ -127,22 +136,27 @@ public class PlayerManager : MonoBehaviour
 
     public void MovementPerformed()
     {
-        if(soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING)
+        if(!IsDead())
         {
-            //animator.SetBool("Move", true);
-            soPlayer.state = SOPlayer.State.WALKING;
-            soPlayer.soPlayerMove.MoveStart();
-            
+            if(soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING)
+            {
+                //animator.SetBool("Move", true);
+                soPlayer.state = SOPlayer.State.WALKING;
+                soPlayer.soPlayerMove.MoveStart();
+                
+            }
         }
     }
     public void MovementCanceled(InputAction.CallbackContext context) {
         movement = false;
         //animator.SetBool("Move", false);
-
-        if(soPlayer.state == SOPlayer.State.WALKING)
+        if(!IsDead())
         {
-            soPlayer.state = SOPlayer.State.STOPPED;
-            soPlayer.soPlayerMove.MoveEnd();
+            if(soPlayer.state == SOPlayer.State.WALKING)
+            {
+                soPlayer.state = SOPlayer.State.STOPPED;
+                soPlayer.soPlayerMove.MoveEnd();
+            }
         }
         /*
         else if(soPlayer.state == SOPlayer.State.DASHING)
@@ -155,21 +169,24 @@ public class PlayerManager : MonoBehaviour
     //-------------------------------DASH--------------------------------- 
     public void DashStarted(InputAction.CallbackContext context)
     {
-        if(canDash && soPlayer.state != SOPlayer.State.TRAPPED && soPlayer.state != SOPlayer.State.SPECIAL && soPlayer.soPlayerMove.staminas > 0 && !soPlayer.soPlayerMove.slow)
+        if(!IsDead())
         {
-            //animator.SetTrigger("Dash");
-            soPlayer.soPlayerMove.ChangeStaminaCount(-1);
-            soPlayer.soPlayerMove.rechargeTime = 0;
-            dashing = true;
-            soPlayer.state = SOPlayer.State.DASHING;
-            canDash = false;
-            StartCoroutine(DashCooldown());
-            soPlayer.soPlayerMove.DashStart();
+            if(canDash && soPlayer.state != SOPlayer.State.TRAPPED && soPlayer.state != SOPlayer.State.SPECIAL && soPlayer.soPlayerMove.staminas > 0 && !soPlayer.soPlayerMove.slow)
+            {
+                //animator.SetTrigger("Dash");
+                soPlayer.soPlayerMove.ChangeStaminaCount(-1);
+                soPlayer.soPlayerMove.rechargeTime = 0;
+                dashing = true;
+                soPlayer.state = SOPlayer.State.DASHING;
+                canDash = false;
+                StartCoroutine(DashCooldown());
+                soPlayer.soPlayerMove.DashStart();
 
-        }
-        else if(soPlayer.state == SOPlayer.State.TRAPPED)
-        {
-            soPlayer.soPlayerMove.TrappedClick();
+            }
+            else if(soPlayer.state == SOPlayer.State.TRAPPED)
+            {
+                soPlayer.soPlayerMove.TrappedClick();
+            }
         }
     }
 
@@ -193,13 +210,16 @@ public class PlayerManager : MonoBehaviour
     //-------------------------------ATAQUE--------------------------------- 
     public void AttackStarted(InputAction.CallbackContext context)
     {
-        if(!dashing && (soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canAttack)
+        if(!IsDead())
         {
-            //animator.SetTrigger("Ataque");
-            canAttack = false;
-            soPlayer.state = SOPlayer.State.ATTACKING;
-            soPlayer.soPlayerAttack.AttackStart();
-            StartCoroutine(AttackCooldown());
+            if(!dashing && (soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canAttack)
+            {
+                //animator.SetTrigger("Ataque");
+                canAttack = false;
+                soPlayer.state = SOPlayer.State.ATTACKING;
+                soPlayer.soPlayerAttack.AttackStart();
+                StartCoroutine(AttackCooldown());
+            }
         }
     }
     IEnumerator AttackCooldown()
@@ -222,25 +242,29 @@ public class PlayerManager : MonoBehaviour
     //-------------------------------------------MIRAR-----------------------------------------------
     public void AimStarted(InputAction.CallbackContext context)
     {
-        if(soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING)
+        if(!IsDead())
         {
-            soPlayer.soPlayerMove.AimStart();
+            if(soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING)
+            {
+                soPlayer.soPlayerMove.AimStart();
+            }
         }
-            
     }
 
     //---------------------------------------------ESPECIAL------------------------------------------
 
     public void SpecialStarted(InputAction.CallbackContext context)
     {
-        if(!dashing && (soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canSpecial)
+        if(!IsDead())
         {
-            soPlayer.soPlayerAttack.SpecialStart();
-            soPlayer.state = SOPlayer.State.SPECIAL;
-            soPlayer.soPlayerMove.DashStart();
-            canSpecial = false;
+            if(!dashing && (soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canSpecial)
+            {
+                soPlayer.soPlayerAttack.SpecialStart();
+                soPlayer.state = SOPlayer.State.SPECIAL;
+                soPlayer.soPlayerMove.DashStart();
+                canSpecial = false;
+            }
         }
-        
     }
     void SpecialCooldown()
         {
@@ -256,7 +280,7 @@ public class PlayerManager : MonoBehaviour
 
     void Restart()
     {
-        
+        soPlayer.soPlayerHealth.dead = false;
         GetComponent<CharacterController>().enabled = false;
         transform.position = soSave.savePoint.position;
         GetComponent<CharacterController>().enabled = true;
@@ -317,18 +341,22 @@ public class PlayerManager : MonoBehaviour
 
     public void SuicideStarted(InputAction.CallbackContext context)
     {
-        soPlayer.soPlayerHealth.HealthChange(-100);
+        if(!IsDead())
+        {
+            soPlayer.soPlayerHealth.HealthChange(-100);
+        }
     }
 
     //-------------------------------------------MORRER-----------------------------------------------
 
-    public void OnDie() {
+    public void OnDie() 
+    {
         StartCoroutine(TimeRestart());
     }
 
     IEnumerator TimeRestart()
     {
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(2);
         soSave.Restart();
     }
     
