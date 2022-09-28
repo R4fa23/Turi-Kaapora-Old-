@@ -11,14 +11,13 @@ public class EnemyManager : MonoBehaviour
     public SOPlayer soPlayer;
     GameObject player;
     bool repulsionCooldown;
-    Animator animator;
+    [SerializeField] Animator animator;
 
     void Awake()
     {
         soEnemy = (SOEnemy)ScriptableObject.CreateInstance(typeof(SOEnemy));
         SetConfiguration();
         player = GameObject.FindGameObjectWithTag("Player");
-        animator = GetComponent<Animator>();
     }
 
     void Repulse()
