@@ -37,6 +37,7 @@ public class SOEnemy : ScriptableObject
     [HideInInspector]
     public float attackTime;
     public float timeToAttack;
+    public float rotationVel;
 
     [System.NonSerialized]
     public UnityEvent ChargeStartEvent;
