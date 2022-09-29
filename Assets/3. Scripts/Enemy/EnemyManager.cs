@@ -14,6 +14,7 @@ public class EnemyManager : MonoBehaviour
     public Animator animator;
     float animChargeTime;
     float animAttackTime;
+    float animWaitTime;
 
     void Awake()
     {
@@ -123,6 +124,9 @@ public class EnemyManager : MonoBehaviour
                 case "Attack":
                     animAttackTime = clip.length;
                     break;
+                case "Wait":
+                    animWaitTime = clip.length;
+                    break;
             }
         }
     }
@@ -133,7 +137,7 @@ public class EnemyManager : MonoBehaviour
         soEnemy.enemyType = reference.enemyType;
         soEnemy.attackDamage = reference.attackDamage;
         soEnemy.attackChargeDuration = animChargeTime;
-        soEnemy.attackDuration = animAttackTime;
+        soEnemy.attackDuration = animAttackTime + animWaitTime;
         soEnemy.attackCooldown = reference.attackCooldown;
         soEnemy.attackRange = reference.attackRange;
         soEnemy.vel = reference.vel;
