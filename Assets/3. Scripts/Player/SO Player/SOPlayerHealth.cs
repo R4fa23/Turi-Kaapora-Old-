@@ -6,6 +6,7 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "SOPlayerHealth", menuName = "ScriptableObjects/Characters/Player/Health")]
 public class SOPlayerHealth : ScriptableObject
 {
+    
     public int maxLife = 10;
     public int life;
     [HideInInspector]

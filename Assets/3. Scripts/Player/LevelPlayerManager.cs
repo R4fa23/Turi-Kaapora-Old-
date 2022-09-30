@@ -10,9 +10,9 @@ public class LevelPlayerManager : MonoBehaviour
     public float[] velBases = new float[3];
     public float[] maxStaminas = new float[3];
     public float[] staminasRecharge = new float[3];
-    public int[] attackDamages = new int[3];
-    public int[] comboDamages = new int[3];
-    public int[] specialDamages = new int[3];
+    public float[] attackDamages = new float[3];
+    public float[] comboDamages = new float[3];
+    public float[] specialDamages = new float[3];
     public float[] specialCooldowns = new float[3];
     public float[] specialCooldownReductions = new float[3];
 

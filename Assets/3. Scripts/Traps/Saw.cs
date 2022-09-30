@@ -14,12 +14,17 @@ public class Saw : MonoBehaviour
     Vector3 target;
     bool started;
     bool going;
+    public Animator animator;
+    public GameObject rail;
+    public GameObject saw;
     
     [SerializeField] VisualEffect vfx;
     float direction;
 
     void Start()
     {
+        saw.GetComponent<TriggerDamage>().damage = damage;
+        saw.GetComponent<TriggerDamage>().soPlayer = soPlayer;
         going = true;
         started = true;
         firstLocal = transform.position;
@@ -31,7 +36,7 @@ public class Saw : MonoBehaviour
     void Update()
     {
         //Debug.DrawLine(transform.position, transform.position + (transform.forward * 10), Color.red);
-        transform.position = Vector3.MoveTowards(transform.position, target, vel * Time.deltaTime);
+        saw.transform.position = Vector3.MoveTowards(saw.transform.position, target, vel * Time.deltaTime);
 
         if(transform.position == target)
         {
@@ -45,6 +50,7 @@ public class Saw : MonoBehaviour
                 going = false;
                 target = firstLocal;
             } 
+            animator.SetBool("Going", going);
         }
 
         
@@ -56,14 +62,6 @@ public class Saw : MonoBehaviour
         vfx.SetFloat("Direction", direction);
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            soPlayer.soPlayerHealth.HealthChange(-damage);
-        }
-    }
-
     void OnDrawGizmos()
     {
         if(!started)
@@ -72,6 +70,11 @@ public class Saw : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawLine(point, point + (transform.forward * distance));
         }
+    }
+
+    void OnValidate()
+    {
+        rail.transform.localScale = new Vector3(rail.transform.localScale.x * distance, rail.transform.localScale.y, rail.transform.localScale.z);
     }
 
     IEnumerator aaa()

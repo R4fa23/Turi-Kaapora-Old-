@@ -10,23 +10,28 @@ public class SOPlayerAttack : ScriptableObject
     public float attackCooldown;
     public float attackComboFinalDuration;
     public float attackComboFinalCooldown;
-    public int attackDamage;
+    [HideInInspector]
+    public float attackDamage;
     public float comboTime;
-    public int comboDamage;
+    [HideInInspector]
+    public float comboDamage;
     public float damagedCooldown;
     [HideInInspector]
     public float currentCooldown;
     [HideInInspector]
     public float currentDuration;
     [HideInInspector]
-    public int currentDamage;
+    public float currentDamage;
     [HideInInspector]
     public int comboIndex = 0;
-    public int specialDamage;
+    [HideInInspector]
+    public float specialDamage;
     public float specialDuration;
+    [HideInInspector]
     public float specialCooldown;
     [HideInInspector]
     public float specialTime;
+    [HideInInspector]
     public float cooldownReduction;
     public float repulsionSpecialForce;
 

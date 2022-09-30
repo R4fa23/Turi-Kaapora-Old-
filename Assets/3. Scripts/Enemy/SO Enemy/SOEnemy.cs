@@ -126,7 +126,7 @@ public class SOEnemy : ScriptableObject
     {
         ChargeStartEvent.Invoke();
     }
-    public void ChangeLife(int amount) 
+    public void ChangeLife(float amount) 
     {
         if(canDamaged)
         {
