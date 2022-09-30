@@ -15,6 +15,8 @@ public class SOEnemy : ScriptableObject
     public float attackChargeDuration;
     [HideInInspector]
     public float attackDuration;
+    [HideInInspector]
+    public float attackWaitDuration;
     public float attackCooldown;
     public float cooldownDamaged;
     public float attackRange;

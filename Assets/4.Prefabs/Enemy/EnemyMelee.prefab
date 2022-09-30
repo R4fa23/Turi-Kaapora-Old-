@@ -177,8 +177,6 @@ GameObject:
   - component: {fileID: 2555297363509316794}
   - component: {fileID: 8293210610416732219}
   - component: {fileID: 59595520401277057}
-  - component: {fileID: 8494190002984255608}
-  - component: {fileID: 4399664944495130349}
   - component: {fileID: 1137422346229219091}
   - component: {fileID: 5524865584966673046}
   m_Layer: 0
@@ -238,27 +236,6 @@ MonoBehaviour:
   soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
   detected: 0
   firstLocal: {x: 0, y: 0, z: 0}
---- !u!33 &8494190002984255608
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1947304767575686484}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &4399664944495130349
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1947304767575686484}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 3, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &1137422346229219091
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -308,9 +285,10 @@ GameObject:
   - component: {fileID: 7990877615241159761}
   - component: {fileID: 36131906554803096}
   - component: {fileID: 5406198853370047339}
+  - component: {fileID: 6934071903496077419}
   m_Layer: 0
   m_Name: Corpo
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -380,6 +358,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6934071903496077419
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2843033779323881727}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2923524284227632811
 GameObject:
   m_ObjectHideFlags: 0

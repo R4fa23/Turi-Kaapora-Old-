@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyLumberjack : MonoBehaviour
 {
-    public SOEnemy soEnemy;
+    SOEnemy soEnemy;
     bool firstEnable;
     // Start is called before the first frame update
     void Start()

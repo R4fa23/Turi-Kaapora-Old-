@@ -137,7 +137,8 @@ public class EnemyManager : MonoBehaviour
         soEnemy.enemyType = reference.enemyType;
         soEnemy.attackDamage = reference.attackDamage;
         soEnemy.attackChargeDuration = animChargeTime;
-        soEnemy.attackDuration = animAttackTime + animWaitTime;
+        soEnemy.attackDuration = animAttackTime;
+        soEnemy.attackWaitDuration = animWaitTime;
         soEnemy.attackCooldown = reference.attackCooldown;
         soEnemy.attackRange = reference.attackRange;
         soEnemy.vel = reference.vel;

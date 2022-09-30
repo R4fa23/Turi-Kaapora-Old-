@@ -99,6 +99,17 @@ public class EnemyAttack : MonoBehaviour
         
     }
 
+    public void Wait()
+    {
+        if(special != null)
+        {
+            colliderSpecial.enabled = false;
+            rendererSpecial.enabled = false;
+        }
+        meshRenderer.enabled = false;
+        boxCollider.enabled = false;
+        StartCoroutine(WaitTime(soEnemy.attackWaitDuration));
+    }
     public void EndAttack()
     {
         if(soEnemy.specialTime >= soEnemy.timeToSpecial) soEnemy.specialTime = 0;
@@ -154,6 +165,12 @@ public class EnemyAttack : MonoBehaviour
         StartAttack();
     }
     IEnumerator AttackTime(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        Wait();
+    }
+
+    IEnumerator WaitTime(float duration)
     {
         yield return new WaitForSeconds(duration);
         EndAttack();
