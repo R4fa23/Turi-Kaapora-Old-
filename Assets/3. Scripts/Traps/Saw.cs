@@ -14,9 +14,11 @@ public class Saw : MonoBehaviour
     Vector3 target;
     bool started;
     bool going;
-    public Animator animator;
-    public GameObject rail;
-    public GameObject saw;
+    [SerializeField] Animator animator;
+    [SerializeField] GameObject middleRail;
+    [SerializeField] GameObject endRail;
+    [SerializeField] GameObject saw;
+
     
     [SerializeField] VisualEffect vfx;
     float direction;
@@ -68,13 +70,16 @@ public class Saw : MonoBehaviour
         {
             Vector3 point = new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z);
             Gizmos.color = Color.red;
+  
             Gizmos.DrawLine(point, point + (transform.forward * distance));
         }
     }
 
     void OnValidate()
     {
-        rail.transform.localScale = new Vector3(rail.transform.localScale.x * distance, rail.transform.localScale.y, rail.transform.localScale.z);
+        if (distance < 0) distance = 0;        
+        middleRail.transform.localScale = new Vector3(distance, middleRail.transform.localScale.y, middleRail.transform.localScale.z);
+        endRail.transform.localPosition = new Vector3(endRail.transform.localPosition.x, endRail.transform.localPosition.y, distance);
     }
 
     IEnumerator aaa()
