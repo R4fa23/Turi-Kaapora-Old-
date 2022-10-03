@@ -17,15 +17,11 @@ public class SOEnemy : ScriptableObject
     public float attackDuration;
     [HideInInspector]
     public float attackWaitDuration;
-    public float attackCooldown;
-    public float cooldownDamaged;
     public float attackRange;
     public float vel;
     public float distanceDetectation;
     public float maxHealth;
     public float health;
-    [HideInInspector]
-    public float currentCooldown;
     [HideInInspector]
     public bool canDamaged;
     public int divisorAttackChance;
@@ -36,10 +32,18 @@ public class SOEnemy : ScriptableObject
     public float timeToSpecial;
     [HideInInspector]
     public bool canAttack;
+
+    // A ser conferido--------
     [HideInInspector]
     public float attackTime;
     public float timeToAttack;
+    //--------------------------
     public float rotationVel;
+    public int minTimeToRandomize;
+    [HideInInspector]
+    public bool attacked;
+    public float timeToAttackAfterAttacked;
+
 
     [System.NonSerialized]
     public UnityEvent ChargeStartEvent;

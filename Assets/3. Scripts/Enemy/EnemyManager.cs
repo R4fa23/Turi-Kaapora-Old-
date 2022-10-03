@@ -14,7 +14,8 @@ public class EnemyManager : MonoBehaviour
     public Animator animator;
     float animChargeTime;
     float animAttackTime;
-    float animWaitTime;
+    [HideInInspector]
+    public float animWaitTime;
 
     void Awake()
     {
@@ -139,14 +140,11 @@ public class EnemyManager : MonoBehaviour
         soEnemy.attackChargeDuration = animChargeTime;
         soEnemy.attackDuration = animAttackTime;
         soEnemy.attackWaitDuration = animWaitTime;
-        soEnemy.attackCooldown = reference.attackCooldown;
         soEnemy.attackRange = reference.attackRange;
         soEnemy.vel = reference.vel;
         soEnemy.distanceDetectation = reference.distanceDetectation;
         soEnemy.maxHealth = reference.maxHealth;
         soEnemy.health = reference.health;
-        soEnemy.cooldownDamaged = reference.cooldownDamaged;
-        soEnemy.currentCooldown = reference.currentCooldown;
         soEnemy.canDamaged = true;
         soEnemy.divisorAttackChance = reference.divisorAttackChance;
         soEnemy.maxSecondsToAttack = reference.maxSecondsToAttack;
@@ -156,11 +154,14 @@ public class EnemyManager : MonoBehaviour
         soEnemy.canAttack = true;
         soEnemy.attackTime = 0;
         soEnemy.timeToAttack = reference.timeToAttack;
+        soEnemy.rotationVel = reference.rotationVel;
+        soEnemy.minTimeToRandomize = reference.minTimeToRandomize;
+        soEnemy.attacked = false;
+        soEnemy.timeToAttackAfterAttacked = reference.timeToAttackAfterAttacked;
 
 
 
 
-        soEnemy.currentCooldown = soEnemy.attackCooldown;
         soEnemy.health = soEnemy.maxHealth;
     }
 }
