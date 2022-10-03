@@ -106,25 +106,41 @@ public class EnemyMove : MonoBehaviour
         soEnemy.MoveStart();
     }
 
+    void TimeAfterAttacked()
+    {
+        if(!soEnemy.canAttack && !soEnemy.attacked)
+        {
+            StopAllCoroutines();
+            soEnemy.attacked = true;
+            StartCoroutine(AttackedWait());
+        }
+    }
+
+    IEnumerator AttackedWait()
+    {
+        yield return new WaitForSeconds(soEnemy.timeToAttackAfterAttacked);
+        Alerting();
+    }
+
     void RandomizeAttack()
     {
-        if(soEnemy.state == SOEnemy.State.STOPPED)
+        if(soEnemy.state == SOEnemy.State.STOPPED && !soEnemy.attacked)
         {
             int i = Random.Range(0,soEnemy.divisorAttackChance);
 
-            if((i == 0 || attackConfirmed >= soEnemy.maxSecondsToAttack) && attackConfirmed > 1)
+            if((i == 0 || attackConfirmed >= soEnemy.maxSecondsToAttack) && attackConfirmed > soEnemy.minTimeToRandomize)
             {
                 Alerting();
             }
-            else if(soEnemy.enemyType == SOEnemy.EnemyType.INCENDIARY && !soPlayer.soPlayerHealth.burned && attackConfirmed > 1)
+            else if(soEnemy.enemyType == SOEnemy.EnemyType.INCENDIARY && !soPlayer.soPlayerHealth.burned && attackConfirmed > soEnemy.minTimeToRandomize)
             {
                 Alerting();
             }
-            else if(soEnemy.enemyType == SOEnemy.EnemyType.HUNTER && !soPlayer.soPlayerMove.slow && attackConfirmed > 1)
+            else if(soEnemy.enemyType == SOEnemy.EnemyType.HUNTER && !soPlayer.soPlayerMove.slow && attackConfirmed > soEnemy.minTimeToRandomize)
             {
                 Alerting();
             }
-            else if(soEnemy.enemyType == SOEnemy.EnemyType.LUMBERJACK && attackConfirmed > 1)
+            else if(soEnemy.enemyType == SOEnemy.EnemyType.LUMBERJACK && attackConfirmed > soEnemy.minTimeToRandomize)
             {
                 Alerting();
             }
@@ -148,6 +164,7 @@ public class EnemyMove : MonoBehaviour
         attackConfirmed = 0;
         soEnemy.state = SOEnemy.State.STOPPED;
         detected = false;
+        soEnemy.attacked = false;
         navMeshAgent.SetDestination(transform.position);
         RandomizeAttack();
     }
@@ -159,6 +176,7 @@ public class EnemyMove : MonoBehaviour
         detected = false;
         lastState = SOEnemy.State.STOPPED;
         transform.position = firstLocal;
+        soEnemy.attacked = false;
         if(gameObject.activeInHierarchy) navMeshAgent.SetDestination(transform.position);
         
         
@@ -174,6 +192,7 @@ public class EnemyMove : MonoBehaviour
             soEnemy.SummonEvent.AddListener(Detect);
             soSave.RestartEvent.AddListener(Restart);
             soEnemy.AttackEndEvent.AddListener(Recover);
+            soEnemy.ChangeLifeEvent.AddListener(TimeAfterAttacked);
         }
         firstEnable = true;
     }
@@ -183,6 +202,7 @@ public class EnemyMove : MonoBehaviour
         soEnemy.SummonEvent.RemoveListener(Detect);
         soSave.RestartEvent.RemoveListener(Restart);
         soEnemy.AttackEndEvent.RemoveListener(Recover);
+        soEnemy.ChangeLifeEvent.RemoveListener(TimeAfterAttacked);
     }
 
 }

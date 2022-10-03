@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -82,10 +83,16 @@ public class PlayerManager : MonoBehaviour
         soPlayer.soPlayerHealth.burned = false;
         soPlayer.soPlayerMove.slow = false;
         soPlayer.soPlayerHealth.dead = false;
+
+
         soPlayer.state = SOPlayer.State.STOPPED;
     }
     
     private void Start() {
+        if(SceneManager.GetActiveScene().name == "Level-00") soPlayer.SetLevel(0);
+        else if(SceneManager.GetActiveScene().name == "Level-01") soPlayer.SetLevel(1);
+        else if(SceneManager.GetActiveScene().name == "Level-02") soPlayer.SetLevel(2);
+        
         SetConfiguration();
     }
 

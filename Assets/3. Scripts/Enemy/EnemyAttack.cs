@@ -19,6 +19,7 @@ public class EnemyAttack : MonoBehaviour
     SphereCollider colliderSpecial;
     MeshRenderer rendererSpecial;
     bool startMoved;
+    float animWait;
     
     void Start()
     {
@@ -29,6 +30,7 @@ public class EnemyAttack : MonoBehaviour
         }
         soEnemy = manager.GetComponent<EnemyManager>().soEnemy;
         soSave = manager.GetComponent<EnemyManager>().soSave;
+        animWait = manager.GetComponent<EnemyManager>().animWaitTime;
         boxCollider = GetComponent<BoxCollider>();
         meshRenderer = GetComponent<MeshRenderer>();
         boxCollider.enabled = false;
@@ -40,12 +42,7 @@ public class EnemyAttack : MonoBehaviour
     
     void Update()
     {
-        if(!soEnemy.canAttack)
-        {
-            soEnemy.attackTime += Time.deltaTime;
-
-            if(soEnemy.attackTime >= soEnemy.timeToAttack) soEnemy.canAttack = true;
-        }
+        
 
         if(startMoved && soEnemy.enemyType == SOEnemy.EnemyType.LUMBERJACK && soEnemy.specialTime < soEnemy.timeToSpecial)
         {
@@ -69,6 +66,17 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
+    /*
+    public void PatienceWhenAttacked()
+    {
+        if(!soEnemy.canAttack)
+        {
+            soEnemy.attackTime += Time.deltaTime;
+
+            if(soEnemy.attackTime >= soEnemy.timeToAttack) soEnemy.canAttack = true;
+        }
+    }
+    */
     public void StartCharge()
     {
         soEnemy.ChargeStart();
@@ -178,8 +186,7 @@ public class EnemyAttack : MonoBehaviour
 
     IEnumerator AttackCooldown()
     {
-        yield return new WaitForSeconds(soEnemy.currentCooldown);
-        soEnemy.currentCooldown = soEnemy.attackCooldown;
+        yield return new WaitForSeconds(animWait + 0.2f);
         soEnemy.state = SOEnemy.State.STOPPED;
         attacking = false;
     }
@@ -198,10 +205,6 @@ public class EnemyAttack : MonoBehaviour
         startMoved = true;
     }
 
-    void ChangeCooldown()
-    {
-        soEnemy.currentCooldown = soEnemy.cooldownDamaged;
-    }
     public void OnEnable()
     {
         if(firstEnable)
