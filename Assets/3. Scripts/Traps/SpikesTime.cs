@@ -28,6 +28,7 @@ public class SpikesTime : MonoBehaviour
     {
         yield return new WaitForSeconds(delaySpike);
         spikes.SetActive(true);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Perigos/Espinhos", transform.position);
         vfx.Reinit();
         vfx.SendEvent("OnPlay");
         StartCoroutine(DownSpikes());
