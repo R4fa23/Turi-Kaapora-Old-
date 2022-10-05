@@ -18,14 +18,11 @@ MonoBehaviour:
   attackChargeDuration: 0.25
   attackDuration: 0.2
   attackWaitDuration: 0
-  attackCooldown: 1
-  cooldownDamaged: 1
   attackRange: 4
   vel: 10
-  distanceDetectation: 30
+  distanceDetectation: 10
   maxHealth: 18
   health: 0
-  currentCooldown: 0
   canDamaged: 0
   divisorAttackChance: 5
   maxSecondsToAttack: 20
@@ -36,3 +33,6 @@ MonoBehaviour:
   attackTime: 0
   timeToAttack: 7
   rotationVel: 5
+  minTimeToRandomize: 5
+  attacked: 0
+  timeToAttackAfterAttacked: 5
