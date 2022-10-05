@@ -46,6 +46,7 @@ public class Saw : MonoBehaviour
             {
                 going = true;
                 target = finalLocal;
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Perigos/Serra_Indo", transform.position);
             } 
             else if(target == finalLocal)
             {
