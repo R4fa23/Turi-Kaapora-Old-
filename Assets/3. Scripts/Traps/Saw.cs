@@ -40,12 +40,13 @@ public class Saw : MonoBehaviour
         //Debug.DrawLine(transform.position, transform.position + (transform.forward * 10), Color.red);
         saw.transform.position = Vector3.MoveTowards(saw.transform.position, target, vel * Time.deltaTime);
 
-        if(transform.position == target)
+        if(saw.transform.position == target)
         {
             if(target == firstLocal)
             {
                 going = true;
                 target = finalLocal;
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Perigos/Serra_Indo", transform.position);
             } 
             else if(target == finalLocal)
             {

@@ -31,6 +31,13 @@ public class SOPlayer : ScriptableObject
         else LevelUpEvent.Invoke();
     }
 
+    public void SetLevel(int levelSet)
+    {
+        if(levelSet > 2) levelSet = 2;
+        level = levelSet;
+        LevelUpEvent.Invoke();
+    }
+
     public void LevelReset()
     {
         level = 0;
