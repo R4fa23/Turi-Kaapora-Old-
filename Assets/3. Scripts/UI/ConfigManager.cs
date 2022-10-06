@@ -39,5 +39,10 @@ public class ConfigManager : MonoBehaviour
         soPlayer.canTeleport = enabled;
     }
 
+    public void SuperVelocity(bool enabled)
+    {
+        soPlayer.soPlayerMove.superVelocity = enabled;
+    }
+
 
 }

@@ -26,6 +26,8 @@ public class SOPlayerMove : ScriptableObject
     public float velSlow;
     [HideInInspector]
     public float slowDuration;
+    [HideInInspector]
+    public bool superVelocity;
 
     [System.NonSerialized]
     public UnityEvent MoveStartEvent;

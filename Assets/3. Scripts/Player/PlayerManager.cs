@@ -89,6 +89,7 @@ public class PlayerManager : MonoBehaviour
         soPlayer.soPlayerHealth.canDamaged = true;
         soPlayer.isPaused = false;
         soPlayer.soPlayerAttack.hitKill = false;
+        soPlayer.soPlayerMove.superVelocity = false;
 
 
         soPlayer.state = SOPlayer.State.STOPPED;
