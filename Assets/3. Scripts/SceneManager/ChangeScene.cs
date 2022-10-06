@@ -30,6 +30,11 @@ public class ChangeScene : MonoBehaviour
         AlternateScene("Level-01");
     }
 
+    public void MenuInitial()
+    {
+        AlternateScene("MenuTest");
+    }
+
     public void ExitGame()
     {
         Application.Quit();

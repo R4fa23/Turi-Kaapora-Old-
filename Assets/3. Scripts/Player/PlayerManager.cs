@@ -19,6 +19,8 @@ public class PlayerManager : MonoBehaviour
     bool canFire = true;
     public GameObject animated;
     public Animator animator;
+    GameObject[] savePoints;
+    int saveIndex;
 
     void Awake()
     {
@@ -83,6 +85,10 @@ public class PlayerManager : MonoBehaviour
         soPlayer.soPlayerHealth.burned = false;
         soPlayer.soPlayerMove.slow = false;
         soPlayer.soPlayerHealth.dead = false;
+        soPlayer.canTeleport = false;
+        soPlayer.soPlayerHealth.canDamaged = true;
+        soPlayer.isPaused = false;
+        soPlayer.soPlayerAttack.hitKill = false;
 
 
         soPlayer.state = SOPlayer.State.STOPPED;
@@ -92,7 +98,10 @@ public class PlayerManager : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "Level-00") soPlayer.SetLevel(0);
         else if(SceneManager.GetActiveScene().name == "Level-01") soPlayer.SetLevel(1);
         else if(SceneManager.GetActiveScene().name == "Level-02") soPlayer.SetLevel(2);
+        else soPlayer.SetLevel(0);
         
+        savePoints = GameObject.FindGameObjectsWithTag("SavePoint");
+
         SetConfiguration();
     }
 
@@ -109,7 +118,7 @@ public class PlayerManager : MonoBehaviour
 
     bool IsDead()
     {
-        return soPlayer.soPlayerHealth.dead;
+        return soPlayer.soPlayerHealth.dead || soPlayer.isPaused;
     }
 
     //-------------------------------MOVIMENTAÇÃO--------------------------------- 
@@ -178,21 +187,24 @@ public class PlayerManager : MonoBehaviour
     {
         if(!IsDead())
         {
-            if(canDash && soPlayer.state != SOPlayer.State.TRAPPED && soPlayer.state != SOPlayer.State.SPECIAL && soPlayer.soPlayerMove.staminas > 0 && !soPlayer.soPlayerMove.slow)
+            if(context.started)
             {
-                //animator.SetTrigger("Dash");
-                soPlayer.soPlayerMove.ChangeStaminaCount(-1);
-                soPlayer.soPlayerMove.rechargeTime = 0;
-                dashing = true;
-                soPlayer.state = SOPlayer.State.DASHING;
-                canDash = false;
-                StartCoroutine(DashCooldown());
-                soPlayer.soPlayerMove.DashStart();
+                if(canDash && soPlayer.state != SOPlayer.State.TRAPPED && soPlayer.state != SOPlayer.State.SPECIAL && soPlayer.soPlayerMove.staminas > 0 && !soPlayer.soPlayerMove.slow)
+                {
+                    //animator.SetTrigger("Dash");
+                    soPlayer.soPlayerMove.ChangeStaminaCount(-1);
+                    soPlayer.soPlayerMove.rechargeTime = 0;
+                    dashing = true;
+                    soPlayer.state = SOPlayer.State.DASHING;
+                    canDash = false;
+                    StartCoroutine(DashCooldown());
+                    soPlayer.soPlayerMove.DashStart();
 
-            }
-            else if(soPlayer.state == SOPlayer.State.TRAPPED)
-            {
-                soPlayer.soPlayerMove.TrappedClick();
+                }
+                else if(soPlayer.state == SOPlayer.State.TRAPPED)
+                {
+                    soPlayer.soPlayerMove.TrappedClick();
+                }
             }
         }
     }
@@ -219,13 +231,16 @@ public class PlayerManager : MonoBehaviour
     {
         if(!IsDead())
         {
-            if(!dashing && (soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canAttack)
+            if(context.started)
             {
-                //animator.SetTrigger("Ataque");
-                canAttack = false;
-                soPlayer.state = SOPlayer.State.ATTACKING;
-                soPlayer.soPlayerAttack.AttackStart();
-                StartCoroutine(AttackCooldown());
+                if(!dashing && (soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canAttack)
+                {
+                    //animator.SetTrigger("Ataque");
+                    canAttack = false;
+                    soPlayer.state = SOPlayer.State.ATTACKING;
+                    soPlayer.soPlayerAttack.AttackStart();
+                    StartCoroutine(AttackCooldown());
+                }
             }
         }
     }
@@ -251,9 +266,12 @@ public class PlayerManager : MonoBehaviour
     {
         if(!IsDead())
         {
-            if(soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING)
+            if(context.started)
             {
-                soPlayer.soPlayerMove.AimStart();
+                if(soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING)
+                {
+                    soPlayer.soPlayerMove.AimStart();
+                }
             }
         }
     }
@@ -264,12 +282,15 @@ public class PlayerManager : MonoBehaviour
     {
         if(!IsDead())
         {
-            if(!dashing && (soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canSpecial)
+            if(context.started)
             {
-                soPlayer.soPlayerAttack.SpecialStart();
-                soPlayer.state = SOPlayer.State.SPECIAL;
-                soPlayer.soPlayerMove.DashStart();
-                canSpecial = false;
+                if(!dashing && (soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canSpecial)
+                {
+                    soPlayer.soPlayerAttack.SpecialStart();
+                    soPlayer.state = SOPlayer.State.SPECIAL;
+                    soPlayer.soPlayerMove.DashStart();
+                    canSpecial = false;
+                }
             }
         }
     }
@@ -294,7 +315,7 @@ public class PlayerManager : MonoBehaviour
         SetConfiguration();
     }
 
-    //--------------------------------------------QUEIMANDO------------------------------------------
+    //--------------------------------------------FOGO------------------------------------------
 
     void Burn()
     {
@@ -350,7 +371,10 @@ public class PlayerManager : MonoBehaviour
     {
         if(!IsDead())
         {
-            soPlayer.soPlayerHealth.HealthChange(-100);
+            if(context.started)
+            {
+                soPlayer.soPlayerHealth.HealthChange(-100);
+            }
         }
     }
 
@@ -367,6 +391,41 @@ public class PlayerManager : MonoBehaviour
         soSave.Restart();
     }
     
+    //--------------------------------------------PAUSE-----------------------------------------------
+
+    public void PauseStarted(InputAction.CallbackContext context)
+    {
+        if(!IsDead())
+        {
+            if(context.started)
+            {
+                soPlayer.Pause();
+            }
+        }
+            
+    }
+
+    //------------------------------------------TELEPORTE---------------------------------------------
+
+    public void TeleportStarted(InputAction.CallbackContext context)
+    {
+        if(!IsDead())
+        {
+            if(soPlayer.canTeleport)
+            {
+                if(context.started)
+                {
+                    GetComponent<CharacterController>().enabled = false;
+                    transform.position = savePoints[saveIndex].transform.position;
+                    GetComponent<CharacterController>().enabled = true;
+                    saveIndex++;
+                    if(saveIndex >= savePoints.Length) saveIndex = 0;
+                }
+            }
+        }
+    }
+
+
     //-------------------------------------------LISTENER---------------------------------------------
     public void OnEnable()
     {

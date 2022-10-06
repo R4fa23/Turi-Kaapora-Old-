@@ -80,6 +80,24 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""5fb412e7-1a94-42e3-a78b-cf1a0a7bbea1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Teleport"",
+                    ""type"": ""Button"",
+                    ""id"": ""1d27fffe-88e6-4efe-ade6-bbcc09310df0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -247,6 +265,28 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
                     ""action"": ""Suicide"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""839c1ed3-16d4-413b-94d5-1244f4467f83"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5b5fc520-d511-4894-9a89-c96ab4380359"",
+                    ""path"": ""<Keyboard>/period"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Teleport"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -261,6 +301,8 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
         m_Default_Aim = m_Default.FindAction("Aim", throwIfNotFound: true);
         m_Default_Special = m_Default.FindAction("Special", throwIfNotFound: true);
         m_Default_Suicide = m_Default.FindAction("Suicide", throwIfNotFound: true);
+        m_Default_Pause = m_Default.FindAction("Pause", throwIfNotFound: true);
+        m_Default_Teleport = m_Default.FindAction("Teleport", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -326,6 +368,8 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
     private readonly InputAction m_Default_Aim;
     private readonly InputAction m_Default_Special;
     private readonly InputAction m_Default_Suicide;
+    private readonly InputAction m_Default_Pause;
+    private readonly InputAction m_Default_Teleport;
     public struct DefaultActions
     {
         private @PlayerMap m_Wrapper;
@@ -336,6 +380,8 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
         public InputAction @Aim => m_Wrapper.m_Default_Aim;
         public InputAction @Special => m_Wrapper.m_Default_Special;
         public InputAction @Suicide => m_Wrapper.m_Default_Suicide;
+        public InputAction @Pause => m_Wrapper.m_Default_Pause;
+        public InputAction @Teleport => m_Wrapper.m_Default_Teleport;
         public InputActionMap Get() { return m_Wrapper.m_Default; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -363,6 +409,12 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
                 @Suicide.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnSuicide;
                 @Suicide.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnSuicide;
                 @Suicide.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnSuicide;
+                @Pause.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnPause;
+                @Teleport.started -= m_Wrapper.m_DefaultActionsCallbackInterface.OnTeleport;
+                @Teleport.performed -= m_Wrapper.m_DefaultActionsCallbackInterface.OnTeleport;
+                @Teleport.canceled -= m_Wrapper.m_DefaultActionsCallbackInterface.OnTeleport;
             }
             m_Wrapper.m_DefaultActionsCallbackInterface = instance;
             if (instance != null)
@@ -385,6 +437,12 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
                 @Suicide.started += instance.OnSuicide;
                 @Suicide.performed += instance.OnSuicide;
                 @Suicide.canceled += instance.OnSuicide;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+                @Teleport.started += instance.OnTeleport;
+                @Teleport.performed += instance.OnTeleport;
+                @Teleport.canceled += instance.OnTeleport;
             }
         }
     }
@@ -397,5 +455,7 @@ public partial class @PlayerMap : IInputActionCollection2, IDisposable
         void OnAim(InputAction.CallbackContext context);
         void OnSpecial(InputAction.CallbackContext context);
         void OnSuicide(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
+        void OnTeleport(InputAction.CallbackContext context);
     }
 }

@@ -118,8 +118,9 @@ public class PlayerAttack : MonoBehaviour
             {
                 soPlayer.soPlayerAttack.ReduceCooldown();
             }
-            other.transform.parent.transform.parent.GetComponent<EnemyManager>().soEnemy.ChangeLife(-soPlayer.soPlayerAttack.currentDamage);
-            
+
+            if(!soPlayer.soPlayerAttack.hitKill)other.transform.parent.transform.parent.GetComponent<EnemyManager>().soEnemy.ChangeLife(-soPlayer.soPlayerAttack.currentDamage);
+            else other.transform.parent.transform.parent.GetComponent<EnemyManager>().soEnemy.ChangeLife(-1000);
             
         }
 

@@ -45,7 +45,9 @@ public class PlayerSpecial : MonoBehaviour
     {
         if(other.CompareTag("Enemy"))
         {
-            other.GetComponent<EnemyManager>().soEnemy.ChangeLife(-soPlayer.soPlayerAttack.specialDamage);
+            if(!soPlayer.soPlayerAttack.hitKill) other.GetComponent<EnemyManager>().soEnemy.ChangeLife(-soPlayer.soPlayerAttack.specialDamage);
+            else other.transform.parent.transform.parent.GetComponent<EnemyManager>().soEnemy.ChangeLife(-1000);
+            
             other.GetComponent<EnemyManager>().soEnemy.Repulsion();
         }
     }
