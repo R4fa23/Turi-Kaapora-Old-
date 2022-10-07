@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
                         else superVel = 1;
 
                         Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-                        RecognizeDirectionAnimation(moveDir);
+                        RecognizeDirectionAnimation(dir);
                         characterCtrl.Move(moveDir.normalized * sensibility * Time.deltaTime * superVel);
 
                     }

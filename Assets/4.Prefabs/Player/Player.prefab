@@ -223,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
   attack: {fileID: 2100000, guid: c276ea943a43e094fb16f13f040e37e4, type: 2}
+  playerManager: {fileID: 9003156691123881369}
 --- !u!1 &6533580976926553573
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +326,9 @@ MonoBehaviour:
   soSave: {fileID: 11400000, guid: e57cf268432d04248a6d40fc954c2cca, type: 2}
   animated: {fileID: 6950409390961486072}
   animator: {fileID: 5827187371794152544}
+  animAttack1Time: 0
+  animAttack2Time: 0
+  animAttack3Time: 0
 --- !u!114 &1295528545523672043
 MonoBehaviour:
   m_ObjectHideFlags: 0

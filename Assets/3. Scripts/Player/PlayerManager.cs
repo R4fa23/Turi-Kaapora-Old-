@@ -21,10 +21,15 @@ public class PlayerManager : MonoBehaviour
     public Animator animator;
     GameObject[] savePoints;
     int saveIndex;
+    [HideInInspector]
+    public float animAttack1Time;
+    [HideInInspector]
+    public float animAttack2Time;
+    [HideInInspector]
+    public float animAttack3Time;
 
     void Awake()
     {
-        animator = animated.GetComponent<Animator>();
 
         playerMap = new PlayerMap();
 
@@ -101,6 +106,7 @@ public class PlayerManager : MonoBehaviour
         else if(SceneManager.GetActiveScene().name == "Level-02") soPlayer.SetLevel(2);
         else soPlayer.SetLevel(0);
         
+        AnimationsTime();
         savePoints = GameObject.FindGameObjectsWithTag("SavePoint");
 
         SetConfiguration();
@@ -157,7 +163,7 @@ public class PlayerManager : MonoBehaviour
         {
             if(soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING)
             {
-                //animator.SetBool("Move", true);
+                animator.SetBool("Move", true);
                 soPlayer.state = SOPlayer.State.WALKING;
                 soPlayer.soPlayerMove.MoveStart();
                 
@@ -166,7 +172,7 @@ public class PlayerManager : MonoBehaviour
     }
     public void MovementCanceled(InputAction.CallbackContext context) {
         movement = false;
-        //animator.SetBool("Move", false);
+        animator.SetBool("Move", false);
         if(!IsDead())
         {
             if(soPlayer.state == SOPlayer.State.WALKING)
@@ -192,7 +198,7 @@ public class PlayerManager : MonoBehaviour
             {
                 if(canDash && soPlayer.state != SOPlayer.State.TRAPPED && soPlayer.state != SOPlayer.State.SPECIAL && soPlayer.soPlayerMove.staminas > 0 && !soPlayer.soPlayerMove.slow)
                 {
-                    //animator.SetTrigger("Dash");
+                    animator.SetTrigger("Dash");
                     soPlayer.soPlayerMove.ChangeStaminaCount(-1);
                     soPlayer.soPlayerMove.rechargeTime = 0;
                     dashing = true;
@@ -236,7 +242,8 @@ public class PlayerManager : MonoBehaviour
             {
                 if(!dashing && (soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canAttack)
                 {
-                    //animator.SetTrigger("Ataque");
+                    animator.SetInteger("AtaqIndex", soPlayer.soPlayerAttack.comboIndex);
+                    animator.SetTrigger("Ataque");
                     canAttack = false;
                     soPlayer.state = SOPlayer.State.ATTACKING;
                     soPlayer.soPlayerAttack.AttackStart();
@@ -363,7 +370,7 @@ public class PlayerManager : MonoBehaviour
 
     void Damaged()
     {
-        //animator.SetTrigger("Dano");
+        animator.SetTrigger("Dano");
     }
 
     //--------------------------------------------SE MATAR----------------------------------------
@@ -426,6 +433,27 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    //------------------------------------------TEMPO DE ANIMAÇÕES-----------------------------------
+
+    void AnimationsTime()
+    {
+        AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
+        foreach(AnimationClip clip in clips)
+        {
+            switch(clip.name)
+            {
+                case "Ataque1_Caipora":
+                    animAttack1Time = clip.length;
+                    break;
+                case "Ataque2_Caipora":
+                    animAttack2Time = clip.length;
+                    break;
+                case "Ataque3_Caipora":
+                    animAttack3Time = clip.length;
+                    break;
+            }
+        }
+    }
 
     //-------------------------------------------LISTENER---------------------------------------------
     public void OnEnable()
