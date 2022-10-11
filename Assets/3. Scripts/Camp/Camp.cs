@@ -148,6 +148,8 @@ public class Camp : MonoBehaviour
             t.SetActive(false);
         }
 
+        if(gameObject.tag == "Fort") soPlayer.LevelUp();
+        
         completed = true;
         soFort.CompleteSpace();
         soPlayer.soPlayerHealth.RecoverHealth();
@@ -162,6 +164,62 @@ public class Camp : MonoBehaviour
     void EnemyDied()
     {
         soCamp.DieEnemy();
+    }
+
+    void CompleteAnticipated()
+    {
+        if(!completed && gameObject.tag != "Fort")
+        {
+            enemyCount = 0;
+            foreach(GameObject d in door)
+            {
+                d.SetActive(false);
+            }
+
+            foreach(GameObject s in showThing)
+            {
+                s.SetActive(true);
+            }
+
+            foreach(GameObject t in trigger)
+            {
+                t.SetActive(false);
+            }
+
+            foreach(GameObject f in firstEnemy)
+            {
+                f.SetActive(false);
+            }
+            completed = true;
+        }
+    }
+
+    void CompleteFort()
+    {
+        if(!completed && gameObject.tag == "Fort")
+        {
+            enemyCount = 0;
+            foreach(GameObject d in door)
+            {
+                d.SetActive(false);
+            }
+
+            foreach(GameObject s in showThing)
+            {
+                s.SetActive(true);
+            }
+
+            foreach(GameObject t in trigger)
+            {
+                t.SetActive(false);
+            }
+
+            foreach(GameObject f in firstEnemy)
+            {
+                f.SetActive(false);
+            }
+            completed = true;
+        }
     }
 
     void Restart()
@@ -212,6 +270,8 @@ public class Camp : MonoBehaviour
             {
                     e.GetComponent<EnemyManager>().soEnemy.DieEvent.AddListener(EnemyDied);
             }
+            soFort.CompleteChallengesEvent.AddListener(CompleteAnticipated);
+            soFort.CompleteFortEvent.AddListener(CompleteFort);
         }
         firstEnable = true;
     }
@@ -225,5 +285,7 @@ public class Camp : MonoBehaviour
         {
                 e.GetComponent<EnemyManager>().soEnemy.DieEvent.RemoveListener(EnemyDied);
         }
+        soFort.CompleteChallengesEvent.RemoveListener(CompleteAnticipated);
+        soFort.CompleteFortEvent.RemoveListener(CompleteFort);
     }
 }

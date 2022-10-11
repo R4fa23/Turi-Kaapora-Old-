@@ -34,6 +34,8 @@ public class SOPlayerAttack : ScriptableObject
     [HideInInspector]
     public float cooldownReduction;
     public float repulsionSpecialForce;
+    [HideInInspector]
+    public bool hitKill;
 
 
     [System.NonSerialized]

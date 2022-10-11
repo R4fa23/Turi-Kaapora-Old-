@@ -50,6 +50,7 @@ public class BearTrap : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Perigos/Arataca", transform.position);
             trapped = true;
             soPlayer.state = SOPlayer.State.TRAPPED;
             soPlayer.soPlayerHealth.HealthChange(-damage);

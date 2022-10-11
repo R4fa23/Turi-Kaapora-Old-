@@ -14,6 +14,9 @@ public class SOFort : ScriptableObject
     public UnityEvent CompleteSpaceEvent;
     [System.NonSerialized]
     public UnityEvent CompleteChallengesEvent;
+    [System.NonSerialized]
+    public UnityEvent CompleteFortEvent;
+
 
     void OnEnable()
     {
@@ -22,19 +25,27 @@ public class SOFort : ScriptableObject
         
         if(CompleteChallengesEvent == null)
             CompleteChallengesEvent = new UnityEvent();
+
+        if(CompleteFortEvent == null)
+            CompleteFortEvent = new UnityEvent();
     }
 
     public void CompleteSpace()
     {
         challengesComplete++;
-        if(challengesComplete >= challenges-1)
+        if(challengesComplete >= challenges)
         {
             CompleteChallenges();
         }
     }
 
-    void CompleteChallenges()
+    public void CompleteChallenges()
     {
         CompleteChallengesEvent.Invoke();
+    }
+
+    public void CompleteFort()
+    {
+        CompleteFortEvent.Invoke();
     }
 }

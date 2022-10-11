@@ -8,6 +8,10 @@ public class SOPlayer : ScriptableObject
 {
     [HideInInspector]
     public int level = 0;
+    [HideInInspector]
+    public bool canTeleport;
+    [HideInInspector]
+    public bool isPaused;
 
     public SOPlayerHealth soPlayerHealth;
     public SOPlayerMove soPlayerMove;
@@ -18,10 +22,15 @@ public class SOPlayer : ScriptableObject
     //------------------------------------------------------------------------------------------------------------
     [System.NonSerialized]
     public UnityEvent LevelUpEvent;
+    [System.NonSerialized]
+    public UnityEvent PauseEvent;
 
     private void OnEnable() {
         if(LevelUpEvent == null)
             LevelUpEvent = new UnityEvent();
+
+        if(PauseEvent == null)
+            PauseEvent = new UnityEvent();
     }
 
     public void LevelUp()
@@ -42,6 +51,11 @@ public class SOPlayer : ScriptableObject
     {
         level = 0;
         LevelUpEvent.Invoke();
+    }
+
+    public void Pause()
+    {
+        PauseEvent.Invoke();
     }
 
 }

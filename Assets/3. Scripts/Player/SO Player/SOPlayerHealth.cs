@@ -16,6 +16,8 @@ public class SOPlayerHealth : ScriptableObject
     public int fireDamage;
     public float flameDelay;
     public bool dead;
+    [HideInInspector]
+    public bool canDamaged;
 
     [System.NonSerialized]
     public UnityEvent HealthChangeEvent;
@@ -42,7 +44,7 @@ public class SOPlayerHealth : ScriptableObject
 
     public void HealthChange(int amount)
     {
-        if(!dead)
+        if(!dead && canDamaged)
         {
             life += amount;
             HealthChangeEvent.Invoke();

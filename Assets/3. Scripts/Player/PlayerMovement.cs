@@ -103,9 +103,13 @@ public class PlayerMovement : MonoBehaviour
                             transform.rotation = Quaternion.Euler(0f, angle, 0f);
                         }
 
+                        float superVel;
+                        if(soPlayer.soPlayerMove.superVelocity) superVel = 5;
+                        else superVel = 1;
+
                         Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-                        RecognizeDirectionAnimation(moveDir);
-                        characterCtrl.Move(moveDir.normalized * sensibility *Time.deltaTime);
+                        RecognizeDirectionAnimation(dir);
+                        characterCtrl.Move(moveDir.normalized * sensibility * Time.deltaTime * superVel);
 
                     }
                     

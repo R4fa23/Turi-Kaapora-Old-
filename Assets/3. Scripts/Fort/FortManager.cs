@@ -30,7 +30,6 @@ public class FortManager : MonoBehaviour
             d.SetActive(false);
 
         }
-        soPlayer.LevelUp();
     }
 
     void OnEnable()
