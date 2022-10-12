@@ -15,7 +15,7 @@ MonoBehaviour:
   Path: Turi FMOD Project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638010364627249383
+  lastModified: 638011867015289867
   FileSizes:
   - Name: Desktop
     Value: 409248
@@ -47,6 +47,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 783
+--- !u!114 &-6911676650611157552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Perigos/Fogo
+  m_EditorClassIdentifier: 
+  Path: event:/Perigos/Fogo
+  Guid:
+    Data1: 384854640
+    Data2: 1311978329
+    Data3: 399087488
+    Data4: -1488874730
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 6336
 --- !u!114 &-6724792661293942968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,33 +101,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1320
---- !u!114 &-5412351655385083058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Perigos/Arataca
-  m_EditorClassIdentifier: 
-  Path: event:/Perigos/Arataca
-  Guid:
-    Data1: 281276904
-    Data2: 1259185862
-    Data3: -1787307610
-    Data4: 683426585
-  Banks:
-  - {fileID: -9065374462541756553}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 920
 --- !u!114 &-4555340086677564859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +128,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 548
+--- !u!114 &-3766821534403806574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Perigos/Serra_Indo
+  m_EditorClassIdentifier: 
+  Path: event:/Perigos/Serra_Indo
+  Guid:
+    Data1: -1007688798
+    Data2: 1251875053
+    Data3: -1936030827
+    Data4: 850231725
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 626
 --- !u!114 &-1796485893703664309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,33 +175,6 @@ MonoBehaviour:
   - Name: Desktop
     Value: 42144
   Exists: 1
---- !u!114 &-1509918356651099105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Perigos/Fogo
-  m_EditorClassIdentifier: 
-  Path: event:/Perigos/Fogo
-  Guid:
-    Data1: 384854640
-    Data2: 1311978329
-    Data3: 399087488
-    Data4: -1488874730
-  Banks:
-  - {fileID: -9065374462541756553}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 6336
 --- !u!114 &-175099898346297676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,7 +190,7 @@ MonoBehaviour:
   Path: Turi FMOD Project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638010364627269395
+  lastModified: 638011867015289867
   FileSizes:
   - Name: Desktop
     Value: 1142
@@ -215,17 +215,17 @@ MonoBehaviour:
   - {fileID: -6724792661293942968}
   - {fileID: 2662173961063635059}
   - {fileID: -7745376779175007120}
-  - {fileID: -1509918356651099105}
-  - {fileID: 3554013074294751016}
-  - {fileID: 692713361119407337}
-  - {fileID: 8438281214527902707}
-  - {fileID: -5412351655385083058}
+  - {fileID: -6911676650611157552}
+  - {fileID: 8858512633632669437}
+  - {fileID: 4131303823517054717}
+  - {fileID: -3766821534403806574}
+  - {fileID: 8853176902516303400}
   EditorParameters: []
   MasterBanks:
   - {fileID: -9065374462541756553}
   StringsBanks:
   - {fileID: -175099898346297676}
-  cacheTime: 638010364627269395
+  cacheTime: 638011867015289867
   cacheVersion: 131591
 --- !u!114 &621566993391211386
 MonoBehaviour:
@@ -254,33 +254,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1175
---- !u!114 &692713361119407337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Perigos/Espinhos
-  m_EditorClassIdentifier: 
-  Path: event:/Perigos/Espinhos
-  Guid:
-    Data1: -1247532412
-    Data2: 1333755454
-    Data3: 958979217
-    Data4: 1383107417
-  Banks:
-  - {fileID: -9065374462541756553}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1643
 --- !u!114 &1992229467436332199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,7 +328,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 679
---- !u!114 &3554013074294751016
+--- !u!114 &4131303823517054717
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -365,14 +338,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Inimigos/Ataque_Machete
+  m_Name: event:/Perigos/Espinhos
   m_EditorClassIdentifier: 
-  Path: event:/Inimigos/Ataque_Machete
+  Path: event:/Perigos/Espinhos
   Guid:
-    Data1: -1801601162
-    Data2: 1142814359
-    Data3: -981036894
-    Data4: 1353518172
+    Data1: -1247532412
+    Data2: 1333755454
+    Data3: 958979217
+    Data4: 1383107417
   Banks:
   - {fileID: -9065374462541756553}
   IsStream: 0
@@ -381,7 +354,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1410
+  Length: 1643
 --- !u!114 &7201171913893779183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,7 +382,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 940
---- !u!114 &8438281214527902707
+--- !u!114 &8853176902516303400
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -419,23 +392,50 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Perigos/Serra_Indo
+  m_Name: event:/Perigos/Arataca
   m_EditorClassIdentifier: 
-  Path: event:/Perigos/Serra_Indo
+  Path: event:/Perigos/Arataca
   Guid:
-    Data1: -1007688798
-    Data2: 1251875053
-    Data3: -1936030827
-    Data4: 850231725
+    Data1: 281276904
+    Data2: 1259185862
+    Data3: -1787307610
+    Data4: 683426585
   Banks:
   - {fileID: -9065374462541756553}
   IsStream: 0
   Is3D: 0
-  IsOneShot: 0
+  IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 626
+  Length: 920
+--- !u!114 &8858512633632669437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Inimigos/Ataque_Machete
+  m_EditorClassIdentifier: 
+  Path: event:/Inimigos/Ataque_Machete
+  Guid:
+    Data1: -1801601162
+    Data2: 1142814359
+    Data3: -981036894
+    Data4: 1353518172
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1410
 --- !u!114 &9179048935746486774
 MonoBehaviour:
   m_ObjectHideFlags: 0
