@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Spikes : MonoBehaviour
 {
     public SOPlayer soPlayer;
@@ -12,6 +13,9 @@ public class Spikes : MonoBehaviour
     public float timeToUp;
     float currentTime;
     bool spiking;
+
+
+
     void Start()
     {
         currentTime = 0;
@@ -37,7 +41,7 @@ public class Spikes : MonoBehaviour
     }
 
     void ActiveSpike()
-    {
+    {       
         spiking = true;
         spikes.SetActive(true);
         StartCoroutine(DisableSpikes());

@@ -13,19 +13,21 @@ MonoBehaviour:
   m_Name: SOPlayerAttack
   m_EditorClassIdentifier: 
   attackDuration: 0.2
-  attackCooldown: 0.1
+  attackCooldown: 0.6
   attackComboFinalDuration: 0.2
   attackComboFinalCooldown: 0.1
   attackDamage: 1
-  comboTime: 1
-  comboDamage: 2
+  comboTime: 3
+  comboDamage: 2.5
   damagedCooldown: 0.1
-  currentCooldown: 0.1
-  currentDuration: 0.2
+  currentCooldown: 0.3
+  currentDuration: 1.25
   currentDamage: 1
-  comboIndex: 0
-  specialDamage: 5
-  specialDuration: 0.5
-  specialCooldown: 20
+  comboIndex: 2
+  specialDamage: 3.75
+  specialDuration: 0.3
+  specialCooldown: 1
   specialTime: 0
-  cooldownReduction: 5
+  cooldownReduction: 0
+  repulsionSpecialForce: 90
+  hitKill: 0

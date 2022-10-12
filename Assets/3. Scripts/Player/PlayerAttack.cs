@@ -10,6 +10,8 @@ public class PlayerAttack : MonoBehaviour
     public Material attack;
     bool trapped;
     bool special;
+    public PlayerManager playerManager;
+    float attackTime;
     void Start()
     {
         soPlayer.soPlayerAttack.comboIndex = 0;
@@ -20,7 +22,6 @@ public class PlayerAttack : MonoBehaviour
     {
         StopAllCoroutines();
         StartCoroutine(ComboTime());
-        StartCoroutine(AttackTime());
         boxCollider.enabled = true;
         meshRenderer.enabled = true;
         soPlayer.soPlayerAttack.comboIndex++;
@@ -28,17 +29,25 @@ public class PlayerAttack : MonoBehaviour
         {
             attack.color = Color.white;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Ataque_Leve", transform.position);
+            attackTime = playerManager.animAttack1Time;
+            soPlayer.soPlayerAttack.currentDuration = playerManager.animAttack1Time;
         }
         else if (soPlayer.soPlayerAttack.comboIndex == 2)
         {
             attack.color = Color.yellow;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Ataque_Leve_2", transform.position);
+            attackTime = playerManager.animAttack2Time;
+            soPlayer.soPlayerAttack.currentDuration = playerManager.animAttack2Time;
         }
         else
         {
             attack.color = Color.red;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Ataque_Leve_3", transform.position);
+            attackTime = playerManager.animAttack3Time;
+            soPlayer.soPlayerAttack.currentDuration = playerManager.animAttack3Time;
         }
+
+        StartCoroutine(AttackTime(attackTime));
     }
 
     public void AttackEnd()
@@ -98,9 +107,9 @@ public class PlayerAttack : MonoBehaviour
         soPlayer.soPlayerAttack.SpecialFinishEvent.RemoveListener(SpecialFinish);
     }
 
-    IEnumerator AttackTime()
+    IEnumerator AttackTime(float time)
     {
-        yield return new WaitForSeconds(soPlayer.soPlayerAttack.currentDuration);
+        yield return new WaitForSeconds(time);
         AttackEnd();
     }
 
@@ -118,8 +127,9 @@ public class PlayerAttack : MonoBehaviour
             {
                 soPlayer.soPlayerAttack.ReduceCooldown();
             }
-            other.GetComponent<EnemyManager>().soEnemy.ChangeLife(-soPlayer.soPlayerAttack.currentDamage);
-            
+
+            if(!soPlayer.soPlayerAttack.hitKill)other.transform.parent.transform.parent.GetComponent<EnemyManager>().soEnemy.ChangeLife(-soPlayer.soPlayerAttack.currentDamage);
+            else other.transform.parent.transform.parent.GetComponent<EnemyManager>().soEnemy.ChangeLife(-1000);
             
         }
 

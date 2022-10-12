@@ -10,12 +10,13 @@ public class EnemyNearby : MonoBehaviour
     GameObject target;
     void Start()
     {
-        
+        GetComponent<Image>().enabled = false;
     }
 
     void Update()
     {
-        if(target != null)transform.position = Camera.main.WorldToScreenPoint(target.transform.position);
+        //if(target != null)transform.position = Camera.main.WorldToScreenPoint(target.transform.position);
+        if(target != null)transform.position = target.transform.position;
     }
     void EnableImage(GameObject aim)
     {

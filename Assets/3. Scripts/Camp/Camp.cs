@@ -143,6 +143,13 @@ public class Camp : MonoBehaviour
             s.SetActive(true);
         }
 
+        foreach(GameObject t in trigger)
+        {
+            t.SetActive(false);
+        }
+
+        if(gameObject.tag == "Fort") soPlayer.LevelUp();
+        
         completed = true;
         soFort.CompleteSpace();
         soPlayer.soPlayerHealth.RecoverHealth();
@@ -159,10 +166,67 @@ public class Camp : MonoBehaviour
         soCamp.DieEnemy();
     }
 
+    void CompleteAnticipated()
+    {
+        if(!completed && gameObject.tag != "Fort")
+        {
+            enemyCount = 0;
+            foreach(GameObject d in door)
+            {
+                d.SetActive(false);
+            }
+
+            foreach(GameObject s in showThing)
+            {
+                s.SetActive(true);
+            }
+
+            foreach(GameObject t in trigger)
+            {
+                t.SetActive(false);
+            }
+
+            foreach(GameObject f in firstEnemy)
+            {
+                f.SetActive(false);
+            }
+            completed = true;
+        }
+    }
+
+    void CompleteFort()
+    {
+        if(!completed && gameObject.tag == "Fort")
+        {
+            enemyCount = 0;
+            foreach(GameObject d in door)
+            {
+                d.SetActive(false);
+            }
+
+            foreach(GameObject s in showThing)
+            {
+                s.SetActive(true);
+            }
+
+            foreach(GameObject t in trigger)
+            {
+                t.SetActive(false);
+            }
+
+            foreach(GameObject f in firstEnemy)
+            {
+                f.SetActive(false);
+            }
+            completed = true;
+        }
+    }
+
     void Restart()
     {
         if(!completed)
         {
+            StopAllCoroutines();
             soCamp.actualWave = 0;
             soCamp.killCount = 0;
             enemyCount = 0;
@@ -173,7 +237,6 @@ public class Camp : MonoBehaviour
             {
                 t.SetActive(true);
             }
-            
 
             foreach(GameObject d in door)
             {
@@ -186,7 +249,10 @@ public class Camp : MonoBehaviour
             foreach(GameObject f in firstEnemy)
             {
                 f.SetActive(true);
-                f.GetComponent<EnemyMove>().Restart();
+                f.GetComponent<EnemyMove>().transform.position = f.GetComponent<EnemyMove>().firstLocal;
+                f.GetComponent<EnemyMove>().detected = false;
+                f.GetComponent<EnemyMove>().soEnemy.state = SOEnemy.State.STOPPED;
+                //f.GetComponent<EnemyMove>().Restart();
             }
         }
 
@@ -204,6 +270,8 @@ public class Camp : MonoBehaviour
             {
                     e.GetComponent<EnemyManager>().soEnemy.DieEvent.AddListener(EnemyDied);
             }
+            soFort.CompleteChallengesEvent.AddListener(CompleteAnticipated);
+            soFort.CompleteFortEvent.AddListener(CompleteFort);
         }
         firstEnable = true;
     }
@@ -217,5 +285,7 @@ public class Camp : MonoBehaviour
         {
                 e.GetComponent<EnemyManager>().soEnemy.DieEvent.RemoveListener(EnemyDied);
         }
+        soFort.CompleteChallengesEvent.RemoveListener(CompleteAnticipated);
+        soFort.CompleteFortEvent.RemoveListener(CompleteFort);
     }
 }

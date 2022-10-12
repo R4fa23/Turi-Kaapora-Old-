@@ -63,6 +63,12 @@ public class Trail : MonoBehaviour
         {
             d.SetActive(false);
         }
+
+        foreach(GameObject t in trigger)
+        {
+            t.SetActive(false);
+        }
+
         completed = true;
         soFort.CompleteSpace();
     }
@@ -71,6 +77,27 @@ public class Trail : MonoBehaviour
         foreach(GameObject d in door)
         {
             d.SetActive(true);
+        }
+    }
+
+    void CompleteAnticipated()
+    {
+        if(!completed)
+        {
+            foreach(GameObject t in trigger)
+            {
+                t.SetActive(false);
+            }
+
+            foreach(GameObject d in door)
+            {
+                d.SetActive(false);
+            }
+
+            foreach(GameObject c in cage)
+            {
+                c.SetActive(false);
+            }
         }
     }
 
@@ -95,11 +122,13 @@ public class Trail : MonoBehaviour
         soTrail.FinishTrailEvent.AddListener(FinishTrail);
         soTrail.EnterTrailEvent.AddListener(StartTrail);
         soSave.RestartEvent.AddListener(Restart);
+        soFort.CompleteChallengesEvent.AddListener(CompleteAnticipated);
     }
     void OnDisable()
     {
         soTrail.FinishTrailEvent.RemoveListener(FinishTrail);
         soTrail.EnterTrailEvent.RemoveListener(StartTrail);
         soSave.RestartEvent.RemoveListener(Restart);
+        soFort.CompleteChallengesEvent.RemoveListener(CompleteAnticipated);
     }
 }

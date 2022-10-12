@@ -7,21 +7,43 @@ using UnityEngine.Events;
 public class SOEnemy : ScriptableObject
 {
     public enum State { STOPPED, WALKING, ATTACKING }
+    public enum EnemyType { MELEE, RANGE, LUMBERJACK, INCENDIARY, HUNTER }
     public State state = State.STOPPED;
+    public EnemyType enemyType;
     public int attackDamage;
+    [HideInInspector]
     public float attackChargeDuration;
+    [HideInInspector]
     public float attackDuration;
-    public float attackCooldown;
-    public float cooldownDamaged;
+    [HideInInspector]
+    public float attackWaitDuration;
     public float attackRange;
     public float vel;
     public float distanceDetectation;
     public float maxHealth;
     public float health;
     [HideInInspector]
-    public float currentCooldown;
-    [HideInInspector]
     public bool canDamaged;
+    public int divisorAttackChance;
+    public int maxSecondsToAttack;
+    public float forceRecover;
+    [HideInInspector]
+    public float specialTime;
+    public float timeToSpecial;
+    [HideInInspector]
+    public bool canAttack;
+
+    // A ser conferido--------
+    [HideInInspector]
+    public float attackTime;
+    public float timeToAttack;
+    //--------------------------
+    public float rotationVel;
+    public int minTimeToRandomize;
+    [HideInInspector]
+    public bool attacked;
+    public float timeToAttackAfterAttacked;
+
 
     [System.NonSerialized]
     public UnityEvent ChargeStartEvent;
@@ -108,7 +130,7 @@ public class SOEnemy : ScriptableObject
     {
         ChargeStartEvent.Invoke();
     }
-    public void ChangeLife(int amount) 
+    public void ChangeLife(float amount) 
     {
         if(canDamaged)
         {

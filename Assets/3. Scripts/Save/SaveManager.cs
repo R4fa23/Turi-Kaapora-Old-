@@ -19,10 +19,10 @@ public class SaveManager : MonoBehaviour
 
     void OnEnable()
     {
-        soPlayer.soPlayerHealth.DieEvent.AddListener(Restart);
+        //soPlayer.soPlayerHealth.DieEvent.AddListener(Restart);
     }
     void OnDisable()
     {
-        soPlayer.soPlayerHealth.DieEvent.RemoveListener(Restart);
+        //soPlayer.soPlayerHealth.DieEvent.RemoveListener(Restart);
     }
 }

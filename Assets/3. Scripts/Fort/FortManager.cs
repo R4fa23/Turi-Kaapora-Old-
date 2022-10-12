@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class FortManager : MonoBehaviour
 {
+    public SOPlayer soPlayer;
     public SOFort soFort;
     public GameObject doors;
     [HideInInspector]
@@ -27,6 +28,7 @@ public class FortManager : MonoBehaviour
         foreach(GameObject d in door)
         {
             d.SetActive(false);
+
         }
     }
 

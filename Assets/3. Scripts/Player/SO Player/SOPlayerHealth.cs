@@ -6,6 +6,7 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "SOPlayerHealth", menuName = "ScriptableObjects/Characters/Player/Health")]
 public class SOPlayerHealth : ScriptableObject
 {
+    
     public int maxLife = 10;
     public int life;
     [HideInInspector]
@@ -14,6 +15,9 @@ public class SOPlayerHealth : ScriptableObject
     public float fireCharges;
     public int fireDamage;
     public float flameDelay;
+    public bool dead;
+    [HideInInspector]
+    public bool canDamaged;
 
     [System.NonSerialized]
     public UnityEvent HealthChangeEvent;
@@ -40,13 +44,18 @@ public class SOPlayerHealth : ScriptableObject
 
     public void HealthChange(int amount)
     {
-        life += amount;
-        HealthChangeEvent.Invoke();
-        if(life <= 0) Die();
+        if(!dead && canDamaged)
+        {
+            life += amount;
+            HealthChangeEvent.Invoke();
+            if(life <= 0) Die();
+        }
     }
 
     public void Die()
     {
+        Debug.Log("Morrer");
+        dead = true;
         RecoverHealth();
         DieEvent.Invoke();
     }

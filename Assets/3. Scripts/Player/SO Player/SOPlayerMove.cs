@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class SOPlayerMove : ScriptableObject
 {
     public float vel;
+    [HideInInspector]
     public float velBase;
     public float dashDist;
     public float dashDuration;
@@ -14,7 +15,9 @@ public class SOPlayerMove : ScriptableObject
     public float rotationVel;
     public float focusRange;
     public float staminas;
+    [HideInInspector]
     public float maxStaminas;
+    [HideInInspector]
     public float rechargeStaminasTime;
     [HideInInspector]
     public float rechargeTime;
@@ -23,6 +26,8 @@ public class SOPlayerMove : ScriptableObject
     public float velSlow;
     [HideInInspector]
     public float slowDuration;
+    [HideInInspector]
+    public bool superVelocity;
 
     [System.NonSerialized]
     public UnityEvent MoveStartEvent;

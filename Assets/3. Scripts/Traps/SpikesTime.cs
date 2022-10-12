@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.VFX;
 public class SpikesTime : MonoBehaviour
 {
     public SOPlayer soPlayer;
@@ -10,11 +10,13 @@ public class SpikesTime : MonoBehaviour
     public float durationSpike;
     public float delaySpike;
     bool charging;
+
+    [SerializeField] VisualEffect vfx;
+
     void Start()
     {
         spikes.SetActive(false);
-    }
-    
+    }    
 
     void StartCharge()
     {
@@ -26,6 +28,9 @@ public class SpikesTime : MonoBehaviour
     {
         yield return new WaitForSeconds(delaySpike);
         spikes.SetActive(true);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Perigos/Espinhos", transform.position);
+        vfx.Reinit();
+        vfx.SendEvent("OnPlay");
         StartCoroutine(DownSpikes());
     }
 
@@ -40,12 +45,9 @@ public class SpikesTime : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            if(soPlayer.state != SOPlayer.State.DASHING)
+            if(!charging)
             {
-                if(!charging)
-                {
-                    StartCharge();
-                }
+                StartCharge();
             }
         }
     }
