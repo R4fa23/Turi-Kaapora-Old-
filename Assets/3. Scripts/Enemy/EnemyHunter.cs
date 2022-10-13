@@ -13,6 +13,7 @@ public class EnemyHunter : MonoBehaviour
     {
         web.SetActive(false);
         soEnemy = GetComponent<EnemyManager>().soEnemy;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Inimigos/Cacador_Ataque", transform.position);
         OnEnable();
     }
 
