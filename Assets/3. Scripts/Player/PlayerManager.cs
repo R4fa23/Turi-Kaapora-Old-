@@ -299,6 +299,7 @@ public class PlayerManager : MonoBehaviour
             {
                 if(!dashing && (soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canSpecial)
                 {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Especial", transform.position);
                     soPlayer.soPlayerAttack.SpecialStart();
                     soPlayer.state = SOPlayer.State.SPECIAL;
                     soPlayer.soPlayerMove.DashStart();
@@ -336,6 +337,7 @@ public class PlayerManager : MonoBehaviour
             {
                 if(canFire)
                 {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Dano_Fogo", transform.position);
                     canFire = false;
                     StartCoroutine(CooldownFireDamage());
                     soPlayer.soPlayerHealth.HealthChange(-soPlayer.soPlayerHealth.fireDamage);
@@ -377,6 +379,7 @@ public class PlayerManager : MonoBehaviour
     {
         //animator.SetTrigger("Dano");
         animator.SetTrigger("Dano");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Dano_Humano", transform.position);
     }
 
     //--------------------------------------------SE MATAR----------------------------------------

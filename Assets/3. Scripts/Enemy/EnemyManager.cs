@@ -75,6 +75,7 @@ public class EnemyManager : MonoBehaviour
     void Damaged()
     {
         animator.SetTrigger("Take Damage");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Acerto", transform.position);
     }
 
     IEnumerator TimeRecoverDamage()
