@@ -50,9 +50,12 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 18
+      - m_Value: 0
         m_Name: Line End
-        m_Overridden: 0
+        m_Overridden: 1
+      - m_Value: 0
+        m_Name: Line Sequencer
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -158,8 +161,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 18, y: 1, z: 1}
-  m_Center: {x: 9, y: 0.5, z: 0}
+  m_Size: {x: 18, y: 3, z: 1}
+  m_Center: {x: 9, y: 1.5, z: 0}
 --- !u!114 &7229403367586962514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,5 +176,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vfxFire: {fileID: 7229403366768263985}
-  rate: 7
   wallSize: 18
+  boxCollider: {fileID: 7229403367586962515}
+  timer: 2
+  rateSequencer: 0
+  update: 0
