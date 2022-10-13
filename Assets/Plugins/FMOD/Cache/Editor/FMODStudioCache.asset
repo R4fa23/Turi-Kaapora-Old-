@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: Turi FMOD Project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638005814211620943
+  lastModified: 638012087220238526
   FileSizes:
   - Name: Desktop
-    Value: 409248
+    Value: 580448
   Exists: 1
 --- !u!114 &-7745376779175007120
 MonoBehaviour:
@@ -155,6 +155,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 626
+--- !u!114 &-3741134111853196981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Inimigos/Peao_Ataque
+  m_EditorClassIdentifier: 
+  Path: event:/Inimigos/Peao_Ataque
+  Guid:
+    Data1: -1801601162
+    Data2: 1142814359
+    Data3: -981036894
+    Data4: 1353518172
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1410
+--- !u!114 &-2167304242042248890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Inimigos/Atirador_Ataque
+  m_EditorClassIdentifier: 
+  Path: event:/Inimigos/Atirador_Ataque
+  Guid:
+    Data1: -1331745407
+    Data2: 1267456504
+    Data3: 540653204
+    Data4: 1425531635
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1854
 --- !u!114 &-1796485893703664309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,10 +244,10 @@ MonoBehaviour:
   Path: Turi FMOD Project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638005814211630936
+  lastModified: 638012087220248777
   FileSizes:
   - Name: Desktop
-    Value: 1142
+    Value: 1338
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -216,16 +270,20 @@ MonoBehaviour:
   - {fileID: 2662173961063635059}
   - {fileID: -7745376779175007120}
   - {fileID: -6911676650611157552}
-  - {fileID: 8858512633632669437}
   - {fileID: 4131303823517054717}
   - {fileID: -3766821534403806574}
   - {fileID: 8853176902516303400}
+  - {fileID: 7495769136897093872}
+  - {fileID: 6109771513579486997}
+  - {fileID: 5066604369503097298}
+  - {fileID: -3741134111853196981}
+  - {fileID: -2167304242042248890}
   EditorParameters: []
   MasterBanks:
   - {fileID: -9065374462541756553}
   StringsBanks:
   - {fileID: -175099898346297676}
-  cacheTime: 638005814211630936
+  cacheTime: 638012087220248777
   cacheVersion: 131591
 --- !u!114 &621566993391211386
 MonoBehaviour:
@@ -355,6 +413,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1643
+--- !u!114 &5066604369503097298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Inimigos/Cacador_Ataque
+  m_EditorClassIdentifier: 
+  Path: event:/Inimigos/Cacador_Ataque
+  Guid:
+    Data1: 531836778
+    Data2: 1107245964
+    Data3: 1113640116
+    Data4: 944262835
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 992
+--- !u!114 &6109771513579486997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Inimigos/Incendiario_Ataque
+  m_EditorClassIdentifier: 
+  Path: event:/Inimigos/Incendiario_Ataque
+  Guid:
+    Data1: 150257753
+    Data2: 1106504899
+    Data3: 354292415
+    Data4: 1790152680
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 548
 --- !u!114 &7201171913893779183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,6 +494,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 940
+--- !u!114 &7495769136897093872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Inimigos/Lenhador_Ataque
+  m_EditorClassIdentifier: 
+  Path: event:/Inimigos/Lenhador_Ataque
+  Guid:
+    Data1: 330762252
+    Data2: 1304724211
+    Data3: -1182355540
+    Data4: -523698682
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2142
 --- !u!114 &8853176902516303400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,33 +548,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 920
---- !u!114 &8858512633632669437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Inimigos/Ataque_Machete
-  m_EditorClassIdentifier: 
-  Path: event:/Inimigos/Ataque_Machete
-  Guid:
-    Data1: -1801601162
-    Data2: 1142814359
-    Data3: -981036894
-    Data4: 1353518172
-  Banks:
-  - {fileID: -9065374462541756553}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1410
 --- !u!114 &9179048935746486774
 MonoBehaviour:
   m_ObjectHideFlags: 0
