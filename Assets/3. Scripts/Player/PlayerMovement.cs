@@ -45,75 +45,82 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
-        walk = false;
-        if(move) walk = true;
-
-        if(targetFocus != null)
+        if(!soPlayer.soPlayerHealth.dead)
         {
-            if(!targetFocus.activeSelf) 
+            walk = false;
+            if(move) walk = true;
+
+            if(targetFocus != null)
             {
-                focusing = false;
-                targetFocus = null;
-            }
-        }
-        
-
-        Vector3 moveY = Vector3.zero;
-        if (characterCtrl.isGrounded) verticalSpeed = 0;
-        else verticalSpeed -= gravity;
-        moveY.y = verticalSpeed;
-        characterCtrl.Move(moveY * Time.deltaTime);
-
-        if(walk || dash)
-        {
-            if(!dash)
-            {
-                dir = movement.ReadValue<Vector2>();
-                sensibility = soPlayer.soPlayerMove.vel;
-            }
-
-
-    
-            if(initialDash)
-            {
-                FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Dash", transform.position);
-                initialDash = false;
-                if(movement.ReadValue<Vector2>().magnitude > 0.1f) dir = movement.ReadValue<Vector2>();
-                else dir = new Vector2(transform.forward.x, transform.forward.z);
-            }
-
-            if(trapped)
-            {
-                dir = Vector2.zero;
-            }
-            Vector3 playerX;
-            inputValue = dir;
-
-                playerX = new Vector3(inputValue.x, 0, inputValue.y);
-
-                if (playerX.magnitude > 0.1f)
+                if(!targetFocus.activeSelf) 
                 {
-                    float targetAngle = Mathf.Atan2(playerX.x, playerX.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
-                    
-                    if(!focusing || dash)
-                    {
-                        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-                        transform.rotation = Quaternion.Euler(0f, angle, 0f);
-                    }
-
-                    Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-                    RecognizeDirectionAnimation(moveDir);
-                    characterCtrl.Move(moveDir.normalized * sensibility *Time.deltaTime);
-
+                    focusing = false;
+                    targetFocus = null;
                 }
-                
+            }
+            
+
+            Vector3 moveY = Vector3.zero;
+            if (characterCtrl.isGrounded) verticalSpeed = 0;
+            else verticalSpeed -= gravity;
+            moveY.y = verticalSpeed;
+            characterCtrl.Move(moveY * Time.deltaTime);
+
+            if(walk || dash)
+            {
+                if(!dash)
+                {
+                    dir = movement.ReadValue<Vector2>();
+                    sensibility = soPlayer.soPlayerMove.vel;
+                }
+
+
+        
+                if(initialDash)
+                {
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Dash", transform.position);
+                    initialDash = false;
+                    if(movement.ReadValue<Vector2>().magnitude > 0.1f) dir = movement.ReadValue<Vector2>();
+                    else dir = new Vector2(transform.forward.x, transform.forward.z);
+                }
+
+                if(trapped)
+                {
+                    dir = Vector2.zero;
+                }
+                Vector3 playerX;
+                inputValue = dir;
+
+                    playerX = new Vector3(inputValue.x, 0, inputValue.y);
+
+                    if (playerX.magnitude > 0.1f)
+                    {
+                        float targetAngle = Mathf.Atan2(playerX.x, playerX.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
+                        
+                        if(!focusing || dash)
+                        {
+                            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                        }
+
+                        float superVel;
+                        if(soPlayer.soPlayerMove.superVelocity) superVel = 5;
+                        else superVel = 1;
+
+                        Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                        RecognizeDirectionAnimation(dir);
+                        characterCtrl.Move(moveDir.normalized * sensibility *Time.deltaTime * superVel);
+
+                    }
+                    
+            }
+            if(focusing && !dash)
+            {
+                Vector3 dirP= new Vector3(targetFocus.transform.position.x, transform.position.y, targetFocus.transform.position.z);
+                transform.forward = Vector3.RotateTowards(transform.forward, dirP - transform.position, Mathf.PI / 5, 0);
+            } 
+            move = false;
         }
-        if(focusing && !dash)
-        {
-            Vector3 dirP= new Vector3(targetFocus.transform.position.x, transform.position.y, targetFocus.transform.position.z);
-            transform.forward = Vector3.RotateTowards(transform.forward, dirP - transform.position, Mathf.PI / 50, 0);
-        } 
-        move = false;
     }
 
     public void MoveStart()
