@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -17,16 +18,30 @@ public class PlayerManager : MonoBehaviour
     bool canSpecial = true;
     bool canFire = true;
     public GameObject animated;
-    Animator animator;
+    public Animator animator;
+    GameObject[] savePoints;
+    int saveIndex;
+    [HideInInspector]
+    public float animAttack1Time;
+    [HideInInspector]
+    public float animAttack2Time;
+    [HideInInspector]
+    public float animAttack3Time;
 
     void Awake()
     {
         animator = animated.GetComponent<Animator>();
-        SetConfiguration();
 
         playerMap = new PlayerMap();
 
         //Forma de chamar as funções sem precisar associar manualmente no inspector
+        
+
+    }
+    
+    void PlayerSetCommands()
+    {
+        /*
         playerMap.Default.Enable();
         playerMap.Default.Movement.started += MovementStarted;
         playerMap.Default.Movement.canceled += MovementCanceled;
@@ -34,8 +49,24 @@ public class PlayerManager : MonoBehaviour
         playerMap.Default.Attack.started += AttackStarted;
         playerMap.Default.Aim.started += AimStarted;
         playerMap.Default.Special.started += SpecialStarted;
-
+        playerMap.Default.Suicide.started += SuicideStarted;
+        */
     }
+
+    void PlayerRemoveCommands()
+    {
+        /*
+        playerMap.Default.Movement.started -= MovementStarted;
+        playerMap.Default.Movement.canceled -= MovementCanceled;
+        playerMap.Default.Dash.started -= DashStarted;
+        playerMap.Default.Attack.started -= AttackStarted;
+        playerMap.Default.Aim.started -= AimStarted;
+        playerMap.Default.Special.started -= SpecialStarted;
+        playerMap.Default.Suicide.started -= SuicideStarted;
+        playerMap.Default.Disable();
+        */
+    }
+
     
     void SetConfiguration()
     {
@@ -59,9 +90,29 @@ public class PlayerManager : MonoBehaviour
         soPlayer.soPlayerMove.vel = soPlayer.soPlayerMove.velBase;
         soPlayer.soPlayerHealth.burned = false;
         soPlayer.soPlayerMove.slow = false;
+        soPlayer.soPlayerHealth.dead = false;
+        soPlayer.canTeleport = false;
+        soPlayer.soPlayerHealth.canDamaged = true;
+        soPlayer.isPaused = false;
+        soPlayer.soPlayerAttack.hitKill = false;
+        soPlayer.soPlayerMove.superVelocity = false;
+
+
         soPlayer.state = SOPlayer.State.STOPPED;
     }
     
+    private void Start() {
+        if(SceneManager.GetActiveScene().name == "Level-00") soPlayer.SetLevel(0);
+        else if(SceneManager.GetActiveScene().name == "Level-01") soPlayer.SetLevel(1);
+        else if(SceneManager.GetActiveScene().name == "Level-02") soPlayer.SetLevel(2);
+        else soPlayer.SetLevel(0);
+        
+        AnimationsTime();
+        savePoints = GameObject.FindGameObjectsWithTag("SavePoint");
+
+        SetConfiguration();
+    }
+
     void Update()
     {
         //Debug.Log(soPlayer.state);
@@ -73,10 +124,26 @@ public class PlayerManager : MonoBehaviour
         if(soPlayer.soPlayerMove.slow) Slow();
     }
 
+    bool IsDead()
+    {
+        return soPlayer.soPlayerHealth.dead || soPlayer.isPaused;
+    }
+
     //-------------------------------MOVIMENTAÇÃO--------------------------------- 
     public void MovementStarted(InputAction.CallbackContext context)
     {
-        movement = true;
+        if(!IsDead())
+        {
+            if(context.started)
+            {
+                movement = true;
+            }
+            else if(context.canceled)
+            {
+                MovementCanceled(context);
+            }
+        }
+            
         /*
         if(soPlayer.state == SOPlayer.State.STOPPED)
         {
@@ -93,22 +160,29 @@ public class PlayerManager : MonoBehaviour
 
     public void MovementPerformed()
     {
-        if(soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING)
+        if(!IsDead())
         {
-            animator.SetBool("Move", true);
-            soPlayer.state = SOPlayer.State.WALKING;
-            soPlayer.soPlayerMove.MoveStart();
-            
+            if(soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING)
+            {
+                //animator.SetBool("Move", true);
+                animator.SetBool("Move", true);
+                soPlayer.state = SOPlayer.State.WALKING;
+                soPlayer.soPlayerMove.MoveStart();
+                
+            }
         }
     }
     public void MovementCanceled(InputAction.CallbackContext context) {
         movement = false;
+        //animator.SetBool("Move", false);
         animator.SetBool("Move", false);
-
-        if(soPlayer.state == SOPlayer.State.WALKING)
+        if(!IsDead())
         {
-            soPlayer.state = SOPlayer.State.STOPPED;
-            soPlayer.soPlayerMove.MoveEnd();
+            if(soPlayer.state == SOPlayer.State.WALKING)
+            {
+                soPlayer.state = SOPlayer.State.STOPPED;
+                soPlayer.soPlayerMove.MoveEnd();
+            }
         }
         /*
         else if(soPlayer.state == SOPlayer.State.DASHING)
@@ -121,21 +195,28 @@ public class PlayerManager : MonoBehaviour
     //-------------------------------DASH--------------------------------- 
     public void DashStarted(InputAction.CallbackContext context)
     {
-        if(canDash && soPlayer.state != SOPlayer.State.TRAPPED && soPlayer.state != SOPlayer.State.SPECIAL && soPlayer.soPlayerMove.staminas > 0 && !soPlayer.soPlayerMove.slow)
+        if(!IsDead())
         {
-            animator.SetTrigger("Dash");
-            soPlayer.soPlayerMove.ChangeStaminaCount(-1);
-            soPlayer.soPlayerMove.rechargeTime = 0;
-            dashing = true;
-            soPlayer.state = SOPlayer.State.DASHING;
-            canDash = false;
-            StartCoroutine(DashCooldown());
-            soPlayer.soPlayerMove.DashStart();
+            if(context.started)
+            {
+                if(canDash && soPlayer.state != SOPlayer.State.TRAPPED && soPlayer.state != SOPlayer.State.SPECIAL && soPlayer.soPlayerMove.staminas > 0 && !soPlayer.soPlayerMove.slow)
+                {
+                    //animator.SetTrigger("Dash");
+                    animator.SetTrigger("Dash");
+                    soPlayer.soPlayerMove.ChangeStaminaCount(-1);
+                    soPlayer.soPlayerMove.rechargeTime = 0;
+                    dashing = true;
+                    soPlayer.state = SOPlayer.State.DASHING;
+                    canDash = false;
+                    StartCoroutine(DashCooldown());
+                    soPlayer.soPlayerMove.DashStart();
 
-        }
-        else if(soPlayer.state == SOPlayer.State.TRAPPED)
-        {
-            soPlayer.soPlayerMove.TrappedClick();
+                }
+                else if(soPlayer.state == SOPlayer.State.TRAPPED)
+                {
+                    soPlayer.soPlayerMove.TrappedClick();
+                }
+            }
         }
     }
 
@@ -159,13 +240,21 @@ public class PlayerManager : MonoBehaviour
     //-------------------------------ATAQUE--------------------------------- 
     public void AttackStarted(InputAction.CallbackContext context)
     {
-        if(!dashing && (soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canAttack)
+        if(!IsDead())
         {
-            animator.SetTrigger("Ataque");
-            canAttack = false;
-            soPlayer.state = SOPlayer.State.ATTACKING;
-            soPlayer.soPlayerAttack.AttackStart();
-            StartCoroutine(AttackCooldown());
+            if(context.started)
+            {
+                if(!dashing && (soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canAttack)
+                {
+                    //animator.SetTrigger("Ataque");
+                    animator.SetInteger("AtaqIndex", soPlayer.soPlayerAttack.comboIndex);
+                    animator.SetTrigger("Ataque");
+                    canAttack = false;
+                    soPlayer.state = SOPlayer.State.ATTACKING;
+                    soPlayer.soPlayerAttack.AttackStart();
+                    StartCoroutine(AttackCooldown());
+                }
+            }
         }
     }
     IEnumerator AttackCooldown()
@@ -188,25 +277,35 @@ public class PlayerManager : MonoBehaviour
     //-------------------------------------------MIRAR-----------------------------------------------
     public void AimStarted(InputAction.CallbackContext context)
     {
-        if(soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING)
+        if(!IsDead())
         {
-            soPlayer.soPlayerMove.AimStart();
+            if(context.started)
+            {
+                if(soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING)
+                {
+                    soPlayer.soPlayerMove.AimStart();
+                }
+            }
         }
-            
     }
 
     //---------------------------------------------ESPECIAL------------------------------------------
 
     public void SpecialStarted(InputAction.CallbackContext context)
     {
-        if(!dashing && (soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canSpecial)
+        if(!IsDead())
         {
-            soPlayer.soPlayerAttack.SpecialStart();
-            soPlayer.state = SOPlayer.State.SPECIAL;
-            soPlayer.soPlayerMove.DashStart();
-            canSpecial = false;
+            if(context.started)
+            {
+                if(!dashing && (soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canSpecial)
+                {
+                    soPlayer.soPlayerAttack.SpecialStart();
+                    soPlayer.state = SOPlayer.State.SPECIAL;
+                    soPlayer.soPlayerMove.DashStart();
+                    canSpecial = false;
+                }
+            }
         }
-        
     }
     void SpecialCooldown()
         {
@@ -222,14 +321,14 @@ public class PlayerManager : MonoBehaviour
 
     void Restart()
     {
-        
+        soPlayer.soPlayerHealth.dead = false;
         GetComponent<CharacterController>().enabled = false;
         transform.position = soSave.savePoint.position;
         GetComponent<CharacterController>().enabled = true;
         SetConfiguration();
     }
 
-    //--------------------------------------------QUEIMANDO------------------------------------------
+    //--------------------------------------------FOGO------------------------------------------
 
     void Burn()
     {
@@ -276,19 +375,108 @@ public class PlayerManager : MonoBehaviour
 
     void Damaged()
     {
+        //animator.SetTrigger("Dano");
         animator.SetTrigger("Dano");
     }
+
+    //--------------------------------------------SE MATAR----------------------------------------
+
+    public void SuicideStarted(InputAction.CallbackContext context)
+    {
+        if(!IsDead())
+        {
+            if(context.started)
+            {
+                soPlayer.soPlayerHealth.HealthChange(-100);
+            }
+        }
+    }
+
+    //-------------------------------------------MORRER-----------------------------------------------
+
+    public void OnDie() 
+    {
+        StartCoroutine(TimeRestart());
+    }
+
+    IEnumerator TimeRestart()
+    {
+        yield return new WaitForSeconds(10);
+        soSave.Restart();
+    }
+    
+    //--------------------------------------------PAUSE-----------------------------------------------
+
+    public void PauseStarted(InputAction.CallbackContext context)
+    {
+        if(!IsDead())
+        {
+            if(context.started)
+            {
+                soPlayer.Pause();
+            }
+        }
+            
+    }
+
+    //------------------------------------------TELEPORTE---------------------------------------------
+
+    public void TeleportStarted(InputAction.CallbackContext context)
+    {
+        if(!IsDead())
+        {
+            if(soPlayer.canTeleport)
+            {
+                if(context.started)
+                {
+                    GetComponent<CharacterController>().enabled = false;
+                    transform.position = savePoints[saveIndex].transform.position;
+                    GetComponent<CharacterController>().enabled = true;
+                    saveIndex++;
+                    if(saveIndex >= savePoints.Length) saveIndex = 0;
+                }
+            }
+        }
+    }
+
+    //------------------------------------------TEMPO DE ANIMAÇÕES-----------------------------------
+
+    void AnimationsTime()
+    {
+        AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
+        foreach(AnimationClip clip in clips)
+        {
+            switch(clip.name)
+            {
+                case "Ataque1_Caipora":
+                    animAttack1Time = clip.length;
+                    break;
+                case "Ataque2_Caipora":
+                    animAttack2Time = clip.length;
+                    break;
+                case "Ataque3_Caipora":
+                    animAttack3Time = clip.length;
+                    break;
+            }
+        }
+    }
+
     //-------------------------------------------LISTENER---------------------------------------------
     public void OnEnable()
     {
+        PlayerSetCommands();
         //soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(DamagedCooldown);
         soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(Damaged);
         soSave.RestartEvent.AddListener(Restart);
+        soPlayer.LevelUpEvent.AddListener(SetConfiguration);
+        soPlayer.soPlayerHealth.DieEvent.AddListener(OnDie);
     }
     public void OnDisable()
     {
         //soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(DamagedCooldown);
         soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(Damaged);
         soSave.RestartEvent.RemoveListener(Restart);
+        soPlayer.LevelUpEvent.RemoveListener(SetConfiguration);
+        soPlayer.soPlayerHealth.DieEvent.RemoveListener(OnDie);
     }
 }
