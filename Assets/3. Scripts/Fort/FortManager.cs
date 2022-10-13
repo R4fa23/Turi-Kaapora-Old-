@@ -15,7 +15,7 @@ public class FortManager : MonoBehaviour
     {
         for(int i = 0; i < doors.transform.childCount; i++) {
             door.Add(doors.transform.GetChild(i).gameObject);
-            door[i].SetActive(true);
+            door[i].GetComponent<BlueFireWall>().StartFire();
         }
 
         challenges = GameObject.FindGameObjectsWithTag("Challenges");
@@ -27,7 +27,7 @@ public class FortManager : MonoBehaviour
     {
         foreach(GameObject d in door)
         {
-            d.SetActive(false);
+            d.GetComponent<BlueFireWall>().EndFire();
 
         }
     }

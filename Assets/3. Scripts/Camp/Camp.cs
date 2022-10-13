@@ -50,7 +50,7 @@ public class Camp : MonoBehaviour
 
         for(int i = 0; i < doors.transform.childCount; i++) {
             door.Add(doors.transform.GetChild(i).gameObject);
-            door[i].SetActive(false);
+            door[i].GetComponent<BlueFireWall>().EndFire();
         }
 
         for(int i = 0; i < cabins.transform.childCount; i++) {
@@ -96,7 +96,7 @@ public class Camp : MonoBehaviour
     {
         foreach(GameObject d in door)
         {
-            d.SetActive(true);
+            d.GetComponent<BlueFireWall>().StartFire();
         }
 
         if(firstEnemy.Count > 0)
@@ -135,7 +135,7 @@ public class Camp : MonoBehaviour
         enemyCount = 0;
         foreach(GameObject d in door)
         {
-            d.SetActive(false);
+            d.GetComponent<BlueFireWall>().EndFire();
         }
 
         foreach(GameObject s in showThing)
@@ -173,7 +173,7 @@ public class Camp : MonoBehaviour
             enemyCount = 0;
             foreach(GameObject d in door)
             {
-                d.SetActive(false);
+                d.GetComponent<BlueFireWall>().EndFire();
             }
 
             foreach(GameObject s in showThing)
@@ -201,7 +201,7 @@ public class Camp : MonoBehaviour
             enemyCount = 0;
             foreach(GameObject d in door)
             {
-                d.SetActive(false);
+                d.GetComponent<BlueFireWall>().EndFire();
             }
 
             foreach(GameObject s in showThing)
@@ -240,7 +240,7 @@ public class Camp : MonoBehaviour
 
             foreach(GameObject d in door)
             {
-                d.SetActive(false);
+                d.GetComponent<BlueFireWall>().EndFire();
             }
             foreach(GameObject c in cabin)
             {
