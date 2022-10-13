@@ -36,6 +36,7 @@ public class SOEnemy : ScriptableObject
     // A ser conferido--------
     [HideInInspector]
     public float attackTime;
+    [HideInInspector]
     public float timeToAttack;
     //--------------------------
     public float rotationVel;

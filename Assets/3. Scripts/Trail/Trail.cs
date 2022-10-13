@@ -43,7 +43,7 @@ public class Trail : MonoBehaviour
 
         for(int i = 0; i < doors.transform.childCount; i++) {
             door.Add(doors.transform.GetChild(i).gameObject);
-            door[i].SetActive(false);
+            door[i].GetComponent<BlueFireWall>().EndFire();
         }
 
         for(int i = 0; i < cages.transform.childCount; i++) {
@@ -61,7 +61,7 @@ public class Trail : MonoBehaviour
     {
         foreach(GameObject d in door)
         {
-            d.SetActive(false);
+            d.GetComponent<BlueFireWall>().EndFire();
         }
 
         foreach(GameObject t in trigger)
@@ -76,7 +76,7 @@ public class Trail : MonoBehaviour
     {
         foreach(GameObject d in door)
         {
-            d.SetActive(true);
+            d.GetComponent<BlueFireWall>().StartFire();
         }
     }
 
@@ -91,7 +91,7 @@ public class Trail : MonoBehaviour
 
             foreach(GameObject d in door)
             {
-                d.SetActive(false);
+                d.GetComponent<BlueFireWall>().EndFire();
             }
 
             foreach(GameObject c in cage)
@@ -112,7 +112,7 @@ public class Trail : MonoBehaviour
 
             foreach(GameObject d in door)
             {
-                d.SetActive(false);
+                d.GetComponent<BlueFireWall>().EndFire();
             }
         }
     }
