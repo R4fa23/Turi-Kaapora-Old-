@@ -88,7 +88,9 @@ public class EnemyAttack : MonoBehaviour
     {
         rotate = false;
         soEnemy.AttackStart();
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Inimigos/Peao_Ataque", transform.position);
+        
+        if(soEnemy.enemyType == SOEnemy.EnemyType.MELEE)FMODUnity.RuntimeManager.PlayOneShot("event:/Inimigos/Peao_Ataque", transform.position);
+        else if(soEnemy.enemyType == SOEnemy.EnemyType.RANGE)
 
         if(soEnemy.specialTime >= soEnemy.timeToSpecial && special != null)
         {
