@@ -67,7 +67,7 @@ public class BlueFireWall : MonoBehaviour
         {
             float random = Random.Range(0, 1f);
             vfxFire.SetFloat("Line Sequencer", random);
-            Debug.Log(random);
+            //Debug.Log(random);
         }       
     }
     public void StartFire()
@@ -86,7 +86,7 @@ public class BlueFireWall : MonoBehaviour
     IEnumerator WaitFireMaxDistance()
     {
         yield return new WaitUntil(() => sequencerValue >= 1);
-        Debug.Log("End Max");
+        //Debug.Log("End Max");
         movingWall = false;
         stayOn = true;
     }
@@ -98,13 +98,13 @@ public class BlueFireWall : MonoBehaviour
         movingWall = true;
         vfxFire.SetFloat("Line Sequencer", 1);
         StartCoroutine(WaitFireMinDistance());       
-        Debug.Log("startEnd");
+        //Debug.Log("startEnd");
     }      
 
     IEnumerator WaitFireMinDistance()
     {
         yield return new WaitUntil(() => sequencerValue <= 0);
-        Debug.Log("End");
+        //Debug.Log("End");
         GetComponent<BoxCollider>().isTrigger = true;
         SetRatesToZero();
     }
