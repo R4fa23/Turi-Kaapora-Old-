@@ -90,9 +90,9 @@ public class EnemyAttack : MonoBehaviour
         soEnemy.AttackStart();
         
         if(soEnemy.enemyType == SOEnemy.EnemyType.MELEE)FMODUnity.RuntimeManager.PlayOneShot("event:/Inimigos/Peao_Ataque", transform.position);
-        else if(soEnemy.enemyType == SOEnemy.EnemyType.RANGE)
+        else if(soEnemy.enemyType == SOEnemy.EnemyType.RANGE)FMODUnity.RuntimeManager.PlayOneShot("event:/Inimigos/Atirador_Ataque", transform.position);
 
-        if(soEnemy.specialTime >= soEnemy.timeToSpecial && special != null)
+        if (soEnemy.specialTime >= soEnemy.timeToSpecial && special != null)
         {
             colliderSpecial.enabled = true;
             rendererSpecial.enabled = true;
