@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: Turi FMOD Project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638012877140079921
+  lastModified: 638012975975716611
   FileSizes:
   - Name: Desktop
-    Value: 580448
+    Value: 700768
   Exists: 1
 --- !u!114 &-7745376779175007120
 MonoBehaviour:
@@ -128,6 +128,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 548
+--- !u!114 &-4355659362171855375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Caipora/Acerto
+  m_EditorClassIdentifier: 
+  Path: event:/Caipora/Acerto
+  Guid:
+    Data1: 1641059690
+    Data2: 1242042663
+    Data3: 726532249
+    Data4: -1024549831
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 390
 --- !u!114 &-3766821534403806574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,6 +256,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 42144
   Exists: 1
+--- !u!114 &-236529697910947220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Caipora/Dano_Maquina
+  m_EditorClassIdentifier: 
+  Path: event:/Caipora/Dano_Maquina
+  Guid:
+    Data1: -968064663
+    Data2: 1158190450
+    Data3: 178345143
+    Data4: -1628298006
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 653
 --- !u!114 &-175099898346297676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,10 +298,10 @@ MonoBehaviour:
   Path: Turi FMOD Project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638012087220248777
+  lastModified: 638012975975726586
   FileSizes:
   - Name: Desktop
-    Value: 1338
+    Value: 1562
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -278,12 +332,17 @@ MonoBehaviour:
   - {fileID: 5066604369503097298}
   - {fileID: -3741134111853196981}
   - {fileID: -2167304242042248890}
+  - {fileID: 2366042817620984585}
+  - {fileID: -236529697910947220}
+  - {fileID: -4355659362171855375}
+  - {fileID: 6300287340803945074}
+  - {fileID: 3565663885020725706}
   EditorParameters: []
   MasterBanks:
   - {fileID: -9065374462541756553}
   StringsBanks:
   - {fileID: -175099898346297676}
-  cacheTime: 638012877140079921
+  cacheTime: 638012975975726586
   cacheVersion: 131591
 --- !u!114 &621566993391211386
 MonoBehaviour:
@@ -339,6 +398,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 626
+--- !u!114 &2366042817620984585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Caipora/Dano_Fogo
+  m_EditorClassIdentifier: 
+  Path: event:/Caipora/Dano_Fogo
+  Guid:
+    Data1: 855400804
+    Data2: 1183395960
+    Data3: -1059494482
+    Data4: 740681119
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1909
 --- !u!114 &2659953515751581801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +472,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 679
+--- !u!114 &3565663885020725706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Caipora/Especial
+  m_EditorClassIdentifier: 
+  Path: event:/Caipora/Especial
+  Guid:
+    Data1: 456858293
+    Data2: 1194838295
+    Data3: -1526761853
+    Data4: -269388244
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2298
 --- !u!114 &4131303823517054717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -467,6 +580,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 548
+--- !u!114 &6300287340803945074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Caipora/Dano_Humano
+  m_EditorClassIdentifier: 
+  Path: event:/Caipora/Dano_Humano
+  Guid:
+    Data1: 1547665776
+    Data2: 1089354919
+    Data3: -1093804391
+    Data4: 902874123
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 574
 --- !u!114 &7201171913893779183
 MonoBehaviour:
   m_ObjectHideFlags: 0
