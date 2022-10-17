@@ -50,7 +50,8 @@ public class Camp : MonoBehaviour
 
         for(int i = 0; i < doors.transform.childCount; i++) {
             door.Add(doors.transform.GetChild(i).gameObject);
-            door[i].GetComponent<BlueFireWall>().EndFire();
+            if(this.gameObject.tag != "Fort")
+                door[i].GetComponent<BlueFireWall>().EndFire();
         }
 
         for(int i = 0; i < cabins.transform.childCount; i++) {
@@ -190,6 +191,12 @@ public class Camp : MonoBehaviour
             {
                 f.SetActive(false);
             }
+
+            foreach(GameObject c in cabin)
+            {
+                c.GetComponent<Cabin>().DisableAll();
+            }
+
             completed = true;
         }
     }

@@ -52,6 +52,14 @@ public class Cabin : MonoBehaviour
         }        
     }
 
+    public void DisableAll()
+    {
+        foreach(GameObject e in enemies)
+        {
+            e.SetActive(false);
+        }
+    }
+
     void OnEnable()
     {   
         /*     

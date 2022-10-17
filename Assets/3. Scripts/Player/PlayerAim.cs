@@ -103,7 +103,7 @@ public class PlayerAim : MonoBehaviour
     }
     void DetectEnemies()
     {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        enemies = GameObject.FindGameObjectsWithTag("EnemyTarget");
         cages = GameObject.FindGameObjectsWithTag("Cage");
         targets.Clear();
 
