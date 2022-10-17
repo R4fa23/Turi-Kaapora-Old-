@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 3323293066590881969}
   - component: {fileID: 578865263488548329}
   m_Layer: 0
-  m_Name: EnemyLumberjack
+  m_Name: EnemyLumberJack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,6 +139,7 @@ MonoBehaviour:
   soSave: {fileID: 11400000, guid: e57cf268432d04248a6d40fc954c2cca, type: 2}
   soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
   animator: {fileID: 7341318370248151216}
+  animWaitTime: 0
 --- !u!114 &7200186106707294783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,7 +420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
-  manager: {fileID: 4359955393122948214}
+  manager: {fileID: 1584075269995757645}
   special: {fileID: 3759084634468584027}
 --- !u!33 &2582606542318589154
 MeshFilter:
@@ -532,7 +533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
-  manager: {fileID: 4359955393122948214}
+  manager: {fileID: 1584075269995757645}
 --- !u!33 &5195615998972543823
 MeshFilter:
   m_ObjectHideFlags: 0
