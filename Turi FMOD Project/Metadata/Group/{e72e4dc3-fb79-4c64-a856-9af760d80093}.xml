@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{e72e4dc3-fb79-4c64-a856-9af760d80093}">
+		<property name="name">
+			<value>Trilha</value>
+		</property>
+		<relationship name="masters">
+			<destination>{38a5ffc2-8189-45c1-9d51-c04fdbe5097d}</destination>
+		</relationship>
+		<relationship name="effectChain">
+			<destination>{642d3478-6e87-4b67-8caf-d702cacd5ffe}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{9b03e86c-1c2f-4e5c-87b7-dfb802979a87}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{a95e2000-6b02-4e08-b763-e842fb053960}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{642d3478-6e87-4b67-8caf-d702cacd5ffe}">
+		<relationship name="effects">
+			<destination>{bca592f8-0b0b-4769-8b9d-fd609563e0fc}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{9b03e86c-1c2f-4e5c-87b7-dfb802979a87}" />
+	<object class="MixerBusFader" id="{bca592f8-0b0b-4769-8b9d-fd609563e0fc}" />
+</objects>
