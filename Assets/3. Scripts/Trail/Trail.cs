@@ -43,7 +43,7 @@ public class Trail : MonoBehaviour
 
         for(int i = 0; i < doors.transform.childCount; i++) {
             door.Add(doors.transform.GetChild(i).gameObject);
-            door[i].GetComponent<BlueFireWall>().EndFire();
+            if(this.gameObject.tag != "Fort") door[i].GetComponent<BlueFireWall>().EndFire();
         }
 
         for(int i = 0; i < cages.transform.childCount; i++) {
@@ -82,7 +82,28 @@ public class Trail : MonoBehaviour
 
     void CompleteAnticipated()
     {
-        if(!completed)
+        if(!completed && gameObject.tag != "Fort")
+        {
+            foreach(GameObject t in trigger)
+            {
+                t.SetActive(false);
+            }
+
+            foreach(GameObject d in door)
+            {
+                d.GetComponent<BlueFireWall>().EndFire();
+            }
+
+            foreach(GameObject c in cage)
+            {
+                c.SetActive(false);
+            }
+        }
+    }
+
+    void CompleteFort()
+    {
+        if(!completed && gameObject.tag == "Fort")
         {
             foreach(GameObject t in trigger)
             {
@@ -123,6 +144,7 @@ public class Trail : MonoBehaviour
         soTrail.EnterTrailEvent.AddListener(StartTrail);
         soSave.RestartEvent.AddListener(Restart);
         soFort.CompleteChallengesEvent.AddListener(CompleteAnticipated);
+        soFort.CompleteFortEvent.AddListener(CompleteFort);
     }
     void OnDisable()
     {
@@ -130,5 +152,6 @@ public class Trail : MonoBehaviour
         soTrail.EnterTrailEvent.RemoveListener(StartTrail);
         soSave.RestartEvent.RemoveListener(Restart);
         soFort.CompleteChallengesEvent.RemoveListener(CompleteAnticipated);
+        soFort.CompleteFortEvent.RemoveListener(CompleteFort);
     }
 }

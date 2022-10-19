@@ -225,6 +225,11 @@ public class Camp : MonoBehaviour
             {
                 f.SetActive(false);
             }
+            
+            foreach(GameObject c in cabin)
+            {
+                c.GetComponent<Cabin>().DisableAll();
+            }
             completed = true;
         }
     }

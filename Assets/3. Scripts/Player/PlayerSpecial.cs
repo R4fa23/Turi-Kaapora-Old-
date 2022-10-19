@@ -50,6 +50,11 @@ public class PlayerSpecial : MonoBehaviour
             
             other.transform.parent.transform.parent.GetComponent<EnemyManager>().soEnemy.Repulsion();
         }
+
+        if(other.CompareTag("Cage"))
+        {
+            other.GetComponent<Cage>().LoseLife();
+        }
     }
 
     void OnEnable()
