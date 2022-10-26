@@ -79,9 +79,10 @@ public class EnemyMove : MonoBehaviour
         alert = true;
         soEnemy.state = SOEnemy.State.WALKING;
         detected = true;
+        soEnemy.canAttack = true;
         navMeshAgent.SetDestination(player.position);
         soEnemy.MoveStart();
-        StartCoroutine(StopDetect());
+        //StartCoroutine(StopDetect());
     }
 
     IEnumerator StopDetect()
@@ -108,7 +109,7 @@ public class EnemyMove : MonoBehaviour
 
     void TimeAfterAttacked()
     {
-        if(!soEnemy.canAttack && !soEnemy.attacked)
+        if(!soEnemy.canAttack && !soEnemy.attacked && soEnemy.state == SOEnemy.State.STOPPED)
         {
             StopAllCoroutines();
             soEnemy.attacked = true;
@@ -166,6 +167,7 @@ public class EnemyMove : MonoBehaviour
         detected = false;
         soEnemy.attacked = false;
         navMeshAgent.SetDestination(transform.position);
+        soEnemy.canAttack = false;
         RandomizeAttack();
     }
 
@@ -181,8 +183,6 @@ public class EnemyMove : MonoBehaviour
         
         
     }
-
-
 
     void OnEnable()
     {

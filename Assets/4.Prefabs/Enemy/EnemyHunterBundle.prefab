@@ -11,11 +11,13 @@ GameObject:
   - component: {fileID: 1107297455917945070}
   - component: {fileID: 2872306271584693248}
   - component: {fileID: 3645011600244056798}
+  - component: {fileID: 2104996945094766988}
   - component: {fileID: 2530057500951449687}
   - component: {fileID: 4115684039623989834}
+  - component: {fileID: 7983601245377844451}
   m_Layer: 0
   m_Name: EnemyHunter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,6 +73,20 @@ MonoBehaviour:
   soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
   detected: 0
   firstLocal: {x: 0, y: 0, z: 0}
+--- !u!114 &2104996945094766988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878504870951606261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcde4c9d9e918554a91ca5cd048be3ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
+  web: {fileID: 1855947039864423963}
 --- !u!195 &2530057500951449687
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -109,6 +125,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &7983601245377844451
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1878504870951606261}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5219849635381854486
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,11 +202,11 @@ GameObject:
   - component: {fileID: 434147937881611650}
   m_Layer: 0
   m_Name: EnemyHunterBundle
-  m_TagString: EnemyTarget
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &434147937881611650
 Transform:
   m_ObjectHideFlags: 0
@@ -243,7 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
-  manager: {fileID: 5284446094305417430}
+  manager: {fileID: 1878504870951606261}
   special: {fileID: 0}
 --- !u!33 &4344855523315855885
 MeshFilter:
@@ -377,6 +406,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7b90944fb145314eab2db29f7259501, type: 3}
+--- !u!1 &1855947039864423963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6822416993567697111, guid: e7b90944fb145314eab2db29f7259501,
+    type: 3}
+  m_PrefabInstance: {fileID: 5147541686095605452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1855947039864423967 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6822416993567697107, guid: e7b90944fb145314eab2db29f7259501,

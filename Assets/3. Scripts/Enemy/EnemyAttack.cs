@@ -80,7 +80,7 @@ public class EnemyAttack : MonoBehaviour
     public void StartCharge()
     {
         soEnemy.ChargeStart();
-        if(soEnemy.specialTime >= soEnemy.timeToSpecial) StartCoroutine(ChargingTime(soEnemy.attackChargeDuration * 2));
+        if(soEnemy.specialTime >= soEnemy.timeToSpecial) StartCoroutine(ChargingTime(soEnemy.attackChargeDuration));
         else StartCoroutine(ChargingTime(soEnemy.attackChargeDuration));
 
     }
@@ -96,7 +96,7 @@ public class EnemyAttack : MonoBehaviour
         {
             colliderSpecial.enabled = true;
             rendererSpecial.enabled = true;
-            StartCoroutine(AttackTime(soEnemy.attackDuration * 2));
+            StartCoroutine(AttackTime(soEnemy.attackDuration));
         }
         else
         {
@@ -133,8 +133,9 @@ public class EnemyAttack : MonoBehaviour
         meshRenderer.enabled = false;
         boxCollider.enabled = false;
         rotate = false;
+        soEnemy.canAttack = false;
         soEnemy.AttackEnd();
-        StartCoroutine(AttackCooldown());
+        attacking = false;
 
     }
 
@@ -167,7 +168,7 @@ public class EnemyAttack : MonoBehaviour
         startMoved = false;
         soEnemy.specialTime = 0;
         soEnemy.attackTime = 0;
-        soEnemy.canAttack = true;
+        soEnemy.canAttack = false;
     }
     IEnumerator ChargingTime(float duration)
     {
@@ -184,13 +185,6 @@ public class EnemyAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         EndAttack();
-    }
-
-    IEnumerator AttackCooldown()
-    {
-        yield return new WaitForSeconds(animWait + 0.2f);
-        soEnemy.state = SOEnemy.State.STOPPED;
-        attacking = false;
     }
 
     void OnTriggerEnter(Collider other)

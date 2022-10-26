@@ -20,6 +20,7 @@ public class EnemyManager : MonoBehaviour
     void Awake()
     {
         soEnemy = (SOEnemy)ScriptableObject.CreateInstance(typeof(SOEnemy));
+        soEnemy.enemyType = reference.enemyType;
         AnimationsTime();
         SetConfiguration();
         player = GameObject.FindGameObjectWithTag("Player");
@@ -118,17 +119,84 @@ public class EnemyManager : MonoBehaviour
         AnimationClip[] clips = animator.runtimeAnimatorController.animationClips;
         foreach(AnimationClip clip in clips)
         {
-            switch(clip.name)
+            if(soEnemy.enemyType == SOEnemy.EnemyType.MELEE)
             {
-                case "Charge Attack":
-                    animChargeTime = clip.length;
-                    break;
-                case "Attack":
-                    animAttackTime = clip.length;
-                    break;
-                case "Wait":
-                    animWaitTime = clip.length;
-                    break;
+                switch(clip.name)
+                {
+                    case "Enemy_peao_ChargeAtq":
+                        animChargeTime = clip.length;
+                        break;
+                    case "Enemy_peao_Atq":
+                        animAttackTime = clip.length;
+                        break;
+                    case "Enemy_peao_Alert":
+                        animWaitTime = clip.length;
+                        break;
+                }
+            }
+            else if(soEnemy.enemyType == SOEnemy.EnemyType.RANGE)
+            {
+                switch(clip.name)
+                {
+                    case "Enemy_Atirador_ChargeAtq":
+                        animChargeTime = clip.length;
+                        break;
+                    case "Enemy_Atirador_Atq":
+                        animAttackTime = clip.length;
+                        break;
+                    case "Enemy_Atirador_Alert":
+                        animWaitTime = clip.length;
+                        break;
+                }
+                
+            }
+            else if(soEnemy.enemyType == SOEnemy.EnemyType.INCENDIARY)
+            {
+                switch(clip.name)
+                {
+                    case "Enemy_Incen_ChageAtq":
+                        animChargeTime = clip.length;
+                        break;
+                    case "Enemy_Incen_Atq":
+                        animAttackTime = clip.length;
+                        break;
+                    case "Enemy_Incen_Alert":
+                        animWaitTime = clip.length;
+                        break;
+                }
+                
+            }
+            else if(soEnemy.enemyType == SOEnemy.EnemyType.HUNTER)
+            {
+                switch(clip.name)
+                {
+                    case "Enemy_cacador_ChargeAtq":
+                        animChargeTime = clip.length;
+                        break;
+                    case "Enemy_cacador_Atq":
+                        animAttackTime = clip.length;
+                        break;
+                    case "Enemy_cacador_Alert":
+                        animWaitTime = clip.length;
+                        break;
+                }
+                
+            }
+            else if(soEnemy.enemyType == SOEnemy.EnemyType.LUMBERJACK)
+            {
+                switch(clip.name)
+                {
+                    case "Enemy_lenhador_ChageAtq":
+                        animChargeTime = clip.length;
+                        break;
+                    case "Enemy_lenhador_Atq":
+                        animAttackTime = clip.length;
+                        break;
+                    case "Enemy_lenhador_Alert":
+                        animWaitTime = clip.length;
+                        break;
+                }
+                
             }
         }
     }
@@ -152,7 +220,7 @@ public class EnemyManager : MonoBehaviour
         soEnemy.forceRecover = reference.forceRecover;
         soEnemy.specialTime = 0;
         soEnemy.timeToSpecial = reference.timeToSpecial;
-        soEnemy.canAttack = true;
+        soEnemy.canAttack = false;
         soEnemy.attackTime = 0;
         soEnemy.timeToAttack = reference.timeToAttack;
         soEnemy.rotationVel = reference.rotationVel;

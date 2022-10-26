@@ -14,13 +14,14 @@ GameObject:
   - component: {fileID: 8639186950256366151}
   - component: {fileID: 3323293066590881969}
   - component: {fileID: 578865263488548329}
+  - component: {fileID: 8763843278549276112}
   m_Layer: 0
   m_Name: EnemyLumberJack
-  m_TagString: EnemyTarget
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1517924876707657423
 Transform:
   m_ObjectHideFlags: 0
@@ -96,9 +97,9 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 999
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 999
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -123,6 +124,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &8763843278549276112
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584075269995757645}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3154687476358942939
 GameObject:
   m_ObjectHideFlags: 0
