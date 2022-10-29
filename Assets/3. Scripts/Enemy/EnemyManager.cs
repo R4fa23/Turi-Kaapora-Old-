@@ -16,6 +16,10 @@ public class EnemyManager : MonoBehaviour
     float animAttackTime;
     [HideInInspector]
     public float animWaitTime;
+    [HideInInspector]
+    public float animChargeEspTime;
+    [HideInInspector]
+    public float animAttackEspTime;
 
     void Awake()
     {
@@ -73,6 +77,11 @@ public class EnemyManager : MonoBehaviour
         animator.SetTrigger("Start Charge");
     }
 
+    void StartEspCharge()
+    {
+        animator.SetTrigger("Start Esp Charge");
+    }
+
     void Damaged()
     {
         animator.SetTrigger("Take Damage");
@@ -96,6 +105,7 @@ public class EnemyManager : MonoBehaviour
         soEnemy.RepulsionEvent.AddListener(Repulse);
         soSave.RestartEvent.AddListener(Restart);
         soEnemy.ChargeStartEvent.AddListener(StartCharge);
+        soEnemy.ChargeEspStartEvent.AddListener(StartEspCharge);
         soEnemy.ChangeLifeEvent.AddListener(Damaged);
     }
     public void OnDisable()
@@ -106,6 +116,7 @@ public class EnemyManager : MonoBehaviour
         soEnemy.RepulsionEvent.RemoveListener(Repulse);
         soSave.RestartEvent.RemoveListener(Restart);
         soEnemy.ChargeStartEvent.RemoveListener(StartCharge);
+        soEnemy.ChargeEspStartEvent.RemoveListener(StartEspCharge);
         soEnemy.ChangeLifeEvent.RemoveListener(Damaged);
     }
 
@@ -129,7 +140,7 @@ public class EnemyManager : MonoBehaviour
                     case "Enemy_peao_Atq":
                         animAttackTime = clip.length;
                         break;
-                    case "Enemy_peao_Alert":
+                    case "Enemy_peao_Wait":
                         animWaitTime = clip.length;
                         break;
                 }
@@ -144,7 +155,7 @@ public class EnemyManager : MonoBehaviour
                     case "Enemy_Atirador_Atq":
                         animAttackTime = clip.length;
                         break;
-                    case "Enemy_Atirador_Alert":
+                    case "Enemy_Atirador_Wait":
                         animWaitTime = clip.length;
                         break;
                 }
@@ -160,7 +171,7 @@ public class EnemyManager : MonoBehaviour
                     case "Enemy_Incen_Atq":
                         animAttackTime = clip.length;
                         break;
-                    case "Enemy_Incen_Alert":
+                    case "Enemy_Incen_Wait":
                         animWaitTime = clip.length;
                         break;
                 }
@@ -176,7 +187,7 @@ public class EnemyManager : MonoBehaviour
                     case "Enemy_cacador_Atq":
                         animAttackTime = clip.length;
                         break;
-                    case "Enemy_cacador_Alert":
+                    case "Enemy_cacador_Wait":
                         animWaitTime = clip.length;
                         break;
                 }
@@ -192,8 +203,14 @@ public class EnemyManager : MonoBehaviour
                     case "Enemy_lenhador_Atq":
                         animAttackTime = clip.length;
                         break;
-                    case "Enemy_lenhador_Alert":
+                    case "Enemy_lenhador_Wait":
                         animWaitTime = clip.length;
+                        break;
+                    case "Enemy_lenhador_ChargeEspAtq":
+                        animChargeEspTime = clip.length;
+                        break;
+                    case "Enemy_lenhador_EspAtq":
+                        animAttackEspTime = clip.length;
                         break;
                 }
                 

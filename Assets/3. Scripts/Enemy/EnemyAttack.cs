@@ -20,6 +20,8 @@ public class EnemyAttack : MonoBehaviour
     MeshRenderer rendererSpecial;
     bool startMoved;
     float animWait;
+    float animEspCharge;
+    float animEspAttack;
     
     void Start()
     {
@@ -31,6 +33,8 @@ public class EnemyAttack : MonoBehaviour
         soEnemy = manager.GetComponent<EnemyManager>().soEnemy;
         soSave = manager.GetComponent<EnemyManager>().soSave;
         animWait = manager.GetComponent<EnemyManager>().animWaitTime;
+        animEspCharge = manager.GetComponent<EnemyManager>().animChargeEspTime;
+        animEspAttack = manager.GetComponent<EnemyManager>().animAttackEspTime;
         boxCollider = GetComponent<BoxCollider>();
         meshRenderer = GetComponent<MeshRenderer>();
         boxCollider.enabled = false;
@@ -79,9 +83,16 @@ public class EnemyAttack : MonoBehaviour
     */
     public void StartCharge()
     {
-        soEnemy.ChargeStart();
-        if(soEnemy.specialTime >= soEnemy.timeToSpecial) StartCoroutine(ChargingTime(soEnemy.attackChargeDuration));
-        else StartCoroutine(ChargingTime(soEnemy.attackChargeDuration));
+        if(soEnemy.specialTime >= soEnemy.timeToSpecial)
+        {
+            soEnemy.ChargeEspStart();
+            StartCoroutine(ChargingTime(animEspCharge));
+        }
+        else
+        {
+            soEnemy.ChargeStart();
+            StartCoroutine(ChargingTime(soEnemy.attackChargeDuration));
+        }
 
     }
     public void StartAttack()
@@ -96,7 +107,7 @@ public class EnemyAttack : MonoBehaviour
         {
             colliderSpecial.enabled = true;
             rendererSpecial.enabled = true;
-            StartCoroutine(AttackTime(soEnemy.attackDuration));
+            StartCoroutine(AttackTime(animEspAttack));
         }
         else
         {
