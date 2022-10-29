@@ -94,6 +94,13 @@ public class EnemyManager : MonoBehaviour
         soEnemy.canDamaged = true;
     }
 
+    void Summoned()
+    {
+        Vector3 dirView = player.transform.position - transform.position;
+        dirView.y = 0;
+        transform.forward = dirView;
+    }
+
     public void OnEnable()
     {
         soEnemy.canDamaged = true;
@@ -107,6 +114,7 @@ public class EnemyManager : MonoBehaviour
         soEnemy.ChargeStartEvent.AddListener(StartCharge);
         soEnemy.ChargeEspStartEvent.AddListener(StartEspCharge);
         soEnemy.ChangeLifeEvent.AddListener(Damaged);
+        soEnemy.SummonEvent.AddListener(Summoned);
     }
     public void OnDisable()
     {
@@ -118,6 +126,7 @@ public class EnemyManager : MonoBehaviour
         soEnemy.ChargeStartEvent.RemoveListener(StartCharge);
         soEnemy.ChargeEspStartEvent.RemoveListener(StartEspCharge);
         soEnemy.ChangeLifeEvent.RemoveListener(Damaged);
+        soEnemy.SummonEvent.RemoveListener(Summoned);
     }
 
     private void OnDie() 
