@@ -7,6 +7,8 @@ using TMPro;
 
 public class TriggerNarrative : MonoBehaviour
 {
+    public String[] evento;
+
     public String[] falas;
     int index;
     public TextMeshProUGUI talk;
@@ -20,7 +22,8 @@ public class TriggerNarrative : MonoBehaviour
 
     void StartTalks()
     {
-        //Tocar áudio
+        FMODUnity.RuntimeManager.PlayOneShot("event:" + evento[index], transform.position);
+
         talk.text = falas[index];
 
         float timeToPass;
