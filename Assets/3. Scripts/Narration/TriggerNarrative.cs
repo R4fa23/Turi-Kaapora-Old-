@@ -12,6 +12,12 @@ public class TriggerNarrative : MonoBehaviour
     public String[] falas;
     int index;
     public TextMeshProUGUI talk;
+
+    void Start()
+    {
+        talk = GameObject.FindGameObjectWithTag("TextNarrative").GetComponent<TextMeshProUGUI>();
+        talk.gameObject.SetActive(false);
+    }
     void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
@@ -20,8 +26,10 @@ public class TriggerNarrative : MonoBehaviour
         }
     }
 
-    void StartTalks()
+    public void StartTalks()
     {
+        talk.gameObject.SetActive(true);
+
         FMODUnity.RuntimeManager.PlayOneShot("event:" + evento[index], transform.position);
 
         talk.text = falas[index];
@@ -44,9 +52,11 @@ public class TriggerNarrative : MonoBehaviour
         if(index >= falas.Length)
         {
             talk.text = "";
+            talk.gameObject.SetActive(false);
         }
         else
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:" + evento[index], transform.position);
             talk.text = falas[index];
 
             float timeToPass;
