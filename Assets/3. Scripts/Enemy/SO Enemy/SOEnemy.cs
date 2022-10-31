@@ -49,6 +49,8 @@ public class SOEnemy : ScriptableObject
     [System.NonSerialized]
     public UnityEvent ChargeStartEvent;
     [System.NonSerialized]
+    public UnityEvent ChargeEspStartEvent;
+    [System.NonSerialized]
     public UnityEvent AttackStartEvent;
     [System.NonSerialized]
     public UnityEvent AttackEndEvent;
@@ -87,6 +89,9 @@ public class SOEnemy : ScriptableObject
 
         if(ChargeStartEvent == null)
             ChargeStartEvent = new UnityEvent();
+
+        if(ChargeEspStartEvent == null)
+            ChargeEspStartEvent = new UnityEvent();
         
         if(ChangeLifeEvent == null)
             ChangeLifeEvent = new UnityEvent();
@@ -130,6 +135,10 @@ public class SOEnemy : ScriptableObject
     public void ChargeStart()
     {
         ChargeStartEvent.Invoke();
+    }
+    public void ChargeEspStart()
+    {
+        ChargeEspStartEvent.Invoke();
     }
     public void ChangeLife(float amount) 
     {

@@ -164,7 +164,6 @@ public class PlayerManager : MonoBehaviour
         {
             if(soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING)
             {
-                //animator.SetBool("Move", true);
                 animator.SetBool("Move", true);
                 soPlayer.state = SOPlayer.State.WALKING;
                 soPlayer.soPlayerMove.MoveStart();
@@ -174,7 +173,6 @@ public class PlayerManager : MonoBehaviour
     }
     public void MovementCanceled(InputAction.CallbackContext context) {
         movement = false;
-        //animator.SetBool("Move", false);
         animator.SetBool("Move", false);
         if(!IsDead())
         {
@@ -201,7 +199,6 @@ public class PlayerManager : MonoBehaviour
             {
                 if(canDash && soPlayer.state != SOPlayer.State.TRAPPED && soPlayer.state != SOPlayer.State.SPECIAL && soPlayer.soPlayerMove.staminas > 0 && !soPlayer.soPlayerMove.slow)
                 {
-                    //animator.SetTrigger("Dash");
                     animator.SetTrigger("Dash");
                     soPlayer.soPlayerMove.ChangeStaminaCount(-1);
                     soPlayer.soPlayerMove.rechargeTime = 0;
@@ -246,7 +243,6 @@ public class PlayerManager : MonoBehaviour
             {
                 if(!dashing && (soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canAttack)
                 {
-                    //animator.SetTrigger("Ataque");
                     animator.SetInteger("AtaqIndex", soPlayer.soPlayerAttack.comboIndex);
                     animator.SetTrigger("Ataque");
                     canAttack = false;
@@ -300,6 +296,7 @@ public class PlayerManager : MonoBehaviour
                 if(!dashing && (soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canSpecial)
                 {
                     FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Especial", transform.position);
+                    animator.SetTrigger("Especial");
                     soPlayer.soPlayerAttack.SpecialStart();
                     soPlayer.state = SOPlayer.State.SPECIAL;
                     soPlayer.soPlayerMove.DashStart();
@@ -377,7 +374,6 @@ public class PlayerManager : MonoBehaviour
 
     void Damaged()
     {
-        //animator.SetTrigger("Dano");
         animator.SetTrigger("Dano");
         FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Dano_Humano", transform.position);
     }

@@ -141,19 +141,23 @@ public class PlayerMovement : MonoBehaviour
             {
                 if(moveDir == Vector3.right)
                 {
-                    animator.SetTrigger("FocEsq");
+                    animator.SetBool("FocEsq", true);
+                    animator.SetBool("FocDir", false);
                 }
                 else if(moveDir == Vector3.left)
                 {
-                    animator.SetTrigger("FocDir");
+                    animator.SetBool("FocDir", true);
+                    animator.SetBool("FocEsq", false);
                 }
                 else if(moveDir == Vector3.up)
                 {
-                    animator.SetTrigger("FocDir");
+                    animator.SetBool("FocDir", true);
+                    animator.SetBool("FocEsq", false);
                 }
                 else if(moveDir == Vector3.down)
                 {
-                    animator.SetTrigger("FocEsq");
+                    animator.SetBool("FocEsq", true);
+                    animator.SetBool("FocDir", false);
                 }
             
             }
@@ -161,19 +165,23 @@ public class PlayerMovement : MonoBehaviour
             {
                 if(moveDir == Vector3.right)
                 {
-                    animator.SetTrigger("FocDir");
+                    animator.SetBool("FocDir", true);
+                    animator.SetBool("FocEsq", false);
                 }
                 else if(moveDir == Vector3.left)
                 {
-                    animator.SetTrigger("FocEsq");
+                    animator.SetBool("FocEsq", true);
+                    animator.SetBool("FocDir", false);
                 }
                 else if(moveDir == Vector3.up)
                 {
-                    animator.SetTrigger("FocDir");
+                    animator.SetBool("FocDir", true);
+                    animator.SetBool("FocEsq", false);
                 }
                 else if(moveDir == Vector3.down)
                 {
-                    animator.SetTrigger("FocEsq");
+                    animator.SetBool("FocEsq", true);
+                    animator.SetBool("FocDir", false);
                 }
             }
         }
@@ -183,38 +191,46 @@ public class PlayerMovement : MonoBehaviour
             {
                 if(moveDir == Vector3.right)
                 {
-                    animator.SetTrigger("FocEsq");
+                    animator.SetBool("FocEsq", true);
+                    animator.SetBool("FocDir", false);
                 }
                 else if(moveDir == Vector3.left)
                 {
-                    animator.SetTrigger("FocDir");
+                    animator.SetBool("FocDir", true);
+                    animator.SetBool("FocEsq", false);
                 }
                 else if(moveDir == Vector3.up)
                 {
-                    animator.SetTrigger("FocEsq");
+                    animator.SetBool("FocEsq", true);
+                    animator.SetBool("FocDir", false);
                 }
                 else if(moveDir == Vector3.down)
                 {
-                    animator.SetTrigger("FocDir");
+                    animator.SetBool("FocDir", true);
+                    animator.SetBool("FocEsq", false);
                 }
             }
             else
             {
                 if(moveDir == Vector3.right)
                 {
-                    animator.SetTrigger("FocDir");
+                    animator.SetBool("FocDir", true);
+                    animator.SetBool("FocEsq", false);
                 }
                 else if(moveDir == Vector3.left)
                 {
-                    animator.SetTrigger("FocEsq");
+                    animator.SetBool("FocEsq", true);
+                    animator.SetBool("FocDir", false);
                 }
                 else if(moveDir == Vector3.up)
                 {
-                    animator.SetTrigger("FocEsq");
+                    animator.SetBool("FocEsq", true);
+                    animator.SetBool("FocDir", false);
                 }
                 else if(moveDir == Vector3.down)
                 {
-                    animator.SetTrigger("FocDir");
+                    animator.SetBool("FocDir", true);
+                    animator.SetBool("FocEsq", false);
                 }
             }
         }

@@ -5,7 +5,18 @@ using UnityEngine;
 public class Camp : MonoBehaviour
 {
     public int waves;
-    public int[] enemyPerWave;
+    int[] enemyPerWave;
+    public int[] melee;
+    public int[] range;
+    public int[] incendiary;
+    public int[] hunter;
+    public int[] lumberjack;
+
+    int meleeCount;
+    int rangeCount;
+    int incendiaryCount;
+    int hunterCount;
+    int lumberjackCount;
 
     [HideInInspector]
     public SOCamp soCamp;
@@ -31,13 +42,39 @@ public class Camp : MonoBehaviour
     int enemyCount;
     int indexCabin;
     bool firstEnable;
+
     void Awake()
     {
         SetLists();
-        if(waves != enemyPerWave.Length) enemyPerWave = new int[waves];
-        if(firstEnemy.Count > 0) enemyPerWave[0] = firstEnemy.Count;
+        SetEnemies();
         soCamp = (SOCamp)ScriptableObject.CreateInstance(typeof(SOCamp));
         SetConfiguration();
+    }
+
+    void SetEnemies()
+    {
+        int countage = 0;
+
+        enemyPerWave = new int[waves+1];
+
+        if(melee.Length != waves) melee = new int[waves];
+        if(range.Length != waves) range = new int[waves];
+        if(incendiary.Length != waves) incendiary = new int[waves];
+        if(hunter.Length != waves) hunter = new int[waves];
+        if(lumberjack.Length != waves) lumberjack = new int[waves];
+
+        for(int i = 0; i < waves; i++) {
+            countage += melee[i];
+            countage += range[i];
+            countage += incendiary[i];
+            countage += hunter[i];
+            countage += lumberjack[i];
+            enemyPerWave[i+1] = countage;
+            countage = 0;
+        }
+
+        enemyPerWave[0] = firstEnemy.Count;
+
     }
 
     void SetLists()
@@ -75,7 +112,7 @@ public class Camp : MonoBehaviour
             showThing[i].SetActive(false);
             
         }
-        
+
     }
 
     private void Start() 
@@ -86,7 +123,7 @@ public class Camp : MonoBehaviour
 
     void SetConfiguration()
     {
-        soCamp.waves = waves;
+        soCamp.waves = waves + 1;
         soCamp.enemyPerWaves = enemyPerWave;
         soCamp.actualWave = 0;
         soCamp.killCount = 0;
@@ -109,7 +146,7 @@ public class Camp : MonoBehaviour
         }
         else
         {
-            SummonEnemies();
+            soCamp.DieEnemy();
         }
     }
 
@@ -117,7 +154,34 @@ public class Camp : MonoBehaviour
     {
         if(enemyCount < enemyPerWave[soCamp.actualWave])
         {
-            cabin[indexCabin].GetComponent<Cabin>().SummonEnemy();
+            if(meleeCount > 0)
+            {
+                meleeCount--;
+                cabin[indexCabin].GetComponent<Cabin>().SummonEnemy("melee");
+            }
+            else if(rangeCount > 0)
+            {
+                rangeCount--;
+                cabin[indexCabin].GetComponent<Cabin>().SummonEnemy("range");
+            }
+            else if(incendiaryCount > 0)
+            {
+                incendiaryCount--;
+                cabin[indexCabin].GetComponent<Cabin>().SummonEnemy("incendiary");
+            }
+            else if(hunterCount > 0)
+            {
+                hunterCount--;
+                cabin[indexCabin].GetComponent<Cabin>().SummonEnemy("hunter");
+            }
+            else if(lumberjackCount > 0)
+            {
+                lumberjackCount--;
+                cabin[indexCabin].GetComponent<Cabin>().SummonEnemy("lumberjack");
+            }
+            
+
+
             indexCabin++;
             if(indexCabin >= cabin.Count) indexCabin = 0;
             enemyCount++;
@@ -127,6 +191,11 @@ public class Camp : MonoBehaviour
 
     void NextWave()
     {
+        meleeCount = melee[soCamp.actualWave - 1];
+        rangeCount = range[soCamp.actualWave - 1];
+        incendiaryCount = incendiary[soCamp.actualWave - 1];
+        hunterCount = hunter[soCamp.actualWave - 1];
+        lumberjackCount = lumberjack[soCamp.actualWave - 1];
         enemyCount = 0;
         SummonEnemies();
     }
@@ -158,7 +227,7 @@ public class Camp : MonoBehaviour
 
     IEnumerator SummonDelay()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         SummonEnemies();
     }
 
@@ -269,6 +338,7 @@ public class Camp : MonoBehaviour
         }
 
     }
+
 
     public void OnEnable()
     {
