@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3231840808607421518}
   - component: {fileID: 8516464056954332785}
+  - component: {fileID: 9021860607088596553}
   m_Layer: 0
   m_Name: Fort
   m_TagString: Untagged
@@ -51,6 +52,19 @@ MonoBehaviour:
   soFort: {fileID: 11400000, guid: 38d901f2062ae984abc66d5ef9c5eb74, type: 2}
   doors: {fileID: 7777426511086459747}
   door: []
+--- !u!114 &9021860607088596553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6408946680100193307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9748ef7096c1de4eb9c1b9f5e8ea8fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boitataFire: {fileID: 1926910590904694793}
 --- !u!1 &7777426511086459747
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +282,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b76fbb713bf791499743d40069a20e9, type: 3}
+--- !u!2083052967 &1926910590904694793 stripped
+VisualEffect:
+  m_CorrespondingSourceObject: {fileID: 2286434569366307046, guid: 6b76fbb713bf791499743d40069a20e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 362204252821485807}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3062852350020541790 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3424883223065175473, guid: 6b76fbb713bf791499743d40069a20e9,

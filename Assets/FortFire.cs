@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class FortFire : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public VisualEffect boitataFire;
+
+    public void ResetToRedFire()
     {
-        
+        boitataFire.SetFloat("Percent", 0);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddBlueFire(float addPercent)
     {
-        
+        float currentAmount = boitataFire.GetFloat("Percent");
+        currentAmount += addPercent;
+        boitataFire.SetFloat("Percent", currentAmount);
     }
 }
