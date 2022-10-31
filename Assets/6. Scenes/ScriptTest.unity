@@ -1524,7 +1524,7 @@ PrefabInstance:
     - target: {fileID: 1947304767575686484, guid: abb15ed8057e92a4cbec528906c32770,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2555297363509316794, guid: abb15ed8057e92a4cbec528906c32770,
         type: 3}
@@ -1583,18 +1583,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abb15ed8057e92a4cbec528906c32770, type: 3}
---- !u!114 &1720102427 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4828111250653767132, guid: ba39ce2cbfb2ca74cbf24aa8a2871e25,
-    type: 3}
-  m_PrefabInstance: {fileID: 4828111252172458951}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &1943360075
 Mesh:
   m_ObjectHideFlags: 0
@@ -1825,7 +1813,7 @@ PrefabInstance:
         type: 3}
       propertyPath: talk
       value: 
-      objectReference: {fileID: 1720102427}
+      objectReference: {fileID: 0}
     - target: {fileID: 2170881275959687196, guid: 40115db3b0b2bc642bb7dac399e322ea,
         type: 3}
       propertyPath: falas.Array.size

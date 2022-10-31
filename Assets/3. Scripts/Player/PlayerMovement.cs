@@ -238,7 +238,18 @@ public class PlayerMovement : MonoBehaviour
 
     public void DashStart()
     {
-        if(soPlayer.state != SOPlayer.State.SPECIAL) soPlayer.state = SOPlayer.State.DASHING;
+        if(soPlayer.state != SOPlayer.State.SPECIAL)
+        {
+            soPlayer.state = SOPlayer.State.DASHING;
+            dash = true;
+            initialDash = true;
+            sensibility = soPlayer.soPlayerMove.dashDist/soPlayer.soPlayerMove.dashDuration;
+            StartCoroutine(DashDuration(soPlayer.soPlayerMove.dashDuration));
+        }
+    }
+
+    void SpecialEvent()
+    {
         dash = true;
         initialDash = true;
         sensibility = soPlayer.soPlayerMove.dashDist/soPlayer.soPlayerMove.dashDuration;
@@ -270,6 +281,10 @@ public class PlayerMovement : MonoBehaviour
     }
     void SpecialStart()
     {
+        dash = true;
+        initialDash = true;
+        sensibility = soPlayer.soPlayerMove.dashDist/soPlayer.soPlayerMove.dashDuration;
+        StartCoroutine(DashDuration(soPlayer.soPlayerMove.dashDuration));
         special = true;
     }
 

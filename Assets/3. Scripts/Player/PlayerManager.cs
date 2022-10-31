@@ -297,9 +297,9 @@ public class PlayerManager : MonoBehaviour
                 {
                     FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Especial", transform.position);
                     animator.SetTrigger("Especial");
-                    soPlayer.soPlayerAttack.SpecialStart();
+                    //soPlayer.soPlayerAttack.SpecialStart();
                     soPlayer.state = SOPlayer.State.SPECIAL;
-                    soPlayer.soPlayerMove.DashStart();
+                    //soPlayer.soPlayerMove.DashStart();
                     canSpecial = false;
                 }
             }
