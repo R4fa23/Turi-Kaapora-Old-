@@ -12,6 +12,7 @@ public class TriggerNarrative : MonoBehaviour
     public String[] falas;
     int index;
     public TextMeshProUGUI talk;
+    bool talking;
 
     void Start()
     {
@@ -22,7 +23,12 @@ public class TriggerNarrative : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            StartTalks();
+            if(!talking)
+            {
+                talking = true;
+                StartTalks();
+            }
+            
         }
     }
 
@@ -53,6 +59,7 @@ public class TriggerNarrative : MonoBehaviour
         {
             talk.text = "";
             talk.gameObject.SetActive(false);
+            this.gameObject.SetActive(false);
         }
         else
         {
