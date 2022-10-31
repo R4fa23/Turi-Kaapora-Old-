@@ -7,13 +7,18 @@ public class FindPlayerFollow : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCamera virtualCamera;
     public Transform followPoint;
+    public bool update;
 
     private void OnValidate()
     {
-        FindPlayer();
+        if (update)
+        {
+            FindPlayer();
+            update = false;
+        }
     }
 
-    private void Start()
+    private void Awake()
     {
         FindPlayer();
     }
