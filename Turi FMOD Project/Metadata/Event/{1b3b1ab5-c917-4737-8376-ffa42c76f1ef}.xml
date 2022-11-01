@@ -110,6 +110,9 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{45d8e339-119e-458c-a91b-2f53dfe8c2eb}">
+		<property name="start">
+			<value>0.60000000000000009</value>
+		</property>
 		<property name="length">
 			<value>2.2987755102040817</value>
 		</property>
@@ -132,6 +135,9 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{a66ee805-3094-4be9-a3ac-0d1afaf5c8f2}">
+		<property name="start">
+			<value>0.60000000000000009</value>
+		</property>
 		<property name="length">
 			<value>1.2277551020408164</value>
 		</property>
@@ -140,6 +146,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{b0b1855c-d279-48d8-ad32-695ba51f06ad}">
+		<property name="volume">
+			<value>-3.5</value>
+		</property>
 		<property name="name">
 			<value>Tambor</value>
 		</property>
@@ -193,20 +202,23 @@
 		</relationship>
 		<relationship name="automationPoints">
 			<destination>{e6b339d6-b3cd-4f5e-9b85-216d83272e3e}</destination>
-			<destination>{62951d2e-5017-48a6-bb66-c1e6022db6da}</destination>
+			<destination>{fb247a5c-a83a-464b-a454-b701fa7e7ae9}</destination>
 		</relationship>
 	</object>
 	<object class="AutomationPoint" id="{e6b339d6-b3cd-4f5e-9b85-216d83272e3e}">
 		<property name="position">
-			<value>0.20000000000000001</value>
+			<value>0.60000000000000009</value>
 		</property>
 		<property name="value">
 			<value>100</value>
 		</property>
+		<property name="curveShape">
+			<value>-0.35043782</value>
+		</property>
 	</object>
-	<object class="AutomationPoint" id="{62951d2e-5017-48a6-bb66-c1e6022db6da}">
+	<object class="AutomationPoint" id="{fb247a5c-a83a-464b-a454-b701fa7e7ae9}">
 		<property name="position">
-			<value>0.5</value>
+			<value>1.8</value>
 		</property>
 		<property name="value">
 			<value>-100</value>
