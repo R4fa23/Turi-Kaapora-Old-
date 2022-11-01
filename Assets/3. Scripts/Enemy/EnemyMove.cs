@@ -29,6 +29,7 @@ public class EnemyMove : MonoBehaviour
     }
     void Start()
     {
+        firstLocal = transform.position;
         manager = GetComponent<EnemyManager>();
         lastState = SOEnemy.State.STOPPED;
         player = GameObject.FindGameObjectWithTag("Player").transform;
