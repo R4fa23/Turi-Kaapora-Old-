@@ -16,7 +16,7 @@ public class EnemyNearby : MonoBehaviour
     void Update()
     {
         //if(target != null)transform.position = Camera.main.WorldToScreenPoint(target.transform.position);
-        if(target != null)transform.position = target.transform.position;
+        if(target != null)transform.position = new Vector3(target.transform.position.x, target.transform.position.y + 5f, target.transform.position.z);
     }
     void EnableImage(GameObject aim)
     {
