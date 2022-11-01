@@ -7,10 +7,12 @@ public class FortManager : MonoBehaviour
 {
     public SOPlayer soPlayer;
     public SOFort soFort;
+    public SOSave soSave;
     public GameObject doors;
     [HideInInspector]
     public List<GameObject> door;
     GameObject[] challenges;
+    bool completedChallenges;
     void Start()
     {
         for(int i = 0; i < doors.transform.childCount; i++) {
@@ -25,6 +27,7 @@ public class FortManager : MonoBehaviour
 
     void CompleteChallenges()
     {
+        completedChallenges = true;
         foreach(GameObject d in door)
         {
             d.GetComponent<BlueFireWall>().EndFire();
@@ -32,12 +35,32 @@ public class FortManager : MonoBehaviour
         }
     }
 
+    void Restart()
+    {
+        if(completedChallenges)
+        {
+            foreach(GameObject d in door)
+            {
+                d.GetComponent<BlueFireWall>().EndFire();
+            }
+        }
+        else
+        {
+            foreach(GameObject d in door)
+            {
+                d.GetComponent<BlueFireWall>().StartFire();
+            }
+        }
+    }
+
     void OnEnable()
     {
         soFort.CompleteChallengesEvent.AddListener(CompleteChallenges);
+        soSave.RestartEvent.AddListener(Restart);
     }
     void OnDisable()
     {
         soFort.CompleteChallengesEvent.RemoveListener(CompleteChallenges);
+        soSave.RestartEvent.RemoveListener(Restart);
     }
 }

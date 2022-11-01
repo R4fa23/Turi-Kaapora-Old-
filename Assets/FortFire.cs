@@ -12,10 +12,16 @@ public class FortFire : MonoBehaviour
         boitataFire.SetFloat("Percent", 0);
     }
 
+    public void SetToBlueFire()
+    {
+        boitataFire.SetFloat("Percent", 1);
+    }
+
     public void AddBlueFire(float addPercent)
     {
         float currentAmount = boitataFire.GetFloat("Percent");
         currentAmount += addPercent;
+        if(currentAmount > 1) currentAmount = 1;
         boitataFire.SetFloat("Percent", currentAmount);
     }
 }

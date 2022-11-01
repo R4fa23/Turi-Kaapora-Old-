@@ -18,6 +18,8 @@ public class SOCamp : ScriptableObject
     public UnityEvent ConclusionCampEvent;
     [System.NonSerialized]
     public UnityEvent NextWaveEvent;
+    [System.NonSerialized]
+    public UnityEvent EnemyDiedEvent;
     
     void OnEnable()
     {
@@ -29,6 +31,9 @@ public class SOCamp : ScriptableObject
 
         if(NextWaveEvent == null)
             NextWaveEvent = new UnityEvent();
+        
+        if(EnemyDiedEvent == null)
+            EnemyDiedEvent = new UnityEvent();
     }
 
     public void EnterCamp()
@@ -39,6 +44,7 @@ public class SOCamp : ScriptableObject
     public void DieEnemy()
     {
         killCount++;
+        EnemyDiedEvent.Invoke();
         if(killCount >= enemyPerWaves[actualWave])
         {
             killCount = 0;

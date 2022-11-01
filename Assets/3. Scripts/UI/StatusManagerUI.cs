@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class StatusManagerUI : MonoBehaviour
 {
     [SerializeField] Image lifeBar;
-    [SerializeField] Image staminaBar;
+    [SerializeField] GameObject stamina;
     PlayerManager playerManager;
+    SOPlayer soPlayer;
     SOPlayerHealth soPlayerHealth;
+    StaminaBar staminaBar;
     float maxLife;
     float currentLife;
     float maxStamina;
@@ -17,12 +19,20 @@ public class StatusManagerUI : MonoBehaviour
     private void Awake()
     {
         playerManager = FindObjectOfType<PlayerManager>();
-        soPlayerHealth = playerManager.soPlayer.soPlayerHealth;
+        soPlayer = playerManager.soPlayer;
+        soPlayerHealth = soPlayer.soPlayerHealth;
+        staminaBar = stamina.GetComponent<StaminaBar>();
+        staminaBar.soPlayer = soPlayer;
     }
 
     private void OnEnable()
     {
         soPlayerHealth.HealthChangeEvent.AddListener(UpdateLifeBar);
+    }
+
+    void OnDisable()
+    {
+        soPlayerHealth.HealthChangeEvent.RemoveListener(UpdateLifeBar);
     }
 
     private void Update()
@@ -40,6 +50,6 @@ public class StatusManagerUI : MonoBehaviour
 
     public void UpdateStaminaBar()
     {
-        staminaBar.fillAmount = currentStamina / maxStamina;
+        
     }
 }

@@ -131,9 +131,12 @@ public class Trail : MonoBehaviour
                 t.SetActive(true);
             }
 
-            foreach(GameObject d in door)
+            if(gameObject.tag != "Fort")
             {
-                d.GetComponent<BlueFireWall>().EndFire();
+                foreach(GameObject d in door)
+                {
+                    d.GetComponent<BlueFireWall>().EndFire();
+                }
             }
         }
     }

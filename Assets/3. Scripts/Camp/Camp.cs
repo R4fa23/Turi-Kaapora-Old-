@@ -36,12 +36,11 @@ public class Camp : MonoBehaviour
     public GameObject triggers;
     [HideInInspector]
     public List<GameObject> trigger;
-    public GameObject showThings;
-    [HideInInspector]
-    public List<GameObject> showThing;
+    public FortFire fireBoitata;
     int enemyCount;
     int indexCabin;
     bool firstEnable;
+    float countBlueFirePercent;
 
     void Awake()
     {
@@ -75,6 +74,14 @@ public class Camp : MonoBehaviour
 
         enemyPerWave[0] = firstEnemy.Count;
 
+        float totalEnemies = 0;
+
+        for(int i = 0; i < enemyPerWave.Length; i++) {
+            totalEnemies += enemyPerWave[i];
+        }
+
+        countBlueFirePercent = 1/totalEnemies;
+
     }
 
     void SetLists()
@@ -83,7 +90,7 @@ public class Camp : MonoBehaviour
         cabin.Clear();
         firstEnemy.Clear();
         trigger.Clear();
-        showThing.Clear();
+        if(fireBoitata != null) fireBoitata.ResetToRedFire();
 
         for(int i = 0; i < doors.transform.childCount; i++) {
             door.Add(doors.transform.GetChild(i).gameObject);
@@ -104,13 +111,6 @@ public class Camp : MonoBehaviour
         for(int i = 0; i < triggers.transform.childCount; i++) {
             trigger.Add(triggers.transform.GetChild(i).gameObject);
             trigger[i].SetActive(true);
-        }
-
-        
-        for(int i = 0; i < showThings.transform.childCount; i++) {
-            showThing.Add(showThings.transform.GetChild(i).gameObject);
-            showThing[i].SetActive(false);
-            
         }
 
     }
@@ -208,10 +208,7 @@ public class Camp : MonoBehaviour
             d.GetComponent<BlueFireWall>().EndFire();
         }
 
-        foreach(GameObject s in showThing)
-        {
-            s.SetActive(true);
-        }
+        if(fireBoitata != null) fireBoitata.SetToBlueFire();
 
         foreach(GameObject t in trigger)
         {
@@ -246,11 +243,6 @@ public class Camp : MonoBehaviour
                 d.GetComponent<BlueFireWall>().EndFire();
             }
 
-            foreach(GameObject s in showThing)
-            {
-                s.SetActive(true);
-            }
-
             foreach(GameObject t in trigger)
             {
                 t.SetActive(false);
@@ -280,10 +272,7 @@ public class Camp : MonoBehaviour
                 d.GetComponent<BlueFireWall>().EndFire();
             }
 
-            foreach(GameObject s in showThing)
-            {
-                s.SetActive(true);
-            }
+            if(fireBoitata != null) fireBoitata.SetToBlueFire();
 
             foreach(GameObject t in trigger)
             {
@@ -303,6 +292,11 @@ public class Camp : MonoBehaviour
         }
     }
 
+    void AddFire()
+    {
+        fireBoitata.AddBlueFire(countBlueFirePercent);
+    }
+
     void Restart()
     {
         if(!completed)
@@ -313,20 +307,26 @@ public class Camp : MonoBehaviour
             enemyCount = 0;
             indexCabin = 0;
 
-            
+            if(fireBoitata != null) fireBoitata.ResetToRedFire();
+
             foreach(GameObject t in trigger)
             {
                 t.SetActive(true);
             }
 
-            foreach(GameObject d in door)
+            if(gameObject.tag != "Fort")
             {
-                d.GetComponent<BlueFireWall>().EndFire();
+                foreach(GameObject d in door)
+                {
+                    d.GetComponent<BlueFireWall>().EndFire();
+                }
             }
+
             foreach(GameObject c in cabin)
             {
                 c.GetComponent<Cabin>().Restart();
             }
+
             foreach(GameObject f in firstEnemy)
             {
                 f.SetActive(true);
@@ -354,6 +354,7 @@ public class Camp : MonoBehaviour
             }
             soFort.CompleteChallengesEvent.AddListener(CompleteAnticipated);
             soFort.CompleteFortEvent.AddListener(CompleteFort);
+            soCamp.EnemyDiedEvent.AddListener(AddFire);
         }
         firstEnable = true;
     }
@@ -369,5 +370,6 @@ public class Camp : MonoBehaviour
         }
         soFort.CompleteChallengesEvent.RemoveListener(CompleteAnticipated);
         soFort.CompleteFortEvent.RemoveListener(CompleteFort);
+        soCamp.EnemyDiedEvent.RemoveListener(AddFire);
     }
 }
