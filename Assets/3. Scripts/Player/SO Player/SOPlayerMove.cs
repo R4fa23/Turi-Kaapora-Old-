@@ -57,6 +57,8 @@ public class SOPlayerMove : ScriptableObject
     public UnityEvent ChangeStaminaEvent;
     [System.NonSerialized]
     public UnityEvent SlowedEvent;
+    [System.NonSerialized]
+    public UnityEvent ChangeMaxStaminaEvent;
 
 
     private void OnEnable() {
@@ -101,6 +103,9 @@ public class SOPlayerMove : ScriptableObject
         
         if(SlowedEvent == null)
             SlowedEvent = new UnityEvent();
+        
+        if(ChangeMaxStaminaEvent == null)
+            ChangeMaxStaminaEvent = new UnityEvent();
     }
 
     public void MoveStart(){
@@ -161,5 +166,10 @@ public class SOPlayerMove : ScriptableObject
         vel = velSlow;
         slow = true;
         SlowedEvent.Invoke();
+    }
+
+    public void ChangeMaxStamina()
+    {
+        ChangeMaxStaminaEvent.Invoke();
     }
 }

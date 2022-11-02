@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour
     bool canDash = true;
     bool canAttack = true;
     bool dashing;
-    bool canSpecial = true;
+    [HideInInspector] public bool canSpecial = true;
     bool canFire = true;
     public GameObject animated;
     public Animator animator;
@@ -27,6 +27,8 @@ public class PlayerManager : MonoBehaviour
     public float animAttack2Time;
     [HideInInspector]
     public float animAttack3Time;
+    float currentStamina;
+    float lastStamina;
 
     void Awake()
     {
@@ -83,7 +85,7 @@ public class PlayerManager : MonoBehaviour
         soPlayer.soPlayerAttack.currentDamage = soPlayer.soPlayerAttack.attackDamage;
         soPlayer.soPlayerAttack.currentDuration = soPlayer.soPlayerAttack.attackDuration;
         soPlayer.soPlayerAttack.comboIndex = 0;
-        soPlayer.soPlayerAttack.specialTime = 0;
+        soPlayer.soPlayerAttack.specialTime = soPlayer.soPlayerAttack.specialCooldown;
         soPlayer.soPlayerMove.rechargeTime = 0;
         soPlayer.soPlayerHealth.fireCharges = 0;
         soPlayer.soPlayerMove.slowDuration = 0;
@@ -122,6 +124,14 @@ public class PlayerManager : MonoBehaviour
         if(!canSpecial) SpecialCooldown();
         if(soPlayer.soPlayerHealth.burned) Burn();
         if(soPlayer.soPlayerMove.slow) Slow();
+
+        currentStamina = soPlayer.soPlayerMove.maxStaminas;
+
+        if(currentStamina != lastStamina)
+        {
+            lastStamina = currentStamina;
+            soPlayer.soPlayerMove.ChangeMaxStamina();
+        }
     }
 
     bool IsDead()
@@ -300,6 +310,7 @@ public class PlayerManager : MonoBehaviour
                     //soPlayer.soPlayerAttack.SpecialStart();
                     soPlayer.state = SOPlayer.State.SPECIAL;
                     //soPlayer.soPlayerMove.DashStart();
+                    soPlayer.soPlayerAttack.specialTime = 0;
                     canSpecial = false;
                 }
             }
@@ -310,7 +321,7 @@ public class PlayerManager : MonoBehaviour
             soPlayer.soPlayerAttack.specialTime += Time.deltaTime;
             if(soPlayer.soPlayerAttack.specialTime >= soPlayer.soPlayerAttack.specialCooldown)
             {
-                soPlayer.soPlayerAttack.specialTime = 0;
+                soPlayer.soPlayerAttack.specialTime = soPlayer.soPlayerAttack.specialCooldown;
                 canSpecial = true;
             }
         }
