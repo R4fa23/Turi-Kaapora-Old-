@@ -466,6 +466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
   soSave: {fileID: 11400000, guid: e57cf268432d04248a6d40fc954c2cca, type: 2}
+  canSpecial: 1
   animated: {fileID: 6950409390961486072}
   animator: {fileID: 5827187371794152544}
   animAttack1Time: 0
@@ -523,13 +524,13 @@ MonoBehaviour:
   - 10.125
   - 18
   specialCooldowns:
-  - 1
-  - 1
-  - 1
+  - 20
+  - 20
+  - 20
   specialCooldownReductions:
-  - 0
-  - 0
-  - 0
+  - 5
+  - 5
+  - 5
 --- !u!143 &9003156691123881371
 CharacterController:
   m_ObjectHideFlags: 0
