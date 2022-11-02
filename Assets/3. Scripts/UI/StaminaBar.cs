@@ -11,8 +11,7 @@ public class StaminaBar : MonoBehaviour
     [HideInInspector] public List<Image> bars; 
 
     [HideInInspector] public List<GameObject> barObject;
-    float currentStamina;
-    float lastStamina;
+
 
     void SetBars()
     {
