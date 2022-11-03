@@ -88,7 +88,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{bb553212-8fc0-41c2-a841-42a52078be00}">
 		<property name="volume">
-			<value>-5</value>
+			<value>10</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{35acacd4-0f56-4f47-b781-deb7b9916c9a}</destination>
@@ -239,7 +239,7 @@
 	<object class="MixerBusEffectChain" id="{ec565a9b-ef5a-4a67-a175-8cbda5b53a5f}">
 		<relationship name="effects">
 			<destination>{75a078b9-661f-43f2-a5e7-03d1dd07d166}</destination>
-			<destination>{5502c805-dd7b-4ec1-ab82-f0b386ebe4cb}</destination>
+			<destination>{f20c61e2-f34f-4ca9-bd9f-7d315d6b1f4d}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{075412d4-5617-48bd-86aa-469e120851eb}" />
@@ -275,7 +275,14 @@
 	</object>
 	<object class="MixerBusPanner" id="{92f7bdbc-48bc-42d4-9a3c-657688416c2f}" />
 	<object class="MixerBusFader" id="{041782a9-def8-41d3-b769-342c6139f592}" />
-	<object class="SpatialiserEffect" id="{994c824a-300a-4e0f-b73a-025a1963b87e}" />
+	<object class="SpatialiserEffect" id="{994c824a-300a-4e0f-b73a-025a1963b87e}">
+		<property name="maximumDistance">
+			<value>65</value>
+		</property>
+		<property name="overrideRange">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{e30c66a6-f758-49bc-96fc-70c15f54ba37}">
 		<property name="position">
 			<value>1.7000000000000002</value>
@@ -315,15 +322,15 @@
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{75a078b9-661f-43f2-a5e7-03d1dd07d166}" />
-	<object class="ThreeEQEffect" id="{5502c805-dd7b-4ec1-ab82-f0b386ebe4cb}">
+	<object class="ThreeEQEffect" id="{f20c61e2-f34f-4ca9-bd9f-7d315d6b1f4d}">
 		<property name="lowGain">
-			<value>-45</value>
+			<value>-40</value>
 		</property>
 		<property name="midGain">
-			<value>-39</value>
+			<value>-45</value>
 		</property>
 		<property name="highGain">
-			<value>-20.5</value>
+			<value>-20</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{4cc12136-db2a-4237-aac2-e98762910934}" />

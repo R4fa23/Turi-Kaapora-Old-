@@ -136,7 +136,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{3bf9dfc5-155e-48b2-bd0a-e26b7c04a0b0}">
 		<property name="volume">
-			<value>-24.5</value>
+			<value>-3.5</value>
 		</property>
 		<property name="name">
 			<value>Looping</value>
@@ -212,7 +212,14 @@
 	</object>
 	<object class="MixerBusPanner" id="{77e9ce1b-eb17-4253-a65a-4d9382344fa8}" />
 	<object class="MixerBusFader" id="{aa8a639c-9a51-4662-9637-1de4c7480397}" />
-	<object class="SpatialiserEffect" id="{d4935be9-6d5f-4fa2-9b05-72ce4bffc0de}" />
+	<object class="SpatialiserEffect" id="{d4935be9-6d5f-4fa2-9b05-72ce4bffc0de}">
+		<property name="maximumDistance">
+			<value>10</value>
+		</property>
+		<property name="overrideRange">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{f02e754d-c480-4c1d-9ae6-1863e72b7340}">
 		<property name="position">
 			<value>0.38</value>
