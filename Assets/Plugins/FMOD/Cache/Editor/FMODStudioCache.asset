@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: Turi FMOD Project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638029161167467173
+  lastModified: 638030871367203914
   FileSizes:
   - Name: Desktop
-    Value: 701760
+    Value: 1097632
   Exists: 1
 --- !u!114 &-7745376779175007120
 MonoBehaviour:
@@ -68,12 +68,12 @@ MonoBehaviour:
   Banks:
   - {fileID: -9065374462541756553}
   IsStream: 0
-  Is3D: 0
+  Is3D: 1
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 6336
+  Length: 3900
 --- !u!114 &-6724792661293942968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,6 +155,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 390
+--- !u!114 &-4025473479494251832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambiencia/Boitata
+  m_EditorClassIdentifier: 
+  Path: event:/Ambiencia/Boitata
+  Guid:
+    Data1: 1360981724
+    Data2: 1288099648
+    Data3: 1411848893
+    Data4: -1856062743
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1776
 --- !u!114 &-3766821534403806574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +236,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1410
+--- !u!114 &-2212335861038550263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambiencia/Fogo
+  m_EditorClassIdentifier: 
+  Path: event:/Ambiencia/Fogo
+  Guid:
+    Data1: 1919840468
+    Data2: 1258073918
+    Data3: -1792825437
+    Data4: 1937742865
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 16404
 --- !u!114 &-2167304242042248890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,10 +352,10 @@ MonoBehaviour:
   Path: Turi FMOD Project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638022374033514588
+  lastModified: 638030871367243919
   FileSizes:
   - Name: Desktop
-    Value: 1842
+    Value: 1974
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -337,12 +391,15 @@ MonoBehaviour:
   - {fileID: -4355659362171855375}
   - {fileID: 6300287340803945074}
   - {fileID: 3565663885020725706}
+  - {fileID: -2212335861038550263}
+  - {fileID: 691994594321659048}
+  - {fileID: -4025473479494251832}
   EditorParameters: []
   MasterBanks:
   - {fileID: -9065374462541756553}
   StringsBanks:
   - {fileID: -175099898346297676}
-  cacheTime: 638029161167467173
+  cacheTime: 638030871367243919
   cacheVersion: 131591
 --- !u!114 &621566993391211386
 MonoBehaviour:
@@ -371,6 +428,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1175
+--- !u!114 &691994594321659048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambiencia/Vento
+  m_EditorClassIdentifier: 
+  Path: event:/Ambiencia/Vento
+  Guid:
+    Data1: 1788281051
+    Data2: 1243257978
+    Data3: 881259669
+    Data4: -1442393277
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 12695
 --- !u!114 &1992229467436332199
 MonoBehaviour:
   m_ObjectHideFlags: 0
