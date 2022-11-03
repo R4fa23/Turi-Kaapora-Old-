@@ -38,7 +38,7 @@ public class TriggerNarrative : MonoBehaviour
     {
         talk.gameObject.SetActive(true);
 
-        FMODUnity.RuntimeManager.PlayOneShot("event:" + evento[index], transform.position);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/" + evento[index], transform.position);
 
         talk.text = falas[index];
 
