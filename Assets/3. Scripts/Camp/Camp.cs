@@ -294,7 +294,7 @@ public class Camp : MonoBehaviour
 
     void AddFire()
     {
-        fireBoitata.AddBlueFire(countBlueFirePercent);
+        if(fireBoitata != null) fireBoitata.AddBlueFire(countBlueFirePercent);
     }
 
     void Restart()
