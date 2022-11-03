@@ -14,6 +14,8 @@ public class TriggerNarrative : MonoBehaviour
     public TextMeshProUGUI talk;
     bool talking;
 
+    public float narrationVel;
+
     void Start()
     {
         talk = GameObject.FindGameObjectWithTag("TextNarrative").GetComponent<TextMeshProUGUI>();
@@ -41,7 +43,7 @@ public class TriggerNarrative : MonoBehaviour
         talk.text = falas[index];
 
         float timeToPass;
-        timeToPass = ((falas[index].Length / 4.5f) * 2);
+        timeToPass = ((falas[index].Length / 4.5f) * narrationVel);
         StartCoroutine(WaitNextTalk(timeToPass));
 
     }
