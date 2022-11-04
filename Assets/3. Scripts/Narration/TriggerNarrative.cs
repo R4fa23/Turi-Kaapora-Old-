@@ -65,7 +65,7 @@ public class TriggerNarrative : MonoBehaviour
         }
         else
         {
-            FMODUnity.RuntimeManager.PlayOneShot("event:" + evento[index], transform.position);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/" + evento[index], transform.position);
             talk.text = falas[index];
 
             float timeToPass;
