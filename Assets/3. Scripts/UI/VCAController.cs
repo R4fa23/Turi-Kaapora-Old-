@@ -7,6 +7,7 @@ public class VCAController : MonoBehaviour
     private FMOD.Studio.VCA VCAMix;
     public string VCAName;
     private Slider slider;
+
     void Start()
     {
         VCAMix = FMODUnity.RuntimeManager.GetVCA("vca:/" + VCAName);
@@ -18,5 +19,5 @@ public class VCAController : MonoBehaviour
         VCAMix.setVolume(volume);
     }
 
-    
+
 }

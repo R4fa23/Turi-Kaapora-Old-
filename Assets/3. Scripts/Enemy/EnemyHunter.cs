@@ -8,18 +8,16 @@ public class EnemyHunter : MonoBehaviour
     public SOPlayer soPlayer;
     public GameObject web;
     bool firstEnable;
-    // Start is called before the first frame update
     void Start()
     {
         web.SetActive(false);
         soEnemy = GetComponent<EnemyManager>().soEnemy;
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Inimigos/Cacador_Ataque", transform.position);
         OnEnable();
     }
 
     void LaunchWeb()
     {
-
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Inimigos/Cacador_Ataque", transform.position);
         web.SetActive(true);
         web.transform.position = transform.position;
         web.transform.forward = transform.forward;
