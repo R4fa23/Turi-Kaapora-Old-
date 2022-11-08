@@ -123,6 +123,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{9ee378b8-109d-4cb7-891d-b3ffe3c23347}">
+		<property name="volume">
+			<value>-3.5</value>
+		</property>
 		<property name="name">
 			<value>Sibilo</value>
 		</property>
@@ -168,7 +171,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{2d0ece2a-18f4-4ba3-94fb-54df7e1d7baa}">
 		<property name="volume">
-			<value>-23</value>
+			<value>-19</value>
 		</property>
 		<property name="name">
 			<value>Lava</value>
@@ -201,6 +204,7 @@
 	<object class="MixerBusEffectChain" id="{a21d5e58-a0ad-4a8a-beb4-a056d85a47e7}">
 		<relationship name="effects">
 			<destination>{1cae3d55-f857-4e8f-bbba-385a3ef434fc}</destination>
+			<destination>{20c24acb-2d49-4c90-b972-f51f14438fd1}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{418aacce-531a-49a6-b4de-4abe815a0c5c}" />
@@ -218,6 +222,41 @@
 	<object class="MixerBusPanner" id="{c5c628e8-a65f-47fc-9271-b20fece0d339}" />
 	<object class="MixerBusFader" id="{3e9c8ae0-002f-4f2e-8a2d-49ec9461577f}" />
 	<object class="MixerBusFader" id="{1cae3d55-f857-4e8f-bbba-385a3ef434fc}" />
+	<object class="SFXReverbEffect" id="{20c24acb-2d49-4c90-b972-f51f14438fd1}">
+		<property name="decayTime">
+			<value>3100</value>
+		</property>
+		<property name="earlyDelay">
+			<value>56</value>
+		</property>
+		<property name="lateDelay">
+			<value>70</value>
+		</property>
+		<property name="HFReference">
+			<value>8000</value>
+		</property>
+		<property name="HFDecayRatio">
+			<value>59.5</value>
+		</property>
+		<property name="lowShelfFrequency">
+			<value>330</value>
+		</property>
+		<property name="lowShelfGain">
+			<value>5.5</value>
+		</property>
+		<property name="highCut">
+			<value>5500</value>
+		</property>
+		<property name="earlyLateMix">
+			<value>67</value>
+		</property>
+		<property name="wetLevel">
+			<value>-4</value>
+		</property>
+		<property name="dryLevel">
+			<value>-20.5</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{1c1a287a-f923-4a6e-9a33-54c5020dfeb0}" />
 	<object class="MixerBusFader" id="{a921618a-b85c-45e5-a7a1-3ea80d27584c}" />
 </objects>
