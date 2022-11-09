@@ -50,19 +50,19 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 50
+      - m_Value: 20
         m_Name: Smoke Rate
         m_Overridden: 1
       - m_Value: 4
         m_Name: Smoke Lifetime
         m_Overridden: 1
-      - m_Value: 8
+      - m_Value: 3.2
         m_Name: Cinders Rate
         m_Overridden: 1
-      - m_Value: 16
+      - m_Value: 6.4
         m_Name: Decal Rate
         m_Overridden: 1
-      - m_Value: 16
+      - m_Value: 6.4
         m_Name: Flame Rate
         m_Overridden: 1
     m_Vector2f:
@@ -212,15 +212,15 @@ MonoBehaviour:
   soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
   vfxFire: {fileID: 8870633846189809199}
   box: {fileID: 7990155674148961579}
-  quantity: 0.5
+  quantity: 0.2
   fireRateMax: 32
   smokeRateMax: 100
   decalRateMax: 32
   cindersRateMax: 16
-  fireRateAtual: 16
-  smokeRateAtual: 50
-  decalRateAtual: 16
-  cindersRateAtual: 8
+  fireRateAtual: 6.4
+  smokeRateAtual: 20
+  decalRateAtual: 6.4
+  cindersRateAtual: 3.2
   size: {x: 5, y: 5}
 --- !u!65 &7990155674148961579
 BoxCollider:
