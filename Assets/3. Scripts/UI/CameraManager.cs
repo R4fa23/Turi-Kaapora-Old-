@@ -7,6 +7,7 @@ public class CameraManager : MonoBehaviour
 {
     public CinemachineVirtualCamera[] cameras;
     public GameObject[] botoes;
+    
     private void Awake()
     {
         cameras = new CinemachineVirtualCamera[transform.childCount];
