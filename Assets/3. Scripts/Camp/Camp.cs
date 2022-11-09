@@ -41,6 +41,7 @@ public class Camp : MonoBehaviour
     int indexCabin;
     bool firstEnable;
     float countBlueFirePercent;
+    public GameObject bonfire;
 
     void Awake()
     {
@@ -82,6 +83,8 @@ public class Camp : MonoBehaviour
 
         countBlueFirePercent = 1/totalEnemies;
 
+        fireBoitata.quantityToAdd = countBlueFirePercent;
+
     }
 
     void SetLists()
@@ -101,6 +104,7 @@ public class Camp : MonoBehaviour
         for(int i = 0; i < cabins.transform.childCount; i++) {
             cabin.Add(cabins.transform.GetChild(i).gameObject);
             cabin[i].SetActive(true);
+            if(bonfire != null) cabin[i].GetComponent<Cabin>().bonfire = bonfire;
         }
 
         for(int i = 0; i < firstEnemies.transform.childCount; i++) {
@@ -208,8 +212,6 @@ public class Camp : MonoBehaviour
             d.GetComponent<BlueFireWall>().EndFire();
         }
 
-        if(fireBoitata != null) fireBoitata.SetToBlueFire();
-
         foreach(GameObject t in trigger)
         {
             t.SetActive(false);
@@ -292,11 +294,6 @@ public class Camp : MonoBehaviour
         }
     }
 
-    void AddFire()
-    {
-        if(fireBoitata != null) fireBoitata.AddBlueFire(countBlueFirePercent);
-    }
-
     void Restart()
     {
         if(!completed)
@@ -350,11 +347,11 @@ public class Camp : MonoBehaviour
             soSave.RestartEvent.AddListener(Restart);
             foreach(GameObject e in firstEnemy)
             {
-                    e.GetComponent<EnemyManager>().soEnemy.DieEvent.AddListener(EnemyDied);
+                e.GetComponent<EnemyManager>().soEnemy.DieEvent.AddListener(EnemyDied);
+                if (bonfire != null) e.GetComponent<EnemyManager>().bonfire = bonfire;
             }
             soFort.CompleteChallengesEvent.AddListener(CompleteAnticipated);
             soFort.CompleteFortEvent.AddListener(CompleteFort);
-            soCamp.EnemyDiedEvent.AddListener(AddFire);
         }
         firstEnable = true;
     }
@@ -370,6 +367,5 @@ public class Camp : MonoBehaviour
         }
         soFort.CompleteChallengesEvent.RemoveListener(CompleteAnticipated);
         soFort.CompleteFortEvent.RemoveListener(CompleteFort);
-        soCamp.EnemyDiedEvent.RemoveListener(AddFire);
     }
 }

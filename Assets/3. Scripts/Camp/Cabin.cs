@@ -13,6 +13,7 @@ public class Cabin : MonoBehaviour
     SOCamp soCamp;
     public Camp camp;
     public Transform summonPlace;
+    public GameObject bonfire;
 
     void Start()
     {
@@ -104,6 +105,7 @@ public class Cabin : MonoBehaviour
         foreach(GameObject e in enemies)
         {
             e.GetComponent<EnemyManager>().soEnemy.DieEvent.AddListener(EnemyDied);
+            if (bonfire != null) e.GetComponent<EnemyManager>().bonfire = bonfire;
         }        
         yield return new WaitForSeconds(0.02f);
         foreach(GameObject e in enemies)

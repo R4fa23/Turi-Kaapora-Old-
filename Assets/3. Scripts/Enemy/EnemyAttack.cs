@@ -161,7 +161,6 @@ public class EnemyAttack : MonoBehaviour
         }
         rotate = false;
         attacking = false;
-        manager.SetActive(false);
     }
 
     void Restart()

@@ -20,6 +20,7 @@ public class EnemyManager : MonoBehaviour
     public float animChargeEspTime;
     [HideInInspector]
     public float animAttackEspTime;
+    public GameObject bonfire;
 
     void Awake()
     {
@@ -132,6 +133,7 @@ public class EnemyManager : MonoBehaviour
     private void OnDie() 
     {
         soPlayer.soPlayerAttack.EnemyDie(this.gameObject);
+        gameObject.SetActive(false);
     }
 
     void AnimationsTime()

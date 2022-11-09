@@ -4,11 +4,43 @@ using UnityEngine;
 
 public class RouteFire : MonoBehaviour
 {
-    public Transform target;
+    public GameObject target;
 
     public float vel;
+
+    bool toDisapear;
     void Update()
     {
-        transform.position = Vector3.Slerp(transform.position, target.position, Time.deltaTime * vel);
+        if (target != null)
+        {
+            transform.position = Vector3.Slerp(transform.position, target.transform.position, Time.deltaTime * vel);
+
+            if (Vector3.Distance(transform.position, target.transform.position) < 0.5f)
+            {
+                target.GetComponentInParent<FortFire>().AddQuantity();
+                gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            transform.Translate(Vector3.up * Time.deltaTime * vel);
+            if (!toDisapear)
+            {
+                toDisapear = true;
+                StartCoroutine(Disapear());
+            }
+        } 
     }
+
+    IEnumerator Disapear()
+    {
+        yield return new WaitForSeconds(2);
+        gameObject.SetActive(false);
+    }
+
+	private void OnDisable()
+	{
+        target = null;
+        toDisapear = false;
+	}
 }

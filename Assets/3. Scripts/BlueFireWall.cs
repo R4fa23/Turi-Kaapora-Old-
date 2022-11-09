@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
+using UnityEngine.AI;
 
 public class BlueFireWall : MonoBehaviour
 {
@@ -24,9 +25,14 @@ public class BlueFireWall : MonoBehaviour
     bool turningOn;
     bool movingWall;
     bool stayOn;
+    NavMeshObstacle obstacle;
 
     void Start()
     {
+        obstacle = GetComponent<NavMeshObstacle>();
+        obstacle.center = boxCollider.center;
+        obstacle.size = boxCollider.size;
+
         GetRates();        
         
         boxCollider.size = new Vector3(wallSize, 3, 1);
