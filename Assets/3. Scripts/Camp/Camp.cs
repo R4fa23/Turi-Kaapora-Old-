@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Camp : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class Camp : MonoBehaviour
     bool firstEnable;
     float countBlueFirePercent;
     public GameObject bonfire;
+    public UnityEvent OnEndCamp;
 
     void Awake()
     {
@@ -222,6 +224,7 @@ public class Camp : MonoBehaviour
         completed = true;
         soFort.CompleteSpace();
         soPlayer.soPlayerHealth.RecoverHealth();
+        OnEndCamp?.Invoke();
     }
 
     IEnumerator SummonDelay()

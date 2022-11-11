@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Trail : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class Trail : MonoBehaviour
     public SOTrail soTrail;
     public SOSave soSave;
     public SOFort soFort;
+
+    public UnityEvent OnEndTrail;
     void Awake()
     {
         SetLists();
@@ -71,6 +74,7 @@ public class Trail : MonoBehaviour
 
         completed = true;
         soFort.CompleteSpace();
+        OnEndTrail?.Invoke();
     }
     void StartTrail()
     {
