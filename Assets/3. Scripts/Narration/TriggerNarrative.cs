@@ -20,7 +20,7 @@ public class TriggerNarrative : MonoBehaviour
 
     void Start()
     {
-        talk = GameObject.FindGameObjectWithTag("TextNarrative").GetComponent<TextMeshProUGUI>();
+        talk = GameObject.FindGameObjectWithTag("TextNarrative").GetComponent<CollectText>().text;
         talk.gameObject.SetActive(false);
     }
 

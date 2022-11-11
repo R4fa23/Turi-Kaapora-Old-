@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 4828111250653767132}
   m_Layer: 5
   m_Name: Text (TMP)
-  m_TagString: TextNarrative
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4828111250653767133
 RectTransform:
   m_ObjectHideFlags: 0
@@ -144,12 +144,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4828111251370429825}
+  - component: {fileID: 2067776011299907706}
   - component: {fileID: 4828111251370429826}
   - component: {fileID: 4828111251370429827}
   - component: {fileID: 4828111251370429828}
   m_Layer: 5
   m_Name: TextNarration
-  m_TagString: Untagged
+  m_TagString: TextNarrative
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,6 +176,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2067776011299907706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828111251370429829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7ab10ee555dbb049b0b7b82a8fe9d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 4828111250653767132}
 --- !u!223 &4828111251370429826
 Canvas:
   m_ObjectHideFlags: 0
