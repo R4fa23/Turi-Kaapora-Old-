@@ -83,7 +83,7 @@ public class Camp : MonoBehaviour
 
         countBlueFirePercent = 1/totalEnemies;
 
-        fireBoitata.quantityToAdd = countBlueFirePercent;
+        if(fireBoitata != null) fireBoitata.quantityToAdd = countBlueFirePercent;
 
     }
 
