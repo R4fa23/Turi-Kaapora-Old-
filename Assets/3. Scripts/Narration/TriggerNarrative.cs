@@ -13,10 +13,10 @@ public class TriggerNarrative : MonoBehaviour
 
     public float[] talkTime;
     int index;
-    public TextMeshProUGUI talk;
+    TextMeshProUGUI talk;
     bool talking;
 
-    public float narrationVel;
+    float narrationVel;
 
     void Start()
     {
