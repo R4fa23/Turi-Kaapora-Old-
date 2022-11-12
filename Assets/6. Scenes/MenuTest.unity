@@ -1883,6 +1883,68 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19c8342b517f6d3418b850426f739e01, type: 3}
+--- !u!1 &114571624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 114571626}
+  - component: {fileID: 114571625}
+  m_Layer: 0
+  m_Name: Amb_Desvanescer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &114571625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114571624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 781238766
+      Data2: 1321318422
+      Data3: 987421610
+      Data4: -1749181088
+    Path: event:/Ambiencia/Desvanescer
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!4 &114571626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114571624}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.58, y: 9.73, z: -19.001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &120332866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1935,7 +1997,7 @@ Transform:
   - {fileID: 394034255}
   - {fileID: 270557598}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &120790024
 PrefabInstance:
@@ -3087,7 +3149,7 @@ PrefabInstance:
     - target: {fileID: 4828111251370429825, guid: ba39ce2cbfb2ca74cbf24aa8a2871e25,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4828111251370429825, guid: ba39ce2cbfb2ca74cbf24aa8a2871e25,
         type: 3}
@@ -11776,7 +11838,7 @@ PrefabInstance:
     - target: {fileID: 2170881275959687192, guid: 40115db3b0b2bc642bb7dac399e322ea,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2170881275959687192, guid: 40115db3b0b2bc642bb7dac399e322ea,
         type: 3}
@@ -25851,6 +25913,8 @@ PlayableDirector:
     value: {fileID: 964700546}
   - key: {fileID: 307765166436003887, guid: dd872638ae9bac34c9000c8023be8af5, type: 2}
     value: {fileID: 120332867}
+  - key: {fileID: -8406527733289237310, guid: dd872638ae9bac34c9000c8023be8af5, type: 2}
+    value: {fileID: 114571624}
   m_ExposedReferences:
     m_References:
     - 012bfc026edb6ff48af90b20900abc0a: {fileID: 687602177}
@@ -34380,7 +34444,7 @@ Transform:
   - {fileID: 612390097}
   - {fileID: 863001908}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1986518500
 PrefabInstance:
