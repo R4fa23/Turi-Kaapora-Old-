@@ -6,6 +6,8 @@ public class BirdShadow : MonoBehaviour
 {
     public Material[] birds;
 
+    float vel;
+
     void Start()
     {
         RandomizeDir();
@@ -14,12 +16,11 @@ public class BirdShadow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(transform.up, Space.World);
+        transform.Translate(transform.up * vel, Space.World);
     }
 
     void RandomizeDir()
     {
-
         int side = 0;
         float lateralOffset = 0;
         float rotationOffset = 0;
@@ -29,6 +30,7 @@ public class BirdShadow : MonoBehaviour
         lateralOffset = Random.Range(-100f, 100f);
         rotationOffset = Random.Range(-30f, 30f);
         randomSprite = Random.Range(0, birds.Length);
+        vel = Random.Range(5f, 15f);
 
         GetComponent<MeshRenderer>().material = birds[randomSprite];
 
@@ -61,7 +63,11 @@ public class BirdShadow : MonoBehaviour
 
     IEnumerator timeToRandomize()
     {
-        yield return new WaitForSeconds(5);
+        int time = 0;
+
+        time = Random.Range(5, 11);
+
+        yield return new WaitForSeconds(time);
         RandomizeDir();
     }
 }

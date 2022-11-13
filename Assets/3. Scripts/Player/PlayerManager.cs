@@ -385,8 +385,11 @@ public class PlayerManager : MonoBehaviour
 
     void Damaged()
     {
-        animator.SetTrigger("Dano");
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Dano_Humano", transform.position);
+        if (soPlayer.state != SOPlayer.State.SPECIAL)
+        {
+            animator.SetTrigger("Dano");
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Dano_Humano", transform.position);
+        }
     }
 
     //--------------------------------------------SE MATAR----------------------------------------
