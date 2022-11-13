@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2678057427889901646
+--- !u!1 &3829549035413104913
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3785216057505984305}
-  - component: {fileID: 1549479636056638678}
+  - component: {fileID: 2632596387828209262}
+  - component: {fileID: 400765393420828041}
   m_Layer: 0
-  m_Name: Caipirapora
+  m_Name: Caipirapora 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3785216057505984305
+--- !u!4 &2632596387828209262
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2678057427889901646}
+  m_GameObject: {fileID: 3829549035413104913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.6225286, y: 0.5055361, z: -6.0965796}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4467801634024238483}
+  - {fileID: 588575085645022614}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1549479636056638678
+--- !u!95 &400765393420828041
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2678057427889901646}
+  m_GameObject: {fileID: 3829549035413104913}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e794e09935ae3d1449148d5affc56ce4, type: 2}
@@ -53,12 +53,12 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1001 &4146241406111959672
+--- !u!1001 &1126375520669868669
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 3785216057505984305}
+    m_TransformParent: {fileID: 2632596387828209262}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 60458836494b3e348ae59a4456e835f3,
         type: 3}
@@ -137,19 +137,19 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a42317e6fc9b4eb419a332bc943df8ec, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60458836494b3e348ae59a4456e835f3, type: 3}
---- !u!1 &3840164510381700905 stripped
+--- !u!1 &243433251416579884 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 60458836494b3e348ae59a4456e835f3,
     type: 3}
-  m_PrefabInstance: {fileID: 4146241406111959672}
+  m_PrefabInstance: {fileID: 1126375520669868669}
   m_PrefabAsset: {fileID: 0}
---- !u!137 &2939070118292696478
+--- !u!137 &1148838937742574745
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3840164510381700905}
+  m_GameObject: {fileID: 243433251416579884}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -196,9 +196,9 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_DirtyAABB: 0
---- !u!4 &4467801634024238483 stripped
+--- !u!4 &588575085645022614 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 60458836494b3e348ae59a4456e835f3,
     type: 3}
-  m_PrefabInstance: {fileID: 4146241406111959672}
+  m_PrefabInstance: {fileID: 1126375520669868669}
   m_PrefabAsset: {fileID: 0}
