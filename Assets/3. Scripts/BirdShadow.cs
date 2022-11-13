@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BirdShadow : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Material[] birds;
+
     void Start()
     {
         RandomizeDir();
@@ -22,10 +23,14 @@ public class BirdShadow : MonoBehaviour
         int side = 0;
         float lateralOffset = 0;
         float rotationOffset = 0;
+        int randomSprite = 0;
 
         side = Random.Range(0, 4);
         lateralOffset = Random.Range(-100f, 100f);
         rotationOffset = Random.Range(-30f, 30f);
+        randomSprite = Random.Range(0, birds.Length);
+
+        GetComponent<MeshRenderer>().material = birds[randomSprite];
 
         switch (side)
         {
