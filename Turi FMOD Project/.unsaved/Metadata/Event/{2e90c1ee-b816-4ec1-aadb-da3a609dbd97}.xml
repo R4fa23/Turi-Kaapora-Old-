@@ -141,6 +141,7 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{1ad21139-c8dd-4191-9b7b-4518e829d8e0}">
 		<relationship name="effects">
+			<destination>{f3a4c592-b93d-4933-b6b0-edd9e8266bef}</destination>
 			<destination>{93033a8b-e567-41da-9cc7-6a65a24d6443}</destination>
 			<destination>{19a7eb78-cf16-458b-819f-9b327060b152}</destination>
 		</relationship>
@@ -185,6 +186,7 @@
 			<value>0</value>
 		</property>
 	</object>
+	<object class="HighpassEffect" id="{f3a4c592-b93d-4933-b6b0-edd9e8266bef}" />
 	<object class="MixerBusFader" id="{93033a8b-e567-41da-9cc7-6a65a24d6443}" />
 	<object class="ThreeEQEffect" id="{19a7eb78-cf16-458b-819f-9b327060b152}">
 		<property name="midGain">
