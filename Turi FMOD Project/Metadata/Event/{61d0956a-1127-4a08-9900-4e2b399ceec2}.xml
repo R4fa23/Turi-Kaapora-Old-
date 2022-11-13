@@ -103,7 +103,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{f77f2147-abea-4c50-afa1-71557f57f22f}">
 		<property name="volume">
-			<value>-7</value>
+			<value>4</value>
 		</property>
 		<property name="name">
 			<value>Palha</value>
@@ -134,16 +134,25 @@
 		</property>
 	</object>
 	<object class="SingleSound" id="{eec65700-6ea0-4cac-83e8-cb2b1c4bacd7}">
+		<property name="volume">
+			<value>-4</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{9a0878e6-2661-4c65-bed3-a719cf7d1600}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{21b47613-6349-43e2-8e05-0949a4e8750a}">
+		<property name="volume">
+			<value>3</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{b1d9d4c9-6bbf-45e6-882d-153aed3ab20a}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{bf9913ce-bd0d-498c-a884-7cdc440564eb}">
+		<property name="volume">
+			<value>-6</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{e8184c94-ae7e-4f12-a12f-5e8896e4180e}</destination>
 		</relationship>
@@ -159,13 +168,7 @@
 	<object class="MixerBusFader" id="{ed8538c9-1aba-4a86-82c1-67abe9e3c3e5}" />
 	<object class="ThreeEQEffect" id="{c3da68e4-0ef0-4181-9277-9dc5e0320cbc}">
 		<property name="lowGain">
-			<value>3</value>
-		</property>
-		<property name="midGain">
-			<value>-2</value>
-		</property>
-		<property name="highGain">
-			<value>-1</value>
+			<value>10</value>
 		</property>
 	</object>
 </objects>
