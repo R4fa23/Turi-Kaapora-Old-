@@ -110,9 +110,6 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{45d8e339-119e-458c-a91b-2f53dfe8c2eb}">
-		<property name="start">
-			<value>0.70000000000000007</value>
-		</property>
 		<property name="length">
 			<value>2.2987755102040817</value>
 		</property>
@@ -121,6 +118,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{bca472b8-9a43-4a86-9985-bcbb29fe7aaa}">
+		<property name="volume">
+			<value>-2.5</value>
+		</property>
 		<property name="name">
 			<value>Fogo</value>
 		</property>
@@ -136,19 +136,19 @@
 	</object>
 	<object class="SingleSound" id="{a66ee805-3094-4be9-a3ac-0d1afaf5c8f2}">
 		<property name="start">
-			<value>0.70000000000000007</value>
+			<value>0.10000000000000001</value>
 		</property>
 		<property name="length">
-			<value>1.2277551020408164</value>
+			<value>1.1277551020408163</value>
+		</property>
+		<property name="timelockedOffset">
+			<value>0.10000000000000001</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{a0f3c207-49b2-423b-a13f-7809a5b67ced}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{b0b1855c-d279-48d8-ad32-695ba51f06ad}">
-		<property name="volume">
-			<value>-3.5</value>
-		</property>
 		<property name="name">
 			<value>Tambor</value>
 		</property>
