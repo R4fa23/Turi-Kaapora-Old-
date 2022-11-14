@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class LoadingScreen : MonoBehaviour
 {
     public GameObject loadingScene;
-    public Image bar;
     
     public void LoadScene(int cena)
     {
@@ -23,7 +22,7 @@ public class LoadingScreen : MonoBehaviour
         {
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
 
-            bar.fillAmount = progress;
+            Debug.Log(progress);
 
             yield return null;
         }
