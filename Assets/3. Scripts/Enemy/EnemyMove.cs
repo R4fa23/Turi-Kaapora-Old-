@@ -58,7 +58,15 @@ public class EnemyMove : MonoBehaviour
 
         if(soEnemy.state == SOEnemy.State.WALKING && detected)
         {
-            navMeshAgent.SetDestination(player.position);
+            if(soPlayer.isCutscene)
+            {
+                navMeshAgent.SetDestination(transform.position);
+            }
+            else
+            {
+                navMeshAgent.SetDestination(player.position);
+            }
+                
             if(lastState != soEnemy.state)
             {
                 lastState = soEnemy.state;

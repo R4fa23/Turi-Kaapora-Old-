@@ -128,15 +128,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: HUD_0
+      name: Life_Bar
       rect:
         serializedVersion: 2
-        x: 0
-        y: 290
-        width: 223
-        height: 284
+        x: 26
+        y: 327
+        width: 181
+        height: 219
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -149,15 +149,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HUD_1
+      name: Life_Fill
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1
-        width: 223
-        height: 254
+        x: 16
+        y: 15
+        width: 181
+        height: 220
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -170,15 +170,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HUD_2
+      name: Dash_Bar
       rect:
         serializedVersion: 2
-        x: 669
-        y: 315
-        width: 234
-        height: 204
+        x: 709
+        y: 345
+        width: 167
+        height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,15 +191,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HUD_3
+      name: Dash_Fill
       rect:
         serializedVersion: 2
-        x: 669
-        y: 17
-        width: 239
-        height: 160
+        x: 709
+        y: 31
+        width: 167
+        height: 127
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -212,15 +212,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HUD_4
+      name: Special_Bar
       rect:
         serializedVersion: 2
-        x: 1651
-        y: 284
-        width: 269
-        height: 298
+        x: 1679
+        y: 313
+        width: 235
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -233,15 +233,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HUD_5
+      name: Special_Fill
       rect:
         serializedVersion: 2
-        x: 1645
-        y: 0
-        width: 275
-        height: 272
+        x: 1669
+        y: 2
+        width: 235
+        height: 252
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -264,12 +264,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      HUD_3: 2114990671
-      HUD_1: -234502511
-      HUD_2: -442341645
-      HUD_4: -356024883
-      HUD_5: 1636342784
-      HUD_0: 1585112495
+      Dash_Fill: 2114990671
+      Life_Bar: 1585112495
+      Special_Bar: -356024883
+      Special_Fill: 1636342784
+      Dash_Bar: -442341645
+      Life_Fill: -234502511
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

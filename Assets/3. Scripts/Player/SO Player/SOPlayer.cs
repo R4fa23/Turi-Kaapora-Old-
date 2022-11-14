@@ -12,6 +12,8 @@ public class SOPlayer : ScriptableObject
     public bool canTeleport;
     [HideInInspector]
     public bool isPaused;
+    [HideInInspector]
+    public bool isCutscene;
 
     public SOPlayerHealth soPlayerHealth;
     public SOPlayerMove soPlayerMove;
