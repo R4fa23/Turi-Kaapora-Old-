@@ -96,6 +96,7 @@ public class PlayerManager : MonoBehaviour
         soPlayer.canTeleport = false;
         soPlayer.soPlayerHealth.canDamaged = true;
         soPlayer.isPaused = false;
+        soPlayer.isCutscene = false;
         soPlayer.soPlayerAttack.hitKill = false;
         soPlayer.soPlayerMove.superVelocity = false;
 
@@ -136,7 +137,7 @@ public class PlayerManager : MonoBehaviour
 
     bool IsDead()
     {
-        return soPlayer.soPlayerHealth.dead || soPlayer.isPaused;
+        return soPlayer.soPlayerHealth.dead || soPlayer.isPaused || soPlayer.isCutscene;
     }
 
     //-------------------------------MOVIMENTAÇÃO--------------------------------- 
@@ -472,6 +473,18 @@ public class PlayerManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    //-------------------------------------------CUTSCENE---------------------------------------------
+
+    public void InCutscene()
+    {
+        soPlayer.isCutscene = true;
+    }
+
+    public void OutCutscene()
+    {
+        soPlayer.isCutscene = false;
     }
 
     //-------------------------------------------LISTENER---------------------------------------------
