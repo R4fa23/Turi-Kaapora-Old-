@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: Turi FMOD Project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638041339523675024
+  lastModified: 638041403215017953
   FileSizes:
   - Name: Desktop
-    Value: 1270400
+    Value: 1380160
   Exists: 1
 --- !u!114 &-8102754011710441275
 MonoBehaviour:
@@ -128,6 +128,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1410
+--- !u!114 &-4944514585702002264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Vozes/Risada
+  m_EditorClassIdentifier: 
+  Path: event:/Vozes/Risada
+  Guid:
+    Data1: 480561029
+    Data2: 1235900036
+    Data3: 1323292349
+    Data4: -1926408622
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2368
 --- !u!114 &-4555340086677564859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,6 +391,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 920
+--- !u!114 &-432765726026538451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Vozes/Dano
+  m_EditorClassIdentifier: 
+  Path: event:/Vozes/Dano
+  Guid:
+    Data1: 1209149511
+    Data2: 1076795271
+    Data3: -374082429
+    Data4: -860190232
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 580
 --- !u!114 &-175099898346297676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,10 +433,10 @@ MonoBehaviour:
   Path: Turi FMOD Project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638041339523725007
+  lastModified: 638041403215387960
   FileSizes:
   - Name: Desktop
-    Value: 2238
+    Value: 2310
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -427,12 +481,14 @@ MonoBehaviour:
   - {fileID: -1685194257339003682}
   - {fileID: -3387407464899314001}
   - {fileID: -4463474502471964129}
+  - {fileID: -432765726026538451}
+  - {fileID: -4944514585702002264}
   EditorParameters: []
   MasterBanks:
   - {fileID: -9065374462541756553}
   StringsBanks:
   - {fileID: -175099898346297676}
-  cacheTime: 638041339523725007
+  cacheTime: 638041403215387960
   cacheVersion: 131591
 --- !u!114 &32988832718742172
 MonoBehaviour:
