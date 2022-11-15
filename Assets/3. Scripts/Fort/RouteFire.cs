@@ -34,7 +34,7 @@ public class RouteFire : MonoBehaviour
 
     IEnumerator Disapear()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(15);
         gameObject.SetActive(false);
     }
 

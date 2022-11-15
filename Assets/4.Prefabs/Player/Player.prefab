@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127007692}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.4916601, y: 2.2930427, z: -0.361001}
+  m_LocalPosition: {x: -1.4916606, y: 2.2930427, z: -0.361001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -200,9 +200,9 @@ VisualEffect:
       m_Array: []
     m_Int:
       m_Array:
-      - m_Value: 3
+      - m_Value: 1
         m_Name: Level
-        m_Overridden: 1
+        m_Overridden: 0
     m_Matrix4x4f:
       m_Array: []
     m_AnimationCurve:
@@ -281,9 +281,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5744507211293247031}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.24, z: 0}
+  m_LocalPosition: {x: 0, y: 1.24, z: 0.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 9003156691123881373}
   m_RootOrder: 4
@@ -360,7 +360,7 @@ SphereCollider:
   m_GameObject: {fileID: 5744507211293247031}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}
@@ -556,6 +556,7 @@ GameObject:
   - component: {fileID: 7307876731239188394}
   - component: {fileID: 9003156691123881371}
   - component: {fileID: 9003156691123881370}
+  - component: {fileID: 1700049009979676286}
   - component: {fileID: 3666656130006865335}
   m_Layer: 6
   m_Name: Player
@@ -854,6 +855,22 @@ MonoBehaviour:
   m_DefaultActionMap: Default
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1700049009979676286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9003156691123881361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32304e8869e98c14c89e734c525dede4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vfxs:
+  - {fileID: 7165906423200039686}
+  - {fileID: 1127007695}
+  soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
 --- !u!114 &3666656130006865335
 MonoBehaviour:
   m_ObjectHideFlags: 0
