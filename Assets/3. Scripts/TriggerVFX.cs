@@ -9,7 +9,7 @@ public class TriggerVFX : MonoBehaviour
     public VisualEffect vfx;
     public string eventToTrigger;
     public void VFXEvent(string trigger)
-    {
+    {        
         vfx.Reinit();
         vfx.SendEvent(eventToTrigger);
     }
