@@ -7,9 +7,16 @@ public class ChangeScene : MonoBehaviour
 {
     public string scene;
 
+    GameObject loadingScene;
+
+    private void Start()
+    {
+        loadingScene = GameObject.FindGameObjectWithTag("LoadScreen").GetComponent<PainelLoad>().painel;
+    }
+
     public void AlternateScene(string nextScene)
     {
-        SceneManager.LoadScene(nextScene, LoadSceneMode.Single);
+        StartCoroutine(LoadSceneAsync(nextScene));
     }
 
     void OnTriggerEnter(Collider other)
@@ -40,6 +47,20 @@ public class ChangeScene : MonoBehaviour
         Application.Quit();
     }
 
+    IEnumerator LoadSceneAsync(string sceneId)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
+
+        loadingScene.GetComponent<Animator>().SetTrigger("Load");
+
+        while (!operation.isDone)
+        {
+            float progress = Mathf.Clamp01(operation.progress / 0.9f);
+
+            yield return null;
+        }
+
+    }
 
 
 }
