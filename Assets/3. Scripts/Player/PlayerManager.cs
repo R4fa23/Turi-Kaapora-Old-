@@ -409,6 +409,7 @@ public class PlayerManager : MonoBehaviour
 
     public void OnDie() 
     {
+        animator.SetTrigger("Morte");
         FMODUnity.RuntimeManager.PlayOneShot("event:/Vozes/Morte", transform.position);
         StartCoroutine(TimeRestart());
     }
@@ -416,6 +417,7 @@ public class PlayerManager : MonoBehaviour
     IEnumerator TimeRestart()
     {
         yield return new WaitForSeconds(2);
+        animator.SetTrigger("Revive");
         soSave.Restart();
     }
     
