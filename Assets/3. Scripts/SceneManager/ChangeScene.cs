@@ -51,7 +51,7 @@ public class ChangeScene : MonoBehaviour
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneId);
 
-        loadingScene.SetActive(true);
+        loadingScene.GetComponent<Animator>().SetTrigger("Load");
 
         while (!operation.isDone)
         {
