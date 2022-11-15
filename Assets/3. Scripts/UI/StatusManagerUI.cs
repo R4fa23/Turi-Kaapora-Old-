@@ -67,10 +67,13 @@ public class StatusManagerUI : MonoBehaviour
             {
                 bars[i].fillAmount = 0;
             }
-            bars[index].fillAmount = soPlayerMove.rechargeTime/soPlayerMove.rechargeStaminasTime;            
+            bars[index].fillAmount = soPlayerMove.rechargeTime/soPlayerMove.rechargeStaminasTime;
+
+            if (bars[index].fillAmount < 0.99) bars[index].color = Color.gray;
+            else bars[index].color = Color.white;
         }
-        if (bars[index].fillAmount < 0.99) bars[index].color = Color.gray;
-        else bars[index].color = Color.white;
+
+        
     }
 
     public void UpdateStaminaCount()
