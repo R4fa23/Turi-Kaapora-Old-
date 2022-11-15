@@ -63,12 +63,14 @@ public class StatusManagerUI : MonoBehaviour
 
         if(index < soPlayerMove.maxStaminas)
         {
-            for(int i = bars.Count - 1; i > index; i--) {
+            for(int i = bars.Count - 1; i > index; i--) 
+            {
                 bars[i].fillAmount = 0;
             }
-            bars[index].fillAmount = soPlayerMove.rechargeTime/soPlayerMove.rechargeStaminasTime;
-
+            bars[index].fillAmount = soPlayerMove.rechargeTime/soPlayerMove.rechargeStaminasTime;            
         }
+        if (bars[index].fillAmount < 0.99) bars[index].color = Color.gray;
+        else bars[index].color = Color.white;
     }
 
     public void UpdateStaminaCount()
@@ -79,5 +81,8 @@ public class StatusManagerUI : MonoBehaviour
     public void UpdateSpecialBar()
     {
         specialBar.fillAmount = soPlayerAttack.specialTime/soPlayerAttack.specialCooldown;
+
+        if (specialBar.fillAmount < 1) specialBar.color = Color.gray;
+        else specialBar.color = Color.white;
     }
 }
