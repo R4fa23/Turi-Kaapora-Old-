@@ -17,25 +17,28 @@ public class SparkPool : MonoBehaviour
 
 	void SummonSpark(GameObject enemy)
 	{
-		int index = 0;
-		bool stop = false;
-
-		do
+		if (enemy.CompareTag("Enemy"))
 		{
-			if (sparks[index].activeInHierarchy)
-			{
-				index++;
-			}
-			else
-			{
-				sparks[index].transform.position = enemy.transform.position;
-				sparks[index].SetActive(true);
-				if(enemy.GetComponent<EnemyManager>().bonfire != null) sparks[index].GetComponent<RouteFire>().target = enemy.GetComponent<EnemyManager>().bonfire;
-				stop = true;
-			}
+			int index = 0;
+			bool stop = false;
 
-			if (index >= sparks.Length) stop = true;
-		} while (!stop);
+			do
+			{
+				if (sparks[index].activeInHierarchy)
+				{
+					index++;
+				}
+				else
+				{
+					sparks[index].transform.position = enemy.transform.position;
+					sparks[index].SetActive(true);
+					if (enemy.GetComponent<EnemyManager>().bonfire != null) sparks[index].GetComponent<RouteFire>().target = enemy.GetComponent<EnemyManager>().bonfire;
+					stop = true;
+				}
+
+				if (index >= sparks.Length) stop = true;
+			} while (!stop);
+		}
 	}
 
 	private void OnEnable()
