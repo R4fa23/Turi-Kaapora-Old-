@@ -306,7 +306,6 @@ public class PlayerManager : MonoBehaviour
             {
                 if(!dashing && (soPlayer.state == SOPlayer.State.STOPPED || soPlayer.state == SOPlayer.State.WALKING) && canSpecial)
                 {
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Especial", transform.position);
                     animator.SetTrigger("Especial");
                     //soPlayer.soPlayerAttack.SpecialStart();
                     soPlayer.state = SOPlayer.State.SPECIAL;
@@ -388,8 +387,8 @@ public class PlayerManager : MonoBehaviour
     {
         if (soPlayer.state != SOPlayer.State.SPECIAL)
         {
-            animator.SetTrigger("Dano");
             FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Dano_Humano", transform.position);
+            animator.SetTrigger("Dano");
         }
     }
 
@@ -410,6 +409,7 @@ public class PlayerManager : MonoBehaviour
 
     public void OnDie() 
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Vozes/Morte", transform.position);
         StartCoroutine(TimeRestart());
     }
 

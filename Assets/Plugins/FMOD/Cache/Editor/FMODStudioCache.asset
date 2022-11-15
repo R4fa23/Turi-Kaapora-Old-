@@ -15,12 +15,12 @@ MonoBehaviour:
   Path: Turi FMOD Project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638039738554674543
+  lastModified: 638041325966146899
   FileSizes:
   - Name: Desktop
-    Value: 1162528
+    Value: 1270400
   Exists: 1
---- !u!114 &-8904422179692618458
+--- !u!114 &-8102754011710441275
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -30,14 +30,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Caipora/Acerto
+  m_Name: event:/Inimigos/Incendiario_Ataque
   m_EditorClassIdentifier: 
-  Path: event:/Caipora/Acerto
+  Path: event:/Inimigos/Incendiario_Ataque
   Guid:
-    Data1: 1547665776
-    Data2: 1089354919
-    Data3: -1093804391
-    Data4: 902874123
+    Data1: 150257753
+    Data2: 1106504899
+    Data3: 354292415
+    Data4: 1790152680
   Banks:
   - {fileID: -9065374462541756553}
   IsStream: 0
@@ -46,8 +46,8 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 470
---- !u!114 &-8729126012850686881
+  Length: 548
+--- !u!114 &-7756719189571254590
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,14 +57,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Caipora/Ataque_Leve_2
+  m_Name: event:/Caipora/Dano_Maquina
   m_EditorClassIdentifier: 
-  Path: event:/Caipora/Ataque_Leve_2
+  Path: event:/Caipora/Dano_Maquina
   Guid:
-    Data1: 1215263120
-    Data2: 1087911946
-    Data3: 1469393086
-    Data4: 140819843
+    Data1: -968064663
+    Data2: 1158190450
+    Data3: 178345143
+    Data4: -1628298006
   Banks:
   - {fileID: -9065374462541756553}
   IsStream: 0
@@ -73,35 +73,8 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 942
---- !u!114 &-8224421034673462665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Inimigos/Peao_Ataque
-  m_EditorClassIdentifier: 
-  Path: event:/Inimigos/Peao_Ataque
-  Guid:
-    Data1: -1801601162
-    Data2: 1142814359
-    Data3: -981036894
-    Data4: 1353518172
-  Banks:
-  - {fileID: -9065374462541756553}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1410
---- !u!114 &-7953177800618669896
+  Length: 653
+--- !u!114 &-7491119648598818384
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,7 +101,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1776
---- !u!114 &-7529675779511063801
+--- !u!114 &-6120715337845399182
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,14 +111,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Perigos/Arataca
+  m_Name: event:/Inimigos/Peao_Ataque
   m_EditorClassIdentifier: 
-  Path: event:/Perigos/Arataca
+  Path: event:/Inimigos/Peao_Ataque
   Guid:
-    Data1: 281276904
-    Data2: 1259185862
-    Data3: -1787307610
-    Data4: 683426585
+    Data1: -1801601162
+    Data2: 1142814359
+    Data3: -981036894
+    Data4: 1353518172
   Banks:
   - {fileID: -9065374462541756553}
   IsStream: 0
@@ -154,88 +127,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 920
---- !u!114 &-7004864371350416160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambiencia/Fogo
-  m_EditorClassIdentifier: 
-  Path: event:/Ambiencia/Fogo
-  Guid:
-    Data1: 1919840468
-    Data2: 1258073918
-    Data3: -1792825437
-    Data4: 1937742865
-  Banks:
-  - {fileID: -9065374462541756553}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 16404
---- !u!114 &-5521787596691970946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Inimigos/Lenhador_Ataque
-  m_EditorClassIdentifier: 
-  Path: event:/Inimigos/Lenhador_Ataque
-  Guid:
-    Data1: 330762252
-    Data2: 1304724211
-    Data3: -1182355540
-    Data4: -523698682
-  Banks:
-  - {fileID: -9065374462541756553}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 2142
---- !u!114 &-5387973232829843754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Perigos/Serra_Indo
-  m_EditorClassIdentifier: 
-  Path: event:/Perigos/Serra_Indo
-  Guid:
-    Data1: -1007688798
-    Data2: 1251875053
-    Data3: -1936030827
-    Data4: 850231725
-  Banks:
-  - {fileID: -9065374462541756553}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1006
+  Length: 1410
 --- !u!114 &-4555340086677564859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +155,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 548
---- !u!114 &-2619907006415452805
+--- !u!114 &-4463474502471964129
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -273,14 +165,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Caipora/Especial
+  m_Name: event:/Vozes/Morte
   m_EditorClassIdentifier: 
-  Path: event:/Caipora/Especial
+  Path: event:/Vozes/Morte
   Guid:
-    Data1: 456858293
-    Data2: 1194838295
-    Data3: -1526761853
-    Data4: -269388244
+    Data1: -419888942
+    Data2: 1300978482
+    Data3: -1327395686
+    Data4: 1080187190
   Banks:
   - {fileID: -9065374462541756553}
   IsStream: 0
@@ -289,35 +181,8 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 2298
---- !u!114 &-2275925221027331713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Perigos/Espinhos
-  m_EditorClassIdentifier: 
-  Path: event:/Perigos/Espinhos
-  Guid:
-    Data1: -1247532412
-    Data2: 1333755454
-    Data3: 958979217
-    Data4: 1383107417
-  Banks:
-  - {fileID: -9065374462541756553}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1643
---- !u!114 &-1977645462801494481
+  Length: 830
+--- !u!114 &-3791942324836415570
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -344,6 +209,60 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 12695
+--- !u!114 &-3387407464899314001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Vozes/Especial
+  m_EditorClassIdentifier: 
+  Path: event:/Vozes/Especial
+  Guid:
+    Data1: -398357373
+    Data2: 1248706556
+    Data3: -1625711969
+    Data4: -1083058104
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1200
+--- !u!114 &-1969456278518969590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Vozes/Ataque_Leve_2
+  m_EditorClassIdentifier: 
+  Path: event:/Vozes/Ataque_Leve_2
+  Guid:
+    Data1: 775201178
+    Data2: 1175847827
+    Data3: -5230154
+    Data4: -616204607
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 496
 --- !u!114 &-1796485893703664309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,7 +283,7 @@ MonoBehaviour:
   - Name: Desktop
     Value: 42144
   Exists: 1
---- !u!114 &-1367204715315409884
+--- !u!114 &-1685194257339003682
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -374,14 +293,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Caipora/Dano_Maquina
+  m_Name: event:/Ambiencia/Desvanescer
   m_EditorClassIdentifier: 
-  Path: event:/Caipora/Dano_Maquina
+  Path: event:/Ambiencia/Desvanescer
   Guid:
-    Data1: -968064663
-    Data2: 1158190450
-    Data3: 178345143
-    Data4: -1628298006
+    Data1: 781238766
+    Data2: 1321318422
+    Data3: 987421610
+    Data4: -1749181088
   Banks:
   - {fileID: -9065374462541756553}
   IsStream: 0
@@ -390,7 +309,61 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 653
+  Length: 4512
+--- !u!114 &-929206055085638107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Caipora/Dash
+  m_EditorClassIdentifier: 
+  Path: event:/Caipora/Dash
+  Guid:
+    Data1: 1706934926
+    Data2: 1164956806
+    Data3: 509086355
+    Data4: -994007543
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 920
+--- !u!114 &-863480102037528174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Perigos/Arataca
+  m_EditorClassIdentifier: 
+  Path: event:/Perigos/Arataca
+  Guid:
+    Data1: 281276904
+    Data2: 1259185862
+    Data3: -1787307610
+    Data4: 683426585
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 920
 --- !u!114 &-175099898346297676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,38 +379,11 @@ MonoBehaviour:
   Path: Turi FMOD Project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638039712442825321
+  lastModified: 638041325966196980
   FileSizes:
   - Name: Desktop
-    Value: 2016
+    Value: 2238
   Exists: 1
---- !u!114 &-81007791757451850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Perigos/Fogo
-  m_EditorClassIdentifier: 
-  Path: event:/Perigos/Fogo
-  Guid:
-    Data1: 384854640
-    Data2: 1311978329
-    Data3: 399087488
-    Data4: -1488874730
-  Banks:
-  - {fileID: -9065374462541756553}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 3900
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -454,35 +400,67 @@ MonoBehaviour:
   - {fileID: -175099898346297676}
   - {fileID: -9065374462541756553}
   EditorEvents:
-  - {fileID: -5521787596691970946}
-  - {fileID: 8716343697300029464}
-  - {fileID: 2848383192622770242}
-  - {fileID: 7112465370338845174}
-  - {fileID: 7019921996053163212}
-  - {fileID: -1367204715315409884}
-  - {fileID: 1516358579965701606}
-  - {fileID: -8904422179692618458}
-  - {fileID: -81007791757451850}
-  - {fileID: 2552799432826876634}
-  - {fileID: -8224421034673462665}
-  - {fileID: 3982995495607816485}
-  - {fileID: -2275925221027331713}
-  - {fileID: 5989314897242563382}
-  - {fileID: -8729126012850686881}
-  - {fileID: -5387973232829843754}
-  - {fileID: -2619907006415452805}
-  - {fileID: -7004864371350416160}
-  - {fileID: -1977645462801494481}
-  - {fileID: -7953177800618669896}
-  - {fileID: -7529675779511063801}
-  - {fileID: 8478220869171115013}
+  - {fileID: 2831249783247378216}
+  - {fileID: 2946986597558160467}
+  - {fileID: 4591534979691460556}
+  - {fileID: -8102754011710441275}
+  - {fileID: 4010279611680080551}
+  - {fileID: 2330348912736066536}
+  - {fileID: -7756719189571254590}
+  - {fileID: 32988832718742172}
+  - {fileID: 4770633691939232560}
+  - {fileID: 922213590756065266}
+  - {fileID: 5808397737457244685}
+  - {fileID: -6120715337845399182}
+  - {fileID: 8477250591119645771}
+  - {fileID: 1919346114688052102}
+  - {fileID: 7049951692782069136}
+  - {fileID: -929206055085638107}
+  - {fileID: 5045648608610578560}
+  - {fileID: -1969456278518969590}
+  - {fileID: 7812617201468891947}
+  - {fileID: 7957375606849103338}
+  - {fileID: 9026336365673081737}
+  - {fileID: -3791942324836415570}
+  - {fileID: -7491119648598818384}
+  - {fileID: -863480102037528174}
+  - {fileID: -1685194257339003682}
+  - {fileID: -3387407464899314001}
+  - {fileID: -4463474502471964129}
   EditorParameters: []
   MasterBanks:
   - {fileID: -9065374462541756553}
   StringsBanks:
   - {fileID: -175099898346297676}
-  cacheTime: 638039738554674543
+  cacheTime: 638041325966196980
   cacheVersion: 131591
+--- !u!114 &32988832718742172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Inimigos/Cacador_Ataque
+  m_EditorClassIdentifier: 
+  Path: event:/Inimigos/Cacador_Ataque
+  Guid:
+    Data1: 531836778
+    Data2: 1107245964
+    Data3: 1113640116
+    Data4: 944262835
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 992
 --- !u!114 &621566993391211386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,7 +488,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1175
---- !u!114 &1516358579965701606
+--- !u!114 &922213590756065266
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -520,14 +498,41 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Inimigos/Cacador_Ataque
+  m_Name: event:/Perigos/Fogo
   m_EditorClassIdentifier: 
-  Path: event:/Inimigos/Cacador_Ataque
+  Path: event:/Perigos/Fogo
   Guid:
-    Data1: 531836778
-    Data2: 1107245964
-    Data3: 1113640116
-    Data4: 944262835
+    Data1: 384854640
+    Data2: 1311978329
+    Data3: 399087488
+    Data4: -1488874730
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 3900
+--- !u!114 &1919346114688052102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Perigos/Espinhos
+  m_EditorClassIdentifier: 
+  Path: event:/Perigos/Espinhos
+  Guid:
+    Data1: -1247532412
+    Data2: 1333755454
+    Data3: 958979217
+    Data4: 1383107417
   Banks:
   - {fileID: -9065374462541756553}
   IsStream: 0
@@ -536,7 +541,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 992
+  Length: 1643
 --- !u!114 &1992229467436332199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -564,135 +569,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 626
---- !u!114 &2552799432826876634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Caipora/Dano_Humano
-  m_EditorClassIdentifier: 
-  Path: event:/Caipora/Dano_Humano
-  Guid:
-    Data1: 1641059690
-    Data2: 1242042663
-    Data3: 726532249
-    Data4: -1024549831
-  Banks:
-  - {fileID: -9065374462541756553}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 500
---- !u!114 &2659953515751581801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: ../../FMOD Studio/Turi/Build/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 637986031385988810
-  FileSizes:
-  - Name: Desktop
-    Value: 896
-  Exists: 1
---- !u!114 &2848383192622770242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Inimigos/Incendiario_Ataque
-  m_EditorClassIdentifier: 
-  Path: event:/Inimigos/Incendiario_Ataque
-  Guid:
-    Data1: 150257753
-    Data2: 1106504899
-    Data3: 354292415
-    Data4: 1790152680
-  Banks:
-  - {fileID: -9065374462541756553}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 548
---- !u!114 &3982995495607816485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Inimigos/Atirador_Ataque
-  m_EditorClassIdentifier: 
-  Path: event:/Inimigos/Atirador_Ataque
-  Guid:
-    Data1: -1331745407
-    Data2: 1267456504
-    Data3: 540653204
-    Data4: 1425531635
-  Banks:
-  - {fileID: -9065374462541756553}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1854
---- !u!114 &5989314897242563382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Caipora/Dash
-  m_EditorClassIdentifier: 
-  Path: event:/Caipora/Dash
-  Guid:
-    Data1: 1706934926
-    Data2: 1164956806
-    Data3: 509086355
-    Data4: -994007543
-  Banks:
-  - {fileID: -9065374462541756553}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 920
---- !u!114 &7019921996053163212
+--- !u!114 &2330348912736066536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -719,7 +596,81 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1909
---- !u!114 &7112465370338845174
+--- !u!114 &2659953515751581801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: ../../FMOD Studio/Turi/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637986031385988810
+  FileSizes:
+  - Name: Desktop
+    Value: 896
+  Exists: 1
+--- !u!114 &2831249783247378216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Inimigos/Lenhador_Ataque
+  m_EditorClassIdentifier: 
+  Path: event:/Inimigos/Lenhador_Ataque
+  Guid:
+    Data1: 330762252
+    Data2: 1304724211
+    Data3: -1182355540
+    Data4: -523698682
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2142
+--- !u!114 &2946986597558160467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Caipora/Ataque_Leve
+  m_EditorClassIdentifier: 
+  Path: event:/Caipora/Ataque_Leve
+  Guid:
+    Data1: -1615334618
+    Data2: 1126503751
+    Data3: -595257189
+    Data4: -899328061
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1022
+--- !u!114 &4010279611680080551
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -746,6 +697,141 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1112
+--- !u!114 &4591534979691460556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Vozes/Ataque_Leve
+  m_EditorClassIdentifier: 
+  Path: event:/Vozes/Ataque_Leve
+  Guid:
+    Data1: 1828575292
+    Data2: 1235480942
+    Data3: -1746648900
+    Data4: 879796059
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 704
+--- !u!114 &4770633691939232560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Caipora/Dano_Humano
+  m_EditorClassIdentifier: 
+  Path: event:/Caipora/Dano_Humano
+  Guid:
+    Data1: 1641059690
+    Data2: 1242042663
+    Data3: 726532249
+    Data4: -1024549831
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 500
+--- !u!114 &5045648608610578560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Caipora/Ataque_Leve_2
+  m_EditorClassIdentifier: 
+  Path: event:/Caipora/Ataque_Leve_2
+  Guid:
+    Data1: 1215263120
+    Data2: 1087911946
+    Data3: 1469393086
+    Data4: 140819843
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 942
+--- !u!114 &5808397737457244685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Caipora/Acerto
+  m_EditorClassIdentifier: 
+  Path: event:/Caipora/Acerto
+  Guid:
+    Data1: 1547665776
+    Data2: 1089354919
+    Data3: -1093804391
+    Data4: 902874123
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 470
+--- !u!114 &7049951692782069136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Vozes/Ataque_Leve_3
+  m_EditorClassIdentifier: 
+  Path: event:/Vozes/Ataque_Leve_3
+  Guid:
+    Data1: -1264468089
+    Data2: 1294355665
+    Data3: -1193243776
+    Data4: 926645886
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 727
 --- !u!114 &7201171913893779183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -773,7 +859,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 940
---- !u!114 &8478220869171115013
+--- !u!114 &7812617201468891947
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -783,24 +869,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Ambiencia/Desvanescer
+  m_Name: event:/Perigos/Serra_Indo
   m_EditorClassIdentifier: 
-  Path: event:/Ambiencia/Desvanescer
+  Path: event:/Perigos/Serra_Indo
   Guid:
-    Data1: 781238766
-    Data2: 1321318422
-    Data3: 987421610
-    Data4: -1749181088
+    Data1: -1007688798
+    Data2: 1251875053
+    Data3: -1936030827
+    Data4: 850231725
   Banks:
   - {fileID: -9065374462541756553}
   IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
+  Is3D: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 4512
---- !u!114 &8716343697300029464
+  Length: 1006
+--- !u!114 &7957375606849103338
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -810,14 +896,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Caipora/Ataque_Leve
+  m_Name: event:/Caipora/Especial
   m_EditorClassIdentifier: 
-  Path: event:/Caipora/Ataque_Leve
+  Path: event:/Caipora/Especial
   Guid:
-    Data1: -1615334618
-    Data2: 1126503751
-    Data3: -595257189
-    Data4: -899328061
+    Data1: 456858293
+    Data2: 1194838295
+    Data3: -1526761853
+    Data4: -269388244
   Banks:
   - {fileID: -9065374462541756553}
   IsStream: 0
@@ -826,4 +912,58 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1022
+  Length: 2298
+--- !u!114 &8477250591119645771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Inimigos/Atirador_Ataque
+  m_EditorClassIdentifier: 
+  Path: event:/Inimigos/Atirador_Ataque
+  Guid:
+    Data1: -1331745407
+    Data2: 1267456504
+    Data3: 540653204
+    Data4: 1425531635
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1854
+--- !u!114 &9026336365673081737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ambiencia/Fogo
+  m_EditorClassIdentifier: 
+  Path: event:/Ambiencia/Fogo
+  Guid:
+    Data1: 1919840468
+    Data2: 1258073918
+    Data3: -1792825437
+    Data4: 1937742865
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 16404

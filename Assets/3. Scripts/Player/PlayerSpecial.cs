@@ -24,6 +24,8 @@ public class PlayerSpecial : MonoBehaviour
     {
         sphereCollider.enabled = true;
         meshRenderer.enabled = true;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Especial", transform.position);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Vozes/Especial", transform.position);
         StartCoroutine(StopSpecial());
     }
 
