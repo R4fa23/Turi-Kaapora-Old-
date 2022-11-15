@@ -410,12 +410,14 @@ public class PlayerManager : MonoBehaviour
 
     public void OnDie() 
     {
+        animator.SetTrigger("Morte");
         StartCoroutine(TimeRestart());
     }
 
     IEnumerator TimeRestart()
     {
         yield return new WaitForSeconds(2);
+        animator.SetTrigger("Revive");
         soSave.Restart();
     }
     
