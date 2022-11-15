@@ -82,6 +82,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4885870753320046488}
   - component: {fileID: 4885870753320046491}
+  - component: {fileID: 6083277996672623377}
   m_Layer: 0
   m_Name: Cabin
   m_TagString: Untagged
@@ -148,6 +149,19 @@ MonoBehaviour:
   camp: {fileID: 0}
   summonPlace: {fileID: 4885870752825168785}
   bonfire: {fileID: 0}
+--- !u!65 &6083277996672623377
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4885870753320046492}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.5055313, y: 6.7880745, z: 7.1014175}
+  m_Center: {x: 1.621357, y: 3.424183, z: 2.4533653}
 --- !u!1001 &927474863763645388
 PrefabInstance:
   m_ObjectHideFlags: 0
