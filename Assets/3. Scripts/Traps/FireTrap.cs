@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.VFX;
+using UnityEngine.AI;
 
 public class FireTrap : MonoBehaviour
 {
@@ -24,10 +25,14 @@ public class FireTrap : MonoBehaviour
     public float cindersRateAtual;
 
     public Vector2 size;
+    NavMeshObstacle obstacle;
 
     private void Start()
     {
         FireBox();
+        obstacle = GetComponent<NavMeshObstacle>();
+        obstacle.center = box.center;
+        obstacle.size = box.size;
     }
 
     private void OnValidate()
