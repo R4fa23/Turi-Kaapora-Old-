@@ -208,6 +208,8 @@ public class Camp : MonoBehaviour
 
     void ConclusionCamp()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Vozes/Risada", transform.position);
+
         enemyCount = 0;
         foreach(GameObject d in door)
         {
