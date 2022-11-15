@@ -29,6 +29,7 @@ public class PlayerAttack : MonoBehaviour
         {
             attack.color = Color.white;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Ataque_Leve", transform.position);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Vozes/Ataque_Leve", transform.position);
             attackTime = playerManager.animAttack1Time;
             soPlayer.soPlayerAttack.currentDuration = playerManager.animAttack1Time;
         }
@@ -36,6 +37,7 @@ public class PlayerAttack : MonoBehaviour
         {
             attack.color = Color.yellow;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Ataque_Leve_2", transform.position);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Vozes/Ataque_Leve_2", transform.position);
             attackTime = playerManager.animAttack2Time;
             soPlayer.soPlayerAttack.currentDuration = playerManager.animAttack2Time;
         }
@@ -43,6 +45,7 @@ public class PlayerAttack : MonoBehaviour
         {
             attack.color = Color.red;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Ataque_Leve_3", transform.position);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Vozes/Ataque_Leve_3", transform.position);
             attackTime = playerManager.animAttack3Time;
             soPlayer.soPlayerAttack.currentDuration = playerManager.animAttack3Time;
         }
