@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: Turi FMOD Project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638039758995594417
+  lastModified: 638041336807285347
   FileSizes:
   - Name: Desktop
-    Value: 1162528
+    Value: 1203488
   Exists: 1
 --- !u!114 &-8904422179692618458
 MonoBehaviour:
@@ -391,6 +391,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 653
+--- !u!114 &-1125028946591115874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Vozes/Voz_Ataque_Leve_3
+  m_EditorClassIdentifier: 
+  Path: event:/Vozes/Voz_Ataque_Leve_3
+  Guid:
+    Data1: -1264468089
+    Data2: 1294355665
+    Data3: -1193243776
+    Data4: 926645886
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 727
 --- !u!114 &-175099898346297676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,10 +433,10 @@ MonoBehaviour:
   Path: Turi FMOD Project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638039758995604404
+  lastModified: 638041336807295348
   FileSizes:
   - Name: Desktop
-    Value: 2016
+    Value: 2156
   Exists: 1
 --- !u!114 &-81007791757451850
 MonoBehaviour:
@@ -476,12 +503,15 @@ MonoBehaviour:
   - {fileID: -7953177800618669896}
   - {fileID: -7529675779511063801}
   - {fileID: 8478220869171115013}
+  - {fileID: 4399984651970544943}
+  - {fileID: -1125028946591115874}
+  - {fileID: 1541859791108589825}
   EditorParameters: []
   MasterBanks:
   - {fileID: -9065374462541756553}
   StringsBanks:
   - {fileID: -175099898346297676}
-  cacheTime: 638039758995604404
+  cacheTime: 638041336807295348
   cacheVersion: 131591
 --- !u!114 &621566993391211386
 MonoBehaviour:
@@ -537,6 +567,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 992
+--- !u!114 &1541859791108589825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Vozes/Voz_Ataque_Leve_2
+  m_EditorClassIdentifier: 
+  Path: event:/Vozes/Voz_Ataque_Leve_2
+  Guid:
+    Data1: 775201178
+    Data2: 1175847827
+    Data3: -5230154
+    Data4: -616204607
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 496
 --- !u!114 &1992229467436332199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,6 +722,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1854
+--- !u!114 &4399984651970544943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Vozes/Voz_Ataque_Leve
+  m_EditorClassIdentifier: 
+  Path: event:/Vozes/Voz_Ataque_Leve
+  Guid:
+    Data1: 1828575292
+    Data2: 1235480942
+    Data3: -1746648900
+    Data4: 879796059
+  Banks:
+  - {fileID: -9065374462541756553}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 704
 --- !u!114 &5989314897242563382
 MonoBehaviour:
   m_ObjectHideFlags: 0
