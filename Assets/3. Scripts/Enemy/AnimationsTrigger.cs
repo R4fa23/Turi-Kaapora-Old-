@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class AnimationsTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public EnemyAttack ea;
+    
+    public void StartAttack()
     {
-        
+        ea.StartAttack();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Wait()
     {
-        
+        ea.Wait();
+    }
+
+    public void EndAttack()
+    {
+        ea.EndAttack();
     }
 }

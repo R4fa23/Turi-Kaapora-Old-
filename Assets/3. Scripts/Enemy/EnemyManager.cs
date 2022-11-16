@@ -85,7 +85,7 @@ public class EnemyManager : MonoBehaviour
 
     void Damaged()
     {
-        animator.SetTrigger("Take Damage");
+        if(soEnemy.state == SOEnemy.State.STOPPED) animator.SetTrigger("Take Damage");
         FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Acerto", transform.position);
     }
 
