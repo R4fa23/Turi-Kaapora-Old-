@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127007692}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.4916601, y: 2.2930427, z: -0.361001}
+  m_LocalPosition: {x: -1.4916382, y: 2.293043, z: -0.3609848}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -645,7 +645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
-  maxLifes: 140000001400000014000000
+  maxLifes: 320000003c00000046000000
   velBases:
   - 12
   - 12
@@ -653,11 +653,11 @@ MonoBehaviour:
   maxStaminas:
   - 1
   - 2
-  - 2
+  - 3
   staminasRecharge:
   - 2
-  - 2
-  - 2
+  - 2.5
+  - 3
   attackDamages:
   - 1
   - 2.25
@@ -672,8 +672,8 @@ MonoBehaviour:
   - 18
   specialCooldowns:
   - 20
-  - 20
-  - 20
+  - 15
+  - 10
   specialCooldownReductions:
   - 5
   - 5
