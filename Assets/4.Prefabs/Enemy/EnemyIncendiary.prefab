@@ -26,8 +26,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938174276757226044}
-  m_LocalRotation: {x: -0.0042647207, y: 0.2365899, z: -0.042322673, w: 0.9706781}
-  m_LocalPosition: {x: -0.19335574, y: 1.0240586, z: 0.88638806}
+  m_LocalRotation: {x: 0.64647996, y: -0.2726782, z: -0.2764673, w: 0.6567161}
+  m_LocalPosition: {x: -1.1873913, y: 0.30622244, z: 0.597991}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -261,7 +261,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7583918901754542777}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 0}
 --- !u!23 &2498378114451274057
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -439,7 +439,7 @@ Rigidbody:
   m_GameObject: {fileID: 8614110265118870248}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 10
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 1
@@ -561,6 +561,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 459765739588082422, guid: bbcd7561a64b7a347b33c22f63dc320f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9fa2042c33d700e4482fd416421b4df6, type: 2}
     - target: {fileID: 919132149155446097, guid: bbcd7561a64b7a347b33c22f63dc320f,
         type: 3}
       propertyPath: m_Name
