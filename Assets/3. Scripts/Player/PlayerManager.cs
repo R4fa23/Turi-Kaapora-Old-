@@ -346,7 +346,8 @@ public class PlayerManager : MonoBehaviour
                 if(canFire)
                 {
                     FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Dano_Fogo", transform.position);
-                    canFire = false;
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Vozes/Dano", transform.position);
+                canFire = false;
                     StartCoroutine(CooldownFireDamage());
                     soPlayer.soPlayerHealth.HealthChange(-soPlayer.soPlayerHealth.fireDamage);
                 }
@@ -388,6 +389,7 @@ public class PlayerManager : MonoBehaviour
         if (soPlayer.state != SOPlayer.State.SPECIAL)
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Dano_Humano", transform.position);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Vozes/Dano", transform.position);
             animator.SetTrigger("Dano");
         }
     }
