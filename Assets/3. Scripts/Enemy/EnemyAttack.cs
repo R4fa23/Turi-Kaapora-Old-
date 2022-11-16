@@ -86,12 +86,12 @@ public class EnemyAttack : MonoBehaviour
         if(soEnemy.specialTime >= soEnemy.timeToSpecial)
         {
             soEnemy.ChargeEspStart();
-            StartCoroutine(ChargingTime(animEspCharge));
+            //StartCoroutine(ChargingTime(animEspCharge));
         }
         else
         {
             soEnemy.ChargeStart();
-            StartCoroutine(ChargingTime(soEnemy.attackChargeDuration));
+            //StartCoroutine(ChargingTime(soEnemy.attackChargeDuration));
         }
 
     }
@@ -107,13 +107,13 @@ public class EnemyAttack : MonoBehaviour
         {
             colliderSpecial.enabled = true;
             rendererSpecial.enabled = true;
-            StartCoroutine(AttackTime(animEspAttack));
+            //StartCoroutine(AttackTime(animEspAttack));
         }
         else
         {
             meshRenderer.enabled = true;
             boxCollider.enabled = true;
-            StartCoroutine(AttackTime(soEnemy.attackDuration));
+            //StartCoroutine(AttackTime(soEnemy.attackDuration));
         }
         
         
@@ -129,7 +129,7 @@ public class EnemyAttack : MonoBehaviour
         }
         meshRenderer.enabled = false;
         boxCollider.enabled = false;
-        StartCoroutine(WaitTime(soEnemy.attackWaitDuration));
+        //StartCoroutine(WaitTime(soEnemy.attackWaitDuration));
     }
     public void EndAttack()
     {
