@@ -82,6 +82,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{8051266d-77ff-451c-aa08-1df02d40c835}">
+		<property name="volume">
+			<value>8</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{e1ea396c-f67b-4654-8055-66622b697ad1}</destination>
 		</relationship>
@@ -123,7 +126,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{8a45508b-0f80-43b6-bdc5-812e73e04d70}">
 		<property name="volume">
-			<value>1.5</value>
+			<value>2</value>
 		</property>
 		<property name="name">
 			<value>Madeira</value>
@@ -160,7 +163,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{92f6a373-b997-472e-a586-5207d8e31f47}">
 		<property name="volume">
-			<value>-5</value>
+			<value>-10</value>
 		</property>
 		<property name="name">
 			<value>Madeira 2</value>
@@ -278,6 +281,9 @@
 	<object class="MixerBusFader" id="{c2e2a0a3-c012-4b5b-b5ac-b83df565609f}" />
 	<object class="ThreeEQEffect" id="{f1fd8df7-0972-4fce-a9f8-ef6eac2f5096}">
 		<property name="lowGain">
+			<value>2</value>
+		</property>
+		<property name="midGain">
 			<value>3.5</value>
 		</property>
 		<property name="highGain">
