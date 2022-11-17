@@ -17,7 +17,6 @@ public class EnemyHunter : MonoBehaviour
 
     void LaunchWeb()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Inimigos/Cacador_Ataque", transform.position);
         web.SetActive(true);
         web.transform.position = transform.position;
         web.transform.forward = transform.forward;
