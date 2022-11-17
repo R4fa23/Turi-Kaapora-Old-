@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class StatusManagerUI : MonoBehaviour
 {
     [SerializeField] Image[] lifeBar;
+    [SerializeField] GameObject[] lifeObject;
     [SerializeField] GameObject stamina;
     [SerializeField] Image specialBar;
     PlayerManager playerManager;
@@ -48,7 +49,7 @@ public class StatusManagerUI : MonoBehaviour
 
     private void Update()
     {
-        UpdateLifeBar();
+        //UpdateLifeBar();
         UpdateStaminaBar();
         UpdateSpecialBar();
     }
@@ -62,30 +63,34 @@ public class StatusManagerUI : MonoBehaviour
         {
             lifeBar[0].fillAmount = 1;
             lifeBar[1].fillAmount = 1;
-            lifeBar[2].fillAmount = currentLife - 60 / maxLife - 60;
+            lifeBar[2].fillAmount = (currentLife - 60) / (maxLife - 60);
         }
         else if(currentLife > 50)
         {
             lifeBar[0].fillAmount = 1;
-            lifeBar[1].fillAmount = currentLife - 50 / maxLife - 50;
+            lifeBar[1].fillAmount = (currentLife - 50) / (maxLife - (50 + offset - 10));
             lifeBar[2].fillAmount = 0;
         }
         else
         {
-            lifeBar[0].fillAmount = currentLife - offset / maxLife - offset;
+            lifeBar[0].fillAmount = currentLife / (maxLife - offset);
             lifeBar[1].fillAmount = 0;
             lifeBar[2].fillAmount = 0;
         }
 
-        
     }
 
     public void ChangeLifeBar()
     {
+        foreach(GameObject i in lifeObject)
+        {
+            i.SetActive(false);
+        }
+
         offset = -10;
         for (int i = 0; i <= soPlayer.level; i++)
         {
-            lifeBar[i].gameObject.SetActive(true);
+            lifeObject[i].SetActive(true);
             offset += 10;
         }
     }
