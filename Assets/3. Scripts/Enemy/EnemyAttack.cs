@@ -102,6 +102,8 @@ public class EnemyAttack : MonoBehaviour
         
         if(soEnemy.enemyType == SOEnemy.EnemyType.MELEE)FMODUnity.RuntimeManager.PlayOneShot("event:/Inimigos/Peao_Ataque", transform.position);
         else if(soEnemy.enemyType == SOEnemy.EnemyType.RANGE)FMODUnity.RuntimeManager.PlayOneShot("event:/Inimigos/Atirador_Ataque", transform.position);
+        else if (soEnemy.enemyType == SOEnemy.EnemyType.INCENDIARY)
+        else if (soEnemy.enemyType == SOEnemy.EnemyType.LUMBERJACK)
 
         if (soEnemy.specialTime >= soEnemy.timeToSpecial && special != null)
         {
