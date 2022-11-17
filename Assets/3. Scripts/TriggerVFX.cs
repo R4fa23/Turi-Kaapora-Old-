@@ -6,12 +6,20 @@ using UnityEngine.VFX;
 public class TriggerVFX : MonoBehaviour
 {
     public SOPlayer soPlayer;
-    public VisualEffect vfx;
-    public string eventToTrigger;
+    public VisualEffect[] vfx;
+    //public string eventToTrigger;
+
     public void VFXEvent(string trigger)
-    {        
-        vfx.Reinit();
-        vfx.SendEvent(eventToTrigger);
+    {
+        for (int i = 0; i < vfx.Length; i++)
+        {
+            if (vfx[i].name == trigger)
+            {
+                Debug.Log(vfx[i].name);
+                vfx[i].Reinit();
+                vfx[i].SendEvent("Trigger");
+            }
+        }        
     }
 
     public void StartSpecial()

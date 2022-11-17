@@ -127,7 +127,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: True
+      m_SerializableObject: False
     min: -Infinity
     max: Infinity
     enumValues: []
@@ -9688,7 +9688,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   m_Direction: 0
   m_LinkedSlots:
-  - {fileID: 8926484042661615114}
+  - {fileID: 8926484042661615112}
 --- !u!114 &8926484042661615083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10009,7 +10009,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   m_Direction: 0
   m_LinkedSlots:
-  - {fileID: 8926484042661615116}
+  - {fileID: 8926484042661615112}
 --- !u!114 &8926484042661615093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10424,7 +10424,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   m_Direction: 0
   m_LinkedSlots:
-  - {fileID: 8926484042661615118}
+  - {fileID: 8926484042661615112}
 --- !u!114 &8926484042661615106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10634,6 +10634,27 @@ MonoBehaviour:
     position: {x: 234, y: 757}
     expandedSlots: []
     expanded: 0
+  - m_Id: 2
+    linkedSlots:
+    - outputSlot: {fileID: 8926484042661615112}
+      inputSlot: {fileID: 8926484042661615082}
+    position: {x: 1463, y: 835}
+    expandedSlots: []
+    expanded: 0
+  - m_Id: 3
+    linkedSlots:
+    - outputSlot: {fileID: 8926484042661615112}
+      inputSlot: {fileID: 8926484042661615092}
+    position: {x: 249, y: 2668}
+    expandedSlots: []
+    expanded: 0
+  - m_Id: 4
+    linkedSlots:
+    - outputSlot: {fileID: 8926484042661615112}
+      inputSlot: {fileID: 8926484042661615105}
+    position: {x: 1500, y: 2682}
+    expandedSlots: []
+    expanded: 0
 --- !u!114 &8926484042661615112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10669,6 +10690,9 @@ MonoBehaviour:
   m_Direction: 1
   m_LinkedSlots:
   - {fileID: 8926484042661615061}
+  - {fileID: 8926484042661615082}
+  - {fileID: 8926484042661615092}
+  - {fileID: 8926484042661615105}
 --- !u!114 &8926484042661615113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10708,9 +10732,7 @@ MonoBehaviour:
   m_Tooltip: 
   m_Nodes:
   - m_Id: 1
-    linkedSlots:
-    - outputSlot: {fileID: 8926484042661615114}
-      inputSlot: {fileID: 8926484042661615082}
+    linkedSlots: []
     position: {x: 1463, y: 881}
     expandedSlots: []
     expanded: 0
@@ -10747,8 +10769,7 @@ MonoBehaviour:
       m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
   m_Direction: 1
-  m_LinkedSlots:
-  - {fileID: 8926484042661615082}
+  m_LinkedSlots: []
 --- !u!114 &8926484042661615115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10788,9 +10809,7 @@ MonoBehaviour:
   m_Tooltip: 
   m_Nodes:
   - m_Id: 0
-    linkedSlots:
-    - outputSlot: {fileID: 8926484042661615116}
-      inputSlot: {fileID: 8926484042661615092}
+    linkedSlots: []
     position: {x: 251, y: 2719}
     expandedSlots: []
     expanded: 0
@@ -10827,8 +10846,7 @@ MonoBehaviour:
       m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
   m_Direction: 1
-  m_LinkedSlots:
-  - {fileID: 8926484042661615092}
+  m_LinkedSlots: []
 --- !u!114 &8926484042661615117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10868,9 +10886,7 @@ MonoBehaviour:
   m_Tooltip: 
   m_Nodes:
   - m_Id: 0
-    linkedSlots:
-    - outputSlot: {fileID: 8926484042661615118}
-      inputSlot: {fileID: 8926484042661615105}
+    linkedSlots: []
     position: {x: 1500, y: 2739}
     expandedSlots: []
     expanded: 0
@@ -10907,8 +10923,7 @@ MonoBehaviour:
       m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
   m_Direction: 1
-  m_LinkedSlots:
-  - {fileID: 8926484042661615105}
+  m_LinkedSlots: []
 --- !u!114 &8926484042661615129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11973,7 +11988,7 @@ MonoBehaviour:
       slotIndex: 0
     - context: {fileID: 8926484042661614888}
       slotIndex: 0
-  eventName: Attack
+  eventName: Trigger
 --- !u!114 &8926484042661615163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12470,7 +12485,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: True
+      m_SerializableObject: False
     m_Space: 2147483647
   m_Property:
     name: o
