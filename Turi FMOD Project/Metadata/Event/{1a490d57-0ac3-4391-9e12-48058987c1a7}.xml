@@ -165,9 +165,6 @@
 		</relationship>
 	</object>
 	<object class="EventSound" id="{7b1379d4-8e3d-4b6f-9e7c-29645c97376f}">
-		<property name="start">
-			<value>1</value>
-		</property>
 		<property name="length">
 			<value>1.7763265306122449</value>
 		</property>
@@ -219,7 +216,7 @@
 		<relationship name="effects">
 			<destination>{0ed469ff-e0bc-4dca-bd53-aa8f91b2f81f}</destination>
 			<destination>{91250ce0-b242-4f5c-8180-ddcf99d889a4}</destination>
-			<destination>{3f965cd5-ad1d-4f42-a59f-ebbeaedf589b}</destination>
+			<destination>{870acc66-f253-4c1c-8f42-697470943914}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{10879f44-c6ea-40d4-a5fe-9a52e9187a95}" />
@@ -280,9 +277,12 @@
 			<value>10</value>
 		</property>
 	</object>
-	<object class="SFXReverbEffect" id="{3f965cd5-ad1d-4f42-a59f-ebbeaedf589b}">
+	<object class="SFXReverbEffect" id="{870acc66-f253-4c1c-8f42-697470943914}">
 		<property name="decayTime">
-			<value>2800</value>
+			<value>2500</value>
+		</property>
+		<property name="HFReference">
+			<value>3000</value>
 		</property>
 		<property name="diffusion">
 			<value>70</value>
@@ -291,9 +291,12 @@
 			<value>20</value>
 		</property>
 		<property name="highCut">
-			<value>560</value>
+			<value>2000</value>
 		</property>
 		<property name="wetLevel">
+			<value>-4</value>
+		</property>
+		<property name="dryLevel">
 			<value>4</value>
 		</property>
 	</object>
