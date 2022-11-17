@@ -36,6 +36,10 @@ public class ChangeScene : MonoBehaviour
     {
         AlternateScene("Level-01");
     }
+    public void Level02()
+    {
+        AlternateScene("Level-02");
+    }
 
     public void MenuInitial()
     {
