@@ -99,24 +99,24 @@ public class EnemyAttack : MonoBehaviour
     {
         rotate = false;
         soEnemy.AttackStart();
-        
-        if(soEnemy.enemyType == SOEnemy.EnemyType.MELEE)FMODUnity.RuntimeManager.PlayOneShot("event:/Inimigos/Peao_Ataque", transform.position);
-        else if(soEnemy.enemyType == SOEnemy.EnemyType.RANGE)FMODUnity.RuntimeManager.PlayOneShot("event:/Inimigos/Atirador_Ataque", transform.position);
-        else if (soEnemy.enemyType == SOEnemy.EnemyType.INCENDIARY)
-        else if (soEnemy.enemyType == SOEnemy.EnemyType.LUMBERJACK)
+
+        if (soEnemy.enemyType == SOEnemy.EnemyType.MELEE) FMODUnity.RuntimeManager.PlayOneShot("event:/Inimigos/Peao_Ataque", transform.position);
+        else if (soEnemy.enemyType == SOEnemy.EnemyType.RANGE) FMODUnity.RuntimeManager.PlayOneShot("event:/Inimigos/Atirador_Ataque", transform.position);
+        else if (soEnemy.enemyType == SOEnemy.EnemyType.INCENDIARY) { }
+        else if (soEnemy.enemyType == SOEnemy.EnemyType.LUMBERJACK) { }
 
         if (soEnemy.specialTime >= soEnemy.timeToSpecial && special != null)
-        {
-            colliderSpecial.enabled = true;
-            rendererSpecial.enabled = true;
-            //StartCoroutine(AttackTime(animEspAttack));
-        }
-        else
-        {
-            meshRenderer.enabled = true;
-            boxCollider.enabled = true;
-            //StartCoroutine(AttackTime(soEnemy.attackDuration));
-        }
+            {
+                colliderSpecial.enabled = true;
+                rendererSpecial.enabled = true;
+                //StartCoroutine(AttackTime(animEspAttack));
+            }
+            else
+            {
+                meshRenderer.enabled = true;
+                boxCollider.enabled = true;
+                //StartCoroutine(AttackTime(soEnemy.attackDuration));
+            }
         
         
         
