@@ -14,25 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   enemyType: 3
-  attackDamage: 1
+  attackDamage: 2
   attackChargeDuration: 0.5
   attackDuration: 0.2
   attackWaitDuration: 0
   attackRange: 3
-  vel: 8
+  vel: 14
   distanceDetectation: 10
-  maxHealth: 10
+  maxHealth: 12
   health: 0
   canDamaged: 0
-  divisorAttackChance: 10
-  maxSecondsToAttack: 30
+  divisorAttackChance: 3
+  maxSecondsToAttack: 10
   forceRecover: 90
   specialTime: 0
-  timeToSpecial: 20
+  timeToSpecial: 1
   canAttack: 0
   attackTime: 0
   timeToAttack: 5
-  rotationVel: 100
-  minTimeToRandomize: 5
+  rotationVel: 10
+  minTimeToRandomize: 2
   attacked: 0
-  timeToAttackAfterAttacked: 5
+  timeToAttackAfterAttacked: 3

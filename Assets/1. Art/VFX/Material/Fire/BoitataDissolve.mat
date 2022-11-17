@@ -23,17 +23,23 @@ Material:
   m_Name: BoitataDissolve
   m_Shader: {fileID: -6465566751694194690, guid: b2ae15256a7441d45b9cb322dd64c502,
     type: 3}
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _ALPHATEST_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: TransparentCutout
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _MainTexture:
+        m_Texture: {fileID: 2800000, guid: c9f1b8e0f698d124c96a18aabcc31879, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Texture:
         m_Texture: {fileID: 2800000, guid: c9f1b8e0f698d124c96a18aabcc31879, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -52,16 +58,28 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CutoffHeight: 5
+    - _AlphaClip: 1
+    - _Blend: 0
+    - _CastShadows: 1
+    - _Cull: 0
+    - _CutoffHeight: 20
     - _DecalMeshBiasType: 0
     - _DecalMeshDepthBias: 0
     - _DecalMeshViewBias: 0
     - _DrawOrder: 0
+    - _DstBlend: 0
     - _EdgeWidth: 0.1
     - _NoiseScale: 30
-    - _NoiseStrength: 1
+    - _NoiseStrength: 3.3
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _ReceiveShadows: 1
+    - _SrcBlend: 1
+    - _Surface: 0
+    - _WorkflowMode: 1
+    - _ZTest: 4
+    - _ZWrite: 1
+    - _ZWriteControl: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}
     - _EdgeColor: {r: 0, g: 2.713726, b: 4, a: 0}

@@ -32,7 +32,8 @@ Material:
   m_CustomRenderQueue: 2450
   stringTagMap:
     RenderType: TransparentCutout
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - SHADOWCASTER
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -52,21 +53,26 @@ Material:
     m_Floats:
     - _AlphaClip: 1
     - _Blend: 0
-    - _CastShadows: 1
+    - _CastShadows: 0
     - _Cull: 2
-    - _Dissolve: 0.145
+    - _Darkness: 1
+    - _Dissolve: 0.0326
     - _DstBlend: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Scale: 0.5
+    - _Scale: 0.84
     - _Speed: 10.51
     - _SrcBlend: 1
     - _Surface: 0
     - _Twirl: 9.4
+    - _Twirl_Strength: 47
     - _ZTest: 4
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 0, g: 2.3297908, b: 12.996038, a: 0}
+    - _Color: {r: 0, g: 0.776431, b: 4.237095, a: 0}
     - _Radial: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _Radial_Speed: {r: 2, g: 2, b: 0, a: 0}
+    - _Radial_Strength: {r: 10, g: 0, b: 0, a: 0}
+    - _Twirl_Speed: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
