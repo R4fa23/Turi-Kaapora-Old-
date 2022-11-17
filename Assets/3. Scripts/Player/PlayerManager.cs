@@ -479,6 +479,13 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    //-------------------------------------------TRIGGER ANIMAÇÃO--------------------------------------
+
+    public void Idle()
+    {
+        animator.SetTrigger("Idle");
+    }
+
     //-------------------------------------------CUTSCENE---------------------------------------------
 
     public void InCutscene()
