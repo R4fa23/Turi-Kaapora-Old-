@@ -130,9 +130,6 @@
 		</relationship>
 	</object>
 	<object class="MultiSound" id="{75fa1950-f8b4-402c-93c8-ef95103875e0}">
-		<property name="triggerProbabilityEnabled">
-			<value>true</value>
-		</property>
 		<property name="triggerProbability">
 			<value>45</value>
 		</property>
@@ -140,7 +137,13 @@
 			<value>5.5511151231257827e-17</value>
 		</property>
 		<property name="length">
-			<value>0.65306122448979587</value>
+			<value>0.55999999999999994</value>
+		</property>
+		<property name="pitch">
+			<value>-3.60000014</value>
+		</property>
+		<property name="playlistMode">
+			<value>3</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{56c79e03-49d8-48cb-ace9-31bedcce3bdc}</destination>
@@ -152,7 +155,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{e58baf64-1d73-49eb-9625-db66a4ecb031}">
 		<property name="volume">
-			<value>-13.5</value>
+			<value>-10</value>
 		</property>
 		<property name="name">
 			<value>Porco</value>
@@ -208,5 +211,18 @@
 	<object class="MixerBusFader" id="{06988284-9dd2-4207-9cc7-f0451e16542b}" />
 	<object class="MixerBusFader" id="{0e4dcc50-c9a4-43dc-b16d-5970ff9efbb9}" />
 	<object class="MixerBusFader" id="{625754b8-442f-45d9-80bf-bfaa1360f58a}" />
-	<object class="ThreeEQEffect" id="{6a7a4654-6dee-432a-83d4-c5b398052185}" />
+	<object class="ThreeEQEffect" id="{6a7a4654-6dee-432a-83d4-c5b398052185}">
+		<property name="lowGain">
+			<value>10</value>
+		</property>
+		<property name="midGain">
+			<value>-5</value>
+		</property>
+		<property name="highGain">
+			<value>10</value>
+		</property>
+		<property name="lowCrossover">
+			<value>1550</value>
+		</property>
+	</object>
 </objects>
