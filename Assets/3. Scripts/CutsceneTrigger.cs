@@ -6,11 +6,11 @@ using UnityEngine.Events;
 public class CutsceneTrigger : MonoBehaviour
 {
     public UnityEvent Triggerer;
-    private Collider collider;
+    private BoxCollider collide;
 
     private void Start()
     {
-        collider = GetComponent<Collider>();
+        collide = GetComponent<BoxCollider>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -19,7 +19,7 @@ public class CutsceneTrigger : MonoBehaviour
         {
             Triggerer?.Invoke();
             //gameObject.SetActive(false);
-            collider.enabled = false;
+            collide.enabled = false;
         }
     }
 }
