@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class StatusManagerUI : MonoBehaviour
 {
-    [SerializeField] Image lifeBar;
+    [SerializeField] Image[] lifeBar;
+    [SerializeField] GameObject[] lifeObject;
     [SerializeField] GameObject stamina;
     [SerializeField] Image specialBar;
     PlayerManager playerManager;
@@ -19,6 +20,7 @@ public class StatusManagerUI : MonoBehaviour
     float maxStamina;
     float currentStamina;
     List<Image> bars;
+    int offset;
     
 
     private void Awake()
@@ -35,17 +37,19 @@ public class StatusManagerUI : MonoBehaviour
     {
         soPlayerHealth.HealthChangeEvent.AddListener(UpdateLifeBar);
         soPlayerMove.ChangeMaxStaminaEvent.AddListener(UpdateStaminaCount);
+        soPlayer.LevelUpEvent.AddListener(ChangeLifeBar);
     }
 
     void OnDisable()
     {
         soPlayerHealth.HealthChangeEvent.RemoveListener(UpdateLifeBar);
         soPlayerMove.ChangeMaxStaminaEvent.RemoveListener(UpdateStaminaCount);
+        soPlayer.LevelUpEvent.RemoveListener(ChangeLifeBar);
     }
 
     private void Update()
     {
-        UpdateLifeBar();
+        //UpdateLifeBar();
         UpdateStaminaBar();
         UpdateSpecialBar();
     }
@@ -54,7 +58,41 @@ public class StatusManagerUI : MonoBehaviour
     {
         maxLife = soPlayerHealth.maxLife;
         currentLife = soPlayerHealth.life;
-        lifeBar.fillAmount = currentLife / maxLife;
+
+        if(currentLife > 60)
+        {
+            lifeBar[0].fillAmount = 1;
+            lifeBar[1].fillAmount = 1;
+            lifeBar[2].fillAmount = (currentLife - 60) / (maxLife - 60);
+        }
+        else if(currentLife > 50)
+        {
+            lifeBar[0].fillAmount = 1;
+            lifeBar[1].fillAmount = (currentLife - 50) / (maxLife - (50 + offset - 10));
+            lifeBar[2].fillAmount = 0;
+        }
+        else
+        {
+            lifeBar[0].fillAmount = currentLife / (maxLife - offset);
+            lifeBar[1].fillAmount = 0;
+            lifeBar[2].fillAmount = 0;
+        }
+
+    }
+
+    public void ChangeLifeBar()
+    {
+        foreach(GameObject i in lifeObject)
+        {
+            i.SetActive(false);
+        }
+
+        offset = -10;
+        for (int i = 0; i <= soPlayer.level; i++)
+        {
+            lifeObject[i].SetActive(true);
+            offset += 10;
+        }
     }
 
     public void UpdateStaminaBar()
