@@ -12,6 +12,7 @@ public class CutsceneTrigger : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             Triggerer?.Invoke();
+            gameObject.SetActive(false);
         }
     }
 }

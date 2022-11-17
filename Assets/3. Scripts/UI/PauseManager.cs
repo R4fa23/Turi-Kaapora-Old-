@@ -10,8 +10,10 @@ public class PauseManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject configMenu;
     public GameObject cheatMenu;
+    public GameObject exitMenu;
     bool isPaused;
-    enum Menus { PAUSE, CONFIG, CHEAT, NONE }
+    public ChangeScene changeScene;
+    enum Menus { PAUSE, CONFIG, CHEAT, NONE, EXIT }
     Menus menus;
     
     void Start()
@@ -40,6 +42,10 @@ public class PauseManager : MonoBehaviour
             {
                 MenuPause();
             }
+            else if(menus == Menus.EXIT)
+            {
+                MenuPause();
+            }
         }
     }
 
@@ -49,6 +55,7 @@ public class PauseManager : MonoBehaviour
         pauseMenu.SetActive(true);
         cheatMenu.SetActive(false);
         configMenu.SetActive(false);
+        exitMenu.SetActive(false);
         menus = Menus.PAUSE;
     }
     public void MenuConfig()
@@ -63,12 +70,25 @@ public class PauseManager : MonoBehaviour
         cheatMenu.SetActive(true);
         menus = Menus.CHEAT;
     }
+    public void MenuExit()
+    {
+        pauseMenu.SetActive(false);
+        exitMenu.SetActive(true);
+        menus = Menus.EXIT;
+    }
     public void UnPause()
     {
         DisableAll();
         soPlayer.isPaused = false;
         isPaused = false;
         Time.timeScale = 1;
+    }
+    public void ExitGame()
+    {
+        DisableAll();
+        Time.timeScale = 1;
+        changeScene.MenuInitial();
+
     }
     public void Pause()
     {
@@ -82,6 +102,7 @@ public class PauseManager : MonoBehaviour
         pauseMenu.SetActive(false);
         configMenu.SetActive(false);
         cheatMenu.SetActive(false);
+        exitMenu.SetActive(false);
         menus = Menus.NONE;
     }
 
