@@ -17,7 +17,6 @@ public class EnemyIncendiary : MonoBehaviour
     void BurnPlayer()
     {
         soPlayer.soPlayerHealth.Burned(3);
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Inimigos/Incendiario_Ataque", transform.position);
     }
 
     void OnEnable()
