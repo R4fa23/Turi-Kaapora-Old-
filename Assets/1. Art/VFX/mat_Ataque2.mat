@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6799893215626800740
+--- !u!114 &-173103380058194561
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,30 +20,23 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BoitataDissolve
-  m_Shader: {fileID: -6465566751694194690, guid: b2ae15256a7441d45b9cb322dd64c502,
+  m_Name: mat_Ataque2
+  m_Shader: {fileID: -6465566751694194690, guid: 16205b9eed49e2f4a959d47311aabeda,
     type: 3}
   m_ValidKeywords:
   - _ALPHATEST_ON
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap:
     RenderType: TransparentCutout
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - SHADOWCASTER
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: c9f1b8e0f698d124c96a18aabcc31879, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Texture:
-        m_Texture: {fileID: 2800000, guid: c9f1b8e0f698d124c96a18aabcc31879, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -60,27 +53,27 @@ Material:
     m_Floats:
     - _AlphaClip: 1
     - _Blend: 0
-    - _CastShadows: 1
-    - _Cull: 0
-    - _CutoffHeight: 20
-    - _DecalMeshBiasType: 0
-    - _DecalMeshDepthBias: 0
-    - _DecalMeshViewBias: 0
-    - _DrawOrder: 0
+    - _CastShadows: 0
+    - _Cull: 2
+    - _Darkness: 1
+    - _Dissolve: 0.07
     - _DstBlend: 0
-    - _EdgeWidth: 0.1
-    - _NoiseScale: 30
-    - _NoiseStrength: 3.3
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ReceiveShadows: 1
+    - _Scale: 0.84
+    - _Speed: 10.51
     - _SrcBlend: 1
     - _Surface: 0
-    - _WorkflowMode: 1
+    - _Twirl: 9.4
+    - _Twirl_Strength: 47
     - _ZTest: 4
     - _ZWrite: 1
     - _ZWriteControl: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 0}
-    - _EdgeColor: {r: 0, g: 2.713726, b: 4, a: 0}
+    - _Center: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _Color: {r: 0, g: 0.776431, b: 4.237095, a: 0}
+    - _Radial: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _Radial_Speed: {r: 2, g: 2, b: 0, a: 0}
+    - _Radial_Strength: {r: 10, g: 0, b: 0, a: 0}
+    - _Twirl_Speed: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
