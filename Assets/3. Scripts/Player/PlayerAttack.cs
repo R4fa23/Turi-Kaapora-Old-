@@ -133,12 +133,13 @@ public class PlayerAttack : MonoBehaviour
 
             if(!soPlayer.soPlayerAttack.hitKill)other.GetComponent<EnemyManager>().soEnemy.ChangeLife(-soPlayer.soPlayerAttack.currentDamage);
             else other.GetComponent<EnemyManager>().soEnemy.ChangeLife(-1000);
-            
+
         }
 
         if(other.CompareTag("Cage"))
         {
             other.GetComponent<Cage>().LoseLife();
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Acerto", transform.position);
         }
     }
 }
