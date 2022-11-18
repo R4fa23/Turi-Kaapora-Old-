@@ -72,9 +72,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{25066b3e-9041-4024-9b2c-c50f9fe0985c}">
-		<property name="volume">
-			<value>-8.5</value>
-		</property>
 		<relationship name="effectChain">
 			<destination>{19d02897-af36-4719-af81-873f3532d49f}</destination>
 		</relationship>
@@ -109,6 +106,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{9b5db3f5-240f-43c5-8126-e7712b8fd40e}">
+		<property name="volume">
+			<value>-5</value>
+		</property>
 		<property name="name">
 			<value>Motosserra</value>
 		</property>
@@ -182,7 +182,14 @@
 			<value>-6.5</value>
 		</property>
 	</object>
-	<object class="SpatialiserEffect" id="{64af3c1f-53eb-4bfc-9400-69c7a5d11bde}" />
+	<object class="SpatialiserEffect" id="{64af3c1f-53eb-4bfc-9400-69c7a5d11bde}">
+		<property name="maximumDistance">
+			<value>40</value>
+		</property>
+		<property name="overrideRange">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="Automator" id="{75f0b5cf-4b3a-4b11-b018-e5d8a952ecb2}">
 		<property name="nameOfPropertyBeingAutomated">
 			<value>stereoPan</value>
