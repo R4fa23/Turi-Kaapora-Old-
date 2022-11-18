@@ -24,19 +24,6 @@ public class TargetFrame : MonoBehaviour
         {Rates.limit120, 120},
         {Rates.limit240, 240}
     };
-
-    Rates rate;
-    Rates lastRate;
-
-    Resolutions resolution;
-    Resolutions lastResolution;
-
-    bool vsync;
-    bool lastVsync;
-
-    bool fullscreen;
-    bool lastFullscreen;
-
     public enum Resolutions
     {
         scr800x600,
@@ -76,13 +63,34 @@ public class TargetFrame : MonoBehaviour
 
     };
 
+    public enum Quality
+    {
+        low,
+        medio,
+        high
+    }
 
+    Rates rate;
+    Rates lastRate;
+
+    Resolutions resolution;
+    Resolutions lastResolution;
+
+    Quality quality;
+    Quality lastQuality;
+
+    bool vsync;
+    bool lastVsync;
+
+    bool fullscreen;
+    bool lastFullscreen;
     void Awake()
     {
         lastResolution = resolution;
         lastRate = rate;
         lastFullscreen = fullscreen;
         lastVsync = vsync;
+        lastQuality = quality;
 
         Application.targetFrameRate = rat[rate];
         Screen.SetResolution((int)res[resolution].x, (int)res[resolution].y, fullscreen);
@@ -92,12 +100,12 @@ public class TargetFrame : MonoBehaviour
 
     private void Update()
     {
-        if(rate != lastRate || resolution != lastResolution || fullscreen != lastFullscreen || vsync != lastVsync)
+        if(rate != lastRate || resolution != lastResolution || fullscreen != lastFullscreen || vsync != lastVsync || quality != lastQuality)
         {
             changed = true;
         }
 
-        if (rate == lastRate && resolution == lastResolution && fullscreen == lastFullscreen && vsync == lastVsync)
+        if (rate == lastRate && resolution == lastResolution && fullscreen == lastFullscreen && vsync == lastVsync && quality == lastQuality)
         {
             changed = false;
         }
@@ -127,6 +135,11 @@ public class TargetFrame : MonoBehaviour
                 lastVsync = vsync;
             }
 
+            if(quality != lastQuality)
+            {
+                lastQuality = quality;
+            }
+
             changed = false;
         }
     }
@@ -150,5 +163,10 @@ public class TargetFrame : MonoBehaviour
     public void TogVsync(bool index)
     {
         vsync = index;
+    }
+
+    public void DropQual(int index)
+    {
+        quality = (Quality)index;
     }
 }
