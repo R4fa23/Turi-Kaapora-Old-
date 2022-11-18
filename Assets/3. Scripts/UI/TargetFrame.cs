@@ -4,26 +4,37 @@ using UnityEngine;
 
 public class TargetFrame : MonoBehaviour
 {
+    bool changed;
     public enum Rates
     {
-        noLimit = 0,
-        limit10 = 10,
-        limit30 = 30,
-        limit60 = 60,
-        limit120 = 120,
-        limit240 = 240
+        noLimit,
+        limit10,
+        limit30,
+        limit60,
+        limit120,
+        limit240
     }
 
-    public Rates rate;
+    Dictionary<Rates, int> rat = new Dictionary<Rates, int>()
+    {
+        {Rates.noLimit, 0},
+        {Rates.limit10, 10},
+        {Rates.limit30, 30},
+        {Rates.limit60, 60},
+        {Rates.limit120, 120},
+        {Rates.limit240, 240}
+    };
+
+    Rates rate;
     Rates lastRate;
 
-    public Resolutions resolution;
+    Resolutions resolution;
     Resolutions lastResolution;
 
-    public bool vsync;
+    bool vsync;
     bool lastVsync;
 
-    public bool fullscreen;
+    bool fullscreen;
     bool lastFullscreen;
 
     public enum Resolutions
@@ -73,7 +84,7 @@ public class TargetFrame : MonoBehaviour
         lastFullscreen = fullscreen;
         lastVsync = vsync;
 
-        Application.targetFrameRate = (int)rate;
+        Application.targetFrameRate = rat[rate];
         Screen.SetResolution((int)res[resolution].x, (int)res[resolution].y, fullscreen);
         if(vsync) QualitySettings.vSyncCount = 1;
         else QualitySettings.vSyncCount = 0;
@@ -81,29 +92,63 @@ public class TargetFrame : MonoBehaviour
 
     private void Update()
     {
-        if(rate != lastRate)
+        if(rate != lastRate || resolution != lastResolution || fullscreen != lastFullscreen || vsync != lastVsync)
         {
-            Application.targetFrameRate = (int)rate;
-            lastRate = rate;
+            changed = true;
         }
 
-        if(resolution != lastResolution)
+        if (rate == lastRate && resolution == lastResolution && fullscreen == lastFullscreen && vsync == lastVsync)
         {
-            Screen.SetResolution((int)res[resolution].x, (int)res[resolution].y, fullscreen);
-            lastResolution = resolution;
+            changed = false;
         }
+    }
 
-        if(fullscreen != lastFullscreen)
+    public void SetChanges()
+    {
+        if (changed)
         {
-            Screen.SetResolution((int)res[resolution].x, (int)res[resolution].y, fullscreen);
-            lastFullscreen = fullscreen;
-        }
+            if (rate != lastRate)
+            {
+                Application.targetFrameRate = (int)rate;
+                lastRate = rate;
+            }
 
-        if(vsync != lastVsync)
-        {
-            if (vsync) QualitySettings.vSyncCount = 1;
-            else QualitySettings.vSyncCount = 0;
-            lastVsync = vsync;
+            if (resolution != lastResolution || fullscreen != lastFullscreen)
+            {
+                Screen.SetResolution((int)res[resolution].x, (int)res[resolution].y, fullscreen);
+                lastResolution = resolution;
+                lastFullscreen = fullscreen;
+            }
+
+            if (vsync != lastVsync)
+            {
+                if (vsync) QualitySettings.vSyncCount = 1;
+                else QualitySettings.vSyncCount = 0;
+                lastVsync = vsync;
+            }
+
+            changed = false;
         }
+    }
+
+
+    public void DropRate(int index)
+    {
+        rate = (Rates)index;
+    }
+
+    public void DropRes(int index)
+    {
+        resolution = (Resolutions)index;
+    }
+
+    public void TogFullscreen(bool index)
+    {
+        fullscreen = index;
+    }
+
+    public void TogVsync(bool index)
+    {
+        vsync = index;
     }
 }
