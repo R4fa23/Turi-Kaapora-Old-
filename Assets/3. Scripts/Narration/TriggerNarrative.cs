@@ -18,6 +18,8 @@ public class TriggerNarrative : MonoBehaviour
 
     float narrationVel;
 
+    public SOPlayer soPlayer;
+
     void Start()
     {
         talk = GameObject.FindGameObjectWithTag("TextNarrative").GetComponent<CollectText>().text;
@@ -77,5 +79,33 @@ public class TriggerNarrative : MonoBehaviour
             timeToPass = talkTime[index];
             StartCoroutine(WaitNextTalk(timeToPass));
         }
+    }
+
+    void Pause()
+    {
+        if(talking)
+        {
+
+        }
+    }
+
+    void Unpause()
+    {
+        if(talking)
+        {
+
+        }
+    }
+
+    private void OnEnable()
+    {
+        soPlayer.PauseEvent.AddListener(Pause);
+        soPlayer.UnpauseEvent.AddListener(Unpause);
+    }
+
+    private void OnDisable()
+    {
+        soPlayer.PauseEvent.RemoveListener(Pause);
+        soPlayer.UnpauseEvent.RemoveListener(Unpause);
     }
 }

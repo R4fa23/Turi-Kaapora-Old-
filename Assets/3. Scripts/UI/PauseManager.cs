@@ -82,6 +82,7 @@ public class PauseManager : MonoBehaviour
         soPlayer.isPaused = false;
         isPaused = false;
         Time.timeScale = 1;
+        soPlayer.Unpause();
     }
     public void ExitGame()
     {

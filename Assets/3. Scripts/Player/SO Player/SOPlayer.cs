@@ -26,6 +26,8 @@ public class SOPlayer : ScriptableObject
     public UnityEvent LevelUpEvent;
     [System.NonSerialized]
     public UnityEvent PauseEvent;
+    [System.NonSerialized]
+    public UnityEvent UnpauseEvent;
 
     private void OnEnable() {
         if(LevelUpEvent == null)
@@ -33,6 +35,9 @@ public class SOPlayer : ScriptableObject
 
         if(PauseEvent == null)
             PauseEvent = new UnityEvent();
+
+        if (UnpauseEvent == null)
+            UnpauseEvent = new UnityEvent();
     }
 
     public void LevelUp()
@@ -58,6 +63,11 @@ public class SOPlayer : ScriptableObject
     public void Pause()
     {
         PauseEvent.Invoke();
+    }
+
+    public void Unpause()
+    {
+        UnpauseEvent.Invoke();
     }
 
 }
