@@ -5,7 +5,7 @@
 			<value>Lenhador_Ataque</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{5f4a7f28-57da-42ad-ab6f-9107c22b257b}</destination>
@@ -59,9 +59,6 @@
 	<object class="EventAutomatableProperties" id="{da0614cf-2214-4a1d-96a6-25d8e79d5c45}" />
 	<object class="MarkerTrack" id="{8cb0d0de-5b12-49a8-9968-89a5f3561c3b}" />
 	<object class="GroupTrack" id="{0477b9e3-47c9-4243-be7d-52542204b740}">
-		<relationship name="automationTracks">
-			<destination>{f8ccff8a-b0f2-4f5d-b8b5-9d44eec7de0c}</destination>
-		</relationship>
 		<relationship name="modules">
 			<destination>{4d4c0047-3e7f-4f97-8d53-96a09d7c34b3}</destination>
 		</relationship>
@@ -76,7 +73,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{25066b3e-9041-4024-9b2c-c50f9fe0985c}">
 		<property name="volume">
-			<value>-5.5</value>
+			<value>-8.5</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{19d02897-af36-4719-af81-873f3532d49f}</destination>
@@ -94,11 +91,6 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{89c0fd42-b929-40cf-b942-b6588c04810f}" />
-	<object class="AutomationTrack" id="{f8ccff8a-b0f2-4f5d-b8b5-9d44eec7de0c}">
-		<relationship name="automator">
-			<destination>{75f0b5cf-4b3a-4b11-b018-e5d8a952ecb2}</destination>
-		</relationship>
-	</object>
 	<object class="MultiSound" id="{4d4c0047-3e7f-4f97-8d53-96a09d7c34b3}">
 		<property name="length">
 			<value>2.0420408163265309</value>
@@ -169,6 +161,7 @@
 		<relationship name="effects">
 			<destination>{67e680aa-b79f-4895-ae30-3f42c335d334}</destination>
 			<destination>{ee825d9b-7393-4e4c-b1c9-054bb1d5a127}</destination>
+			<destination>{64af3c1f-53eb-4bfc-9400-69c7a5d11bde}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a6e579e9-f186-4b91-b5fe-cb751982219a}">
@@ -189,6 +182,7 @@
 			<value>-6.5</value>
 		</property>
 	</object>
+	<object class="SpatialiserEffect" id="{64af3c1f-53eb-4bfc-9400-69c7a5d11bde}" />
 	<object class="Automator" id="{75f0b5cf-4b3a-4b11-b018-e5d8a952ecb2}">
 		<property name="nameOfPropertyBeingAutomated">
 			<value>stereoPan</value>
