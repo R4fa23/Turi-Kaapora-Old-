@@ -49,7 +49,7 @@ public class StatusManagerUI : MonoBehaviour
 
     private void Update()
     {
-        //UpdateLifeBar();
+        UpdateLifeBar();
         UpdateStaminaBar();
         UpdateSpecialBar();
     }
