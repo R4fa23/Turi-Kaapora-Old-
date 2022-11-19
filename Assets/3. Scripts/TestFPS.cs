@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class TestFPS : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public TextMeshProUGUI text;
+    private void Start()
     {
+        //Application.targetFrameRate = Screen.currentResolution.refreshRate;
+        text.text = QualitySettings.vSyncCount.ToString();
+    }
+    public void Test(bool t)
+    {
+        if (t) QualitySettings.vSyncCount = 1;
+        else QualitySettings.vSyncCount = 0;
         
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        text.text = QualitySettings.vSyncCount.ToString();
     }
 }

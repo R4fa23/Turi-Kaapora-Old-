@@ -93,6 +93,17 @@ public class TargetFrame : MonoBehaviour
     public Toggle full, vsy;
     void Awake()
     {
+        if (!soConfig.firstTime)
+        {
+            soConfig.rate = PlayerPrefs.GetInt("Rate");
+            soConfig.resolution = PlayerPrefs.GetInt("Resolution");
+            soConfig.quality = PlayerPrefs.GetInt("Quality");
+            if (PlayerPrefs.GetInt("Fullscreen") == 0) soConfig.fullscreen = false;
+            if (PlayerPrefs.GetInt("Fullscreen") == 1) soConfig.fullscreen = true;
+            if (PlayerPrefs.GetInt("Vsync") == 0) soConfig.vsync = false;
+            if (PlayerPrefs.GetInt("Vsync") == 1) soConfig.vsync = true;
+        }
+
         rate = (Rates)soConfig.rate;
         resolution = (Resolutions)soConfig.resolution;
         quality = (Quality)soConfig.quality;
@@ -111,11 +122,14 @@ public class TargetFrame : MonoBehaviour
         full.isOn = fullscreen;
         vsy.isOn = vsync;
 
-
-        Application.targetFrameRate = rat[rate];
-        Screen.SetResolution((int)res[resolution].x, (int)res[resolution].y, fullscreen);
-        if(vsync) QualitySettings.vSyncCount = 1;
-        else QualitySettings.vSyncCount = 0;
+        if (!soConfig.firstTime)
+        {
+            soConfig.firstTime = true;
+            Application.targetFrameRate = rat[rate];
+            Screen.SetResolution((int)res[resolution].x, (int)res[resolution].y, fullscreen);
+            if (vsync) QualitySettings.vSyncCount = 1;
+            else QualitySettings.vSyncCount = 0;
+        }
     }
 
     private void Update()
@@ -140,6 +154,7 @@ public class TargetFrame : MonoBehaviour
                 Application.targetFrameRate = (int)rate;
                 lastRate = rate;
                 soConfig.rate = (int)rate;
+                PlayerPrefs.SetInt("Rate", (int)rate); 
             }
 
             if (resolution != lastResolution || fullscreen != lastFullscreen)
@@ -149,6 +164,9 @@ public class TargetFrame : MonoBehaviour
                 lastFullscreen = fullscreen;
                 soConfig.resolution = (int)resolution;
                 soConfig.fullscreen = fullscreen;
+                PlayerPrefs.SetInt("Resolutin", (int)resolution);
+                if (fullscreen) PlayerPrefs.SetInt("Fullscreen", 1);
+                if (!fullscreen) PlayerPrefs.SetInt("Fullscreen", 0);             
             }
 
             if (vsync != lastVsync)
@@ -157,12 +175,15 @@ public class TargetFrame : MonoBehaviour
                 else QualitySettings.vSyncCount = 0;
                 lastVsync = vsync;
                 soConfig.vsync = vsync;
+                if (vsync) PlayerPrefs.SetInt("Vsync", 1);
+                if (!vsync) PlayerPrefs.SetInt("Vsync", 0);
             }
 
             if(quality != lastQuality)
             {
                 lastQuality = quality;
                 soConfig.quality = (int)quality;
+                PlayerPrefs.SetInt("Quality", (int)quality);
             }
 
             changed = false;

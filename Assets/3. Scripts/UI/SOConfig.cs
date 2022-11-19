@@ -10,4 +10,6 @@ public class SOConfig : ScriptableObject
     public int quality;
     public bool fullscreen;
     public bool vsync;
+
+    public bool firstTime;
 }
