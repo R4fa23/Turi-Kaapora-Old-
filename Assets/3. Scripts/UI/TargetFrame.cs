@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class TargetFrame : MonoBehaviour
 {
-    bool changed;
+    public SOConfig soConfig;
+    
+    [HideInInspector]public bool changed;
     public enum Rates
     {
         noLimit,
@@ -84,13 +88,29 @@ public class TargetFrame : MonoBehaviour
 
     bool fullscreen;
     bool lastFullscreen;
+
+    public TMP_Dropdown fram, reso, qual;
+    public Toggle full, vsy;
     void Awake()
     {
+        rate = (Rates)soConfig.rate;
+        resolution = (Resolutions)soConfig.resolution;
+        quality = (Quality)soConfig.quality;
+        vsync = soConfig.vsync;
+        fullscreen = soConfig.fullscreen;
+
         lastResolution = resolution;
         lastRate = rate;
         lastFullscreen = fullscreen;
         lastVsync = vsync;
         lastQuality = quality;
+
+        fram.value = (int)rate;
+        reso.value = (int)resolution;
+        qual.value = (int)quality;
+        full.isOn = fullscreen;
+        vsy.isOn = vsync;
+
 
         Application.targetFrameRate = rat[rate];
         Screen.SetResolution((int)res[resolution].x, (int)res[resolution].y, fullscreen);
@@ -119,6 +139,7 @@ public class TargetFrame : MonoBehaviour
             {
                 Application.targetFrameRate = (int)rate;
                 lastRate = rate;
+                soConfig.rate = (int)rate;
             }
 
             if (resolution != lastResolution || fullscreen != lastFullscreen)
@@ -126,6 +147,8 @@ public class TargetFrame : MonoBehaviour
                 Screen.SetResolution((int)res[resolution].x, (int)res[resolution].y, fullscreen);
                 lastResolution = resolution;
                 lastFullscreen = fullscreen;
+                soConfig.resolution = (int)resolution;
+                soConfig.fullscreen = fullscreen;
             }
 
             if (vsync != lastVsync)
@@ -133,11 +156,47 @@ public class TargetFrame : MonoBehaviour
                 if (vsync) QualitySettings.vSyncCount = 1;
                 else QualitySettings.vSyncCount = 0;
                 lastVsync = vsync;
+                soConfig.vsync = vsync;
             }
 
             if(quality != lastQuality)
             {
                 lastQuality = quality;
+                soConfig.quality = (int)quality;
+            }
+
+            changed = false;
+        }
+    }
+
+    public void RevertChanges()
+    {
+        if (changed)
+        {
+            if (rate != lastRate)
+            {
+                rate = lastRate;
+                fram.value = (int)rate;
+            }
+
+            if (resolution != lastResolution || fullscreen != lastFullscreen)
+            {
+                resolution = lastResolution;
+                fullscreen = lastFullscreen;
+                reso.value = (int)resolution;
+                full.isOn = fullscreen;
+            }
+
+            if (vsync != lastVsync)
+            {
+                vsync = lastVsync;
+                vsy.isOn = vsync;
+            }
+
+            if (quality != lastQuality)
+            {
+                quality = lastQuality;
+                qual.value = (int)quality;
             }
 
             changed = false;

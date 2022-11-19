@@ -11,13 +11,18 @@ public class PauseManager : MonoBehaviour
     public GameObject configMenu;
     public GameObject cheatMenu;
     public GameObject exitMenu;
+    public GameObject videoMenu;
+    public GameObject alertMenu;
     bool isPaused;
     public ChangeScene changeScene;
-    enum Menus { PAUSE, CONFIG, CHEAT, NONE, EXIT }
+    TargetFrame tf;
+    Menus toScreen;
+    enum Menus { PAUSE, CONFIG, CHEAT, NONE, EXIT, VIDEO }
     Menus menus;
     
     void Start()
     {
+        tf = GetComponent<TargetFrame>();
         DisableAll();
     }
 
@@ -46,23 +51,47 @@ public class PauseManager : MonoBehaviour
             {
                 MenuPause();
             }
+            else if (menus == Menus.VIDEO)
+            {
+                MenuPause();
+            }
         }
     }
 
     public void MenuPause()
     {
-        panel.SetActive(true);
-        pauseMenu.SetActive(true);
-        cheatMenu.SetActive(false);
-        configMenu.SetActive(false);
-        exitMenu.SetActive(false);
-        menus = Menus.PAUSE;
+        if (!tf.changed)
+        {
+            panel.SetActive(true);
+            pauseMenu.SetActive(true);
+            cheatMenu.SetActive(false);
+            configMenu.SetActive(false);
+            exitMenu.SetActive(false);
+            videoMenu.SetActive(false);
+            alertMenu.SetActive(false);
+            menus = Menus.PAUSE;
+        }
+        else
+        {
+            alertMenu.SetActive(true);
+            toScreen = Menus.PAUSE;
+        }
     }
     public void MenuConfig()
     {
-        pauseMenu.SetActive(false);
-        configMenu.SetActive(true);
-        menus = Menus.CONFIG;
+        if (!tf.changed)
+        {
+            pauseMenu.SetActive(false);
+            videoMenu.SetActive(false);
+            configMenu.SetActive(true);
+            alertMenu.SetActive(false);
+            menus = Menus.CONFIG;
+        }
+        else
+        {
+            alertMenu.SetActive(true);
+            toScreen = Menus.CONFIG;
+        }
     }
     public void MenuCheat()
     {
@@ -75,6 +104,22 @@ public class PauseManager : MonoBehaviour
         pauseMenu.SetActive(false);
         exitMenu.SetActive(true);
         menus = Menus.EXIT;
+    }
+    public void MenuVideo()
+    {
+        configMenu.SetActive(false);
+        videoMenu.SetActive(true);
+        menus = Menus.VIDEO;
+    }
+    public void SimAlert()
+    {
+        tf.RevertChanges();
+        if (toScreen == Menus.PAUSE) MenuPause();
+        else if (toScreen == Menus.CONFIG) MenuConfig();
+    }
+    public void NaoAlert()
+    {
+        alertMenu.SetActive(false);
     }
     public void UnPause()
     {
