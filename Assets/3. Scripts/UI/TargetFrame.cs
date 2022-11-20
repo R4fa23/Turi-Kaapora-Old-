@@ -93,6 +93,17 @@ public class TargetFrame : MonoBehaviour
     public Toggle full, vsy;
     void Awake()
     {
+        if(PlayerPrefs.GetInt("Inicio") == 0)
+        {
+            PlayerPrefs.SetInt("Inicio", 1);
+
+            PlayerPrefs.SetInt("Rate", 0);
+            PlayerPrefs.SetInt("Resolution", 14);
+            PlayerPrefs.SetInt("Quality", 1);
+            PlayerPrefs.SetInt("Fullscreen", 1);
+            PlayerPrefs.SetInt("Vsync", 1);
+        }
+
         if (!soConfig.firstTime)
         {
             soConfig.rate = PlayerPrefs.GetInt("Rate");
