@@ -107,7 +107,7 @@ public class StatusManagerUI : MonoBehaviour
             }
             bars[index].fillAmount = soPlayerMove.rechargeTime/soPlayerMove.rechargeStaminasTime;
 
-            if (bars[index].fillAmount < 0.95) bars[index].color = Color.gray;
+            if (bars[index].fillAmount < 0.97) bars[index].color = Color.gray;
             else bars[index].color = Color.white;
         }
 

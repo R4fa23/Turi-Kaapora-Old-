@@ -12,6 +12,8 @@ public class StaminaBar : MonoBehaviour
 
     [HideInInspector] public List<GameObject> barObject;
 
+    public HorizontalLayoutGroup hlg;
+    int padding;
 
     void SetBars()
     {
@@ -22,13 +24,19 @@ public class StaminaBar : MonoBehaviour
 
         bars.Clear();
 
+        padding = 85;
+
         for(int i = 0; i < soPlayer.soPlayerMove.maxStaminas; i++) {
             GameObject staminaSlot = Instantiate(staminas, this.transform) as GameObject;
             
             barObject.Add(staminaSlot);
 
             bars.Add(staminaSlot.GetComponent<StaminaImage>().bar);
+
+            padding -= 85;
         }
+
+        hlg.padding.left = padding;
     }
 
     void OnEnable()
