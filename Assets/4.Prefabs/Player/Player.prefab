@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127007692}
   m_LocalRotation: {x: -0.1805546, y: 0.0059322566, z: -0.66219157, w: 0.7272326}
-  m_LocalPosition: {x: -1.4916606, y: 2.3115852, z: -0.21199036}
+  m_LocalPosition: {x: -1.491661, y: 2.3115847, z: -0.21199131}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1126,6 +1126,18 @@ MonoBehaviour:
         - m_Target: {fileID: 9003156691123881369}
           m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
           m_MethodName: InCutscene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 9003156691123881369}
+          m_TargetAssemblyTypeName: PlayerManager, Assembly-CSharp
+          m_MethodName: Idle
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

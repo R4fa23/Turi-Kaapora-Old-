@@ -788,7 +788,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cab325bfd3d5f641ae329a480a760ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
 --- !u!1 &401717217
 GameObject:
   m_ObjectHideFlags: 0
@@ -6161,12 +6160,12 @@ PrefabInstance:
     - target: {fileID: 3666656130006865335, guid: 11340d3b317cfd94cb210244b6ec224b,
         type: 3}
       propertyPath: m_Events.m_Events.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3666656130006865335, guid: 11340d3b317cfd94cb210244b6ec224b,
         type: 3}
       propertyPath: m_Events.m_Signals.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3666656130006865335, guid: 11340d3b317cfd94cb210244b6ec224b,
         type: 3}
@@ -6182,9 +6181,24 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 3666656130006865335, guid: 11340d3b317cfd94cb210244b6ec224b,
         type: 3}
+      propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666656130006865335, guid: 11340d3b317cfd94cb210244b6ec224b,
+        type: 3}
       propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666656130006865335, guid: 11340d3b317cfd94cb210244b6ec224b,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3666656130006865335, guid: 11340d3b317cfd94cb210244b6ec224b,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1891507175}
     - target: {fileID: 3666656130006865335, guid: 11340d3b317cfd94cb210244b6ec224b,
         type: 3}
       propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -6192,8 +6206,18 @@ PrefabInstance:
       objectReference: {fileID: 1891507175}
     - target: {fileID: 3666656130006865335, guid: 11340d3b317cfd94cb210244b6ec224b,
         type: 3}
+      propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666656130006865335, guid: 11340d3b317cfd94cb210244b6ec224b,
+        type: 3}
       propertyPath: m_Events.m_Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666656130006865335, guid: 11340d3b317cfd94cb210244b6ec224b,
+        type: 3}
+      propertyPath: m_Events.m_Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PlayerManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3666656130006865335, guid: 11340d3b317cfd94cb210244b6ec224b,
         type: 3}
