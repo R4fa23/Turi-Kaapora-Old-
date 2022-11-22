@@ -12,15 +12,16 @@ public class TriggerVFX : MonoBehaviour
     public Transform player;
     //public string eventToTrigger;
 
-    public void Attack(int vfxName)
+    public void Attack(int vfxIndex)
     {
         for (int i = 0; i < attacks.Length; i++)
         {
-            if (i == vfxName)
+            if (i == vfxIndex)
             {
                 attacks[i].SetFloat("Y Angle", player.eulerAngles.y);
                 attacks[i].Reinit();
                 attacks[i].SendEvent("Attack");
+                Debug.Log(i);
             }
         }        
     }
