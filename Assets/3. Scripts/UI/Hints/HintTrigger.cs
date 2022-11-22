@@ -10,12 +10,20 @@ public class HintTrigger : MonoBehaviour
 
     TextMeshProUGUI text;
 
+    Image image;
+
+    HintPanel hintPanel;
+
     public string description;
+
+    public Sprite illustration;
 
     private void Start()
     {
-        panel = GameObject.FindGameObjectWithTag("HintCanvas").GetComponent<HintPanel>().panel;
-        text = GameObject.FindGameObjectWithTag("HintCanvas").GetComponent<HintPanel>().text;
+        hintPanel = GameObject.FindGameObjectWithTag("HintCanvas").GetComponent<HintPanel>();
+        panel = hintPanel.panel;
+        text = hintPanel.text;
+        image = hintPanel.image;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,6 +32,7 @@ public class HintTrigger : MonoBehaviour
         {
             panel.SetActive(true);
             text.text = description;
+            image.sprite = illustration;
             gameObject.SetActive(false);
         }
     }

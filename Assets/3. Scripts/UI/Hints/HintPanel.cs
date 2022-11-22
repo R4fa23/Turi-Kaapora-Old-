@@ -9,4 +9,6 @@ public class HintPanel : MonoBehaviour
     public GameObject panel;
 
     public TextMeshProUGUI text;
+
+    public Image image;
 }

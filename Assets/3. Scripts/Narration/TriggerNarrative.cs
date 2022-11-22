@@ -11,6 +11,8 @@ public class TriggerNarrative : MonoBehaviour
 
     public String[] falas;
 
+    public FMOD.Studio.EventInstance instanciaEvento;
+
     public float[] talkTime;
     int index;
     TextMeshProUGUI talk;
@@ -43,7 +45,10 @@ public class TriggerNarrative : MonoBehaviour
     {
         talk.gameObject.SetActive(true);
 
-        FMODUnity.RuntimeManager.PlayOneShot("event:/" + evento[index], transform.position);
+
+        //FMODUnity.RuntimeManager.PlayOneShot("event:/" + evento[index], transform.position);
+        instanciaEvento = FMODUnity.RuntimeManager.CreateInstance("event:/" + evento[index]);
+        instanciaEvento.start();
 
         talk.text = falas[index];
 
@@ -71,7 +76,10 @@ public class TriggerNarrative : MonoBehaviour
         }
         else
         {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/" + evento[index], transform.position);
+            //FMODUnity.RuntimeManager.PlayOneShot("event:/" + evento[index], transform.position);
+            instanciaEvento = FMODUnity.RuntimeManager.CreateInstance("event:/" + evento[index]);
+            instanciaEvento.start();
+
             talk.text = falas[index];
 
             float timeToPass;
@@ -85,7 +93,7 @@ public class TriggerNarrative : MonoBehaviour
     {
         if(talking)
         {
-
+            instanciaEvento.setPaused(true);
         }
     }
 
@@ -93,7 +101,7 @@ public class TriggerNarrative : MonoBehaviour
     {
         if(talking)
         {
-
+            instanciaEvento.setPaused(false);
         }
     }
 
