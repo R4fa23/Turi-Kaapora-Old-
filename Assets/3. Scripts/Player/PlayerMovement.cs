@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     GameObject targetFocus;
     bool trapped;
     bool special;
+    float footTimer;
 
     void Start()
     {
@@ -49,6 +50,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!soPlayer.soPlayerHealth.dead)
         {
+            if (footTimer > 0) footTimer -= Time.deltaTime;
+
             walk = false;
             if(move) walk = true;
 
@@ -96,6 +99,13 @@ public class PlayerMovement : MonoBehaviour
 
                     if (playerX.magnitude > 0.1f)
                     {
+
+                        if (footTimer <= 0)
+                        {
+                            footTimer = 0.5f;
+                            PlayFootstepSounds();
+                        }
+
                         float targetAngle = Mathf.Atan2(playerX.x, playerX.z) * Mathf.Rad2Deg + Camera.main.transform.eulerAngles.y;
                         
                         if(!focusing || dash)
