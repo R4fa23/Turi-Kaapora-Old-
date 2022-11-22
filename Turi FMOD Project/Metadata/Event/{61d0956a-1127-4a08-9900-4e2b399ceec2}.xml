@@ -118,6 +118,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{f77f2147-abea-4c50-afa1-71557f57f22f}">
+		<property name="volume">
+			<value>3</value>
+		</property>
 		<property name="name">
 			<value>Palha</value>
 		</property>
@@ -138,6 +141,9 @@
 		<property name="timelockedOffset">
 			<value>0.050000000000000003</value>
 		</property>
+		<property name="pitch">
+			<value>1</value>
+		</property>
 		<relationship name="modulators">
 			<destination>{3333c31d-9728-4fcb-97f7-76b7978f532a}</destination>
 		</relationship>
@@ -153,7 +159,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{03f6f809-a7ce-4a2f-a6fb-311b874f53a7}">
 		<property name="volume">
-			<value>3</value>
+			<value>1.5</value>
 		</property>
 		<property name="name">
 			<value>Teste</value>
@@ -227,7 +233,7 @@
 			<value>pitch</value>
 		</property>
 		<property name="amount">
-			<value>6.5</value>
+			<value>5.5</value>
 		</property>
 	</object>
 	<object class="FadeCurve" id="{5b0bd102-1137-45b3-b754-89a2934a537a}">

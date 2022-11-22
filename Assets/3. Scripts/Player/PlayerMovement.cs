@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    FMOD.Studio.EventInstance Passos;
+
     float gravity = 2f;
     float turnSmoothTime;
     float sensibility;
@@ -14,7 +16,6 @@ public class PlayerMovement : MonoBehaviour
     float turnSmoothVelocity;
     public GameObject animated;
     Animator animator;
-    
 
     PlayerInput pInput;
     InputAction movement;
@@ -30,19 +31,20 @@ public class PlayerMovement : MonoBehaviour
     GameObject targetFocus;
     bool trapped;
     bool special;
-    
+
     void Start()
     {
         animator = animated.GetComponent<Animator>();
         turnSmoothTime = soPlayer.soPlayerMove.rotationVel;
         dir = new Vector2(0, 1);
-        characterCtrl = GetComponent<CharacterController>(); 
+        characterCtrl = GetComponent<CharacterController>();
         pInput = GetComponent<PlayerInput>();
         movement = pInput.actions["Movement"];
         sensibility = soPlayer.soPlayerMove.vel;
+
+        Passos = FMODUnity.RuntimeManager.CreateInstance("event:/Caipora/Passos");
     }
 
-    
     void Update()
     {
         if(!soPlayer.soPlayerHealth.dead)
@@ -78,7 +80,6 @@ public class PlayerMovement : MonoBehaviour
         
                 if(initialDash)
                 {
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Dash", transform.position);
                     initialDash = false;
                     if(movement.ReadValue<Vector2>().magnitude > 0.1f) dir = movement.ReadValue<Vector2>();
                     else dir = new Vector2(transform.forward.x, transform.forward.z);
@@ -110,7 +111,6 @@ public class PlayerMovement : MonoBehaviour
                         Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                         RecognizeDirectionAnimation(dir);
                         characterCtrl.Move(moveDir.normalized * sensibility *Time.deltaTime * superVel);
-
                     }
                     
             }
@@ -245,6 +245,7 @@ public class PlayerMovement : MonoBehaviour
             initialDash = true;
             sensibility = soPlayer.soPlayerMove.dashDist/soPlayer.soPlayerMove.dashDuration;
             StartCoroutine(DashDuration(soPlayer.soPlayerMove.dashDuration));
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Dash", transform.position);
         }
     }
 
@@ -325,6 +326,11 @@ public class PlayerMovement : MonoBehaviour
         if(!trapped && !special)soPlayer.state = SOPlayer.State.STOPPED;
         //if(walk)soPlayer.state = SOPlayer.State.WALKING;
         //if(!walk)soPlayer.state = SOPlayer.State.STOPPED;
+    }
+
+    public void PlayFootstepSounds()
+    {
+        Passos.start();
     }
     
 
