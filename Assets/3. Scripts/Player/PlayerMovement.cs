@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
 
                         if (footTimer <= 0)
                         {
-                            footTimer = 0.5f;
+                            footTimer = 0.35f;
                             PlayFootstepSounds();
                         }
 
