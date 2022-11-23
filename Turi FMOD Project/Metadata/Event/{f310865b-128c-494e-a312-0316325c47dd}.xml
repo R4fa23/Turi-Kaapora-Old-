@@ -71,6 +71,9 @@
 		</relationship>
 	</object>
 	<object class="GroupTrack" id="{a34a62c7-07bb-4d99-9c1b-76d5e6d91e05}">
+		<relationship name="modules">
+			<destination>{d35896db-818c-411a-98ca-c4e6a43e3877}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{3a389b2d-d40b-42dd-b0e7-2845b2f41596}</destination>
 		</relationship>
@@ -105,6 +108,7 @@
 			<destination>{4372397b-12d7-4876-a485-f5316ff4778b}</destination>
 			<destination>{6e3834a4-10e4-4e02-8560-70355c3de37e}</destination>
 			<destination>{26725a2a-ca6c-403f-a9a2-a723b4e0e194}</destination>
+			<destination>{d35896db-818c-411a-98ca-c4e6a43e3877}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{7b39d818-62c8-457c-bbac-4410d72e6ab5}">
@@ -126,13 +130,16 @@
 	<object class="MixerBusPanner" id="{549031cf-1267-4be5-b1e8-a9734ea66b08}" />
 	<object class="SingleSound" id="{6e3834a4-10e4-4e02-8560-70355c3de37e}">
 		<property name="start">
-			<value>0.40000000000000002</value>
+			<value>0.22</value>
 		</property>
 		<property name="length">
-			<value>0.71204081632653049</value>
+			<value>0.62233619104491589</value>
 		</property>
 		<property name="timelockedOffset">
 			<value>0.15000000000000013</value>
+		</property>
+		<property name="volume">
+			<value>5</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{56d793c2-e6f9-46ef-b55d-e82aae0f565a}</destination>
@@ -155,10 +162,24 @@
 			<destination>{7b39d818-62c8-457c-bbac-4410d72e6ab5}</destination>
 		</relationship>
 	</object>
-	<object class="EventMixerGroup" id="{3a389b2d-d40b-42dd-b0e7-2845b2f41596}">
-		<property name="volume">
-			<value>-6</value>
+	<object class="SingleSound" id="{d35896db-818c-411a-98ca-c4e6a43e3877}">
+		<property name="start">
+			<value>0.28000000000000003</value>
 		</property>
+		<property name="length">
+			<value>0.42000000000000004</value>
+		</property>
+		<property name="timelockedOffset">
+			<value>0.10000000000000003</value>
+		</property>
+		<property name="pitch">
+			<value>8</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{8f441ca5-f604-4f95-be7d-215f66c669df}</destination>
+		</relationship>
+	</object>
+	<object class="EventMixerGroup" id="{3a389b2d-d40b-42dd-b0e7-2845b2f41596}">
 		<property name="name">
 			<value>Palha</value>
 		</property>
@@ -202,7 +223,7 @@
 	</object>
 	<object class="SingleSound" id="{26725a2a-ca6c-403f-a9a2-a723b4e0e194}">
 		<property name="start">
-			<value>0.17999999999999999</value>
+			<value>0.069999999999999868</value>
 		</property>
 		<property name="length">
 			<value>0.5814634558642735</value>
@@ -233,7 +254,7 @@
 	</object>
 	<object class="SingleSound" id="{6cf2f3fa-f1e2-48e3-b118-ac72243a2dbf}">
 		<property name="start">
-			<value>0.38</value>
+			<value>0.22</value>
 		</property>
 		<property name="length">
 			<value>0.27183673469387748</value>
@@ -247,7 +268,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{a3ca554d-e6d5-4011-94d3-c43b22495fcd}">
 		<property name="volume">
-			<value>-2.5</value>
+			<value>-3</value>
 		</property>
 		<property name="name">
 			<value>Swoosh</value>

@@ -70,6 +70,9 @@
 		</relationship>
 	</object>
 	<object class="GroupTrack" id="{ab0f456c-6bf4-4123-9abb-33e941a526b6}">
+		<relationship name="modules">
+			<destination>{a8100a7e-d582-4952-ac86-ed12eb3f8dc9}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{1df8f821-904e-4e6f-84d4-34d690ccc10c}</destination>
 		</relationship>
@@ -95,6 +98,7 @@
 			<destination>{054367e1-e870-47a9-9972-9cc52756314d}</destination>
 			<destination>{6d2bcfe0-cba4-46d3-96f4-5248080e8ff0}</destination>
 			<destination>{585967df-59e1-4788-9f96-c242482319d7}</destination>
+			<destination>{a8100a7e-d582-4952-ac86-ed12eb3f8dc9}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{19bbe822-c89d-4234-bb1d-09e0e4fef319}">
@@ -116,10 +120,10 @@
 	<object class="MixerBusPanner" id="{95a127f4-8e57-4b96-a7f6-17884e9778b4}" />
 	<object class="SingleSound" id="{585967df-59e1-4788-9f96-c242482319d7}">
 		<property name="start">
-			<value>0.22</value>
+			<value>0.16</value>
 		</property>
 		<property name="length">
-			<value>0.7220408163265305</value>
+			<value>0.61460061880801309</value>
 		</property>
 		<property name="timelockedOffset">
 			<value>0.14000000000000001</value>
@@ -145,10 +149,24 @@
 			<destination>{19bbe822-c89d-4234-bb1d-09e0e4fef319}</destination>
 		</relationship>
 	</object>
-	<object class="EventMixerGroup" id="{1df8f821-904e-4e6f-84d4-34d690ccc10c}">
-		<property name="volume">
-			<value>-6</value>
+	<object class="SingleSound" id="{a8100a7e-d582-4952-ac86-ed12eb3f8dc9}">
+		<property name="start">
+			<value>0.23999999999999999</value>
 		</property>
+		<property name="length">
+			<value>0.64367346938775516</value>
+		</property>
+		<property name="timelockedOffset">
+			<value>0.14000000000000001</value>
+		</property>
+		<property name="pitch">
+			<value>8</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{94c43743-b9ac-4940-8e41-4528dfd60a7e}</destination>
+		</relationship>
+	</object>
+	<object class="EventMixerGroup" id="{1df8f821-904e-4e6f-84d4-34d690ccc10c}">
 		<property name="name">
 			<value>Palha</value>
 		</property>
