@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
 
                         if (footTimer <= 0)
                         {
-                            footTimer = 0.35f;
+                            footTimer = 0.3f;
                             PlayFootstepSounds();
                         }
 
@@ -342,6 +342,4 @@ public class PlayerMovement : MonoBehaviour
     {
         Passos.start();
     }
-    
-
 }
