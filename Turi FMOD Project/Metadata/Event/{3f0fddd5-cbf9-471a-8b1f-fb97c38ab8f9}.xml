@@ -82,6 +82,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{ddad3ece-8e39-411c-a48d-2885ee63c672}">
+		<property name="volume">
+			<value>-10</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{90b03fd8-05ac-4cf3-93c5-6278474b37b5}</destination>
 		</relationship>
@@ -114,9 +117,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{a578d324-c3a9-43e4-b714-4092e31c16cb}">
-		<property name="volume">
-			<value>-10</value>
-		</property>
 		<property name="name">
 			<value>Folha</value>
 		</property>
@@ -132,13 +132,13 @@
 	</object>
 	<object class="SingleSound" id="{32276571-b346-43a7-9e33-a4ca3888ebd0}">
 		<property name="length">
-			<value>0.20000000000000001</value>
+			<value>0.17999999999999999</value>
 		</property>
 		<property name="timelockedOffset">
-			<value>0.075930490092389322</value>
+			<value>0.084339454244926462</value>
 		</property>
 		<property name="pitch">
-			<value>-5</value>
+			<value>-15</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{b8394ee8-2cec-4971-b789-d1ebf6330ae9}</destination>
@@ -148,6 +148,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{818002cb-8675-4c6c-b054-bfe236520cd7}">
+		<property name="volume">
+			<value>-5</value>
+		</property>
 		<property name="name">
 			<value>Trote</value>
 		</property>
@@ -203,9 +206,6 @@
 	<object class="MixerBusFader" id="{20d4496e-acfb-4e93-9247-53140ff6a919}" />
 	<object class="MixerBusFader" id="{66c46237-7886-458e-98d2-1c3f57cc276f}" />
 	<object class="ThreeEQEffect" id="{fc8fd911-0ba3-4a08-8075-e458f1c4a2cb}">
-		<property name="lowGain">
-			<value>-11.5</value>
-		</property>
 		<property name="highGain">
 			<value>-9.5</value>
 		</property>
