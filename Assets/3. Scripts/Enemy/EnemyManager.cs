@@ -21,6 +21,7 @@ public class EnemyManager : MonoBehaviour
     [HideInInspector]
     public float animAttackEspTime;
     public GameObject bonfire;
+    public GameObject potion;
 
     void Awake()
     {
@@ -132,6 +133,22 @@ public class EnemyManager : MonoBehaviour
 
     private void OnDie() 
     {
+        if(soPlayer.soPlayerHealth.life / soPlayer.soPlayerHealth.maxLife < 0.25f)
+        {
+            int i = Random.Range(1, 101);
+            if (i <= soPlayer.soPlayerHealth.potionLowLife) Instantiate(potion, transform.position, transform.rotation);
+        }
+        else if (soPlayer.soPlayerHealth.life / soPlayer.soPlayerHealth.maxLife < 0.5f)
+        {
+            int i = Random.Range(1, 101);
+            if (i <= soPlayer.soPlayerHealth.potionMidLife) Instantiate(potion, transform.position, transform.rotation);
+        }
+        else if (soPlayer.soPlayerHealth.life / soPlayer.soPlayerHealth.maxLife < 0.75f)
+        {
+            int i = Random.Range(1, 101);
+            if (i <= soPlayer.soPlayerHealth.potionHighLife) Instantiate(potion, transform.position, transform.rotation);
+        }
+
         //Inimigo morre
         soPlayer.soPlayerAttack.EnemyDie(this.gameObject);
         gameObject.SetActive(false);
