@@ -132,6 +132,7 @@ public class EnemyManager : MonoBehaviour
 
     private void OnDie() 
     {
+        //Inimigo morre
         soPlayer.soPlayerAttack.EnemyDie(this.gameObject);
         gameObject.SetActive(false);
     }
