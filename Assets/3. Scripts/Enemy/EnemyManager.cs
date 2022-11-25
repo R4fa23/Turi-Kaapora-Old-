@@ -132,7 +132,7 @@ public class EnemyManager : MonoBehaviour
 
     private void OnDie() 
     {
-        //Inimigo morre
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Vozes/Inimigo_Morte", transform.position);
         soPlayer.soPlayerAttack.EnemyDie(this.gameObject);
         gameObject.SetActive(false);
     }
