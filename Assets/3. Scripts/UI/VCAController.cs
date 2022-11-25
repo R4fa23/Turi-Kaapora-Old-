@@ -8,7 +8,7 @@ public class VCAController : MonoBehaviour
     public string VCAName;
     private Slider slider;
 
-    void Start()
+    private void Awake()
     {
         if (PlayerPrefs.GetInt("Inicio") == 0)
         {

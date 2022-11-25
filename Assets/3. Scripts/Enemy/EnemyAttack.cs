@@ -97,6 +97,8 @@ public class EnemyAttack : MonoBehaviour
     }
     public void StartAttack()
     {
+        //Ataque começa
+
         rotate = false;
         soEnemy.AttackStart();
         

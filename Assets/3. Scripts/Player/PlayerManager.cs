@@ -479,22 +479,17 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    //-------------------------------------------TRIGGER ANIMAÇÃO--------------------------------------
-
-    public void Idle()
-    {
-        animator.SetTrigger("Idle");
-    }
-
     //-------------------------------------------CUTSCENE---------------------------------------------
 
     public void InCutscene()
     {
+        animator.SetBool("Idle", true);
         soPlayer.isCutscene = true;
     }
 
     public void OutCutscene()
     {
+        animator.SetBool("Idle", false);
         soPlayer.isCutscene = false;
     }
 

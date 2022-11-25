@@ -91,7 +91,7 @@ public class TargetFrame : MonoBehaviour
 
     public TMP_Dropdown fram, reso, qual;
     public Toggle full, vsy;
-    void Awake()
+    private void Start()
     {
         if(PlayerPrefs.GetInt("Inicio") == 0)
         {
