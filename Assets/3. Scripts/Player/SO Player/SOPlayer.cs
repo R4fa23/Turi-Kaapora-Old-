@@ -28,6 +28,11 @@ public class SOPlayer : ScriptableObject
     public UnityEvent PauseEvent;
     [System.NonSerialized]
     public UnityEvent UnpauseEvent;
+    [System.NonSerialized]
+    public UnityEvent StartCutsceneEvent;
+    [System.NonSerialized]
+    public UnityEvent EndCutsceneEvent;
+
 
     private void OnEnable() {
         if(LevelUpEvent == null)
@@ -38,6 +43,12 @@ public class SOPlayer : ScriptableObject
 
         if (UnpauseEvent == null)
             UnpauseEvent = new UnityEvent();
+
+        if (StartCutsceneEvent == null)
+            StartCutsceneEvent = new UnityEvent();
+
+        if (EndCutsceneEvent == null)
+            EndCutsceneEvent = new UnityEvent();
     }
 
     public void LevelUp()
@@ -68,6 +79,17 @@ public class SOPlayer : ScriptableObject
     public void Unpause()
     {
         UnpauseEvent.Invoke();
+    }
+
+    public void StartCutscene()
+    {
+        isCutscene = true;
+        StartCutsceneEvent.Invoke();
+    }
+    public void EndCutscene()
+    {
+        isCutscene = false;
+        EndCutsceneEvent.Invoke();
     }
 
 }
