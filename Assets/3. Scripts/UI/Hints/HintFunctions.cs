@@ -20,12 +20,12 @@ public class HintFunctions : MonoBehaviour
 
     public void StartHint()
     {
-        soPlayer.isCutscene = true;
+        soPlayer.StartCutscene();
     }
 
     public void EndHint()
     {
-        soPlayer.isCutscene = false;
+        soPlayer.EndCutscene();
         gameObject.SetActive(false);
     }
 }

@@ -29,9 +29,14 @@ public class PlayerManager : MonoBehaviour
     public float animAttack3Time;
     float currentStamina;
     float lastStamina;
+    PlayerInput pInput;
+    InputAction moving;
 
     void Awake()
     {
+        pInput = GetComponent<PlayerInput>();
+        moving = pInput.actions["Movement"];
+
         animator = animated.GetComponent<Animator>();
 
         playerMap = new PlayerMap();
@@ -481,16 +486,26 @@ public class PlayerManager : MonoBehaviour
 
     //-------------------------------------------CUTSCENE---------------------------------------------
 
+    public void StartCutscene()
+    {
+        soPlayer.StartCutscene();
+    }
+    public void EndCutscene()
+    {
+        soPlayer.EndCutscene();
+    }
+
     public void InCutscene()
     {
-        animator.SetBool("Idle", true);
-        soPlayer.isCutscene = true;
+        animator.SetBool("Move", false);
+        animator.SetTrigger("Idle");
+        
+
     }
 
     public void OutCutscene()
     {
-        animator.SetBool("Idle", false);
-        soPlayer.isCutscene = false;
+        if (moving.ReadValue<Vector2>().magnitude <= 0.1f) movement = false;
     }
 
     //-------------------------------------------LISTENER---------------------------------------------
@@ -502,6 +517,8 @@ public class PlayerManager : MonoBehaviour
         soSave.RestartEvent.AddListener(Restart);
         soPlayer.LevelUpEvent.AddListener(SetConfiguration);
         soPlayer.soPlayerHealth.DieEvent.AddListener(OnDie);
+        soPlayer.StartCutsceneEvent.AddListener(InCutscene);
+        soPlayer.EndCutsceneEvent.AddListener(OutCutscene);
     }
     public void OnDisable()
     {
@@ -510,5 +527,7 @@ public class PlayerManager : MonoBehaviour
         soSave.RestartEvent.RemoveListener(Restart);
         soPlayer.LevelUpEvent.RemoveListener(SetConfiguration);
         soPlayer.soPlayerHealth.DieEvent.RemoveListener(OnDie);
+        soPlayer.StartCutsceneEvent.RemoveListener(InCutscene);
+        soPlayer.EndCutsceneEvent.RemoveListener(OutCutscene);
     }
 }

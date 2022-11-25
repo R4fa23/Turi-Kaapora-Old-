@@ -16,6 +16,7 @@ public class PlayerAttack : MonoBehaviour
     {
         soPlayer.soPlayerAttack.comboIndex = 0;
         boxCollider = GetComponent<BoxCollider>();
+        boxCollider.enabled = false;
         meshRenderer = GetComponent<MeshRenderer>();
     }
     public void AttackStart()
