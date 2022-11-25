@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.81257826, g: 0.35948262, b: 0.23382212, a: 1}
+  m_IndirectSpecularColor: {r: 0.81258476, g: 0.35939303, b: 0.23378101, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5129,7 +5129,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 715713464}
         m_TargetAssemblyTypeName: TargetFrame, Assembly-CSharp
         m_MethodName: DropRes
         m_Mode: 0
@@ -7092,7 +7092,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 715713464}
         m_TargetAssemblyTypeName: TargetFrame, Assembly-CSharp
         m_MethodName: RevertChanges
         m_Mode: 1
@@ -17393,6 +17393,7 @@ GameObject:
   - component: {fileID: 715713463}
   - component: {fileID: 715713462}
   - component: {fileID: 715713461}
+  - component: {fileID: 715713464}
   m_Layer: 5
   m_Name: Configs
   m_TagString: Untagged
@@ -17496,6 +17497,25 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &715713464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715713459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f76ae3f6857984040a85dba540474849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soConfig: {fileID: 11400000, guid: 8abdcbf2d06743f49b2de179543eedab, type: 2}
+  changed: 0
+  fram: {fileID: 1755620069}
+  reso: {fileID: 313761373}
+  qual: {fileID: 838368633}
+  full: {fileID: 1875806809}
+  vsy: {fileID: 1900078620}
 --- !u!1 &724944924
 GameObject:
   m_ObjectHideFlags: 0
@@ -23682,7 +23702,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 715713464}
         m_TargetAssemblyTypeName: TargetFrame, Assembly-CSharp
         m_MethodName: DropQual
         m_Mode: 0
@@ -24799,7 +24819,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 715713464}
         m_TargetAssemblyTypeName: TargetFrame, Assembly-CSharp
         m_MethodName: SetChanges
         m_Mode: 1
@@ -28627,11 +28647,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 1fc4d68a35d97ba4a9855566ea560150, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 0
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -30534,11 +30554,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 1fc4d68a35d97ba4a9855566ea560150, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 0
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -30776,7 +30796,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1378125794}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0000000093086}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30785,8 +30805,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
+  m_AnchoredPosition: {x: 0.0000076293945, y: 0.32}
+  m_SizeDelta: {x: 20, y: -0.64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1378125796
 MonoBehaviour:
@@ -32577,11 +32597,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 1fc4d68a35d97ba4a9855566ea560150, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 0
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -36674,7 +36694,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 715713464}
         m_TargetAssemblyTypeName: TargetFrame, Assembly-CSharp
         m_MethodName: DropRate
         m_Mode: 0
@@ -36784,11 +36804,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 1fc4d68a35d97ba4a9855566ea560150, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 0
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -38769,7 +38789,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 715713464}
         m_TargetAssemblyTypeName: TargetFrame, Assembly-CSharp
         m_MethodName: TogFullscreen
         m_Mode: 0
@@ -39026,7 +39046,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1895278333}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.000000032596}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39035,8 +39055,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 20, y: 0}
+  m_AnchoredPosition: {x: -0.0000076293945, y: 0.0000038146973}
+  m_SizeDelta: {x: 20, y: -0.0000076294}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1895278335
 MonoBehaviour:
@@ -39162,7 +39182,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 715713464}
         m_TargetAssemblyTypeName: TargetFrame, Assembly-CSharp
         m_MethodName: TogVsync
         m_Mode: 0
