@@ -59,12 +59,21 @@ public class PlayerSpecial : MonoBehaviour
         }
     }
 
+    void SetSize()
+    {
+        if (soPlayer.level == 0) sphereCollider.radius = 6;
+        if (soPlayer.level == 1) sphereCollider.radius = 8;
+        if (soPlayer.level == 2) sphereCollider.radius = 10;
+    }
+
     void OnEnable()
     {
         soPlayer.soPlayerAttack.SpecialStartEvent.AddListener(SpecialStart);
+        soPlayer.LevelUpEvent.AddListener(SetSize);
     }
     void OnDisable()
     {
         soPlayer.soPlayerAttack.SpecialStartEvent.RemoveListener(SpecialStart);
+        soPlayer.LevelUpEvent.RemoveListener(SetSize);
     }
 }
