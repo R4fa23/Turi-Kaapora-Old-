@@ -82,6 +82,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{ddad3ece-8e39-411c-a48d-2885ee63c672}">
+		<property name="volume">
+			<value>-10</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{90b03fd8-05ac-4cf3-93c5-6278474b37b5}</destination>
 		</relationship>
@@ -114,9 +117,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{a578d324-c3a9-43e4-b714-4092e31c16cb}">
-		<property name="volume">
-			<value>-10</value>
-		</property>
 		<property name="name">
 			<value>Folha</value>
 		</property>
@@ -132,13 +132,13 @@
 	</object>
 	<object class="SingleSound" id="{32276571-b346-43a7-9e33-a4ca3888ebd0}">
 		<property name="length">
-			<value>0.20000000000000001</value>
+			<value>0.17999999999999999</value>
 		</property>
 		<property name="timelockedOffset">
-			<value>0.075930490092389322</value>
+			<value>0.084339454244926462</value>
 		</property>
 		<property name="pitch">
-			<value>-5</value>
+			<value>-15</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{b8394ee8-2cec-4971-b789-d1ebf6330ae9}</destination>
@@ -149,7 +149,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{818002cb-8675-4c6c-b054-bfe236520cd7}">
 		<property name="volume">
-			<value>-2</value>
+			<value>-5</value>
 		</property>
 		<property name="name">
 			<value>Trote</value>
