@@ -149,7 +149,7 @@ public class EnemyManager : MonoBehaviour
             if (i <= soPlayer.soPlayerHealth.potionHighLife) Instantiate(potion, transform.position, transform.rotation);
         }
 
-        //Inimigo morre
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Vozes/Inimigo_Morte", transform.position);
         soPlayer.soPlayerAttack.EnemyDie(this.gameObject);
         gameObject.SetActive(false);
     }
