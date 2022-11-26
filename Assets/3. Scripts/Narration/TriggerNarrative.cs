@@ -43,6 +43,7 @@ public class TriggerNarrative : MonoBehaviour
 
     public void StartTalks()
     {
+        Debug.Log("start talk");
         talk.gameObject.SetActive(true);
 
 
