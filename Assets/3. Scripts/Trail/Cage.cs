@@ -52,14 +52,18 @@ public class Cage : MonoBehaviour
 
     public void LoseLife()
     {
-        cageLife--;
-        animator.SetTrigger("damage");
-        if (cageLife <= 0) Break();
+        if (cageLife > 0)
+        {
+            cageLife--;
+            Debug.Log(cageLife);
+            animator.SetTrigger("damage");
+            if (cageLife <= 0) Break();
+        }
     }
 
     void Break()
     {
-        soPlayer.soPlayerAttack.EnemyDie(this.gameObject);
+        soPlayer.soPlayerAttack.EnemyDie(gameObject);
         soTrail.BreakCage();
         animator.SetTrigger("open");
     }
