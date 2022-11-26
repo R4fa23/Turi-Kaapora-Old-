@@ -54,7 +54,7 @@
 			<destination>{170d0ac0-4c92-4740-87bc-35a87abcf28e}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{a95e2000-6b02-4e08-b763-e842fb053960}</destination>
+			<destination>{626a8cda-d91f-4bf6-a569-16acc733df73}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{6a353b97-bbed-40c7-96bf-94f59dd48ab7}" />
@@ -154,9 +154,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{6aea1979-053f-4490-a0d0-64992d131393}">
-		<property name="volume">
-			<value>5</value>
-		</property>
 		<property name="name">
 			<value>Voz</value>
 		</property>
@@ -237,8 +234,6 @@
 	<object class="MixerBusEffectChain" id="{d820d19e-6e18-46f2-8d37-9ba9d9eadc90}">
 		<relationship name="effects">
 			<destination>{47aa2db3-8905-4e15-aadd-3c5fdf14859e}</destination>
-			<destination>{a651ea35-b803-49f9-a3d8-a318248b58ea}</destination>
-			<destination>{9535fe9a-6c99-44af-96e0-d6a597335743}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{cbb0c47e-6b61-449f-b131-904703b0cc15}" />
@@ -326,39 +321,5 @@
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{47aa2db3-8905-4e15-aadd-3c5fdf14859e}" />
-	<object class="ThreeEQEffect" id="{a651ea35-b803-49f9-a3d8-a318248b58ea}">
-		<property name="midGain">
-			<value>10</value>
-		</property>
-		<property name="highGain">
-			<value>10</value>
-		</property>
-		<property name="lowCrossover">
-			<value>10</value>
-		</property>
-	</object>
-	<object class="SFXReverbEffect" id="{9535fe9a-6c99-44af-96e0-d6a597335743}">
-		<property name="decayTime">
-			<value>2500</value>
-		</property>
-		<property name="HFReference">
-			<value>3000</value>
-		</property>
-		<property name="diffusion">
-			<value>70</value>
-		</property>
-		<property name="lowShelfFrequency">
-			<value>20</value>
-		</property>
-		<property name="highCut">
-			<value>2000</value>
-		</property>
-		<property name="wetLevel">
-			<value>-4</value>
-		</property>
-		<property name="dryLevel">
-			<value>4</value>
-		</property>
-	</object>
 	<object class="MixerBusFader" id="{eeb8d5c8-51a3-4971-b23e-88a73c1568c9}" />
 </objects>

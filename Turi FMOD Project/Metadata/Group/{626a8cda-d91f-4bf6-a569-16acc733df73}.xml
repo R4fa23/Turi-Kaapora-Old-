@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="MixerGroup" id="{626a8cda-d91f-4bf6-a569-16acc733df73}">
+		<property name="volume">
+			<value>-5</value>
+		</property>
 		<property name="name">
 			<value>Dublagem</value>
 		</property>
@@ -21,8 +24,32 @@
 	<object class="MixerBusEffectChain" id="{2063c95c-a1d9-4baa-a0f2-358591202fff}">
 		<relationship name="effects">
 			<destination>{2d7eca9f-a97a-44d9-978b-542740b866e2}</destination>
+			<destination>{8b26af67-767f-4c18-969b-4179eb1b3fbb}</destination>
+			<destination>{f1484c7f-b4a2-4d08-ac1b-eec24b5dabf8}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{8732b65c-3d72-45e7-8b42-646266da2fd4}" />
 	<object class="MixerBusFader" id="{2d7eca9f-a97a-44d9-978b-542740b866e2}" />
+	<object class="ThreeEQEffect" id="{8b26af67-767f-4c18-969b-4179eb1b3fbb}">
+		<property name="midGain">
+			<value>10</value>
+		</property>
+		<property name="highGain">
+			<value>10</value>
+		</property>
+		<property name="lowCrossover">
+			<value>10</value>
+		</property>
+	</object>
+	<object class="SFXReverbEffect" id="{f1484c7f-b4a2-4d08-ac1b-eec24b5dabf8}">
+		<property name="diffusion">
+			<value>70</value>
+		</property>
+		<property name="lowShelfFrequency">
+			<value>20</value>
+		</property>
+		<property name="highCut">
+			<value>500</value>
+		</property>
+	</object>
 </objects>

@@ -55,7 +55,7 @@
 			<destination>{dcb862c3-6152-431f-8911-a5122bfe1d9f}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{a95e2000-6b02-4e08-b763-e842fb053960}</destination>
+			<destination>{f3e15405-765f-4802-b44d-dbeced40617e}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{e1fb4cc6-a676-4a21-99ff-d008109bdea1}" />
@@ -92,6 +92,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{f6ae1ee9-6c95-442c-a263-b6b460e83d21}">
+		<property name="volume">
+			<value>-14.5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{a93edb25-7db9-4bc0-829d-14fc425e6df1}</destination>
 		</relationship>
@@ -171,7 +174,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{2d0ece2a-18f4-4ba3-94fb-54df7e1d7baa}">
 		<property name="volume">
-			<value>-19</value>
+			<value>-10</value>
 		</property>
 		<property name="name">
 			<value>Lava</value>

@@ -5,7 +5,7 @@
 			<value>Inimigo_Morte</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{f564c1fb-8482-429c-b06d-e8f102bd2079}</destination>
@@ -53,7 +53,7 @@
 			<destination>{4efcc4f5-cddf-4090-b889-26b236914ac0}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{a95e2000-6b02-4e08-b763-e842fb053960}</destination>
+			<destination>{f3e15405-765f-4802-b44d-dbeced40617e}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{5e88883e-55df-4fb9-9aa9-1dc63e6c3dc6}" />
@@ -151,6 +151,7 @@
 			<destination>{b242fdb9-ecb3-4f23-85c1-efe96bcbffe7}</destination>
 			<destination>{201c2406-3cdb-4f69-bd62-df32fcce4349}</destination>
 			<destination>{8160e4ad-479b-4fcf-abfc-40da667a43c0}</destination>
+			<destination>{5a1d9bb2-6150-4b10-9c70-907f30e94ea2}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{8c6f64a3-c057-4835-8a01-e2047db26f2f}" />
@@ -176,6 +177,14 @@
 		</property>
 		<property name="overlap">
 			<value>6.80000019</value>
+		</property>
+	</object>
+	<object class="SpatialiserEffect" id="{5a1d9bb2-6150-4b10-9c70-907f30e94ea2}">
+		<property name="maximumDistance">
+			<value>40</value>
+		</property>
+		<property name="overrideRange">
+			<value>true</value>
 		</property>
 	</object>
 </objects>
