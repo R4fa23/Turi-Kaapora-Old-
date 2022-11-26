@@ -14,7 +14,7 @@ public class Cage : MonoBehaviour
     [SerializeField] GameObject[] animalsArray;
     public GameObject small;
     public GameObject big;
-    public enum animal {tucano, macaco, onca, jacare};
+    public enum animal {Tucano, macaco, onca, jacaleh};
     public animal animals;
 
     [SerializeField] bool update;
@@ -32,12 +32,12 @@ public class Cage : MonoBehaviour
             {
                 if (animalsArray[i].name == animals.ToString())
                 {
-                    if (animalsArray[i].name == "tucano" || animalsArray[i].name == "macaco")
+                    if (animalsArray[i].name == "Tucano" || animalsArray[i].name == "macaco")
                     {
                         small.SetActive(true);
                         big.SetActive(false);
                     }
-                    else if (animalsArray[i].name == "onca" || animalsArray[i].name == "jacare")
+                    else if (animalsArray[i].name == "onca" || animalsArray[i].name == "jacaleh")
                     {
                         small.SetActive(false);
                         big.SetActive(true);

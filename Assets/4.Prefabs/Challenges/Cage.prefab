@@ -55,9 +55,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soTrail: {fileID: 0}
   soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
-  cages:
-  - {fileID: 9033610014611137583}
-  - {fileID: 6088860157814316338}
   animalsArray:
   - {fileID: 90180795009666534}
   - {fileID: 3865275816702665128}
@@ -65,7 +62,7 @@ MonoBehaviour:
   - {fileID: 7139203689009418218}
   small: {fileID: 9033610014611137583}
   big: {fileID: 6088860157814316338}
-  animals: 0
+  animals: 3
   update: 0
 --- !u!65 &1589033729789459294
 BoxCollider:
@@ -131,7 +128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6671932321032623635
 Transform:
   m_ObjectHideFlags: 0
@@ -196,7 +193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3809016626274087524
 Transform:
   m_ObjectHideFlags: 0
@@ -284,7 +281,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 40c0687f746f31840aea3895e8faa9c2,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40c0687f746f31840aea3895e8faa9c2, type: 3}
@@ -470,7 +467,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bed472b9617eadf489d4549ca897e2b8,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bed472b9617eadf489d4549ca897e2b8, type: 3}
