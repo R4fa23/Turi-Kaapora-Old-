@@ -5,7 +5,7 @@
 			<value>Desvanescer</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{9c2cafc1-a10d-4257-bd24-83c05d2011dc}</destination>
@@ -90,7 +90,13 @@
 	<object class="MixerBusPanner" id="{78bf8062-a829-4bc3-9cb0-9fb4ab5d098a}" />
 	<object class="SingleSound" id="{7e490e28-6eec-49b6-ab5b-e16ab349609b}">
 		<property name="length">
-			<value>4.5119999999999996</value>
+			<value>3.7000000000000002</value>
+		</property>
+		<property name="timelockedOffset">
+			<value>0.1721102860267259</value>
+		</property>
+		<property name="pitch">
+			<value>3.4000001</value>
 		</property>
 		<relationship name="fadeOutCurve">
 			<destination>{86d1f1ac-7eff-42b2-9fdb-f7271d0f7de9}</destination>
@@ -132,13 +138,14 @@
 		<relationship name="effects">
 			<destination>{93033a8b-e567-41da-9cc7-6a65a24d6443}</destination>
 			<destination>{19a7eb78-cf16-458b-819f-9b327060b152}</destination>
+			<destination>{5729d737-398f-4b7f-aff8-6a59a63988d4}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{069d5fec-436e-47ef-b9ea-39a0f831b18f}" />
 	<object class="MixerBusFader" id="{46842f67-4837-451a-857b-3e849422111f}" />
 	<object class="AutomationPoint" id="{24900197-822f-4c83-bd37-a2e3fb23412a}">
 		<property name="position">
-			<value>0.80000000000000004</value>
+			<value>0.29999999999999982</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -149,7 +156,7 @@
 	</object>
 	<object class="AutomationPoint" id="{2b7b824a-98d2-4b8b-a825-c7c89475346b}">
 		<property name="position">
-			<value>4.5119999999999996</value>
+			<value>3.7000000000000002</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -162,6 +169,14 @@
 		</property>
 		<property name="highGain">
 			<value>-4</value>
+		</property>
+	</object>
+	<object class="SpatialiserEffect" id="{5729d737-398f-4b7f-aff8-6a59a63988d4}">
+		<property name="maximumDistance">
+			<value>80</value>
+		</property>
+		<property name="overrideRange">
+			<value>true</value>
 		</property>
 	</object>
 </objects>
