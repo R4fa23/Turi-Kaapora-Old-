@@ -14,14 +14,42 @@ public class Cage : MonoBehaviour
     [SerializeField] GameObject[] animalsArray;
     public GameObject small;
     public GameObject big;
-    public enum animal {tucano, macaco, onca, jacare};
+    public enum animal {Tucano, Macaco, Onca, Jacare};
     public animal animals;
 
+    [SerializeField] BoxCollider colliderCage;
+
     [SerializeField] bool update;
+
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+
+        if (update)
+        {
+            for (int i = 0; i < animalsArray.Length; i++)
+            {
+                if (animalsArray[i].name == animals.ToString())
+                {
+                    if (animalsArray[i].name == "Tucano" || animalsArray[i].name == "Macaco")
+                    {
+                        small.SetActive(true);
+                        colliderCage.size = small.transform.localScale;
+                        big.SetActive(false);
+                    }
+                    else
+                    {
+                        small.SetActive(false);
+                        big.SetActive(true);
+                        colliderCage.size = big.transform.localScale;
+                    }
+                    animalsArray[i].SetActive(true);
+                }
+                else animalsArray[i].SetActive(false);
+            }
+            update = false;
+        }
     }
 
     private void OnValidate()
@@ -32,15 +60,17 @@ public class Cage : MonoBehaviour
             {
                 if (animalsArray[i].name == animals.ToString())
                 {
-                    if (animalsArray[i].name == "tucano" || animalsArray[i].name == "macaco")
+                    if (animalsArray[i].name == "Tucano" || animalsArray[i].name == "Macaco")
                     {
                         small.SetActive(true);
+                        colliderCage.size = small.transform.localScale;
                         big.SetActive(false);
                     }
-                    else if (animalsArray[i].name == "onca" || animalsArray[i].name == "jacare")
+                    else
                     {
                         small.SetActive(false);
                         big.SetActive(true);
+                        colliderCage.size = big.transform.localScale;
                     }
                     animalsArray[i].SetActive(true);
                 }
@@ -55,7 +85,7 @@ public class Cage : MonoBehaviour
         if (cageLife > 0)
         {
             cageLife--;
-            Debug.Log(cageLife);
+            //Debug.Log(cageLife);
             animator.SetTrigger("damage");
             if (cageLife <= 0) Break();
         }
@@ -63,8 +93,9 @@ public class Cage : MonoBehaviour
 
     void Break()
     {
+        //Debug.Log("breal");
+        animator.SetTrigger("open");
         soPlayer.soPlayerAttack.EnemyDie(gameObject);
         soTrail.BreakCage();
-        animator.SetTrigger("open");
     }
 }
