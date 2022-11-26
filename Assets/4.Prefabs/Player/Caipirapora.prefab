@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3785216057505984305}
-  - component: {fileID: 1549479636056638678}
+  - component: {fileID: 1669596561}
   m_Layer: 0
   m_Name: Caipirapora
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1549479636056638678
+--- !u!95 &1669596561
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -43,7 +43,7 @@ Animator:
   m_GameObject: {fileID: 2678057427889901646}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e794e09935ae3d1449148d5affc56ce4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 321ed562ffb241c4d823bbd9d1c6f4d5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -120,6 +120,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: a303dbdd3990e8c46b27acecad389194, type: 2}
+    - target: {fileID: -6251889919455771287, guid: 60458836494b3e348ae59a4456e835f3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -5272704123715636090, guid: 60458836494b3e348ae59a4456e835f3,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -130,6 +135,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 79e5c0c5c8e912a4ebd01fdad22d1ca6, type: 2}
+    - target: {fileID: -2083900365212923769, guid: 60458836494b3e348ae59a4456e835f3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.167092
+      objectReference: {fileID: 0}
     - target: {fileID: 351083414322677858, guid: 60458836494b3e348ae59a4456e835f3,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
