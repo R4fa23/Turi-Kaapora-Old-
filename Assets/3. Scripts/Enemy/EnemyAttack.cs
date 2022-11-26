@@ -97,7 +97,7 @@ public class EnemyAttack : MonoBehaviour
     }
     public void StartAttack()
     {
-        //Ataque começa
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Vozes/Inimigo_Ataque", transform.position);
 
         rotate = false;
         soEnemy.AttackStart();
