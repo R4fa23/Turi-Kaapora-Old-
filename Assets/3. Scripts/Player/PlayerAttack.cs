@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
     public SOPlayer soPlayer;
     BoxCollider boxCollider;
     MeshRenderer meshRenderer;
-    public Material attack;
+    //public Material attack;
     bool trapped;
     bool special;
     public PlayerManager playerManager;
@@ -28,7 +28,7 @@ public class PlayerAttack : MonoBehaviour
         soPlayer.soPlayerAttack.comboIndex++;
         if (soPlayer.soPlayerAttack.comboIndex == 1)
         {
-            attack.color = Color.white;
+            //attack.color = Color.white;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Ataque_Leve", transform.position);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Vozes/Ataque_Leve", transform.position);
             attackTime = playerManager.animAttack1Time;
@@ -36,7 +36,7 @@ public class PlayerAttack : MonoBehaviour
         }
         else if (soPlayer.soPlayerAttack.comboIndex == 2)
         {
-            attack.color = Color.yellow;
+            //attack.color = Color.yellow;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Ataque_Leve_2", transform.position);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Vozes/Ataque_Leve_2", transform.position);
             attackTime = playerManager.animAttack2Time;
@@ -44,7 +44,7 @@ public class PlayerAttack : MonoBehaviour
         }
         else
         {
-            attack.color = Color.red;
+            //attack.color = Color.red;
             FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Ataque_Leve_3", transform.position);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Vozes/Ataque_Leve_3", transform.position);
             attackTime = playerManager.animAttack3Time;

@@ -21,7 +21,7 @@ public class TriggerVFX : MonoBehaviour
                 attacks[i].SetFloat("Y Angle", player.eulerAngles.y);
                 attacks[i].Reinit();
                 attacks[i].SendEvent("Attack");
-                Debug.Log(i);
+                //Debug.Log(i);
             }
         }        
     }

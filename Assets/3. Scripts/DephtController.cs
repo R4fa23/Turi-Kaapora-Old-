@@ -27,7 +27,6 @@ public class DephtController : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("aaaa");
         volumeDepth.profile.TryGet(out depth);
     }
 
