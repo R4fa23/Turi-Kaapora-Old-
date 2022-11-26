@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 5684904324774332454}
   - component: {fileID: 5684904324774332455}
   - component: {fileID: 5684904324774332452}
+  - component: {fileID: 3316010663055883826}
   m_Layer: 5
   m_Name: LoadCanvas
   m_TagString: LoadScreen
@@ -130,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   painel: {fileID: 8034809219084234789}
+  canvasGroup: {fileID: 3316010663055883826}
 --- !u!223 &5684904324774332454
 Canvas:
   m_ObjectHideFlags: 0
@@ -191,6 +193,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!225 &3316010663055883826
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5684904324774332453}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5684904325283843168
 GameObject:
   m_ObjectHideFlags: 0
