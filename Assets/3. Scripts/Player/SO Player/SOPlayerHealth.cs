@@ -18,6 +18,10 @@ public class SOPlayerHealth : ScriptableObject
     public bool dead;
     [HideInInspector]
     public bool canDamaged;
+    public int potionHighLife;
+    public int potionMidLife;
+    public int potionLowLife;
+
 
     [System.NonSerialized]
     public UnityEvent HealthChangeEvent;
