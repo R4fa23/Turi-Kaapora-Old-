@@ -100,6 +100,32 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+--- !u!1102 &1247000851750809153
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Cut_Boitata_i
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: c65d8786039f570428c19272c7d5f680, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &2868773885057169688
 AnimatorState:
   serializedVersion: 6
@@ -137,19 +163,22 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 2868773885057169688}
-    m_Position: {x: 490, y: 200, z: 0}
+    m_Position: {x: 390, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3386999274515050228}
-    m_Position: {x: 490, y: 250, z: 0}
+    m_Position: {x: 420, y: 210, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6420265039572438419}
-    m_Position: {x: 490, y: 300, z: 0}
+    m_Position: {x: 460, y: 270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1955415710906673242}
-    m_Position: {x: 490, y: 350, z: 0}
+    m_Position: {x: 490, y: 340, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6101197851101918765}
-    m_Position: {x: 490, y: 150, z: 0}
+    m_Position: {x: 500, y: 400, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1247000851750809153}
+    m_Position: {x: 535, y: 465, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
