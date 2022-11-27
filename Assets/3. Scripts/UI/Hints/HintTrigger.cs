@@ -14,6 +14,7 @@ public class HintTrigger : MonoBehaviour
 
     HintPanel hintPanel;
 
+    [TextArea(15, 20)]
     public string description;
 
     public Sprite illustration;
@@ -30,10 +31,16 @@ public class HintTrigger : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            panel.SetActive(true);
-            text.text = description;
-            image.sprite = illustration;
-            gameObject.SetActive(false);
+            TriggerEvents();
         }
+    }
+
+    public void TriggerEvents()
+    {
+        Debug.Log("Hint");
+        panel.SetActive(true);
+        text.text = description;
+        image.sprite = illustration;
+        gameObject.SetActive(false);
     }
 }
