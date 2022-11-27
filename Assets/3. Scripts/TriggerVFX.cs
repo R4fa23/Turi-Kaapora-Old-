@@ -8,10 +8,11 @@ public class TriggerVFX : MonoBehaviour
 {
     public SOPlayer soPlayer;
     public VisualEffect[] attacks;
+    public VisualEffect[] enemy;
     public VisualEffect special;
     public Transform player;
     //public string eventToTrigger;
-
+      
     public void Attack(int vfxIndex)
     {
         for (int i = 0; i < attacks.Length; i++)
@@ -24,6 +25,15 @@ public class TriggerVFX : MonoBehaviour
                 //Debug.Log(i);
             }
         }        
+    }
+
+    public void Enemy()
+    {
+        foreach (var item in enemy)
+        {
+            item.Reinit();
+            item.SendEvent("Attack");
+        }
     }
 
     public void SparksAttack2(int start)

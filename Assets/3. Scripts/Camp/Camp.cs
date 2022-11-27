@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -352,7 +353,9 @@ public class Camp : MonoBehaviour
             soSave.RestartEvent.AddListener(Restart);
             foreach(GameObject e in firstEnemy)
             {
-                e.GetComponent<EnemyManager>().soEnemy.DieEvent.AddListener(EnemyDied);
+                if(e.CompareTag("hunterBundle")){
+                    e.transform.GetComponentInChildren<EnemyManager>().soEnemy.DieEvent.AddListener(EnemyDied);
+                }
                 if (bonfire != null) e.GetComponent<EnemyManager>().bonfire = bonfire;
             }
             soFort.CompleteChallengesEvent.AddListener(CompleteAnticipated);
@@ -368,7 +371,10 @@ public class Camp : MonoBehaviour
         soSave.RestartEvent.RemoveListener(Restart);
         foreach(GameObject e in firstEnemy)
         {
-                e.GetComponent<EnemyManager>().soEnemy.DieEvent.RemoveListener(EnemyDied);
+            if (e.CompareTag("hunterBundle"))
+            {
+                e.transform.GetComponentInChildren<EnemyManager>().soEnemy.DieEvent.AddListener(EnemyDied);
+            }
         }
         soFort.CompleteChallengesEvent.RemoveListener(CompleteAnticipated);
         soFort.CompleteFortEvent.RemoveListener(CompleteFort);
