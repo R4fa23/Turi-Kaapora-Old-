@@ -73,7 +73,7 @@ public class Cage : MonoBehaviour
             case animal.Jacare:
                 velocity = velocitysWalks[3];
                 wait = waitDissolves[3];
-                soundName = "Macaco";
+                soundName = "Jacare";
                 break;
             default:
                 break;
@@ -117,7 +117,6 @@ public class Cage : MonoBehaviour
         if (move) animalTransform.position += animalTransform.forward * Time.deltaTime * velocity;
         if (dissolve)
         {
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Ambiencia/Desvanescer", transform.position);
 
             value = animalRenderer.material.GetFloat("_Dissolve");
 
@@ -153,7 +152,8 @@ public class Cage : MonoBehaviour
         soTrail.BreakCage();
         StartCoroutine(WaitTransition());
         FMODUnity.RuntimeManager.PlayOneShot("event:/Animais/Gaiola", transform.position);
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Animais/" + eventName, transform.position);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Ambiencia/Desvanescer_Atrasado", transform.position);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Animais/" + soundName, transform.position);
     }
 
     IEnumerator WaitTransition()
