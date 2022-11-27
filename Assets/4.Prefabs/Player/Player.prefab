@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127007692}
   m_LocalRotation: {x: -0.1805546, y: 0.0059322566, z: -0.66219157, w: 0.7272326}
-  m_LocalPosition: {x: -1.4916611, y: 2.311585, z: -0.21199417}
+  m_LocalPosition: {x: -1.4916573, y: 2.3115864, z: -0.21199131}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -823,7 +823,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soPlayer: {fileID: 11400000, guid: fa4931d1fd5183e45bcada98ded69f88, type: 2}
-  attack: {fileID: 2100000, guid: c276ea943a43e094fb16f13f040e37e4, type: 2}
   playerManager: {fileID: 9003156691123881369}
 --- !u!1 &5893666778654865219
 GameObject:
@@ -1023,6 +1022,7 @@ GameObject:
   - component: {fileID: 9003156691123881370}
   - component: {fileID: 1700049009979676286}
   - component: {fileID: 3666656130006865335}
+  - component: {fileID: 4752268476803662050}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1124,7 +1124,7 @@ MonoBehaviour:
   - 2.5
   - 3
   attackDamages:
-  - 1
+  - 1.5
   - 2.25
   - 4
   comboDamages:
@@ -1385,6 +1385,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &4752268476803662050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9003156691123881361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1001 &408186645046568417
 PrefabInstance:
   m_ObjectHideFlags: 0
