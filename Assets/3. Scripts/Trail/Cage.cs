@@ -42,6 +42,8 @@ public class Cage : MonoBehaviour
 
     [SerializeField] SkinnedMeshRenderer animalRenderer;
 
+    private string soundName;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -56,18 +58,22 @@ public class Cage : MonoBehaviour
             case animal.Tucano:
                 velocity = velocitysWalks[0];
                 wait = waitDissolves[0];
+                soundName = "Tucano";
                 break;
             case animal.Macaco:
                 velocity = velocitysWalks[1];
                 wait = waitDissolves[1];
+                soundName = "Macaco";
                 break;
             case animal.Onca:
                 velocity = velocitysWalks[2];
                 wait = waitDissolves[2];
+                soundName = "Onca";
                 break;
             case animal.Jacare:
                 velocity = velocitysWalks[3];
                 wait = waitDissolves[3];
+                soundName = "Macaco";
                 break;
             default:
                 break;
@@ -111,6 +117,8 @@ public class Cage : MonoBehaviour
         if (move) animalTransform.position += animalTransform.forward * Time.deltaTime * velocity;
         if (dissolve)
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Ambiencia/Desvanescer", transform.position);
+
             value = animalRenderer.material.GetFloat("_Dissolve");
 
             float velocity = 0.5f;
@@ -144,6 +152,8 @@ public class Cage : MonoBehaviour
         soPlayer.soPlayerAttack.EnemyDie(gameObject);
         soTrail.BreakCage();
         StartCoroutine(WaitTransition());
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Animais/Gaiola", transform.position);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Animais/" + eventName, transform.position);
     }
 
     IEnumerator WaitTransition()
