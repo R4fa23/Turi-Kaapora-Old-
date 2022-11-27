@@ -17,9 +17,14 @@ public class CutsceneTrigger : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            Triggerer?.Invoke();
-            //gameObject.SetActive(false);
-            collide.enabled = false;
+            TriggerEvents();
         }
+    }
+
+    public void TriggerEvents()
+    {
+        Triggerer?.Invoke();
+        //gameObject.SetActive(false);
+        collide.enabled = false;
     }
 }
