@@ -113,16 +113,16 @@ public class Cage : MonoBehaviour
         {
             value = animalRenderer.material.GetFloat("_Dissolve");
 
-            float velocity = 0.75f;
+            float velocity = 0.5f;
 
             value -= value * velocity * Time.deltaTime;
             animalRenderer.material.SetFloat("_Dissolve", value);
 
-            /*if(value <= -1)
+            if(value <= 0)
             {
                 move = false;
                 dissolve = false;
-            }*/
+            }
         }            
     }
 
