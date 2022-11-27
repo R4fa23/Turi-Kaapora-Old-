@@ -63,15 +63,23 @@ MonoBehaviour:
   - {fileID: 4090638740974214619}
   small: {fileID: 1844298031715892827}
   big: {fileID: 364452659660363197}
-  animals: 2
+  animals: 0
   colliderCage: {fileID: 1589033729789459294}
   update: 0
-  animalAnimator: {fileID: 2282621795755657917}
   sizeBig: {x: 5.3, y: 5, z: 5.3}
-  sizeSmall: {x: 1, y: 1, z: 1}
+  sizeSmall: {x: 2.5, y: 4.5, z: 2.5}
   target: {x: 0, y: 0, z: 0}
-  move: 0
-  velocity: 10
+  velocitysWalks:
+  - 7
+  - 5
+  - 10
+  - 1.5
+  waitDissolves:
+  - 0
+  - 0
+  - 0
+  - 5
+  animalRenderer: {fileID: 0}
 --- !u!65 &1589033729789459294
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -83,7 +91,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.3, y: 5, z: 5.3}
+  m_Size: {x: 2.5, y: 4.5, z: 2.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1589033729789459281
 Rigidbody:
@@ -222,7 +230,7 @@ PrefabInstance:
     - target: {fileID: 1731967438922674380, guid: 8ba691314a4a4264a9d1bbc77fab2747,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ba691314a4a4264a9d1bbc77fab2747, type: 3}
@@ -305,6 +313,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Onca
       objectReference: {fileID: 0}
+    - target: {fileID: 9039202814386898365, guid: 340968916e3c93a478ebde1858d5ad97,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 340968916e3c93a478ebde1858d5ad97, type: 3}
 --- !u!4 &5853373310833290110 stripped
@@ -384,7 +397,7 @@ PrefabInstance:
     - target: {fileID: 6065250512622541000, guid: bbe5f6d6c2242f8449d854434b83b721,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6874685012423148146, guid: bbe5f6d6c2242f8449d854434b83b721,
         type: 3}
@@ -500,7 +513,7 @@ PrefabInstance:
     - target: {fileID: 6065250512622541000, guid: bbe5f6d6c2242f8449d854434b83b721,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6874685012423148146, guid: bbe5f6d6c2242f8449d854434b83b721,
         type: 3}
@@ -611,7 +624,7 @@ PrefabInstance:
     - target: {fileID: 6485425833088175492, guid: 8d05e6fa9182e3749845d3e7a6a961af,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.79
+      value: 0.039999902
       objectReference: {fileID: 0}
     - target: {fileID: 6485425833088175492, guid: 8d05e6fa9182e3749845d3e7a6a961af,
         type: 3}
@@ -621,7 +634,7 @@ PrefabInstance:
     - target: {fileID: 6485425833088175492, guid: 8d05e6fa9182e3749845d3e7a6a961af,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.00000011920929
       objectReference: {fileID: 0}
     - target: {fileID: 6485425833088175492, guid: 8d05e6fa9182e3749845d3e7a6a961af,
         type: 3}
@@ -687,17 +700,17 @@ PrefabInstance:
     - target: {fileID: 7122722968981832191, guid: ef42f36c41657284da8c600b9d8f38de,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7122722968981832191, guid: ef42f36c41657284da8c600b9d8f38de,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.477
+      value: 0.514
       objectReference: {fileID: 0}
     - target: {fileID: 7122722968981832191, guid: ef42f36c41657284da8c600b9d8f38de,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.207
       objectReference: {fileID: 0}
     - target: {fileID: 7122722968981832191, guid: ef42f36c41657284da8c600b9d8f38de,
         type: 3}
