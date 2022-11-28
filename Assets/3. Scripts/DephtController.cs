@@ -51,10 +51,10 @@ public class DephtController : MonoBehaviour
 
         if (lerp)
         {
-            volumeInitial.weight = Mathf.Lerp(volumeInitial.weight, 0, 0.9f * Time.deltaTime);
-            volumeFinal.weight = Mathf.Lerp(volumeFinal.weight, 1, 0.9f * Time.deltaTime);
+            //volumeInitial.weight = Mathf.Lerp(volumeInitial.weight, 0, 0.9f * Time.deltaTime);
+            volumeFinal.weight = Mathf.MoveTowards(volumeFinal.weight, 1, 0.2f * Time.deltaTime);
 
-            if (volumeInitial.weight == 1 && volumeFinal.weight == 0) lerp = false;
+            if (volumeFinal.weight == 1) lerp = false;
         }
     }
     public void ChangeVolumes()

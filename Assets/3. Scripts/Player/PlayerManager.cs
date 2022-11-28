@@ -138,7 +138,7 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(soPlayer.state);
+        Debug.Log(soPlayer.soPlayerHealth.life);
         if (movement) MovementPerformed(); //Forma pra que rode todo frame enquanto o botão estiver apertado
 
         if (soPlayer.soPlayerMove.staminas < soPlayer.soPlayerMove.maxStaminas) RechargeDash();

@@ -21,7 +21,7 @@ public class FortFire : MonoBehaviour
 	{        
         if (currentAmount != targetAmount)
         {
-            currentAmount = Mathf.MoveTowards(currentAmount, targetAmount, 0.25f * Time.deltaTime);
+            currentAmount = Mathf.MoveTowards(currentAmount, targetAmount, 1f * Time.deltaTime);
             if (currentAmount > 1)
             {
                 currentAmount = 1;
