@@ -33,6 +33,7 @@ public class EnemyManager : MonoBehaviour
 
     void Awake()
     {
+        nextColor = whiteColor;
         soEnemy = (SOEnemy)ScriptableObject.CreateInstance(typeof(SOEnemy));
         soEnemy.enemyType = reference.enemyType;
         AnimationsTime();

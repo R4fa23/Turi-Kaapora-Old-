@@ -100,7 +100,7 @@ public class Trail : MonoBehaviour
 
             foreach(GameObject c in cage)
             {
-                c.SetActive(false);
+                c.GetComponent<Cage>().Break(false);
             }
         }
     }
@@ -121,7 +121,7 @@ public class Trail : MonoBehaviour
 
             foreach(GameObject c in cage)
             {
-                c.SetActive(false);
+                c.GetComponent<Cage>().Break(false);
             }
         }
     }
