@@ -7,12 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water 2
-  m_Shader: {fileID: -6465566751694194690, guid: e4be51cdcc70f2c43a0b08e894dfb0c8,
+  m_Name: mat_Waterfall
+  m_Shader: {fileID: -6465566751694194690, guid: 50a31925e9d3aa34ab28d3d18bf7ff7d,
     type: 3}
   m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _SURFACE_TYPE_TRANSPARENT
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -22,10 +21,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _Refraction_Normal:
-        m_Texture: {fileID: 2800000, guid: f805e88d3eaf0f046ac4ed03de5c7c3e, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -40,40 +35,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaClip: 0
-    - _Blend: 0
-    - _CastShadows: 1
-    - _Cull: 2
-    - _Depth_Distance: 3.91
-    - _DstBlend: 10
-    - _Foam_Amount: 1.44
-    - _Foam_Cutoff: 1.53
-    - _Foam_Scale: 1.53
-    - _Foam_Speed: 0.5
-    - _Height_Frequency: 1.52
-    - _Hight_Frequency: 0.77
-    - _Normal_Strenght: 10
+    - _Bottom_Intensity: 3.6
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ReceiveShadows: 1
-    - _Refraction_Scale: 0.1
-    - _Refraction_Speed: 0.01
-    - _Refraction_Strength: 0.04
-    - _Smoothness: 0.131
-    - _SrcBlend: 5
-    - _Surface: 1
-    - _Wave_Amplitude: 0.29
-    - _Wave_Speed: 0.53
-    - _WorkflowMode: 1
-    - _ZTest: 4
-    - _ZWrite: 0
-    - _ZWriteControl: 0
+    - _RippleAmount: 1.9
+    - _VertexDisplace: -0.47
+    - _Voronoi_Scale: 50.03
+    - _Voronoi_Speed: 7.81
     m_Colors:
-    - _Depth_Color: {r: 0.22953501, g: 0.24528301, b: 0.0752047, a: 0.27058825}
-    - _Foam_Color: {r: 0.7735849, g: 0.7381514, b: 0.6239765, a: 0.9647059}
-    - _Surface_Color: {r: 0.6603774, g: 0.52124125, b: 0.4516732, a: 0.45882353}
+    - _Color: {r: 1.1153386, g: 0.50162166, b: 0.25779054, a: 0}
+    - _Ripple_Speed: {r: 0, g: 0.45, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &2431303954659149319
+--- !u!114 &588485921405529793
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
