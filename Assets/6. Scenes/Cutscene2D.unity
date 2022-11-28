@@ -785,22 +785,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40115db3b0b2bc642bb7dac399e322ea, type: 3}
---- !u!1 &750284944 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2170881275959687203, guid: 40115db3b0b2bc642bb7dac399e322ea,
-    type: 3}
-  m_PrefabInstance: {fileID: 750284943}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &817918166 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5539666364004782848, guid: 40115db3b0b2bc642bb7dac399e322ea,
     type: 3}
   m_PrefabInstance: {fileID: 750284943}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 750284944}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &817918167 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2170881275959687196, guid: 40115db3b0b2bc642bb7dac399e322ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 750284943}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e4e8907a0e909347a7fea91469c3a78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1073596235
@@ -810,6 +816,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4010999401329904346, guid: d75fcee2c1655554ab4f47705f05eae5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5684904324774332449, guid: d75fcee2c1655554ab4f47705f05eae5,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1297,13 +1308,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 750284944}
-        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 817918167}
+        m_TargetAssemblyTypeName: TriggerNarrative, Assembly-CSharp
+        m_MethodName: StopSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
