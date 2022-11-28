@@ -1,3 +1,4 @@
+using FMOD;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
@@ -10,7 +11,7 @@ public class Cage : MonoBehaviour
     [HideInInspector]
     public SOTrail soTrail;
     public SOPlayer soPlayer;
-    int cageLife = 3;
+    int cageLife = 2;
 
     Animator animator;
 
@@ -140,20 +141,25 @@ public class Cage : MonoBehaviour
             cageLife--;
             //Debug.Log(cageLife);
             animator.SetTrigger("damage");
-            if (cageLife <= 0) Break();
+            if (cageLife <= 0) Break(true);
         }
     }
 
-    void Break()
+    public void Break(bool playAudio)
     {
         //Debug.Log("breal");
         animator.SetTrigger("open");
         soPlayer.soPlayerAttack.EnemyDie(gameObject);
         soTrail.BreakCage();
+        gameObject.tag = "Untagged";
         StartCoroutine(WaitTransition());
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Animais/Gaiola", transform.position);
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Ambiencia/Desvanescer_Atrasado", transform.position);
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Animais/" + soundName, transform.position);
+        if (playAudio)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Animais/Gaiola", transform.position);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Ambiencia/Desvanescer_Atrasado", transform.position);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Animais/" + soundName, transform.position);
+        }
+     
     }
 
     IEnumerator WaitTransition()
@@ -165,7 +171,6 @@ public class Cage : MonoBehaviour
             if (animalsArray[i].name == animals.ToString())
             {
                 animalTransform = animalsArray[i].transform;
-                Debug.Log(animalTransform);
                 animalRenderer = animalsArray[i].GetComponentInChildren<SkinnedMeshRenderer>();
             }
         }
