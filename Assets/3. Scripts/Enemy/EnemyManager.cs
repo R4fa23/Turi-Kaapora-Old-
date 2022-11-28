@@ -30,8 +30,6 @@ public class EnemyManager : MonoBehaviour
     [ColorUsage(true, true)]
     public Color nextColor;
     [SerializeField] SkinnedMeshRenderer caiporaBody;
-    [Range(0,1)]
-    public float speed = 0.5f;
 
     void Awake()
     {
@@ -50,7 +48,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (nextColor != caiporaBody.material.GetColor("_Color"))
         {
-            caiporaBody.material.SetColor("_Color", Vector4.Lerp(caiporaBody.material.GetColor("_Color"), nextColor, speed));
+            caiporaBody.material.SetColor("_Color", Vector4.Lerp(caiporaBody.material.GetColor("_Color"), nextColor, 0.3f));
         }
 
         if (caiporaBody.material.GetColor("_Color") == redColor)

@@ -10,7 +10,7 @@ public class Cage : MonoBehaviour
     [HideInInspector]
     public SOTrail soTrail;
     public SOPlayer soPlayer;
-    int cageLife = 3;
+    int cageLife = 2;
 
     Animator animator;
 

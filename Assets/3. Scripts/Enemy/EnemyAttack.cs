@@ -45,9 +45,7 @@ public class EnemyAttack : MonoBehaviour
 
     
     void Update()
-    {
-        
-
+    {       
         if(startMoved && soEnemy.enemyType == SOEnemy.EnemyType.LUMBERJACK && soEnemy.specialTime < soEnemy.timeToSpecial)
         {
             soEnemy.specialTime += Time.deltaTime;
