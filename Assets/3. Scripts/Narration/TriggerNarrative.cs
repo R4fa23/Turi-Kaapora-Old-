@@ -106,6 +106,13 @@ public class TriggerNarrative : MonoBehaviour
         }
     }
 
+    public void StopSound()
+    {
+        {
+            instanciaEvento.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }
+    }
+
     private void OnEnable()
     {
         soPlayer.PauseEvent.AddListener(Pause);
