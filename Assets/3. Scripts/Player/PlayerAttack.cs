@@ -95,8 +95,8 @@ public class PlayerAttack : MonoBehaviour
         soPlayer.soPlayerAttack.AttackStartEvent.AddListener(AttackStart);
         soPlayer.soPlayerMove.DashStartEvent.AddListener(AttackEnd);
         soPlayer.soPlayerMove.DashStartEvent.AddListener(ComboEnd);
-        //soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(AttackEnd);
-        //soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(ComboEnd);
+        //soPlayer.soPlayerHealth.DamageHealthChangeEvent.AddListener(AttackEnd);
+        //soPlayer.soPlayerHealth.DamageHealthChangeEvent.AddListener(ComboEnd);
         soPlayer.soPlayerAttack.SpecialStartEvent.AddListener(SpecialStart);
         soPlayer.soPlayerAttack.SpecialFinishEvent.AddListener(SpecialFinish);
     }
@@ -105,8 +105,8 @@ public class PlayerAttack : MonoBehaviour
         soPlayer.soPlayerAttack.AttackStartEvent.RemoveListener(AttackStart);
         soPlayer.soPlayerMove.DashStartEvent.RemoveListener(AttackEnd);
         soPlayer.soPlayerMove.DashStartEvent.RemoveListener(ComboEnd);
-        //soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(AttackEnd);
-        //soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(ComboEnd);
+        //soPlayer.soPlayerHealth.DamageHealthChangeEvent.RemoveListener(AttackEnd);
+        //soPlayer.soPlayerHealth.DamageHealthChangeEvent.RemoveListener(ComboEnd);
         soPlayer.soPlayerAttack.SpecialStartEvent.RemoveListener(SpecialStart);
         soPlayer.soPlayerAttack.SpecialFinishEvent.RemoveListener(SpecialFinish);
     }

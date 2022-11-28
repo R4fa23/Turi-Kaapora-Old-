@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.VFX;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -32,6 +33,19 @@ public class PlayerManager : MonoBehaviour
     PlayerInput pInput;
     InputAction moving;
 
+
+    [ColorUsage(true, true)]
+    public Color redColor;
+    [ColorUsage(true, true)]
+    public Color blueColor;
+    [ColorUsage(true, true)]
+    public Color whiteColor;
+    [ColorUsage(true, true)]
+    public Color nextColor;
+    [SerializeField] SkinnedMeshRenderer caiporaBody;
+    [SerializeField] VisualEffect fire;
+    [Range(0,1)]
+    public float speedFeedbackDamage;
     void Awake()
     {
         pInput = GetComponent<PlayerInput>();
@@ -42,10 +56,10 @@ public class PlayerManager : MonoBehaviour
         playerMap = new PlayerMap();
 
         //Forma de chamar as funções sem precisar associar manualmente no inspector
-        
+
 
     }
-    
+
     void PlayerSetCommands()
     {
         /*
@@ -74,7 +88,7 @@ public class PlayerManager : MonoBehaviour
         */
     }
 
-    
+
     void SetConfiguration()
     {
         canDash = true;
@@ -108,13 +122,13 @@ public class PlayerManager : MonoBehaviour
 
         soPlayer.state = SOPlayer.State.STOPPED;
     }
-    
+
     private void Start() {
-        if(SceneManager.GetActiveScene().name == "Level-00") soPlayer.SetLevel(0);
-        else if(SceneManager.GetActiveScene().name == "Level-01") soPlayer.SetLevel(1);
-        else if(SceneManager.GetActiveScene().name == "Level-02") soPlayer.SetLevel(2);
+        if (SceneManager.GetActiveScene().name == "Level-00") soPlayer.SetLevel(0);
+        else if (SceneManager.GetActiveScene().name == "Level-01") soPlayer.SetLevel(1);
+        else if (SceneManager.GetActiveScene().name == "Level-02") soPlayer.SetLevel(2);
         else soPlayer.SetLevel(0);
-        
+
         AnimationsTime();
         savePoints = GameObject.FindGameObjectsWithTag("SavePoint");
 
@@ -124,22 +138,35 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         //Debug.Log(soPlayer.state);
-        if(movement) MovementPerformed(); //Forma pra que rode todo frame enquanto o botão estiver apertado
+        if (movement) MovementPerformed(); //Forma pra que rode todo frame enquanto o botão estiver apertado
 
-        if(soPlayer.soPlayerMove.staminas < soPlayer.soPlayerMove.maxStaminas) RechargeDash();
-        if(!canSpecial) SpecialCooldown();
-        if(soPlayer.soPlayerHealth.burned) Burn();
-        if(soPlayer.soPlayerMove.slow) Slow();
+        if (soPlayer.soPlayerMove.staminas < soPlayer.soPlayerMove.maxStaminas) RechargeDash();
+        if (!canSpecial) SpecialCooldown();
+        if (soPlayer.soPlayerHealth.burned) Burn();
+        if (soPlayer.soPlayerMove.slow) Slow();
 
         currentStamina = soPlayer.soPlayerMove.maxStaminas;
 
-        if(currentStamina != lastStamina)
+        if (currentStamina != lastStamina)
         {
             lastStamina = currentStamina;
             soPlayer.soPlayerMove.ChangeMaxStamina();
         }
+        DamageFeedback();         
     }
 
+    public void DamageFeedback()
+    {
+        if (nextColor != caiporaBody.material.GetColor("_Color"))
+        {
+            caiporaBody.material.SetColor("_Color", Vector4.Lerp(caiporaBody.material.GetColor("_Color"), nextColor, speedFeedbackDamage));
+        }
+
+        if (caiporaBody.material.GetColor("_Color") == redColor || caiporaBody.material.GetColor("_Color") == blueColor)
+        {
+            nextColor = whiteColor;
+        }
+    }
     bool IsDead()
     {
         return soPlayer.soPlayerHealth.dead || soPlayer.isPaused || soPlayer.isCutscene;
@@ -352,7 +379,7 @@ public class PlayerManager : MonoBehaviour
                 {
                     FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Dano_Fogo", transform.position);
                     FMODUnity.RuntimeManager.PlayOneShot("event:/Vozes/Dano", transform.position);
-                canFire = false;
+                    canFire = false;
                     StartCoroutine(CooldownFireDamage());
                     soPlayer.soPlayerHealth.HealthChange(-soPlayer.soPlayerHealth.fireDamage);
                 }
@@ -372,8 +399,11 @@ public class PlayerManager : MonoBehaviour
 
     IEnumerator CooldownFireDamage()
     {
+        //fire.Reinit();
+        fire.SendEvent("StartFire");
         yield return new WaitForSeconds(soPlayer.soPlayerHealth.flameDelay);
         canFire = true;
+        //fire.SendEvent("StopFire");
     }
 
     //---------------------------------------------LENTIDÃO------------------------------------------
@@ -396,6 +426,17 @@ public class PlayerManager : MonoBehaviour
             FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Dano_Humano", transform.position);
             FMODUnity.RuntimeManager.PlayOneShot("event:/Vozes/Dano", transform.position);
             animator.SetTrigger("Dano");
+            nextColor = redColor;
+        }
+    }
+    
+    void Heal()
+    {
+        if (soPlayer.state != SOPlayer.State.SPECIAL)
+        {   //Healing
+            //FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Dano_Humano", transform.position);
+            //FMODUnity.RuntimeManager.PlayOneShot("event:/Vozes/Dano", transform.position);
+            nextColor = blueColor;
         }
     }
 
@@ -499,8 +540,6 @@ public class PlayerManager : MonoBehaviour
     {
         animator.SetBool("Move", false);
         animator.SetTrigger("Idle");
-        
-
     }
 
     public void OutCutscene()
@@ -512,8 +551,9 @@ public class PlayerManager : MonoBehaviour
     public void OnEnable()
     {
         PlayerSetCommands();
-        //soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(DamagedCooldown);
-        soPlayer.soPlayerHealth.HealthChangeEvent.AddListener(Damaged);
+        //soPlayer.soPlayerHealth.DamageHealthChangeEvent.AddListener(DamagedCooldown);
+        soPlayer.soPlayerHealth.DamageHealthChangeEvent.AddListener(Damaged);
+        soPlayer.soPlayerHealth.HealHealthChangeEvent.AddListener(Heal);
         soSave.RestartEvent.AddListener(Restart);
         soPlayer.LevelUpEvent.AddListener(SetConfiguration);
         soPlayer.soPlayerHealth.DieEvent.AddListener(OnDie);
@@ -522,8 +562,9 @@ public class PlayerManager : MonoBehaviour
     }
     public void OnDisable()
     {
-        //soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(DamagedCooldown);
-        soPlayer.soPlayerHealth.HealthChangeEvent.RemoveListener(Damaged);
+        //soPlayer.soPlayerHealth.DamageHealthChangeEvent.RemoveListener(DamagedCooldown);
+        soPlayer.soPlayerHealth.DamageHealthChangeEvent.RemoveListener(Damaged);
+        soPlayer.soPlayerHealth.HealHealthChangeEvent.RemoveListener(Heal);
         soSave.RestartEvent.RemoveListener(Restart);
         soPlayer.LevelUpEvent.RemoveListener(SetConfiguration);
         soPlayer.soPlayerHealth.DieEvent.RemoveListener(OnDie);

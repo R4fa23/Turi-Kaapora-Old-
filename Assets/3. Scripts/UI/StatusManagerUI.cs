@@ -35,14 +35,14 @@ public class StatusManagerUI : MonoBehaviour
 
     private void OnEnable()
     {
-        soPlayerHealth.HealthChangeEvent.AddListener(UpdateLifeBar);
+        soPlayerHealth.DamageHealthChangeEvent.AddListener(UpdateLifeBar);
         soPlayerMove.ChangeMaxStaminaEvent.AddListener(UpdateStaminaCount);
         soPlayer.LevelUpEvent.AddListener(ChangeLifeBar);
     }
 
     void OnDisable()
     {
-        soPlayerHealth.HealthChangeEvent.RemoveListener(UpdateLifeBar);
+        soPlayerHealth.DamageHealthChangeEvent.RemoveListener(UpdateLifeBar);
         soPlayerMove.ChangeMaxStaminaEvent.RemoveListener(UpdateStaminaCount);
         soPlayer.LevelUpEvent.RemoveListener(ChangeLifeBar);
     }

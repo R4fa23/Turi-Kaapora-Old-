@@ -24,15 +24,21 @@ public class SOPlayerHealth : ScriptableObject
 
 
     [System.NonSerialized]
-    public UnityEvent HealthChangeEvent;
+    public UnityEvent DamageHealthChangeEvent;
+    [System.NonSerialized]
+    public UnityEvent HealHealthChangeEvent;
     [System.NonSerialized]
     public UnityEvent DieEvent;
     [System.NonSerialized]
     public UnityEvent BurnedEvent;
 
-    private void OnEnable() {
-        if(HealthChangeEvent == null)
-            HealthChangeEvent = new UnityEvent();
+    private void OnEnable() 
+    {
+        if(DamageHealthChangeEvent == null)
+            DamageHealthChangeEvent = new UnityEvent();
+        
+        if(HealHealthChangeEvent == null)
+            HealHealthChangeEvent = new UnityEvent();
 
         if(DieEvent == null)
             DieEvent = new UnityEvent();
@@ -49,9 +55,11 @@ public class SOPlayerHealth : ScriptableObject
     public void HealthChange(int amount)
     {
         if(!dead && canDamaged)
-        {
+        {            
+            if(amount < 0) DamageHealthChangeEvent.Invoke();
+            else HealHealthChangeEvent.Invoke();
+
             life += amount;
-            HealthChangeEvent.Invoke();
             if(life <= 0) Die();
         }
     }
