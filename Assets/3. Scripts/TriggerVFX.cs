@@ -10,6 +10,7 @@ public class TriggerVFX : MonoBehaviour
     public VisualEffect[] attacks;
     public VisualEffect[] enemy;
     public VisualEffect special;
+    public VisualEffect dash;
     public Transform player;
     //public string eventToTrigger;
       
@@ -53,6 +54,21 @@ public class TriggerVFX : MonoBehaviour
         special.Reinit();
         special.SendEvent("Special");
     }
+
+    public void StartDash()
+    {
+        dash.SendEvent("StartDash");
+        dash.SetBool("Trail Dash", true);
+        StartCoroutine(DashCounter());
+    }
+
+    IEnumerator DashCounter()
+    {
+        yield return new WaitForSeconds(soPlayer.soPlayerMove.dashDuration);
+        dash.SendEvent("EndDash");
+        dash.SetBool("Trail Dash", false);
+    }
+
     public void StartSpecial()
     {
         soPlayer.soPlayerAttack.SpecialStart();

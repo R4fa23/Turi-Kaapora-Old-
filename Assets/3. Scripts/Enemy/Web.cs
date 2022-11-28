@@ -12,7 +12,7 @@ public class Web : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.Translate(transform.forward * vel, Space.World);
+        transform.Translate(transform.forward * vel * Time.deltaTime, Space.World);
     }
 
     void DisableWeb()

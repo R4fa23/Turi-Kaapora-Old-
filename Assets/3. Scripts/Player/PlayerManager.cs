@@ -46,6 +46,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] VisualEffect fire;
     [Range(0,1)]
     public float speedFeedbackDamage;
+    public GameObject webTrapped;
     void Awake()
     {
         pInput = GetComponent<PlayerInput>();
@@ -410,9 +411,11 @@ public class PlayerManager : MonoBehaviour
 
     void Slow()
     {
+        webTrapped.SetActive(true);
         soPlayer.soPlayerMove.slowDuration -= Time.deltaTime;
         if(soPlayer.soPlayerMove.slowDuration <= 0)
         {
+            webTrapped.SetActive(false);
             soPlayer.soPlayerMove.vel = soPlayer.soPlayerMove.velBase;
             soPlayer.soPlayerMove.slow = false;
         }
