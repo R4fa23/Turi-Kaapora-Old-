@@ -353,7 +353,8 @@ public class Camp : MonoBehaviour
             soSave.RestartEvent.AddListener(Restart);
             foreach(GameObject e in firstEnemy)
             {
-                if(e.CompareTag("hunterBundle")){
+                if (e.CompareTag("HunterBundle") || e.CompareTag("Enemy"))
+                {
                     e.transform.GetComponentInChildren<EnemyManager>().soEnemy.DieEvent.AddListener(EnemyDied);
                 }
                 if (bonfire != null) e.GetComponent<EnemyManager>().bonfire = bonfire;
@@ -371,7 +372,7 @@ public class Camp : MonoBehaviour
         soSave.RestartEvent.RemoveListener(Restart);
         foreach(GameObject e in firstEnemy)
         {
-            if (e.CompareTag("hunterBundle"))
+            if (e.CompareTag("HunterBundle") || e.CompareTag("Enemy"))
             {
                 e.transform.GetComponentInChildren<EnemyManager>().soEnemy.DieEvent.AddListener(EnemyDied);
             }
