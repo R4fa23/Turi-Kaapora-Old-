@@ -60,6 +60,7 @@ public class SOPlayerHealth : ScriptableObject
             else HealHealthChangeEvent.Invoke();
 
             life += amount;
+            if(life >= maxLife) life = maxLife;
             if(life <= 0) Die();
         }
     }

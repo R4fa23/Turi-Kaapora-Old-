@@ -49,7 +49,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (nextColor != caiporaBody.material.GetColor("_Color"))
         {
-            caiporaBody.material.SetColor("_Color", Vector4.Lerp(caiporaBody.material.GetColor("_Color"), nextColor, 0.3f));
+            caiporaBody.material.SetColor("_Color", Vector4.Lerp(caiporaBody.material.GetColor("_Color"), nextColor, 0.5f));
         }
 
         if (caiporaBody.material.GetColor("_Color") == redColor)

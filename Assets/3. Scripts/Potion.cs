@@ -11,6 +11,7 @@ public class Potion : MonoBehaviour
         {
             soPlayer.soPlayerHealth.HealthChange(15);
             gameObject.SetActive(false);
+            Debug.Log(soPlayer.soPlayerHealth.life);
         }
     }
 }
