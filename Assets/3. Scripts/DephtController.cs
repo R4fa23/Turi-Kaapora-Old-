@@ -24,6 +24,7 @@ public class DephtController : MonoBehaviour
     float apertureFinal = 1f;
 
     bool lerp;
+    bool reset;
 
     void Start()
     {
@@ -32,35 +33,67 @@ public class DephtController : MonoBehaviour
 
     private void Update()
     {
-        if (depth.focusDistance.value != focusDistanceFinal)
+        if (!reset)
         {
-            float focusCurrent = Mathf.Lerp(depth.focusDistance.value, focusDistanceFinal, interpolation * Time.deltaTime);
-            depth.focusDistance.value = focusCurrent;
-        }
+            if (depth.focusDistance.value != focusDistanceFinal)
+            {
+                float focusCurrent = Mathf.Lerp(depth.focusDistance.value, focusDistanceFinal, interpolation * Time.deltaTime);
+                depth.focusDistance.value = focusCurrent;
+            }
 
-        if (depth.focalLength.value != focusDistanceFinal)
-        {
-            float focalCurrent = Mathf.Lerp(depth.focalLength.value, focalLenghtFinal, interpolation * Time.deltaTime);
-            depth.focalLength.value = focalCurrent;
-        }
-        if (depth.aperture.value != focusDistanceFinal)
-        {
-            float apertureCurrent = Mathf.Lerp(depth.aperture.value, apertureFinal, interpolation * Time.deltaTime);
-            depth.aperture.value = apertureCurrent;
-        }
+            if (depth.focalLength.value != focusDistanceFinal)
+            {
+                float focalCurrent = Mathf.Lerp(depth.focalLength.value, focalLenghtFinal, interpolation * Time.deltaTime);
+                depth.focalLength.value = focalCurrent;
+            }
+            if (depth.aperture.value != focusDistanceFinal)
+            {
+                float apertureCurrent = Mathf.Lerp(depth.aperture.value, apertureFinal, interpolation * Time.deltaTime);
+                depth.aperture.value = apertureCurrent;
+            }
 
-        if (lerp)
-        {
-            //volumeInitial.weight = Mathf.Lerp(volumeInitial.weight, 0, 0.9f * Time.deltaTime);
-            volumeFinal.weight = Mathf.MoveTowards(volumeFinal.weight, 1, 0.2f * Time.deltaTime);
+            if (lerp)
+            {
+                //volumeInitial.weight = Mathf.Lerp(volumeInitial.weight, 0, 0.9f * Time.deltaTime);
+                volumeFinal.weight = Mathf.MoveTowards(volumeFinal.weight, 1, 0.2f * Time.deltaTime);
 
-            if (volumeFinal.weight == 1) lerp = false;
+                if (volumeFinal.weight == 1) lerp = false;
+            }
         }
+        else
+        {
+            if (depth.focusDistance.value != focusDistanceFinal)
+            {
+                float focusCurrent = Mathf.MoveTowards(depth.focusDistance.value, focusDistanceFinal, 4f * Time.deltaTime);
+                depth.focusDistance.value = focusCurrent;
+            }
+
+            if (depth.focalLength.value != focusDistanceFinal)
+            {
+                float focalCurrent = Mathf.MoveTowards(depth.focalLength.value, focalLenghtFinal, 50f * Time.deltaTime);
+                depth.focalLength.value = focalCurrent;
+            }
+            if (depth.aperture.value != focusDistanceFinal)
+            {
+                float apertureCurrent = Mathf.MoveTowards(depth.aperture.value, apertureFinal, 4f * Time.deltaTime);
+                depth.aperture.value = apertureCurrent;
+            }
+
+            if (lerp)
+            {
+                //volumeInitial.weight = Mathf.Lerp(volumeInitial.weight, 0, 0.9f * Time.deltaTime);
+                volumeFinal.weight = Mathf.MoveTowards(volumeFinal.weight, 1, 0.2f * Time.deltaTime);
+
+                if (volumeFinal.weight == 1) lerp = false;
+            }
+        } 
+        
     }
     public void ChangeVolumes()
     {
         lerp = true;
     }
+
 
     public void AdjustValues()
     {
@@ -79,5 +112,12 @@ public class DephtController : MonoBehaviour
             if (i == index) apertureFinal = aperture[i];
         }
         index++;
+    }
+
+    public void Zero()
+    {
+        focusDistanceFinal = 0.1f;
+        focalLenghtFinal = 10f;
+        apertureFinal = 1;
     }
 }
