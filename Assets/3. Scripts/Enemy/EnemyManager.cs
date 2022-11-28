@@ -23,6 +23,16 @@ public class EnemyManager : MonoBehaviour
     public GameObject bonfire;
     public GameObject potion;
 
+    [ColorUsage(true, true)]
+    public Color redColor;
+    [ColorUsage(true, true)]
+    public Color whiteColor;
+    [ColorUsage(true, true)]
+    public Color nextColor;
+    [SerializeField] SkinnedMeshRenderer caiporaBody;
+    [Range(0,1)]
+    public float speed = 0.5f;
+
     void Awake()
     {
         soEnemy = (SOEnemy)ScriptableObject.CreateInstance(typeof(SOEnemy));
@@ -30,8 +40,24 @@ public class EnemyManager : MonoBehaviour
         AnimationsTime();
         SetConfiguration();
         player = GameObject.FindGameObjectWithTag("Player");
-    }
+    }  
 
+    private void Update()
+    {
+        DamageFeedback();
+    }
+    public void DamageFeedback()
+    {
+        if (nextColor != caiporaBody.material.GetColor("_Color"))
+        {
+            caiporaBody.material.SetColor("_Color", Vector4.Lerp(caiporaBody.material.GetColor("_Color"), nextColor, speed));
+        }
+
+        if (caiporaBody.material.GetColor("_Color") == redColor)
+        {
+            nextColor = whiteColor;
+        }
+    }
 
     void Repulse()
     {
@@ -88,6 +114,7 @@ public class EnemyManager : MonoBehaviour
     {
         if(soEnemy.state == SOEnemy.State.STOPPED) animator.SetTrigger("Take Damage");
         FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Acerto", transform.position);
+        nextColor = redColor;
     }
 
     IEnumerator TimeRecoverDamage()

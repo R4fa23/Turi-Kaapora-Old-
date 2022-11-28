@@ -62,6 +62,10 @@ MonoBehaviour:
   animAttackEspTime: 0
   bonfire: {fileID: 0}
   potion: {fileID: 6306883537028082589, guid: 3f5d62f85b2f34b47b87f9ef67086e62, type: 3}
+  redColor: {r: 8, g: 0, b: 0, a: 0}
+  whiteColor: {r: 1, g: 1, b: 1, a: 0}
+  nextColor: {r: 1, g: 1, b: 1, a: 0}
+  caiporaBody: {fileID: 788255128028692391}
 --- !u!114 &7200186106707294783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -802,6 +806,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7770577d833cd034e9ff78c62b4b73c3, type: 3}
+--- !u!137 &788255128028692391 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1985911611534171272, guid: 7770577d833cd034e9ff78c62b4b73c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1260745980275778351}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1654413943888381124 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7770577d833cd034e9ff78c62b4b73c3,

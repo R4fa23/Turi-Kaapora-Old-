@@ -9,7 +9,7 @@ public class Potion : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            soPlayer.soPlayerHealth.HealthChange(10);
+            soPlayer.soPlayerHealth.HealthChange(15);
             gameObject.SetActive(false);
         }
     }

@@ -61,6 +61,10 @@ MonoBehaviour:
   animAttackEspTime: 0
   bonfire: {fileID: 0}
   potion: {fileID: 6306883537028082589, guid: 3f5d62f85b2f34b47b87f9ef67086e62, type: 3}
+  redColor: {r: 8, g: 0, b: 0, a: 0}
+  whiteColor: {r: 1, g: 1, b: 1, a: 0}
+  nextColor: {r: 1, g: 1, b: 1, a: 0}
+  caiporaBody: {fileID: 2067721029547393252}
 --- !u!114 &3645011600244056798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,6 +449,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 248637876057056415}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &2067721029547393252 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6935170113820580741, guid: 1a8c72bfb64f6be41a1decc38e747fa0,
+    type: 3}
+  m_PrefabInstance: {fileID: 248637876057056415}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &659335409086998761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -460,17 +470,17 @@ PrefabInstance:
     - target: {fileID: 6822416993567697107, guid: e7b90944fb145314eab2db29f7259501,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 53.771988
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6822416993567697107, guid: e7b90944fb145314eab2db29f7259501,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 21.617325
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 6822416993567697107, guid: e7b90944fb145314eab2db29f7259501,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 98.775986
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6822416993567697107, guid: e7b90944fb145314eab2db29f7259501,
         type: 3}
