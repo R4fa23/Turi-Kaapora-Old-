@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
     bool dashing;
     [HideInInspector] public bool canSpecial = true;
     bool canFire = true;
+        
     public GameObject animated;
     public Animator animator;
     GameObject[] savePoints;
@@ -435,9 +436,8 @@ public class PlayerManager : MonoBehaviour
     void Heal()
     {
         if (soPlayer.state != SOPlayer.State.SPECIAL)
-        {   //Healing
-            //FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Dano_Humano", transform.position);
-            //FMODUnity.RuntimeManager.PlayOneShot("event:/Vozes/Dano", transform.position);
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Caipora/Cura", transform.position);
             nextColor = blueColor;
         }
     }
