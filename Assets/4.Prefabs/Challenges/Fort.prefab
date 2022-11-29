@@ -70,7 +70,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boitataFire: {fileID: 3184124707694824443}
   blueFire: {fileID: 537590162598051634}
+  soPlayer: {fileID: 0}
   quantityToAdd: 0
+  endFire: 0
 --- !u!1 &7777426511086459747
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +123,7 @@ PrefabInstance:
     - target: {fileID: 1880552771864618439, guid: 6b76fbb713bf791499743d40069a20e9,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 40
+      value: 43
       objectReference: {fileID: 0}
     - target: {fileID: 2106823815890977485, guid: 6b76fbb713bf791499743d40069a20e9,
         type: 3}
@@ -258,6 +260,41 @@ PrefabInstance:
       propertyPath: fireBoitata
       value: 
       objectReference: {fileID: 9021860607088596553}
+    - target: {fileID: 3424883223065175474, guid: 6b76fbb713bf791499743d40069a20e9,
+        type: 3}
+      propertyPath: OnEndCamp.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3424883223065175474, guid: 6b76fbb713bf791499743d40069a20e9,
+        type: 3}
+      propertyPath: OnEndCamp.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3424883223065175474, guid: 6b76fbb713bf791499743d40069a20e9,
+        type: 3}
+      propertyPath: OnEndCamp.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9021860607088596553}
+    - target: {fileID: 3424883223065175474, guid: 6b76fbb713bf791499743d40069a20e9,
+        type: 3}
+      propertyPath: OnEndCamp.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3424883223065175474, guid: 6b76fbb713bf791499743d40069a20e9,
+        type: 3}
+      propertyPath: OnEndCamp.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: EndFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 3424883223065175474, guid: 6b76fbb713bf791499743d40069a20e9,
+        type: 3}
+      propertyPath: OnEndCamp.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: FortFire, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3424883223065175474, guid: 6b76fbb713bf791499743d40069a20e9,
+        type: 3}
+      propertyPath: OnEndCamp.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3424883223155739977, guid: 6b76fbb713bf791499743d40069a20e9,
         type: 3}
       propertyPath: m_IsActive
@@ -291,7 +328,7 @@ PrefabInstance:
     - target: {fileID: 7401575871395770814, guid: 6b76fbb713bf791499743d40069a20e9,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 40
+      value: 43
       objectReference: {fileID: 0}
     - target: {fileID: 7546553443820561210, guid: 6b76fbb713bf791499743d40069a20e9,
         type: 3}

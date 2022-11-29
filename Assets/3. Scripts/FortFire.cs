@@ -10,12 +10,19 @@ public class FortFire : MonoBehaviour
 {
     public VisualEffect boitataFire;
     [SerializeField] Volume blueFire;
+    [SerializeField] SOPlayer soPlayer;
 
     [HideInInspector]
     public float quantityToAdd;
 
     float currentAmount;
     float targetAmount;
+
+    float currentAmountClip;
+    float targetAmountClip;
+
+
+    public bool endFire;
 
 	private void Update()
 	{        
@@ -29,7 +36,7 @@ public class FortFire : MonoBehaviour
             }
             boitataFire.SetFloat("Percent", currentAmount);
             blueFire.weight = currentAmount;
-        }        
+        }
 	}
 	public void ResetToRedFire()
     {
@@ -60,4 +67,27 @@ public class FortFire : MonoBehaviour
     {
         AddBlueFire(quantityToAdd);
     }
+
+    public void EndFire()
+    {
+        StartCoroutine(LevelUp());
+    }
+
+    IEnumerator LevelUp()
+    {
+        boitataFire.SendEvent("End");
+        boitataFire.SendEvent("StartDash");
+        yield return new WaitForSeconds(7f);
+        boitataFire.SendEvent("EndDash");
+    }
+
+    /*private void OnEnable()
+    {
+        soPlayer.LevelUpEvent.AddListener(EndFire);
+    }
+
+    private void OnDisable()
+    {
+        soPlayer.LevelUpEvent.RemoveListener(EndFire);
+    }*/
 }

@@ -32,6 +32,8 @@ public class SOPlayer : ScriptableObject
     public UnityEvent StartCutsceneEvent;
     [System.NonSerialized]
     public UnityEvent EndCutsceneEvent;
+    [System.NonSerialized]
+    public UnityEvent VFXLevelUP;
 
 
     private void OnEnable() {
