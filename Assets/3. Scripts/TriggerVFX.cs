@@ -11,6 +11,7 @@ public class TriggerVFX : MonoBehaviour
     public VisualEffect[] enemy;
     public VisualEffect special;
     public VisualEffect dash;
+    public VisualEffect levelUp;
     public Transform player;
     //public string eventToTrigger;
       
@@ -73,4 +74,26 @@ public class TriggerVFX : MonoBehaviour
     {
         soPlayer.soPlayerAttack.SpecialStart();
     }
+
+    public void LevelUp()
+    {
+        if(levelUp) StartCoroutine(LevelUpTimer());
+    }
+
+    IEnumerator LevelUpTimer()
+    {
+        levelUp.SendEvent("Start");
+        yield return new WaitForSeconds(7f);
+        levelUp.SendEvent("End");
+    }
+
+   /* private void OnEnable()
+    {
+        soPlayer.LevelUpEvent.AddListener(LevelUp);
+    }
+
+    private void OnDisable()
+    {
+        soPlayer.LevelUpEvent.RemoveListener(LevelUp);
+    }*/
 }

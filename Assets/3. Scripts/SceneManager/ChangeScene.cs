@@ -40,6 +40,11 @@ public class ChangeScene : MonoBehaviour
     {
         AlternateScene("Level-02");
     }
+    
+    public void CutFinal()
+    {
+        AlternateScene("FinalTest");
+    }
 
     public void MenuInitial()
     {
