@@ -32,6 +32,9 @@
 		<relationship name="timeline">
 			<destination>{e286a3c8-8aed-4aa8-a9e9-928eb511f746}</destination>
 		</relationship>
+		<relationship name="banks">
+			<destination>{a7f9b6cd-0de3-444b-ab98-f93f556a046d}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixer" id="{d545d43a-8c37-4c19-999f-e630155e5588}">
 		<relationship name="masterBus">
@@ -100,7 +103,10 @@
 	<object class="MixerBusPanner" id="{0dd87dc6-32c0-441f-b86d-796e6f1bfa17}" />
 	<object class="SingleSound" id="{ce1140f8-bc6b-44a3-8f65-d83f2d49bc00}">
 		<property name="length">
-			<value>0.70530612244897961</value>
+			<value>0.48530612244897942</value>
+		</property>
+		<property name="timelockedOffset">
+			<value>0.22907767339991914</value>
 		</property>
 		<property name="pitch">
 			<value>0.699999988</value>
@@ -134,10 +140,13 @@
 	</object>
 	<object class="SingleSound" id="{83986455-d87b-46f2-95bf-84bae4b8579e}">
 		<property name="length">
-			<value>0.73204081632653051</value>
+			<value>0.54000000000000004</value>
 		</property>
 		<property name="timelockedOffset">
 			<value>0.13</value>
+		</property>
+		<property name="pitch">
+			<value>3.79999995</value>
 		</property>
 		<relationship name="modulators">
 			<destination>{28cbfa6b-5202-433b-af0e-5b98d14ec8c3}</destination>
@@ -219,7 +228,7 @@
 	</object>
 	<object class="AutomationPoint" id="{0d703007-2a54-4f62-afaf-892cc387fb11}">
 		<property name="position">
-			<value>0.14000000000000001</value>
+			<value>0.14000000000000004</value>
 		</property>
 		<property name="value">
 			<value>1</value>
