@@ -11,6 +11,8 @@ public class TriggerNarrative : MonoBehaviour
 
     public String[] falas;
 
+    public Color[] colors;
+
     public FMOD.Studio.EventInstance instanciaEvento;
 
     public float[] talkTime;
@@ -52,6 +54,7 @@ public class TriggerNarrative : MonoBehaviour
         instanciaEvento.start();
 
         talk.text = falas[index];
+        talk.color = colors[index];
 
         float timeToPass;
         //timeToPass = ((falas[index].Length / 4.5f) * narrationVel);
@@ -82,6 +85,7 @@ public class TriggerNarrative : MonoBehaviour
             instanciaEvento.start();
 
             talk.text = falas[index];
+            talk.color = colors[index];
 
             float timeToPass;
             //timeToPass = ((falas[index].Length / 4.5f) * narrationVel);
