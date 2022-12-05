@@ -113,7 +113,7 @@ public class Camp : MonoBehaviour
         for(int i = 0; i < firstEnemies.transform.childCount; i++) {
             if (firstEnemies.transform.GetChild(i).gameObject.CompareTag("HunterBundle"))
             {
-                firstEnemies.Add(firstEnemies.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject);
+                firstEnemy.Add(firstEnemies.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject);
             }
             else
             {
