@@ -22,6 +22,7 @@ public class PauseManager : MonoBehaviour
     
     void Start()
     {
+        changeScene = GameObject.FindGameObjectWithTag("SceneManager").GetComponent<ChangeScene>();
         tf = GetComponent<TargetFrame>();
         DisableAll();
     }
