@@ -111,7 +111,14 @@ public class Camp : MonoBehaviour
         }
 
         for(int i = 0; i < firstEnemies.transform.childCount; i++) {
-            firstEnemy.Add(firstEnemies.transform.GetChild(i).gameObject);
+            if (firstEnemies.transform.GetChild(i).gameObject.CompareTag("HunterBundle"))
+            {
+                firstEnemy.Add(firstEnemies.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject);
+            }
+            else
+            {
+                firstEnemy.Add(firstEnemies.transform.GetChild(i).gameObject);
+            }
             firstEnemy[i].SetActive(true);
         }
 
@@ -353,10 +360,7 @@ public class Camp : MonoBehaviour
             soSave.RestartEvent.AddListener(Restart);
             foreach(GameObject e in firstEnemy)
             {
-                if (e.CompareTag("HunterBundle") || e.CompareTag("Enemy"))
-                {
-                    e.transform.GetComponentInChildren<EnemyManager>().soEnemy.DieEvent.AddListener(EnemyDied);
-                }
+                e.GetComponent<EnemyManager>().soEnemy.DieEvent.AddListener(EnemyDied);
                 if (bonfire != null) e.GetComponent<EnemyManager>().bonfire = bonfire;
             }
             soFort.CompleteChallengesEvent.AddListener(CompleteAnticipated);
@@ -372,10 +376,7 @@ public class Camp : MonoBehaviour
         soSave.RestartEvent.RemoveListener(Restart);
         foreach(GameObject e in firstEnemy)
         {
-            if (e.CompareTag("HunterBundle") || e.CompareTag("Enemy"))
-            {
-                e.transform.GetComponentInChildren<EnemyManager>().soEnemy.DieEvent.AddListener(EnemyDied);
-            }
+            e.GetComponent<EnemyManager>().soEnemy.DieEvent.RemoveListener(EnemyDied);
         }
         soFort.CompleteChallengesEvent.RemoveListener(CompleteAnticipated);
         soFort.CompleteFortEvent.RemoveListener(CompleteFort);
