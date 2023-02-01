@@ -11,6 +11,8 @@ public class TriggerNarrative : MonoBehaviour
 
     public String[] falas;
 
+    public String[] falasIngles;
+
     public Color[] colors;
 
     public FMOD.Studio.EventInstance instanciaEvento;
@@ -23,11 +25,13 @@ public class TriggerNarrative : MonoBehaviour
     float narrationVel;
 
     public SOPlayer soPlayer;
+    public SOConfig soConfig;
 
     void Start()
     {
         talk = GameObject.FindGameObjectWithTag("TextNarrative").GetComponent<CollectText>().text;
         talk.gameObject.SetActive(false);
+        if (falasIngles.Length != falas.Length) falasIngles = new string[falas.Length];
     }
 
     void OnTriggerEnter(Collider other)
@@ -53,7 +57,15 @@ public class TriggerNarrative : MonoBehaviour
         instanciaEvento = FMODUnity.RuntimeManager.CreateInstance("event:/" + evento[index]);
         instanciaEvento.start();
 
-        talk.text = falas[index];
+        if (soConfig.language == 0)
+        {
+            talk.text = falas[index];
+        }
+        else if (soConfig.language == 1)
+        {
+            talk.text = falasIngles[index];
+        }
+
         talk.color = colors[index];
 
         float timeToPass;
@@ -84,7 +96,14 @@ public class TriggerNarrative : MonoBehaviour
             instanciaEvento = FMODUnity.RuntimeManager.CreateInstance("event:/" + evento[index]);
             instanciaEvento.start();
 
-            talk.text = falas[index];
+            if (soConfig.language == 0)
+            {
+                talk.text = falas[index];
+            }
+            else if (soConfig.language == 1)
+            {
+                talk.text = falasIngles[index];
+            }
             talk.color = colors[index];
 
             float timeToPass;

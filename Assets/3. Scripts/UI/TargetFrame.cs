@@ -74,6 +74,17 @@ public class TargetFrame : MonoBehaviour
         high
     }
 
+    public enum Language
+    {
+        portuguese,
+        english
+    }
+
+    /*
+     * Português = 0
+     * Inglês = 1
+     */
+
     Rates rate;
     Rates lastRate;
 
@@ -89,8 +100,27 @@ public class TargetFrame : MonoBehaviour
     bool fullscreen;
     bool lastFullscreen;
 
+    Language language;
+    Language lastLanguage;
+
     public TMP_Dropdown fram, reso, qual;
     public Toggle full, vsy;
+    public TMP_Dropdown lang;
+    public GameObject alertText;
+
+    private void Awake()
+    {
+        if (PlayerPrefs.GetInt("Inicio") == 0)
+        {
+            PlayerPrefs.SetInt("Language", 0);
+        }
+
+        if (!soConfig.firstTime)
+        {
+            soConfig.language = PlayerPrefs.GetInt("Language");
+        }
+    }
+
     private void Start()
     {
         if(PlayerPrefs.GetInt("Inicio") == 0)
@@ -102,6 +132,7 @@ public class TargetFrame : MonoBehaviour
             PlayerPrefs.SetInt("Quality", 1);
             PlayerPrefs.SetInt("Fullscreen", 1);
             PlayerPrefs.SetInt("Vsync", 1);
+            
         }
 
         if (!soConfig.firstTime)
@@ -113,6 +144,8 @@ public class TargetFrame : MonoBehaviour
             if (PlayerPrefs.GetInt("Fullscreen") == 1) soConfig.fullscreen = true;
             if (PlayerPrefs.GetInt("Vsync") == 0) soConfig.vsync = false;
             if (PlayerPrefs.GetInt("Vsync") == 1) soConfig.vsync = true;
+            
+            
         }
 
         rate = (Rates)soConfig.rate;
@@ -120,18 +153,22 @@ public class TargetFrame : MonoBehaviour
         quality = (Quality)soConfig.quality;
         vsync = soConfig.vsync;
         fullscreen = soConfig.fullscreen;
+        language = (Language)soConfig.language;
+        
 
         lastResolution = resolution;
         lastRate = rate;
         lastFullscreen = fullscreen;
         lastVsync = vsync;
         lastQuality = quality;
+        lastLanguage = language;
 
         fram.value = (int)rate;
         reso.value = (int)resolution;
         qual.value = (int)quality;
         full.isOn = fullscreen;
         vsy.isOn = vsync;
+        if (lang != null) lang.value = (int)language;
 
         if (!soConfig.firstTime)
         {
@@ -145,14 +182,27 @@ public class TargetFrame : MonoBehaviour
 
     private void Update()
     {
-        if(rate != lastRate || resolution != lastResolution || fullscreen != lastFullscreen || vsync != lastVsync || quality != lastQuality)
+        if(rate != lastRate || resolution != lastResolution || fullscreen != lastFullscreen || vsync != lastVsync || quality != lastQuality || language != lastLanguage)
         {
             changed = true;
         }
 
-        if (rate == lastRate && resolution == lastResolution && fullscreen == lastFullscreen && vsync == lastVsync && quality == lastQuality)
+        if (rate == lastRate && resolution == lastResolution && fullscreen == lastFullscreen && vsync == lastVsync && quality == lastQuality && language == lastLanguage)
         {
             changed = false;
+            
+        }
+
+        if (alertText != null)
+        {
+            if ((int)lastLanguage != soConfig.language && !alertText.activeInHierarchy)
+            {
+                alertText.SetActive(true);
+            }
+            else if ((int)lastLanguage == soConfig.language && alertText.activeInHierarchy)
+            {
+                alertText.SetActive(false);
+            }
         }
     }
 
@@ -197,6 +247,12 @@ public class TargetFrame : MonoBehaviour
                 PlayerPrefs.SetInt("Quality", (int)quality);
             }
 
+            if(language != lastLanguage)
+            {
+                lastLanguage = language;
+                PlayerPrefs.SetInt("Language", (int)language);
+            }
+
             changed = false;
         }
     }
@@ -231,6 +287,12 @@ public class TargetFrame : MonoBehaviour
                 qual.value = (int)quality;
             }
 
+            if (language != lastLanguage)
+            {
+                language = lastLanguage;
+                lang.value = (int)language;
+            }
+
             changed = false;
         }
     }
@@ -260,4 +322,11 @@ public class TargetFrame : MonoBehaviour
     {
         quality = (Quality)index;
     }
+
+    public void DropLang(int index)
+    {
+        language = (Language)index;
+    }
+
+
 }

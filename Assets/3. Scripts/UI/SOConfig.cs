@@ -12,4 +12,11 @@ public class SOConfig : ScriptableObject
     public bool vsync;
 
     public bool firstTime;
+
+    public int language;
+
+    /*
+     * Português = 0
+     * Inglês = 1
+     */
 }

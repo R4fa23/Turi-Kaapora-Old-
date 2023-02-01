@@ -6,6 +6,8 @@ using TMPro;
 
 public class HintTrigger : MonoBehaviour
 {
+    public SOConfig soConfig;
+
     GameObject panel;
 
     TextMeshProUGUI text;
@@ -16,6 +18,9 @@ public class HintTrigger : MonoBehaviour
 
     [TextArea(15, 20)]
     public string description;
+    
+    [TextArea(15, 20)]
+    public string descriptionEnglish;
 
     public Sprite illustration;
 
@@ -39,7 +44,8 @@ public class HintTrigger : MonoBehaviour
     {
         Debug.Log("Hint");
         panel.SetActive(true);
-        text.text = description;
+        if(soConfig.language == 0)text.text = description;
+        else if(soConfig.language == 1) text.text = descriptionEnglish;
         image.sprite = illustration;
         gameObject.SetActive(false);
     }
