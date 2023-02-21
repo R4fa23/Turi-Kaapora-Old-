@@ -108,6 +108,8 @@ public class TargetFrame : MonoBehaviour
     public TMP_Dropdown lang;
     public GameObject alertText;
 
+    bool oneTimeDrop;
+
     private void Awake()
     {
         if (PlayerPrefs.GetInt("Inicio") == 0)
@@ -131,7 +133,7 @@ public class TargetFrame : MonoBehaviour
             PlayerPrefs.SetInt("Resolution", 14);
             PlayerPrefs.SetInt("Quality", 1);
             PlayerPrefs.SetInt("Fullscreen", 1);
-            PlayerPrefs.SetInt("Vsync", 1);
+            PlayerPrefs.SetInt("Vsync", 0);
             
         }
 
@@ -163,12 +165,12 @@ public class TargetFrame : MonoBehaviour
         lastQuality = quality;
         lastLanguage = language;
 
-        fram.value = (int)rate;
+        //fram.value = (int)rate;
         reso.value = (int)resolution;
-        qual.value = (int)quality;
+        //qual.value = (int)quality;
         full.isOn = fullscreen;
         vsy.isOn = vsync;
-        if (lang != null) lang.value = (int)language;
+        //lang.value = (int)language;
 
         if (!soConfig.firstTime)
         {
@@ -182,6 +184,14 @@ public class TargetFrame : MonoBehaviour
 
     private void Update()
     {
+        if(!oneTimeDrop)
+        {
+            oneTimeDrop = true;
+            fram.value = (int)rate;
+            qual.value = (int)quality;
+            lang.value = (int)language;
+        }
+
         if(rate != lastRate || resolution != lastResolution || fullscreen != lastFullscreen || vsync != lastVsync || quality != lastQuality || language != lastLanguage)
         {
             changed = true;
